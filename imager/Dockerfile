@@ -1,4 +1,4 @@
-FROM node:lts as builder
+FROM node:20.18.1 as builder
 
 ARG BRANCH=dev
 ARG COMMIT=7ff2405
