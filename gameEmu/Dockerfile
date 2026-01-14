@@ -1,5 +1,5 @@
 #FROM mono:latest
-FROM mcr.microsoft.com/dotnet/runtime:6.0-bullseye-slim
+FROM mcr.microsoft.com/dotnet/runtime:10.0
 RUN apt-get update
 RUN apt-get install -y wget
 
