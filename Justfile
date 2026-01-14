@@ -43,7 +43,7 @@ imager:
 restart:
 	@docker compose stop
 	@docker system prune -f
-	@docker compose build
+	@docker compose build --no-cache
 	@docker compose up -d
 	@sleep 5
 	@docker compose restart imager
