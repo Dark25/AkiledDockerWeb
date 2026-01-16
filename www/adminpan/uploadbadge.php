@@ -55,6 +55,15 @@ admin::CheckRank(13);
                 $string = "badge_desc_" . $codigo . "=" . $_POST['desc'] . "";
                 fwrite($fh, "\r" . nl2br($strings) . "\r\n" . nl2br($string));
                 fclose($fh);
+
+                $jsonFile = "../swfs/nitro/gamedata/ExternalTexts.json";
+                if (file_exists($jsonFile)) {
+                    $jsonData = json_decode(file_get_contents($jsonFile), true);
+                    $jsonData["badge_name_" . $codigo] = $_POST['name'];
+                    $jsonData["badge_desc_" . $codigo] = $_POST['desc'];
+                    file_put_contents($jsonFile, json_encode($jsonData, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES));
+                }
+
                 $ContAu = $cont + 1;
                 $UpdateCont = $dbh->prepare("UPDATE slopt_cms SET 
 				badges=:badges");
