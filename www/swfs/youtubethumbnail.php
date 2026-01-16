@@ -9,7 +9,7 @@ if(file_exists("youtubeimg/".$_GET['videoid'].".png"))
 	exit();
 }
 
-$data = file_get_contents("http://i1.ytimg.com/vi/".$_GET['videoid']."/default.jpg");
+$data = file_get_contents("https://i1.ytimg.com/vi/".$_GET['videoid']."/default.jpg");
 
 $image = imagecreatefromstring($data);
 
@@ -49,4 +49,4 @@ imagepng($img, "youtubeimg/" . $UniqueId . '.png', 9);
 convertPNGto8bitPNG("youtubeimg/" . $UniqueId . '.png');
 
 imagepng($img);
-imagedestroy($im);
+imagedestroy($image);
