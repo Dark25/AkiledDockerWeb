@@ -4227,10 +4227,45 @@
               {
                 key: "startPing",
                 value: function () {
+                  var self = this;
                   this._pingInterval ||
                     (this._pingInterval = window.setInterval(function () {
                       return t.networkManager.processOutgoing(new At());
                     }, 3e4));
+                  // Añadir listener de visibilidad si no existe
+                  if (!this._visibilityListenerAdded) {
+                    this._visibilityListenerAdded = !0;
+                    document.addEventListener("visibilitychange", function () {
+                      self.onVisibilityChange();
+                    });
+                  }
+                },
+              },
+              {
+                key: "onVisibilityChange",
+                value: function () {
+                  // Solo actuar cuando la pestaña vuelve a estar visible
+                  if (document.visibilityState === "visible") {
+                    // Verificar si el WebSocket sigue conectado
+                    if (this._networkManager && this._networkManager.server) {
+                      var ws = this._networkManager.server;
+                      if (ws.readyState === ws.OPEN) {
+                        // Conexión activa: enviar ping inmediato
+                        t.networkManager.processOutgoing(new At());
+                        console.log("[Hionix] Tab visible - Ping enviado");
+                      } else if (ws.readyState === ws.CLOSED || ws.readyState === ws.CLOSING) {
+                        // Conexión cerrada: intentar reconectar
+                        console.log("[Hionix] Tab visible - Reconectando...");
+                        this._disconnectCounter = 0; // Reset counter para permitir reconexión
+                        this._networkManager.reload();
+                      }
+                    } else if (this._isConnected === !1) {
+                      // No hay conexión: intentar reconectar
+                      console.log("[Hionix] Tab visible - Sin conexión, reconectando...");
+                      this._disconnectCounter = 0;
+                      this._networkManager && this._networkManager.reload();
+                    }
+                  }
                 },
               },
               {
