@@ -29,7 +29,7 @@ $ranking_active = 'active';
             <div class="page-content-max-width">
                 <div class="page-content-collider-item">
                     <div class="page-content-collider-content highscores">
-                        <div class="page-content-collider-content-highscores-ranking">
+                          <div class="page-content-collider-content-highscores-ranking">
                             <div class="page-content-collider-content-highscores-ranking-head">
                                 <img src="/assets/images/user-space/credits.png" alt="Más Monedas" class="page-content-collider-content-highscores-ranking-head-icon">
                                 <h3 class="page-content-collider-content-highscores-ranking-head-title"><?= $lang["TopCredits"] ?></h3>
@@ -45,7 +45,7 @@ $ranking_active = 'active';
 
                                     <div class="page-content-collider-content-highscores-ranking-content-item">
                                         <div class="page-content-collider-content-highscores-ranking-content-item-nth"><?= $rank++ ?></div>
-                                        <img src="<?php echo $config['AvatarURL']; ?><?= filter($belcr_row['look']) ?>&size=l&head_direction=2&gesture=sml&headonly=1&head_direction=3" alt="<?= filter($belcr_row['username']) ?> Avatar" class="page-content-collider-content-highscores-ranking-content-item-figure">
+                                        <img src="<?php echo $config['AvatarURL']; ?><?= filter($belcr_row['look']) ?>size=l&head_direction=2&head_direction=3" alt="<?= filter($belcr_row['username']) ?> Avatar" class="page-content-collider-content-highscores-ranking-content-item-figure">
                                         <div class="page-content-collider-content-highscores-ranking-content-item-column">
                                             <a href="/profile/<?= filter($belcr_row['username']) ?>">
                                                 <p class="page-content-collider-content-highscores-ranking-content-item-username"><?= filter($belcr_row['username']) ?></p>
@@ -79,7 +79,7 @@ $ranking_active = 'active';
 
                                     <div class="page-content-collider-content-highscores-ranking-content-item">
                                         <div class="page-content-collider-content-highscores-ranking-content-item-nth"><?= $rank++ ?></div>
-                                        <img src="<?php echo $config['AvatarURL']; ?><?= filter($belcr_row10['look']) ?>&size=b&head_direction=2&gesture=sml&headonly=1&head_direction=3" alt="<?= filter($belcr_row10['username']) ?> Avatar" class="page-content-collider-content-highscores-ranking-content-item-figure">
+                                        <img src="<?php echo $config['AvatarURL']; ?><?= filter($belcr_row10['look']) ?>size=l&head_direction=2&head_direction=3" alt="<?= filter($belcr_row10['username']) ?> Avatar" class="page-content-collider-content-highscores-ranking-content-item-figure">
                                         <div class="page-content-collider-content-highscores-ranking-content-item-column">
                                             <a href="/profile/<?= filter($belcr_row10['username']) ?>">
                                                 <p class="page-content-collider-content-highscores-ranking-content-item-username"><?= filter($belcr_row10['username']) ?></p>
@@ -113,7 +113,7 @@ $ranking_active = 'active';
 
                                     <div class="page-content-collider-content-highscores-ranking-content-item">
                                         <div class="page-content-collider-content-highscores-ranking-content-item-nth"><?= $rank++ ?></div>
-                                        <img src="<?php echo $config['AvatarURL']; ?><?= filter($belcr_row11['look']) ?>&size=b&head_direction=2&gesture=sml&headonly=1&head_direction=3" alt="<?= filter($belcr_row11['username']) ?> Avatar" class="page-content-collider-content-highscores-ranking-content-item-figure">
+                                        <img src="<?php echo $config['AvatarURL']; ?><?= filter($belcr_row11['look']) ?>size=l&head_direction=2&head_direction=3" alt="<?= filter($belcr_row11['username']) ?> Avatar" class="page-content-collider-content-highscores-ranking-content-item-figure">
                                         <div class="page-content-collider-content-highscores-ranking-content-item-column">
                                             <a href="/profile/<?= filter($belcr_row11['username']) ?>">
                                                 <p class="page-content-collider-content-highscores-ranking-content-item-username"><?= filter($belcr_row11['username']) ?></p>
