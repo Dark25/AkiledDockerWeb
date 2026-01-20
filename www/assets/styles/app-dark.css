@@ -5056,11 +5056,31 @@ a,
   .page-content-collider-content-highscores-ranking {
   display: flex;
   flex-direction: column;
-  background-color: rgb(17 24 39);
-  border-radius: 5px;
-  padding: 15px;
-  width: 350px;
-  margin: 0 20px 0 0;
+  background-color: #111827;
+  border-radius: 16px;
+  padding: 0;
+  width: 380px;
+  margin: 0 24px 24px 0;
+  box-shadow:
+    0 10px 15px -3px rgba(0, 0, 0, 0.5),
+    0 4px 6px -2px rgba(0, 0, 0, 0.4);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  overflow: hidden;
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.page-content
+  .page-content-collider
+  .page-content-collider-item
+  .page-content-collider-content
+  .page-content-collider-content-highscores-ranking:hover {
+  transform: translateY(-4px);
+  box-shadow:
+    0 20px 25px -5px rgba(0, 0, 0, 0.6),
+    0 10px 10px -5px rgba(0, 0, 0, 0.5);
+  border-color: rgba(79, 172, 254, 0.2);
 }
 
 .page-content
@@ -5068,8 +5088,7 @@ a,
   .page-content-collider-item
   .page-content-collider-content
   .page-content-collider-content-highscores-ranking:last-child {
-  width: 350px;
-  margin: 0;
+  margin-right: 0;
 }
 
 .page-content
@@ -5077,12 +5096,43 @@ a,
   .page-content-collider-item
   .page-content-collider-content
   .page-content-collider-content-highscores-ranking
+  .page-content
+  .page-content-collider
+  .page-content-collider-item
+  .page-content-collider-content
+  .page-content-collider-content-highscores-ranking
   .page-content-collider-content-highscores-ranking-head {
   display: flex;
   align-items: center;
-  justify-content: center;
-  padding: 0 0 10px 0;
-  border-bottom: 1px solid #cecece;
+  padding: 20px 24px;
+  background-image: url("/assets/images/playing-habbo/gamehub.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.page-content
+  .page-content-collider
+  .page-content-collider-item
+  .page-content-collider-content
+  .page-content-collider-content-highscores-ranking
+  .page-content-collider-content-highscores-ranking-head::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    rgba(17, 24, 39, 0.95) 0%,
+    rgba(17, 24, 39, 0.7) 100%
+  );
+  z-index: -1;
 }
 
 .page-content
@@ -5092,7 +5142,10 @@ a,
   .page-content-collider-content-highscores-ranking
   .page-content-collider-content-highscores-ranking-head
   .page-content-collider-content-highscores-ranking-head-icon {
-  width: auto;
+  width: 32px;
+  height: 32px;
+  object-fit: contain;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
 }
 
 .page-content
@@ -5102,10 +5155,14 @@ a,
   .page-content-collider-content-highscores-ranking
   .page-content-collider-content-highscores-ranking-head
   .page-content-collider-content-highscores-ranking-head-title {
-  color: #bfc0c2;
-  font-size: 15px;
-  font-weight: 600;
-  padding: 0 0 0 5px;
+  color: #ffffff;
+  font-size: 16px;
+  font-weight: 700;
+  padding-left: 12px;
+  letter-spacing: -0.01em;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+  position: relative;
+  z-index: 2;
 }
 
 .page-content
@@ -5116,7 +5173,7 @@ a,
   .page-content-collider-content-highscores-ranking-content {
   display: flex;
   flex-direction: column;
-  margin: 10px 0 0 0;
+  padding: 12px;
 }
 
 .page-content
@@ -5129,11 +5186,22 @@ a,
   display: flex;
   flex-direction: row;
   align-items: center;
-  background-color: #1f2937;
-  border-radius: 5px;
+  border-radius: 12px;
   width: 100%;
-  padding: 5px 10px;
-  margin-bottom: 10px;
+  padding: 8px 12px;
+  margin-bottom: 4px;
+  transition: all 0.2s ease;
+  position: relative;
+}
+
+.page-content
+  .page-content-collider
+  .page-content-collider-item
+  .page-content-collider-content
+  .page-content-collider-content-highscores-ranking
+  .page-content-collider-content-highscores-ranking-content-item:hover {
+  background-color: #1f2937;
+  transform: scale(1.02);
 }
 
 .page-content
@@ -5144,18 +5212,18 @@ a,
   .page-content-collider-content-highscores-ranking-content
   .page-content-collider-content-highscores-ranking-content-item
   .page-content-collider-content-highscores-ranking-content-item-nth {
-  background-color: #e2e2e2;
-  border-radius: 100px;
-  height: 40px;
-  width: 40px;
+  width: 28px;
+  height: 28px;
   display: flex;
   justify-content: center;
   align-items: center;
-  color: #a09f9f;
-  font-size: 18px;
-  font-weight: 500;
-  background-repeat: no-repeat;
-  background-position: center;
+  color: #94a3b8;
+  font-size: 14px;
+  font-weight: 700;
+  border-radius: 8px;
+  background-color: #1f2937;
+  margin-right: 12px;
+  flex-shrink: 0;
 }
 
 .page-content
@@ -5166,9 +5234,9 @@ a,
   .page-content-collider-content-highscores-ranking-content
   .page-content-collider-content-highscores-ranking-content-item:nth-of-type(1)
   .page-content-collider-content-highscores-ranking-content-item-nth {
-  background-image: url("/assets/images/highscores/trophy-gold.png");
-  background-color: #f9d83e;
-  color: transparent;
+  background: linear-gradient(135deg, #fbbf24, #d97706);
+  color: #fff;
+  box-shadow: 0 2px 4px rgba(217, 119, 6, 0.4);
 }
 
 .page-content
@@ -5179,9 +5247,9 @@ a,
   .page-content-collider-content-highscores-ranking-content
   .page-content-collider-content-highscores-ranking-content-item:nth-of-type(2)
   .page-content-collider-content-highscores-ranking-content-item-nth {
-  background-image: url("/assets/images/highscores/trophy-silver.png");
-  background-color: #b8c4d4;
-  color: transparent;
+  background: linear-gradient(135deg, #94a3b8, #475569);
+  color: #fff;
+  box-shadow: 0 2px 4px rgba(71, 85, 105, 0.4);
 }
 
 .page-content
@@ -5192,9 +5260,9 @@ a,
   .page-content-collider-content-highscores-ranking-content
   .page-content-collider-content-highscores-ranking-content-item:nth-of-type(3)
   .page-content-collider-content-highscores-ranking-content-item-nth {
-  background-image: url("/assets/images/highscores/trophy-bronze.png");
-  background-color: #f1851b;
-  color: transparent;
+  background: linear-gradient(135deg, #b45309, #78350f);
+  color: #fff;
+  box-shadow: 0 2px 4px rgba(120, 53, 15, 0.4);
 }
 
 .page-content
@@ -5205,46 +5273,13 @@ a,
   .page-content-collider-content-highscores-ranking-content
   .page-content-collider-content-highscores-ranking-content-item
   .page-content-collider-content-highscores-ranking-content-item-figure {
-  width: auto;
-  margin: 0 5px 0 10px;
-}
-
-.page-content
-  .page-content-collider
-  .page-content-collider-item
-  .page-content-collider-content
-  .page-content-collider-content-highscores-ranking
-  .page-content-collider-content-highscores-ranking-content
-  .page-content-collider-content-highscores-ranking-content-item
-  .page-content-collider-content-highscores-ranking-content-item-username {
-  color: #afb0b1;
-  font-size: 15px;
-  font-weight: 600;
-}
-
-.page-content
-  .page-content-collider
-  .page-content-collider-item
-  .page-content-collider-content
-  .page-content-collider-content-highscores-ranking
-  .page-content-collider-content-highscores-ranking-content
-  .page-content-collider-content-highscores-ranking-content-item
-  .page-content-collider-content-highscores-ranking-content-item-amount {
-  color: #a19f9f;
-  font-size: 14px;
-  font-weight: 500;
-}
-
-.page-content
-  .page-content-collider
-  .page-content-collider-item
-  .page-content-collider-content
-  .page-content-collider-content-highscores-ranking
-  .page-content-collider-content-highscores-ranking-content
-  .page-content-collider-content-highscores-ranking-content-item
-  .page-content-collider-content-highscores-ranking-content-item-amount
-  .page-content-collider-content-highscores-ranking-content-item-amount-bold {
-  font-weight: 600;
+  width: 90px;
+  height: 80px;
+  object-fit: none;
+  background-position: center -30px;
+  margin-right: 0px;
+  filter: drop-shadow(0 4px 12px rgba(63, 63, 63, 0.5));
+  image-rendering: pixelated;
 }
 
 .page-content
@@ -5257,6 +5292,73 @@ a,
   .page-content-collider-content-highscores-ranking-content-item-column {
   display: flex;
   flex-direction: column;
+  flex-grow: 1;
+}
+
+.page-content
+  .page-content-collider
+  .page-content-collider-item
+  .page-content-collider-content
+  .page-content-collider-content-highscores-ranking
+  .page-content-collider-content-highscores-ranking-content
+  .page-content-collider-content-highscores-ranking-content-item
+  .page-content-collider-content-highscores-ranking-content-item-username {
+  color: #f1f5f9;
+  font-size: 14px;
+  font-weight: 700;
+  margin-bottom: 2px;
+}
+
+.page-content
+  .page-content-collider
+  .page-content-collider-item
+  .page-content-collider-content
+  .page-content-collider-content-highscores-ranking
+  .page-content-collider-content-highscores-ranking-content
+  .page-content-collider-content-highscores-ranking-content-item
+  .page-content-collider-content-highscores-ranking-content-item-amount {
+  color: #94a3b8;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.page-content
+  .page-content-collider
+  .page-content-collider-item
+  .page-content-collider-content
+  .page-content-collider-content-highscores-ranking
+  .page-content-collider-content-highscores-ranking-content
+  .page-content-collider-content-highscores-ranking-content-item
+  .page-content-collider-content-highscores-ranking-content-item-amount
+  .page-content-collider-content-highscores-ranking-content-item-amount-bold {
+  color: #cbd5e1;
+  font-weight: 700;
+}
+
+.page-content
+  .page-content-collider
+  .page-content-collider-item
+  .page-content-collider-content
+  .page-content-collider-content-highscores-ranking
+  .page-content-collider-content-highscores-ranking-content
+  .page-content-collider-content-highscores-ranking-content-item
+  .page-content-collider-content-highscores-ranking-content-item-currency {
+  margin-left: auto;
+  opacity: 0.8;
+}
+
+.page-content
+  .page-content-collider
+  .page-content-collider-item
+  .page-content-collider-content
+  .page-content-collider-content-highscores-ranking
+  .page-content-collider-content-highscores-ranking-content
+  .page-content-collider-content-highscores-ranking-content-item
+  .page-content-collider-content-highscores-ranking-content-item-currency
+  img {
+  width: 18px;
+  height: 18px;
+  object-fit: contain;
 }
 
 .page-content

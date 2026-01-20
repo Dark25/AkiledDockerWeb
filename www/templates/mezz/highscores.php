@@ -39,23 +39,26 @@ $ranking_active = 'active';
                                 <?php
                                 $belcr_get = $dbh->prepare("SELECT * from users ORDER BY `credits` DESC LIMIT 10");
                                 $belcr_get->execute();
+                                $rank = 1;
                                 while ($belcr_row = $belcr_get->fetch()) {
                                 ?>
 
                                     <div class="page-content-collider-content-highscores-ranking-content-item">
-                                        <img src="/assets/images/user-space/credits.png">
-                                        <img src="<?php echo $config['AvatarURL']; ?><?= filter($belcr_row['look']) ?>&size=b&head_direction=2&gesture=sml&headonly=1" alt="<?= filter($belcr_row['username']) ?> Avatar" class="page-content-collider-content-highscores-ranking-content-item-figure">
+                                        <div class="page-content-collider-content-highscores-ranking-content-item-nth"><?= $rank++ ?></div>
+                                        <img src="<?php echo $config['AvatarURL']; ?><?= filter($belcr_row['look']) ?>&size=l&head_direction=2&gesture=sml&headonly=1&head_direction=3" alt="<?= filter($belcr_row['username']) ?> Avatar" class="page-content-collider-content-highscores-ranking-content-item-figure">
                                         <div class="page-content-collider-content-highscores-ranking-content-item-column">
                                             <a href="/profile/<?= filter($belcr_row['username']) ?>">
                                                 <p class="page-content-collider-content-highscores-ranking-content-item-username"><?= filter($belcr_row['username']) ?></p>
                                             </a>
-                                            <p class="page-content-collider-content-highscores-ranking-content-item-amount"><b class="page-content-collider-content-highscores-ranking-content-item-amount-bold"><?= filter($belcr_row['credits']) ?></b> <?= $lang["RkCredits"] ?></p>
+                                            <p class="page-content-collider-content-highscores-ranking-content-item-amount"><b class="page-content-collider-content-highscores-ranking-content-item-amount-bold"><?= number_format($belcr_row['credits']) ?></b> <?= $lang["RkCredits"] ?></p>
+                                        </div>
+                                        <div class="page-content-collider-content-highscores-ranking-content-item-currency">
+                                            <img src="/assets/images/user-space/credits.png">
                                         </div>
                                     </div>
 
                                 <?php
                                 }
-                                echo "";
                                 ?>
 
                             </div>
@@ -70,22 +73,26 @@ $ranking_active = 'active';
                                 <?php
                                 $belcr_get10 = $dbh->prepare("SELECT * from users ORDER BY `vip_points` DESC LIMIT 10");
                                 $belcr_get10->execute();
+                                $rank = 1;
                                 while ($belcr_row10 = $belcr_get10->fetch()) {
                                 ?>
 
-                                    <div class="page-content-collider-content-highscores-ranking-content-item"><img src="/assets/images/user-space/planeta.png">
-                                        <img src="<?php echo $config['AvatarURL']; ?><?= filter($belcr_row10['look']) ?>&size=b&head_direction=2&gesture=sml&headonly=1" alt="<?= filter($belcr_row10['username']) ?> Avatar" class="page-content-collider-content-highscores-ranking-content-item-figure">
+                                    <div class="page-content-collider-content-highscores-ranking-content-item">
+                                        <div class="page-content-collider-content-highscores-ranking-content-item-nth"><?= $rank++ ?></div>
+                                        <img src="<?php echo $config['AvatarURL']; ?><?= filter($belcr_row10['look']) ?>&size=b&head_direction=2&gesture=sml&headonly=1&head_direction=3" alt="<?= filter($belcr_row10['username']) ?> Avatar" class="page-content-collider-content-highscores-ranking-content-item-figure">
                                         <div class="page-content-collider-content-highscores-ranking-content-item-column">
                                             <a href="/profile/<?= filter($belcr_row10['username']) ?>">
                                                 <p class="page-content-collider-content-highscores-ranking-content-item-username"><?= filter($belcr_row10['username']) ?></p>
                                             </a>
-                                            <p class="page-content-collider-content-highscores-ranking-content-item-amount"><b class="page-content-collider-content-highscores-ranking-content-item-amount-bold"><?= filter($belcr_row10['vip_points']) ?></b> <?= $lang["RkPlanets"] ?></p>
+                                            <p class="page-content-collider-content-highscores-ranking-content-item-amount"><b class="page-content-collider-content-highscores-ranking-content-item-amount-bold"><?= number_format($belcr_row10['vip_points']) ?></b> <?= $lang["RkPlanets"] ?></p>
+                                        </div>
+                                        <div class="page-content-collider-content-highscores-ranking-content-item-currency">
+                                            <img src="/assets/images/user-space/planeta.png">
                                         </div>
                                     </div>
 
                                 <?php
                                 }
-                                echo "";
                                 ?>
 
                             </div>
@@ -100,23 +107,26 @@ $ranking_active = 'active';
                                 <?php
                                 $belcr_get11 = $dbh->prepare("SELECT * from users ORDER BY `activity_points` DESC LIMIT 10");
                                 $belcr_get11->execute();
+                                $rank = 1;
                                 while ($belcr_row11 = $belcr_get11->fetch()) {
                                 ?>
 
                                     <div class="page-content-collider-content-highscores-ranking-content-item">
-                                        <img src="/assets/images/user-space/esmeralda.png">
-                                        <img src="<?php echo $config['AvatarURL']; ?><?= filter($belcr_row11['look']) ?>&size=b&head_direction=2&gesture=sml&headonly=1" alt="<?= filter($belcr_row11['username']) ?> Avatar" class="page-content-collider-content-highscores-ranking-content-item-figure">
+                                        <div class="page-content-collider-content-highscores-ranking-content-item-nth"><?= $rank++ ?></div>
+                                        <img src="<?php echo $config['AvatarURL']; ?><?= filter($belcr_row11['look']) ?>&size=b&head_direction=2&gesture=sml&headonly=1&head_direction=3" alt="<?= filter($belcr_row11['username']) ?> Avatar" class="page-content-collider-content-highscores-ranking-content-item-figure">
                                         <div class="page-content-collider-content-highscores-ranking-content-item-column">
                                             <a href="/profile/<?= filter($belcr_row11['username']) ?>">
                                                 <p class="page-content-collider-content-highscores-ranking-content-item-username"><?= filter($belcr_row11['username']) ?></p>
                                             </a>
-                                            <p class="page-content-collider-content-highscores-ranking-content-item-amount"><b class="page-content-collider-content-highscores-ranking-content-item-amount-bold"><?= filter($belcr_row11['activity_points']) ?></b> <?= $lang["RkEmerald"] ?></p>
+                                            <p class="page-content-collider-content-highscores-ranking-content-item-amount"><b class="page-content-collider-content-highscores-ranking-content-item-amount-bold"><?= number_format($belcr_row11['activity_points']) ?></b> <?= $lang["RkEmerald"] ?></p>
+                                        </div>
+                                        <div class="page-content-collider-content-highscores-ranking-content-item-currency">
+                                            <img src="/assets/images/user-space/esmeralda.png">
                                         </div>
                                     </div>
 
                                 <?php
                                 }
-                                echo "";
                                 ?>
 
                             </div>
