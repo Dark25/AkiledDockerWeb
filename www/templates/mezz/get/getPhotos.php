@@ -23,7 +23,7 @@
           <div class="page-content-collider-content-photos-bottom-side">
             <a href="/profile/<?php echo filter($news["username"]) ?>" class="page-content-collider-content-photos-bottom-side-avatar">
                         
-              <span class="page-content-collider-content-photos-bottom-side-avatar-figure pixelated" style="background-image: url('<?php echo $config['AvatarURL']; ?><?php echo filter($news["current_look"]) ?>&action=std&direction=2&head_direction=2&gesture=sml&headonly=1&size=b')"></span>
+              <span class="page-content-collider-content-photos-bottom-side-avatar-figure pixelated" style="background-image: url('<?php echo $config['AvatarURL']; ?><?php echo filter($news["current_look"]) ?>&direction=2&head_direction=2&gesture=sml&headonly=0&size=b')"></span>
 
                 <span class="page-content-collider-content-photos-bottom-side-avatar-username"><?php echo filter($news["username"]) ?></span></a>
             

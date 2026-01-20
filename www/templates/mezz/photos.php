@@ -51,7 +51,7 @@ $photos_active = 'active';
                                     <span class="page-content-collider-content-photos-promo pixelated" style="background-image: url(<?php echo $config['roomphotos'] ?><?= filter($photosRow['photo']) ?>.png)"></span>
                                     <div class="page-content-collider-content-photos-bottom-side">
                                         <a href="/profile/<?= filter($photosRow['username']) ?>" class="page-content-collider-content-photos-bottom-side-avatar">
-                                            <span class="page-content-collider-content-photos-bottom-side-avatar-figure pixelated" style="background-image: url('<?php echo $config['AvatarURL']; ?><?= filter($photosRow['look']) ?>&action=std&direction=2&head_direction=2&img_format=undefined&gesture=sml&headonly=1&size=b')"></span>
+                                            <span class="page-content-collider-content-photos-bottom-side-avatar-figure pixelated" style="background-image: url('<?php echo $config['AvatarURL']; ?><?= filter($photosRow['look']) ?>&direction=2&head_direction=2&gesture=sml&headonly=0&size=b')"></span>
                                             <span class="page-content-collider-content-photos-bottom-side-avatar-username"><?= filter($photosRow['username']) ?></span>
                                         </a>
                                     </div>

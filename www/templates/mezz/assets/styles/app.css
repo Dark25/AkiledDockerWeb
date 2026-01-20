@@ -869,7 +869,9 @@ button, input[type=button], a, .page-content-nav-item {
     position: absolute;
     bottom: 0;
     height: 40px;
-    width: 40px;border-radius: 100px;
+    width: 40px;
+    border-radius: 100px;
+    background-size: 180%;
     background-size: 33px;
     background-repeat: no-repeat;
     background-position: center;
@@ -929,7 +931,7 @@ button, input[type=button], a, .page-content-nav-item {
     bottom: 3px;
     height: 40px;
     width: 40px;border-radius: 100px;
-    background-size: 33px;
+    background-size: 180%;
     background-repeat: no-repeat;
     background-position: center;
     overflow: hidden;

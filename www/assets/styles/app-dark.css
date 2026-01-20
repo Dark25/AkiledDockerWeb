@@ -1501,7 +1501,7 @@ a,
   height: 45px;
   width: 45px;
   border-radius: 100px;
-  background-size: cover;
+  background-size: 180%;
   background-repeat: no-repeat;
   background-position: center;
   overflow: hidden;
@@ -1618,7 +1618,7 @@ a,
   height: 40px;
   width: 40px;
   border-radius: 100px;
-  background-size: 33px;
+  background-size: 180%;
   background-repeat: no-repeat;
   background-position: center;
   overflow: hidden;
