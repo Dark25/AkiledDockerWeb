@@ -25,10 +25,12 @@
         </div>
         <div class="page-content-user-space-right-side">
             <div class="page-content-user-space-right-side-item">
-                <div onclick="dropdown()" class="page-content-user-space-right-side-item-nav">
-                    <span class="page-content-user-space-right-side-item-nav-figure pixelated" style="background-image: url('<?php echo $config['AvatarURL']; ?><?= User::userData('look') ?>&action=std&direction=2&head_direction=2&img_format=undefined&gesture=sml&headonly=1&size=b')"></span>
+                <div onclick="dropdown()" class="page-content-user-space-right-side-item-nav" id="user-menu-trigger">
+                    <span class="page-content-user-space-right-side-item-nav-figure pixelated" style="background-image: url('<?php echo $config['AvatarURL']; ?><?= User::userData('look') ?>&direction=2&head_direction=3&gesture=sm')"></span>
                     <span class="page-content-user-space-right-side-item-nav-username"><?= User::userData('username') ?></span>
-                    <button class="page-content-user-space-right-side-item-nav-hidden-button"></button>
+                    <svg class="dropdown-arrow-icon" viewBox="0 0 20 20" fill="currentColor">
+                        <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+                    </svg>
                 </div>
                 <div id="user-space-dropdown" class="page-content-user-space-right-side-item-dropdown-content">
                     <a class="page-content-user-space-right-side-item-sub-text" href="/profile/<?= User::userData('username') ?>"><?= $lang["Mprofile"] ?></a>
@@ -41,12 +43,24 @@
 </div>
 <header class="page-content-header pixelated">
     <div class="page-content-max-width">
-        <div class="page-content-header-column space-between" style="flex-direction: row;">
-            <span class="page-content-header-figure" style="background-image: url('<?php echo $config['AvatarURL']; ?><?= User::userData('look') ?>&direction=2&head_direction=3&gesture=sml&action=wav&size=l')"></span>
-            <div class="page-content-header-buttons">
-                <a href="/clients" class="page-content-header-default-button"><?= $lang["Cflashserver"] ?></a>
-                <a href="/client-nitro" class="page-content-header-default-button"><?= $lang["Cbetanitro"] ?></a>
-                <a onclick="document.getElementById('download').style.display='block';" class="page-content-header-default-button"><?= $lang["LangDownload"] ?></a>
+        <div class="page-content-header-column" style="flex-direction: row; align-items: center; justify-content: space-between;">
+            <span class="page-content-header-figure" style="background-image: url('<?php echo $config['AvatarURL']; ?><?= User::userData('look') ?>&direction=2&head_direction=3&gesture=sml&action=wav&size=m')"></span>
+            
+            <div class="hotel-status-widget">
+                <div class="hotel-status-item">
+                    <div class="hotel-status-icon users"></div>
+                    <div class="hotel-status-info">
+                        <span class="hotel-status-value"><?= Game::usersOnline() ?></span>
+                        <span class="hotel-status-label">Usuarios online</span>
+                    </div>
+                </div>
+                <div class="hotel-status-item">
+                    <div class="hotel-status-icon rooms"></div>
+                    <div class="hotel-status-info">
+                        <span class="hotel-status-value"><?= Game::roomsOnCount() ?></span>
+                        <span class="hotel-status-label">Salas activas</span>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -67,7 +81,7 @@
                 <div class="page-content-modal-center-form-content-box">
                     <p class="page-content-modal-center-form-content-box-text"><?= $lang["LaunchDesc"] ?> <?= User::userData('username') ?>.</p>
                     <div class="page-content-modal-center-form-content-box-row">
-                        <img src="<?php echo $config['AvatarURL']; ?><?= User::userData('look') ?>&action=std&direction=2&head_direction=3&img_format=undefined&gesture=sml&headonly=0&size=b" alt="<?= User::userData('username') ?> Avatar" class="page-content-modal-center-form-content-box-figure">
+                        <img src="<?php echo $config['AvatarURL']; ?><?= User::userData('look') ?>&action=std&direction=2&head_direction=3&gesture=sml&headonly=0&size=b" alt="<?= User::userData('username') ?> Avatar" class="page-content-modal-center-form-content-box-figure">
                         <div class="page-content-modal-center-form-content-box-column">
                             <p class="page-content-modal-center-form-content-box-username"><?= User::userData('username') ?></p>
                             <p class="page-content-modal-center-form-content-box-motto"><?= User::userData('motto') ?></p>

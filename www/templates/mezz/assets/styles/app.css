@@ -905,6 +905,8 @@ button, input[type=button], a, .page-content-nav-item {
     height: 100%;
     border-radius: 8px;
     background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
 }
 
 .page-content .page-content-collider .page-content-collider-item .page-content-collider-content .page-content-collider-content-photos .page-content-collider-content-photos-bottom-side {

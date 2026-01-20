@@ -26,9 +26,12 @@ $me_active = 'active';
         <?php include_once('includes/menu.php'); ?>
 
         <div class="page-content-collider">
-            <div class="page-content-max-width" style="flex-direction: column;align-items: flex-start;">
-                <?php include_once("get/getNews.php"); ?>
-                <?php include_once("get/getPhotos.php"); ?>
+            <div class="page-content-max-width has-sidebar">
+                <div class="page-content-main-column">
+                    <?php include_once("get/getNews.php"); ?>
+                    <?php include_once("get/getPhotos.php"); ?>
+                </div>
+                <?php include_once("includes/sidebar.php"); ?>
             </div>
         </div>
         <?php include_once('includes/footer.php'); ?>

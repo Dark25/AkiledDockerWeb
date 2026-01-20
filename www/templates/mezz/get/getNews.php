@@ -8,7 +8,7 @@
     </div>
     <div class="page-content-collider-content">
     <?php
-					$sql = $dbh->prepare("SELECT * FROM users JOIN cms_news ON users.username = cms_news.author ORDER BY cms_news.id DESC LIMIT 4");
+					$sql = $dbh->prepare("SELECT u.look AS current_look, u.username, n.id, n.title, n.image, n.author FROM users u JOIN cms_news n ON u.username = n.author ORDER BY n.id DESC LIMIT 4");
 					$sql->execute();
 					while ($news = $sql->fetch())
 					{
@@ -19,8 +19,8 @@
                             <h2 class="page-content-collider-content-article-title"><?php echo filter($news["title"]); ?></h2>
                             <div class="page-content-collider-content-article-bottom-side">
                                 <div class="page-content-collider-content-article-bottom-side-avatar">
-                                    <span class="page-content-collider-content-article-bottom-side-avatar-figure pixelated" style="background-image: url(<?php echo $config['AvatarURL']; ?><?php echo filter($news["look"]); ?>&action=std&direction=2&head_direction=2&img_format=undefined&gesture=sml&headonly=1&size=b)"></span>
-                                    <span class="page-content-collider-content-article-bottom-side-avatar-username"><?php echo filter($news["author"]); ?></span>
+                                    <span class="page-content-collider-content-article-bottom-side-avatar-figure pixelated" style="background-image: url('<?php echo $config['AvatarURL']; ?><?php echo filter($news["current_look"]); ?>&action=std&direction=2&head_direction=2&gesture=sml&headonly=1&size=b')"></span>
+                                    <span class="page-content-collider-content-article-bottom-side-avatar-username"><?php echo filter($news["username"]); ?></span>
                                 </div>
                             </div>
                         </a>

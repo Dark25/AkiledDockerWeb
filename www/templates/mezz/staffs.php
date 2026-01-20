@@ -79,7 +79,7 @@ $staff_active = 'active';
                                         echo '
                                         <div class="staff-member">
                                             <div class="staff-member-avatar">
-                                                <img src="' . $config['AvatarURL'] . '' . $look . '&action=std&direction=2&head_direction=3&img_format=undefined&gesture=sml&headonly=0&size=l" alt="' . $username . '">
+                                                <img src="' . $config['AvatarURL'] . '' . $look . '&action=std&direction=2&head_direction=3&gesture=sml&headonly=0&size=l" alt="' . $username . '">
                                             </div>
                                             <div class="staff-member-info">
                                                 <a href="/profile/' . $username . '" class="staff-member-name">' . $username . '</a>

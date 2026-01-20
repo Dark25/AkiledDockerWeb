@@ -8,10 +8,10 @@
     </div>
     <div class="page-content-collider-content">
       <?php
-          $sql = $dbh->prepare("SELECT * FROM 
-          user_photos 
-          JOIN users 
-          ON user_photos.user_id = users.id 
+          $sql = $dbh->prepare("SELECT u.username, u.look AS current_look, p.photo FROM 
+          user_photos p
+          JOIN users u
+          ON p.user_id = u.id 
           ORDER BY time DESC LIMIT 4");
           $sql->execute();
           while ($news = $sql->fetch())
@@ -23,7 +23,7 @@
           <div class="page-content-collider-content-photos-bottom-side">
             <a href="/profile/<?php echo filter($news["username"]) ?>" class="page-content-collider-content-photos-bottom-side-avatar">
                         
-              <span class="page-content-collider-content-photos-bottom-side-avatar-figure pixelated" style="background-image: url(<?php echo $config['AvatarURL']; ?><?php echo filter($news["look"]) ?>&action=std&direction=2&head_direction=2&img_format=undefined&gesture=sml&headonly=1&size=b)"></span>
+              <span class="page-content-collider-content-photos-bottom-side-avatar-figure pixelated" style="background-image: url('<?php echo $config['AvatarURL']; ?><?php echo filter($news["current_look"]) ?>&action=std&direction=2&head_direction=2&gesture=sml&headonly=1&size=b')"></span>
 
                 <span class="page-content-collider-content-photos-bottom-side-avatar-username"><?php echo filter($news["username"]) ?></span></a>
             
