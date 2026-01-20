@@ -79,7 +79,7 @@ a,
   width: 100%;
   height: 100%;
   background-color: #1f2937;
-  z-index: 9;
+  z-index: 9999;
 }
 
 .page-content {
@@ -772,6 +772,8 @@ a,
   -webkit-filter: drop-shadow(-1px -1px 0 #265672a6)
     drop-shadow(1px 1px 0 #265672a6) drop-shadow(-3px -3px 0 #00000077)
     drop-shadow(3px 3px 0 #00000077);
+  filter: drop-shadow(-1px -1px 0 #265672a6) drop-shadow(1px 1px 0 #265672a6)
+    drop-shadow(-3px -3px 0 #00000077) drop-shadow(3px 3px 0 #00000077);
   z-index: 1;
 }
 
@@ -906,15 +908,20 @@ a,
 .page-content .page-content-nav {
   display: flex;
   justify-content: center;
-  background-color: rgb(17 24 39);
+  background-color: #111827;
   width: 100%;
-  z-index: 1;
+  z-index: 100;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.2);
 }
 
 .page-content .page-content-nav .page-content-nav-item {
   position: relative;
-  padding: 20px 0;
-  margin: 0 30px 0 0;
+  padding: 0;
+  margin: 0 12px;
+  display: flex;
+  align-items: center;
+  height: 64px;
 }
 
 .page-content
@@ -926,35 +933,61 @@ a,
 
 .page-content .page-content-nav .page-content-nav-item.active {
   position: relative;
-  padding: 20px 0;
-  margin: 0 30px 0 0;
-  border-bottom: 4px solid #eeb425;
+}
+
+.page-content .page-content-nav .page-content-nav-item.active::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 10px;
+  right: 10px;
+  height: 3px;
+  background: #eeb425;
+  border-radius: 100px 100px 0 0;
+  box-shadow: 0 -2px 10px rgba(238, 180, 37, 0.4);
 }
 
 .page-content
   .page-content-nav
   .page-content-nav-item
   .page-content-nav-item-text {
-  color: rgb(156 163 175);
-  font-size: 15px;
+  color: #94a3b8;
+  font-size: 13px;
   font-weight: 600;
   text-transform: uppercase;
-  padding: 0 10px;
+  letter-spacing: 0.05em;
+  padding: 8px 12px;
+  border-radius: 8px;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.page-content
+  .page-content-nav
+  .page-content-nav-item
+  .page-content-nav-item-text
+  .page-content-nav-item-icon {
+  width: 18px;
+  height: 18px;
+  object-fit: contain;
+  image-rendering: pixelated;
+}
+
+.page-content
+  .page-content-nav
+  .page-content-nav-item:hover
+  .page-content-nav-item-text {
+  color: #f1f5f9;
+  background-color: rgba(255, 255, 255, 0.05);
 }
 
 .page-content
   .page-content-nav
   .page-content-nav-item.active
   .page-content-nav-item-text {
-  color: #4f5157;
-}
-
-.page-content
-  .page-content-nav
-  .page-content-nav-item:hover
-  .page-content-nav-item-dropdown-content {
-  visibility: visible;
-  transform: translateY(0);
+  color: #f1f5f9;
 }
 
 .page-content
@@ -962,11 +995,30 @@ a,
   .page-content-nav-item
   .page-content-nav-item-dropdown-content {
   position: absolute;
-  top: 100%;
+  top: calc(100% - 10px);
+  left: 50%;
+  transform: translateX(-50%) translateY(10px);
   visibility: hidden;
-  background-color: #1a2231;
-  border-radius: 3px;
-  width: calc(100% + 20px);
+  opacity: 0;
+  background-color: #1e293b;
+  border-radius: 12px;
+  padding: 8px;
+  min-width: 190px;
+  box-shadow:
+    0 20px 25px -5px rgba(0, 0, 0, 0.5),
+    0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: 1000;
+}
+
+.page-content
+  .page-content-nav
+  .page-content-nav-item:hover
+  .page-content-nav-item-dropdown-content {
+  visibility: visible;
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
 }
 
 .page-content
@@ -975,10 +1027,12 @@ a,
   .page-content-nav-item-dropdown-content
   .page-content-nav-item-sub-text {
   display: block;
-  color: #a8a9aa;
-  font-size: 15px;
+  color: #94a3b8;
+  font-size: 14px;
   font-weight: 500;
-  padding: 8px 15px;
+  padding: 10px 16px;
+  border-radius: 8px;
+  transition: all 0.2s ease;
 }
 
 .page-content
@@ -986,7 +1040,9 @@ a,
   .page-content-nav-item
   .page-content-nav-item-dropdown-content
   .page-content-nav-item-sub-text:hover {
-  background-color: #00000013;
+  background-color: rgba(255, 255, 255, 0.05);
+  color: #f1f5f9;
+  transform: translateX(4px);
 }
 
 .page-content .page-content-collider {
@@ -5604,6 +5660,8 @@ a,
   width: auto;
   margin: 0 100px 0 0;
   -webkit-filter: drop-shadow(2px 2px 0 #0007) drop-shadow(-2px 0px 0px #0007)
+    drop-shadow(0px -2px 0 #0007);
+  filter: drop-shadow(2px 2px 0 #0007) drop-shadow(-2px 0px 0px #0007)
     drop-shadow(0px -2px 0 #0007);
 }
 
