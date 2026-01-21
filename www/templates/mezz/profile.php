@@ -14,7 +14,6 @@ if ($user_query->rowCount() == 0) {
     header("Location:/");
     exit;
 }
-$userData = $user_query->fetch();
 ?>
 
 <!DOCTYPE html>
@@ -28,14 +27,14 @@ $userData = $user_query->fetch();
     <link rel="stylesheet" type="text/css" href="/assets/styles/app-dark.css" media="(prefers-color-scheme: dark)">
     <link rel="stylesheet" type="text/css" href="/assets/styles/profile.css">
     <link rel="stylesheet" type="text/css" href="/assets/styles/profile-dark.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <title><?= filter(userHome('username')); ?> @ <?= $config['hotelName'] ?></title>
 </head>
 
 <body class="profile-page-body">
     <script src="/assets/scripts/page-load.js"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 
     <div class="profile-background-overlay"></div>
 
@@ -51,96 +50,107 @@ $userData = $user_query->fetch();
         <?php include_once("includes/menu.php"); ?>
 
         <div class="profile-main-wrapper">
-            <div class="bento-grid">
+            <div class="solaris-grid">
 
-                <!-- Hero Section: Identity -->
-                <section class="bento-item hero-section animate-in">
-                    <div class="hero-header">
-                        <div class="avatar-container">
-                            <div class="avatar-glow"></div>
+                <!-- Hero Column -->
+                <aside class="solaris-card hero-card animate-up">
+                    <div class="hero-cover">
+                        <div class="avatar-wrapper">
                             <img src="<?php echo $config['AvatarURL']; ?><?= userHome('look'); ?>&direction=2&head_direction=3&gesture=sml&action=wav&size=l" alt="<?= filter(userHome('username')); ?>" class="profile-avatar">
                         </div>
                     </div>
-                    <div class="hero-body">
-                        <div class="username-row">
-                            <h2 class="username"><?= filter(userHome('username')); ?></h2>
-                            <div class="status-indicator <?= userHome('online') ? 'online' : 'offline' ?>" title="<?= userHome('online') ? 'Conectado' : 'Desconectado' ?>"></div>
-                        </div>
-                        <p class="motto"><?= filter(userHome('motto')); ?></p>
-                        <div class="user-meta">
-                            <span class="join-date"><i class="far fa-calendar-alt"></i> Miembro desde <?= date('M Y', userHome('account_created')); ?></span>
-                        </div>
-                    </div>
-                    <div class="hero-stats">
-                        <div class="stat-pill">
-                            <img src='/templates/<?= $config["skin"]; ?>/assets/images/user-space/credits.png' alt="cr">
-                            <span><?= number_format(userHome('credits')); ?></span>
-                        </div>
-                        <div class="stat-pill">
-                            <img src='/templates/<?= $config["skin"]; ?>/assets/images/user-space/planeta.png' alt="pl">
-                            <span><?= number_format(userHome('activity_points')); ?></span>
-                        </div>
-                        <div class="stat-pill">
-                            <img src='/templates/<?= $config["skin"]; ?>/assets/images/user-space/esmeralda.png' alt="es">
-                            <span><?= number_format(userHome('vip_points')); ?></span>
-                        </div>
-                    </div>
-                </section>
 
-                <!-- Badges Section -->
-                <section class="bento-item badges-section animate-in delay-1">
-                    <div class="section-title">
-                        <i class="fas fa-id-badge"></i> Mis Placas
-                    </div>
-                    <div class="section-content scrollable">
-                        <?php include_once("get/profile/homeBadges.php"); ?>
-                    </div>
-                </section>
+                    <div class="hero-info">
+                        <h2 class="hero-username"><?= filter(userHome('username')); ?></h2>
+                        <span class="hero-motto">"<?= filter(userHome('motto')); ?>"</span>
 
-                <!-- Photos Section -->
-                <section class="bento-item photos-section animate-in delay-2">
-                    <div class="section-title">
-                        <i class="fas fa-camera"></i> Fotos Recientes
+                        <div class="hero-stats-grid">
+                            <div class="hero-stat-item">
+                                <div class="stat-info">
+                                    <img src="/templates/<?= $config["skin"]; ?>/assets/images/user-space/credits.png" class="stat-icon">
+                                    <span class="stat-label">Créditos</span>
+                                </div>
+                                <span class="stat-value"><?= number_format(userHome('credits')); ?></span>
+                            </div>
+                            <div class="hero-stat-item">
+                                <div class="stat-info">
+                                    <img src="/templates/<?= $config["skin"]; ?>/assets/images/user-space/planeta.png" class="stat-icon">
+                                    <span class="stat-label">Planetas</span>
+                                </div>
+                                <span class="stat-value"><?= number_format(userHome('activity_points')); ?></span>
+                            </div>
+                            <div class="hero-stat-item">
+                                <div class="stat-info">
+                                    <img src="/templates/<?= $config["skin"]; ?>/assets/images/user-space/esmeralda.png" class="stat-icon">
+                                    <span class="stat-label">Esmeraldas</span>
+                                </div>
+                                <span class="stat-value"><?= number_format(userHome('vip_points')); ?></span>
+                            </div>
+                        </div>
                     </div>
-                    <div class="section-content scrollable">
-                        <?php include_once("get/profile/homePhotos.php"); ?>
-                    </div>
-                </section>
+                </aside>
 
-                <!-- Rooms Section -->
-                <section class="bento-item rooms-section animate-in delay-3">
-                    <div class="section-title">
-                        <i class="fas fa-door-open"></i> Salas de <?= filter(userHome('username')); ?>
-                    </div>
-                    <div class="section-content scrollable">
-                        <?php include_once("get/profile/homeRooms.php"); ?>
-                    </div>
-                </section>
+                <!-- Middle Column: Badges & Photos -->
+                <main class="center-column">
+                    <!-- Badges -->
+                    <section class="solaris-card animate-up delay-1" style="margin-bottom: 30px;">
+                        <header class="section-header">
+                            <div class="section-icon"><i class="fas fa-certificate"></i></div>
+                            <h3 class="section-title">Colección de Placas</h3>
+                        </header>
+                        <div class="badges-list">
+                            <?php include_once("get/profile/homeBadges.php"); ?>
+                        </div>
+                    </section>
 
-                <!-- Friends Section -->
-                <section class="bento-item friends-section animate-in delay-4">
-                    <div class="section-title">
-                        <i class="fas fa-users"></i> Amigos
-                    </div>
-                    <div class="section-content">
-                        <?php include_once("get/profile/homeFriends.php"); ?>
-                    </div>
-                </section>
+                    <!-- Photos -->
+                    <section class="solaris-card animate-up delay-2">
+                        <header class="section-header">
+                            <div class="section-icon"><i class="fas fa-camera-retro"></i></div>
+                            <h3 class="section-title">Momentos Recientes</h3>
+                        </header>
+                        <div class="photos-list">
+                            <?php include_once("get/profile/homePhotos.php"); ?>
+                        </div>
+                    </section>
+                </main>
 
-                <!-- Groups Section -->
-                <section class="bento-item groups-section animate-in delay-5">
-                    <div class="section-title">
-                        <i class="fas fa-users-cog"></i> Grupos
-                    </div>
-                    <div class="section-content">
-                        <?php include_once("get/profile/homeGroups.php"); ?>
-                    </div>
-                </section>
+                <!-- Right Column: Rooms, Friends, Groups -->
+                <aside class="right-column">
+                    <!-- Rooms -->
+                    <section class="solaris-card animate-up delay-1" style="margin-bottom: 30px;">
+                        <header class="section-header">
+                            <div class="section-icon"><i class="fas fa-door-open"></i></div>
+                            <h3 class="section-title">Salas Propias</h3>
+                        </header>
+                        <div class="rooms-list">
+                            <?php include_once("get/profile/homeRooms.php"); ?>
+                        </div>
+                    </section>
+
+                    <!-- Social Bento (Friends + Groups) -->
+                    <section class="solaris-card animate-up delay-2">
+                        <header class="section-header">
+                            <div class="section-icon"><i class="fas fa-share-nodes"></i></div>
+                            <h3 class="section-title">Social</h3>
+                        </header>
+                        <div class="social-tabs" style="display: flex; gap: 20px; flex-direction: column;">
+                            <div class="friends-mini">
+                                <h4 style="font-size: 0.9rem; color: var(--solaris-text-muted); margin-bottom: 10px;">Amigos</h4>
+                                <?php include_once("get/profile/homeFriends.php"); ?>
+                            </div>
+                            <div class="groups-mini">
+                                <h4 style="font-size: 0.9rem; color: var(--solaris-text-muted); margin-bottom: 10px;">Grupos</h4>
+                                <?php include_once("get/profile/homeGroups.php"); ?>
+                            </div>
+                        </div>
+                    </section>
+                </aside>
 
             </div>
 
-            <footer class="profile-footer">
-                <p>&copy; <?= date('Y') ?> <?= $config['hotelName'] ?>. Todos los derechos reservados.</p>
+            <footer style="text-align: center; margin-top: 60px; color: var(--solaris-text-muted); font-size: 0.9rem;">
+                <p>&copy; <?= date('Y') ?> <?= $config['hotelName'] ?>. Rediseñado con <i class="fas fa-heart" style="color: var(--solaris-accent);"></i></p>
             </footer>
         </div>
 

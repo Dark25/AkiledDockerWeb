@@ -1,94 +1,77 @@
-:root {
-    /* Default dark vars for systems that prefer dark mode */
-}
-
 @media (prefers-color-scheme: dark) {
     :root {
-        --glass-bg: rgba(15, 23, 42, 0.75);
-        --glass-border: rgba(255, 255, 255, 0.08);
-        --glass-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.5);
-        --accent-color: #8b5cf6;
-        --text-main: #f8fafc;
-        --text-muted: #94a3b8;
-        --bg-url: url('https://i.imgur.com/S8kYqE5.png');
+        --solaris-bg: #020617;
+        --solaris-card-bg: rgba(15, 23, 42, 0.6);
+        --solaris-card-border: rgba(255, 255, 255, 0.08);
+        --solaris-text: #f8fafc;
+        --solaris-text-muted: #94a3b8;
+        --solaris-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.3);
     }
 
-    .hero-header {
-        background: linear-gradient(135deg, #7c3aed 0%, #4c1d95 100%) !important;
+    .profile-background-overlay {
+        background:
+            radial-gradient(circle at 20% 30%, rgba(99, 102, 241, 0.25) 0%, transparent 40%),
+            radial-gradient(circle at 80% 70%, rgba(244, 63, 94, 0.2) 0%, transparent 40%),
+            url('https://i.imgur.com/S8kYqE5.png') center/cover no-repeat;
+        filter: blur(5px) brightness(0.6);
     }
 
-    .avatar-container {
-        background: #1e293b !important;
+    .hero-stat-item {
+        background: rgba(255,255,255,0.03) !important;
     }
 
-    .stat-pill {
+    .badges-list img {
         background: rgba(255,255,255,0.05) !important;
     }
 
-    .stat-pill:hover {
-        background: rgba(255,255,255,0.1) !important;
-    }
-
-    .motto {
-        background: rgba(255,255,255,0.05) !important;
-    }
-
-    .badges-section img {
-        background: rgba(255,255,255,0.05) !important;
-    }
-
-    .rooms-section .page-content-collider-content-profile-card-wrapper-aligner-content-room {
-        background: rgba(255,255,255,0.05) !important;
+    .rooms-list .page-content-collider-content-profile-card-wrapper-aligner-content-room {
+        background: rgba(255,255,255,0.03) !important;
         color: #f8fafc !important;
     }
+
+    .friends-mini, .groups-mini {
+        background: rgba(255,255,255,0.02) !important;
+    }
+
+    .hero-username {
+        text-shadow: 0 0 20px rgba(99, 102, 241, 0.4);
+    }
 }
 
-/* Manual Dark Mode Toggle */
 body.dark-mode {
-    --glass-bg: rgba(15, 23, 42, 0.75);
-    --glass-border: rgba(255, 255, 255, 0.08);
-    --glass-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.5);
-    --accent-color: #8b5cf6;
-    --text-main: #f8fafc;
-    --text-muted: #94a3b8;
-    --bg-url: url('https://i.imgur.com/S8kYqE5.png');
+    --solaris-bg: #020617;
+    --solaris-card-bg: rgba(15, 23, 42, 0.6);
+    --solaris-card-border: rgba(255, 255, 255, 0.08);
+    --solaris-text: #f8fafc;
+    --solaris-text-muted: #94a3b8;
+    --solaris-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.3);
 }
 
-body.dark-mode .hero-header {
-    background: linear-gradient(135deg, #7c3aed 0%, #4c1d95 100%) !important;
+body.dark-mode .profile-background-overlay {
+    background:
+        radial-gradient(circle at 20% 30%, rgba(99, 102, 241, 0.25) 0%, transparent 40%),
+        radial-gradient(circle at 80% 70%, rgba(244, 63, 94, 0.2) 0%, transparent 40%),
+        url('https://i.imgur.com/S8kYqE5.png') center/cover no-repeat;
+    filter: blur(5px) brightness(0.6);
 }
 
-body.dark-mode .avatar-container {
-    background: #1e293b !important;
+body.dark-mode .hero-stat-item {
+    background: rgba(255,255,255,0.03) !important;
 }
 
-body.dark-mode .stat-pill {
+body.dark-mode .badges-list img {
     background: rgba(255,255,255,0.05) !important;
 }
 
-body.dark-mode .stat-pill:hover {
-    background: rgba(255,255,255,0.1) !important;
-}
-
-body.dark-mode .motto {
-    background: rgba(255,255,255,0.05) !important;
-}
-
-body.dark-mode .badges-section img {
-    background: rgba(255,255,255,0.05) !important;
-}
-
-body.dark-mode .rooms-section .page-content-collider-content-profile-card-wrapper-aligner-content-room {
-    background: rgba(255,255,255,0.05) !important;
+body.dark-mode .rooms-list .page-content-collider-content-profile-card-wrapper-aligner-content-room {
+    background: rgba(255,255,255,0.03) !important;
     color: #f8fafc !important;
 }
 
-/* Specific dark enhancements */
-body.dark-mode .bento-item:hover {
-    box-shadow: 0 0 30px rgba(139, 92, 246, 0.2);
-    border-color: rgba(139, 92, 246, 0.3);
-}
+    body.dark-mode .friends-mini, body.dark-mode .groups-mini {
+        background: rgba(255,255,255,0.02) !important;
+    }
 
-body.dark-mode .username {
-    text-shadow: 0 0 10px rgba(139, 92, 246, 0.4);
+body.dark-mode .hero-username {
+    text-shadow: 0 0 20px rgba(99, 102, 241, 0.4);
 }
