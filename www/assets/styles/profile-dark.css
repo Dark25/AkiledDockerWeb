@@ -1,189 +1,42 @@
 :root {
-  --hotel-blue: #8b5cf6;
-  --card-bg: rgba(17, 24, 39, 0.8);
-  --card-border: rgba(255, 255, 255, 0.08);
-  --text-dark: #f9fafb;
-  --text-muted: #94a3b8;
-  --bg-main: #030712;
+  /* Default dark vars for systems that prefer dark mode */
 }
 
-body.container {
-    background-color: var(--bg-main) !important;
+@media (prefers-color-scheme: dark) {
+  :root {
+    --cosmic-purple: #8b5cf6;
+    --cosmic-deep: #020617;
+    --cosmic-glass: rgba(2, 6, 23, 0.85);
+    --cosmic-border: rgba(139, 92, 246, 0.2);
+    --cosmic-bg-url: url('https://images.unsplash.com/photo-1462331940025-496dfbfc7564?ixlib=rb-1.2.1&auto=format&fit=crop&w=2000&q=80');
+    --identity-grad: linear-gradient(160deg, #7c3aed 0%, #0f172a 100%);
+  }
 }
 
-.modern-profile-container {
-  max-width: 1300px;
-  margin: 40px auto;
-  padding: 0 20px;
-}
-
-.modern-profile-grid {
-  display: grid;
-  grid-template-columns: 350px 1fr 320px;
-  gap: 25px;
-  align-items: start;
-}
-
-/* Card Base */
-.modern-card {
-  background: var(--card-bg);
-  backdrop-filter: blur(20px);
-  border-radius: 20px;
-  border: 1px solid var(--card-border);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-  overflow: hidden;
-  transition: all 0.3s ease;
-}
-
-.modern-card:hover {
-    transform: translateY(-4px);
-    border-color: var(--hotel-blue);
-}
-
-/* Identity Card */
-.identity-card {
-    text-align: center;
-}
-
-.card-hero-header {
-    height: 140px;
-    background: linear-gradient(135deg, #1e1b4b 0%, #312e81 100%);
-    position: relative;
-    margin-bottom: 50px;
-}
-
-.avatar-glow-ring {
-    width: 120px;
-    height: 120px;
-    background: #111827;
-    border-radius: 50%;
-    position: absolute;
-    bottom: -40px;
-    left: 50%;
-    transform: translateX(-50%);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    box-shadow: 0 0 20px rgba(139, 92, 246, 0.3);
-    border: 4px solid #111827;
-}
-
-.main-avatar {
-    margin-top: -15px;
-    image-rendering: pixelated;
-    filter: drop-shadow(0 0 10px rgba(255,255,255,0.1));
-}
-
-.card-hero-body {
-    padding: 0 20px 20px;
-}
-
-.profile-name {
-    font-size: 1.8rem;
-    font-weight: 800;
-    color: #fff;
-    margin: 0 0 10px;
-}
-
-.profile-motto-wrap {
-    background: rgba(255, 255, 255, 0.03);
-    border: 1px solid rgba(255, 255, 255, 0.05);
-    padding: 10px 15px;
-    border-radius: 12px;
-    margin-bottom: 15px;
-}
-
-.profile-motto {
-    font-style: italic;
-    color: #cbd5e1;
-}
-
-.profile-join-badge {
-    color: var(--hotel-blue);
-}
-
-/* Purse Section */
-.profile-purse-section {
-    padding: 0 20px 20px;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-}
-
-.purse-row {
-    background: rgba(255, 255, 255, 0.02);
-    border: 1px solid rgba(255, 255, 255, 0.05);
-}
-
-.purse-row:hover {
-    background: rgba(139, 92, 246, 0.1);
-    border-color: var(--hotel-blue);
-}
-
-.purse-val { color: #fff; }
-
-/* Section & Social Cards */
-.section-title-bar {
-    background: rgba(255, 255, 255, 0.02);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-}
-
-.section-title-bar h3 {
-    color: #fff;
-}
-
-.section-content {
-    padding: 20px;
-    color: var(--text-muted);
-    font-size: 0.9rem;
-}
-
-/* Hide legacy include titles */
-.section-content h2,
-.section-content .page-content-collider-content-profile-card-wrapper-aligner-content-title {
-    display: none !important;
-}
-
-/* Include content adjustments */
-.badges-area img {
-    background: rgba(255, 255, 255, 0.05) !important;
-    border: 1px solid rgba(255, 255, 255, 0.1) !important;
-}
-
-.photos-area .page-content-collider-content-profile-photo {
-    border: 1px solid rgba(255, 255, 255, 0.05) !important;
-    box-shadow: 0 10px 20px rgba(0,0,0,0.4) !important;
-}
-
-.rooms-area .page-content-collider-content-profile-card-wrapper-aligner-content-room {
-    background: rgba(255, 255, 255, 0.02) !important;
-    border: 1px solid rgba(255, 255, 255, 0.05) !important;
-}
-
-.friends-area img {
-    width: 50px !important;
-    height: 50px !important;
-    object-fit: cover !important;
-    border-radius: 50% !important;
-    background: rgba(255, 255, 255, 0.05) !important;
-}
-
-/* Support for body.dark-mode class */
+/* Overrides for manual dark mode toggle */
 body.dark-mode {
-    --bg-main: #030712;
-    --card-bg: rgba(17, 24, 39, 0.8);
+    --cosmic-purple: #8b5cf6;
+    --cosmic-deep: #020617;
+    --cosmic-glass: rgba(2, 6, 23, 0.85);
+    --cosmic-border: rgba(139, 92, 246, 0.2);
+    --cosmic-bg-url: url('https://images.unsplash.com/photo-1462331940025-496dfbfc7564?ixlib=rb-1.2.1&auto=format&fit=crop&w=2000&q=80');
+    --identity-grad: linear-gradient(160deg, #7c3aed 0%, #0f172a 100%);
 }
 
-body.dark-mode .modern-card {
-    background: var(--card-bg);
+/* Specific dark mode enhancements */
+@media (prefers-color-scheme: dark) {
+    .cosmic-overlay { opacity: 0.6; }
+    .cosmic-card:hover { box-shadow: 0 0 30px rgba(139, 92, 246, 0.2); }
+    .cosmic-username { text-shadow: 0 0 10px rgba(139, 92, 246, 0.5); }
+    .animate-launch { animation: launch-glow 4s infinite ease-in-out; }
 }
 
-/* Responsive */
-@media (max-width: 1200px) {
-    .modern-profile-grid { grid-template-columns: 1fr 1fr; }
-    .profile-left-column { grid-column: span 2; }
-}
+body.dark-mode .cosmic-overlay { opacity: 0.6; }
+body.dark-mode .cosmic-card:hover { box-shadow: 0 0 30px rgba(139, 92, 246, 0.2); }
+body.dark-mode .cosmic-username { text-shadow: 0 0 10px rgba(139, 92, 246, 0.5); }
+body.dark-mode .animate-launch { animation: launch-glow 4s infinite ease-in-out; }
 
-@media (max-width: 768px) {
-    .modern-profile-grid { grid-template-columns: 1fr; }
+@keyframes launch-glow {
+    0%, 100% { transform: translateY(0); filter: drop-shadow(0 0 20px rgba(255, 100, 0, 0.4)); }
+    50% { transform: translateY(-20px); filter: drop-shadow(0 0 40px rgba(255, 100, 0, 0.8)); }
 }
