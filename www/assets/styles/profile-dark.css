@@ -1,27 +1,23 @@
 :root {
-    --bento-bg: #1e293b;
-    --bento-item-bg: #0f172a;
-    --bento-border: #334155;
-    --bento-text: #f8fafc;
-    --bento-text-muted: #94a3b8;
+    --bento-bg: #111827;
+    --bento-item-bg: rgba(31, 41, 55, 0.8);
+    --bento-border: rgba(55, 65, 81, 0.8);
+    --bento-text: #f9fafb;
+    --bento-text-muted: #9ca3af;
     --bento-accent: #818cf8;
-    --bento-accent-soft: rgba(129, 140, 248, 0.1);
-    --bento-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3), 0 2px 4px -1px rgba(0, 0, 0, 0.2);
+    --bento-accent-soft: rgba(129, 140, 248, 0.2);
+    --bento-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.4);
 }
 
 .hero-banner::after {
-    background: linear-gradient(to bottom, rgba(0,0,0,0.1), rgba(0,0,0,0.4) 50%, var(--bento-item-bg));
+    background: linear-gradient(to top, #111827 5%, transparent 95%);
 }
 
-.hero-badge-status {
-    background: #059669;
+.stat-row {
+    background: rgba(17, 24, 39, 0.5) !important;
 }
 
 .page-content-collider-content-profile-card-wrapper-aligner-content-badge:hover {
-    background: var(--bento-bg) !important;
-    box-shadow: 0 10px 15px -3px rgba(129, 140, 248, 0.3) !important;
-}
-
-.bento-item.info-footer {
-    background: var(--bento-accent);
+    background: #1f2937 !important;
+    box-shadow: 0 0 15px rgba(129, 140, 248, 0.3) !important;
 }

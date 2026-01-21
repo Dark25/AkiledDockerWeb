@@ -18,6 +18,6 @@ if ($sql->RowCount() > 0) {
 <?php
     }
 } else {
-    echo '<p style="grid-column: 1 / -1; color: var(--bento-text-muted);">' . filter(userHome('username')) . ' no tiene amigos en este momento.</p>';
+    echo '<div class="empty-state" style="grid-column: 1 / -1;"><i>👥</i><p>' . filter(userHome('username')) . ' no tiene amigos en este momento.</p></div>';
 }
 ?>

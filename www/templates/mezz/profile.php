@@ -24,7 +24,7 @@ if ($news->RowCount() == 0) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="/assets/styles/app.css" media="(prefers-color-scheme: light)">
     <link rel="stylesheet" type="text/css" href="/assets/styles/app-dark.css" media="(prefers-color-scheme: dark)">
-    <link rel="stylesheet" type="text/css" href="/assets/styles/profile.css">
+    <link rel="stylesheet" type="text/css" href="/assets/styles/profile.css" media="(prefers-color-scheme: light)">
     <link rel="stylesheet" type="text/css" href="/assets/styles/profile-dark.css" media="(prefers-color-scheme: dark)">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <title>Perfil de: <?= filter(userHome('username')); ?></title>
@@ -49,7 +49,7 @@ if ($news->RowCount() == 0) {
 
                 <div class="profile-bento-grid">
 
-                    <!-- Hero Section -->
+                    <!-- 1. Hero Section -->
                     <div class="bento-item hero">
                         <div class="hero-banner" style="background-image: url('/assets/images/profile/background.png');"></div>
                         <div class="hero-content">
@@ -57,18 +57,17 @@ if ($news->RowCount() == 0) {
                                 <img src="<?php echo $config['AvatarURL']; ?><?= userHome('look'); ?>&direction=2&head_direction=3&gesture=sml&action=wav&size=l" alt="<?= filter(userHome('username')); ?>">
                             </div>
                             <div class="hero-info">
-                                <div class="hero-badge-status">Online</div>
                                 <h1 class="hero-username"><?= filter(userHome('username')); ?></h1>
-                                <p class="hero-motto">“<?= filter(userHome('motto')); ?>”</p>
+                                <p class="hero-motto"><?= filter(userHome('motto')); ?></p>
                             </div>
                         </div>
                     </div>
 
-                    <!-- Stats Card -->
+                    <!-- 2. Stats Card (Span 1) -->
                     <div class="bento-item stats">
                         <div class="bento-header">
                             <img src="/assets/images/user-space/credits.png" alt="stats">
-                            <span>Balance Global</span>
+                            <span>Mis Riquezas</span>
                         </div>
                         <div class="stats-list">
                             <div class="stat-row">
@@ -89,18 +88,18 @@ if ($news->RowCount() == 0) {
                         </div>
                     </div>
 
-                    <!-- Photos Card -->
+                    <!-- 3. Photos Card (Span 2) -->
                     <div class="bento-item photos">
                         <div class="bento-header">
                             <img src="/assets/images/collider/camera.png" alt="photos">
-                            <span>Galería Reciente</span>
+                            <span>Galería de Momentos</span>
                         </div>
                         <div class="bento-body">
                             <?php include_once("get/profile/homePhotos.php"); ?>
                         </div>
                     </div>
 
-                    <!-- Badges Card -->
+                    <!-- 4. Badges Card (Span 3) -->
                     <div class="bento-item badges">
                         <div class="bento-header">
                             <img src="/assets/images/highscores/trophy-gold.png" alt="badges">
@@ -113,46 +112,42 @@ if ($news->RowCount() == 0) {
                         </div>
                     </div>
 
-                    <!-- Rooms Card -->
+                    <!-- 5. Social Card (Span 2) -->
+                    <div class="bento-item social">
+                        <div class="bento-header">
+                            <img src="/assets/images/collider/feeds.png" alt="friends">
+                            <span>Círculo de Amigos</span>
+                        </div>
+                        <div class="social-grid">
+                            <?php include_once("get/profile/homeFriends.php"); ?>
+                        </div>
+                    </div>
+
+                    <!-- 6. Groups Card (Span 1) -->
+                    <div class="bento-item groups">
+                         <div class="bento-header">
+                            <img src="/assets/images/collider/users.png" alt="groups">
+                            <span>Grupos</span>
+                        </div>
+                        <div class="groups-flex">
+                            <?php include_once("get/profile/homeGroups.php"); ?>
+                        </div>
+                    </div>
+
+                    <!-- 7. Rooms Card (Span 3) -->
                     <div class="bento-item rooms">
                         <div class="bento-header">
                             <img src="/assets/images/collider/public-room.png" alt="rooms">
-                            <span>Mis Creaciones</span>
+                            <span>Mis Creaciones Reales</span>
                         </div>
                         <div class="bento-body-rooms">
                             <?php include_once("get/profile/homeRooms.php"); ?>
                         </div>
                     </div>
 
-                    <!-- Social Card -->
-                    <div class="bento-item social">
-                        <div class="bento-header">
-                            <img src="/assets/images/collider/feeds.png" alt="friends">
-                            <span>Círculo Social</span>
-                        </div>
-                        <div class="social-tabs">
-                            <div class="social-grid">
-                                <?php include_once("get/profile/homeFriends.php"); ?>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Groups Card -->
-                    <div class="bento-item groups">
-                         <div class="bento-header">
-                            <img src="/assets/images/collider/users.png" alt="groups">
-                            <span>Comunidades</span>
-                        </div>
-                        <div class="bento-body">
-                            <div class="groups-flex">
-                                <?php include_once("get/profile/homeGroups.php"); ?>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Footer Info Card -->
+                    <!-- 8. Footer Info Card (Span 3) -->
                     <div class="bento-item info-footer">
-                        <p>Miembro oficial desde el <strong><?= date('d-m-Y', userHome('account_created')); ?></strong></p>
+                        <p>Hionix oficial desde el <?= date('d-m-Y', userHome('account_created')); ?></p>
                     </div>
 
                 </div>
