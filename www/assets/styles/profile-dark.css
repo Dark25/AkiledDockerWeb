@@ -1,189 +1,227 @@
 :root {
-  --habbo-blue: #003a52;
-  --habbo-blue-dark: #002534;
-  --habbo-blue-light: #00567a;
-  --habbo-gold: #c08d1a;
-  --habbo-box-bg: #111827;
-  --habbo-box-border: #000000;
-  --habbo-text: #f3f4f6;
-  --habbo-text-muted: #94a3b8;
+  --hotel-primary: #8b5cf6;
+  --hotel-primary-dark: #6d28d9;
+  --hotel-accent: #f59e0b;
+  --hotel-bg: #030712;
+  --card-bg: rgba(17, 24, 39, 0.7);
+  --card-border: rgba(255, 255, 255, 0.1);
+  --text-main: #f9fafb;
+  --text-muted: #94a3b8;
 }
 
-.habbo-profile-wrapper {
-  max-width: 1100px;
-  margin: 40px auto;
+.modern-profile-container {
+  max-width: 1300px;
+  margin: 60px auto;
   padding: 0 20px;
 }
 
-/* Header Scene */
-.habbo-profile-header {
-  border: 2px solid #000;
-  background-color: var(--habbo-box-bg);
-  margin-bottom: 30px;
-  box-shadow: 4px 4px 0 rgba(0,0,0,0.5);
-}
-
-.habbo-room-scene {
-  height: 250px;
-  background: url('/assets/images/header/default-background.png') center;
-  background-size: cover;
-  position: relative;
-  border-bottom: 2px solid #000;
-  overflow: hidden;
-  filter: brightness(0.7) contrast(1.2);
-}
-
-.habbo-avatar-showcase {
-  position: absolute;
-  bottom: 20px;
-  left: 50px;
-  z-index: 2;
-}
-
-.avatar-pixel {
-  image-rendering: pixelated;
-  filter: drop-shadow(4px 4px 0 rgba(0,0,0,0.4));
-}
-
-.habbo-bubble-motto {
-  position: absolute;
-  top: 50px;
-  left: 180px;
-  background: var(--habbo-box-bg);
-  border: 2px solid #000;
-  padding: 10px 20px;
-  border-radius: 15px;
-  max-width: 300px;
-}
-
-.habbo-bubble-motto::before {
-  content: '';
-  position: absolute;
-  left: -12px;
-  top: 20px;
-  border-width: 6px 12px 6px 0;
-  border-style: solid;
-  border-color: transparent #000 transparent transparent;
-}
-
-.bubble-content {
-  font-weight: 600;
-  font-size: 0.9rem;
-  color: var(--habbo-text);
-}
-
-.habbo-user-info-bar {
-  padding: 15px 25px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background: #0f172a;
-}
-
-.habbo-username {
-  font-size: 2rem;
-  font-weight: 800;
-  margin: 0;
-  color: var(--habbo-text);
-  text-transform: uppercase;
-}
-
-.habbo-joined {
-  font-size: 0.8rem;
-  color: var(--habbo-text-muted);
-  font-weight: 600;
-}
-
-.habbo-purse-display {
-  display: flex;
-  gap: 20px;
-}
-
-.purse-item {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  background: #1f2937;
-  border: 2px solid #000;
-  padding: 5px 12px;
-  border-radius: 8px;
-  font-weight: 700;
-  color: var(--habbo-text);
-}
-
-/* Grid Layout */
-.habbo-profile-grid {
+.modern-profile-grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: 380px 1fr 320px;
   gap: 30px;
 }
 
-.habbo-column.full-width {
-  grid-column: span 2;
+/* Card Base */
+.modern-card {
+  background: var(--card-bg);
+  backdrop-filter: blur(20px);
+  border-radius: 24px;
+  border: 1px solid var(--card-border);
+  overflow: hidden;
+  box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* Widgets */
-.habbo-widget {
-  background: var(--habbo-box-bg);
-  border: 2px solid #000;
-  margin-bottom: 25px;
-  box-shadow: 4px 4px 0 rgba(0,0,0,0.5);
+.modern-card:hover {
+  transform: translateY(-8px) scale(1.01);
+  border-color: var(--hotel-primary);
+  box-shadow: 0 30px 60px -12px rgba(139, 92, 246, 0.2);
 }
 
-.widget-header {
-  background: linear-gradient(to bottom, #1e1b4b 0%, #000 100%);
-  color: #fff;
-  padding: 8px 15px;
-  border-bottom: 2px solid #000;
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  font-weight: 700;
-  text-transform: uppercase;
-  font-size: 0.9rem;
+/* Hero Card Styling */
+.hero-card {
+    text-align: center;
+    position: sticky;
+    top: 100px;
 }
 
-.widget-content {
-  padding: 20px;
-  color: var(--habbo-text);
+.card-hero-header {
+    height: 160px;
+    background: linear-gradient(135deg, var(--hotel-primary) 0%, #312e81 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 60px;
+    position: relative;
 }
 
-/* Specific widget styling */
-.badges-widget .page-content-collider-content-profile-card-wrapper-aligner-content {
-    display: flex !important;
-    flex-wrap: wrap !important;
-    gap: 10px !important;
-    background: transparent !important;
-    padding: 0 !important;
+.card-hero-header::after {
+    content: '';
+    position: absolute;
+    bottom: -1px;
+    left: 0;
+    right: 0;
+    height: 40px;
+    background: var(--card-bg);
+    clip-path: polygon(0 100%, 100% 100%, 100% 0);
 }
 
-.badges-widget img {
-    background: #1f2937 !important;
-    border: 1px solid #374151 !important;
-    padding: 5px !important;
+.avatar-glow-ring {
+    width: 140px;
+    height: 140px;
+    background: #111827;
+    border-radius: 50%;
+    position: absolute;
+    bottom: -50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 0 30px rgba(139, 92, 246, 0.4);
+    border: 6px solid #111827;
 }
 
-.rooms-widget .page-content-collider-content-profile-card-wrapper-aligner-content-room {
-    background: #1f2937 !important;
-    border: 1px solid #374151 !important;
+.main-avatar {
+    margin-top: -20px;
+    image-rendering: pixelated;
+    transform: scale(1.2);
+    filter: drop-shadow(0 0 10px rgba(255,255,255,0.2));
+}
+
+.card-hero-body {
+    padding: 0 30px 30px;
+}
+
+.profile-name {
+    font-size: 2.25rem;
+    font-weight: 800;
+    color: #fff;
+    margin-bottom: 10px;
+    letter-spacing: -1px;
+}
+
+.profile-motto-bubble {
+    background: rgba(255, 255, 255, 0.03);
+    padding: 12px 20px;
+    border-radius: 16px;
+    margin-bottom: 20px;
+    border: 1px solid rgba(255,255,255,0.05);
+}
+
+.profile-motto-bubble p {
+    font-style: italic;
+    color: #cbd5e1;
+    font-weight: 500;
+}
+
+.meta-item {
+    color: var(--hotel-primary);
+}
+
+/* Purse Styling */
+.profile-purse-grid {
+    padding: 0 30px 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.purse-box {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 12px 20px;
+    background: rgba(255, 255, 255, 0.02);
+    border-radius: 16px;
+    border: 1px solid rgba(255,255,255,0.05);
+    transition: all 0.3s ease;
+}
+
+.purse-box:hover {
+    transform: translateX(8px);
+    background: rgba(139, 92, 246, 0.1);
+    border-color: var(--hotel-primary);
+}
+
+.purse-value { color: #fff; }
+
+/* Main Content Styling */
+.card-header {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.card-header h3 { color: #fff; }
+
+/* Includes Overrides */
+.page-content-collider-content-profile-card-wrapper-aligner-content-badge {
+    background: rgba(255, 255, 255, 0.05) !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+}
+
+.page-content-collider-content-profile-card-wrapper-aligner-content-badge:hover {
+    background: rgba(139, 92, 246, 0.2) !important;
+    border-color: var(--hotel-primary) !important;
+}
+
+.rooms-display .page-content-collider-content-profile-card-wrapper-aligner-content-room {
+    background: rgba(255, 255, 255, 0.02) !important;
+    border: 1px solid rgba(255, 255, 255, 0.05) !important;
     color: #fff !important;
 }
 
-.friends-widget img {
-    background: #1f2937 !important;
-    border: 1px solid #374151 !important;
+.friends-display img {
+    background: rgba(255, 255, 255, 0.05) !important;
 }
 
-.photos-widget .page-content-collider-content-profile-photo {
-    border: 2px solid #000 !important;
-    box-shadow: 4px 4px 0 rgba(0,0,0,0.5) !important;
+.photos-display .page-content-collider-content-profile-photo {
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.5) !important;
 }
 
-/* Support for body.dark-mode */
-body.dark-mode .habbo-widget {
-    background: var(--habbo-box-bg);
-    color: var(--habbo-text);
+/* Animations */
+.animate-slide-up {
+    opacity: 0;
+    animation: slideUp 0.8s cubic-bezier(0.22, 1, 0.36, 1) forwards;
 }
-body.dark-mode .habbo-profile-header {
-    background: var(--habbo-box-bg);
+
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(40px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-fade-in {
+    opacity: 0;
+    animation: fadeIn 1s ease forwards;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.delay-1 { animation-delay: 0.1s; }
+.delay-2 { animation-delay: 0.2s; }
+.delay-3 { animation-delay: 0.3s; }
+.delay-4 { animation-delay: 0.4s; }
+
+/* Support for body.dark-mode class */
+body.dark-mode {
+    --hotel-bg: #030712;
+    --card-bg: rgba(17, 24, 39, 0.7);
+    --text-main: #f9fafb;
+    --text-muted: #94a3b8;
+}
+
+body.dark-mode .modern-card {
+    background: var(--card-bg);
+    backdrop-filter: blur(20px);
+}
+
+/* Responsive */
+@media (max-width: 1200px) {
+    .modern-profile-grid { grid-template-columns: 1fr 1fr; }
+    .profile-side-column { grid-column: span 2; }
+}
+
+@media (max-width: 768px) {
+    .modern-profile-grid { grid-template-columns: 1fr; }
 }

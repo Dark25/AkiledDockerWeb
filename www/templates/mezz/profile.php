@@ -25,7 +25,7 @@ if ($news->RowCount() == 0) {
     <link rel="stylesheet" type="text/css" href="/assets/styles/profile.css" media="(prefers-color-scheme: light)">
     <link rel="stylesheet" type="text/css" href="/assets/styles/profile-dark.css" media="(prefers-color-scheme: dark)">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <title><?= filter(userHome('username')); ?> - <?= $config['hotelName'] ?> Perfil</title>
+    <title><?= filter(userHome('username')); ?> @ <?= $config['hotelName'] ?></title>
 </head>
 
 <body class="container">
@@ -42,105 +42,120 @@ if ($news->RowCount() == 0) {
 
         <?php include_once("includes/menu.php"); ?>
 
-        <div class="habbo-profile-wrapper">
-            <!-- Header: Room Preview -->
-            <div class="habbo-profile-header">
-                <div class="habbo-room-scene">
-                    <div class="habbo-avatar-showcase">
-                        <img src="<?php echo $config['AvatarURL']; ?><?= userHome('look'); ?>&direction=2&head_direction=3&gesture=sml&action=wav&size=l" alt="<?= filter(userHome('username')); ?>" class="avatar-pixel">
-                    </div>
-                    <div class="habbo-bubble-motto">
-                        <div class="bubble-content">
-                            <?= filter(userHome('motto')); ?>
-                        </div>
-                    </div>
-                </div>
-                <div class="habbo-user-info-bar">
-                    <div class="habbo-user-main">
-                        <h1 class="habbo-username"><?= filter(userHome('username')); ?></h1>
-                        <span class="habbo-joined">Miembro desde: <?= date('d/m/Y', userHome('account_created')); ?></span>
-                    </div>
-                    <div class="habbo-purse-display">
-                        <div class="purse-item" title="Créditos">
-                            <img src='/templates/<?= $config["skin"]; ?>/assets/images/user-space/credits.png'>
-                            <span><?= number_format(userHome('credits')); ?></span>
-                        </div>
-                        <div class="purse-item" title="Planetas">
-                            <img src='/templates/<?= $config["skin"]; ?>/assets/images/user-space/planeta.png'>
-                            <span><?= number_format(userHome('activity_points')); ?></span>
-                        </div>
-                        <div class="purse-item" title="Esmeraldas">
-                            <img src='/templates/<?= $config["skin"]; ?>/assets/images/user-space/esmeralda.png'>
-                            <span><?= number_format(userHome('vip_points')); ?></span>
-                        </div>
-                    </div>
-                </div>
-            </div>
+        <div class="modern-profile-container">
+            <div class="modern-profile-grid">
 
-            <div class="habbo-profile-grid">
-                <!-- Column 1 -->
-                <div class="habbo-column">
-                    <!-- Badges Widget -->
-                    <div class="habbo-widget">
-                        <div class="widget-header">
-                            <img src="/assets/images/collider/feeds.png" alt="">
-                            <span>Mis Placas</span>
+                <!-- Left: Hero Column -->
+                <aside class="profile-side-column">
+                    <div class="modern-card hero-card animate-fade-in">
+                        <div class="card-hero-header">
+                            <div class="avatar-glow-ring">
+                                <img src="<?php echo $config['AvatarURL']; ?><?= userHome('look'); ?>&direction=2&head_direction=3&gesture=sml&action=wav&size=l" alt="<?= filter(userHome('username')); ?>" class="main-avatar">
+                            </div>
                         </div>
-                        <div class="widget-content badges-widget">
+                        <div class="card-hero-body">
+                            <h2 class="profile-name"><?= filter(userHome('username')); ?></h2>
+                            <div class="profile-motto-bubble">
+                                <p>"<?= filter(userHome('motto')); ?>"</p>
+                            </div>
+
+                            <div class="profile-meta">
+                                <span class="meta-item join-date">Hotelero desde <?= date('M Y', userHome('account_created')); ?></span>
+                            </div>
+                        </div>
+
+                        <div class="profile-purse-grid">
+                            <div class="purse-box credits">
+                                <img src='/templates/<?= $config["skin"]; ?>/assets/images/user-space/credits.png'>
+                                <div class="purse-info">
+                                    <span class="purse-value"><?= number_format(userHome('credits')); ?></span>
+                                    <span class="purse-label">Créditos</span>
+                                </div>
+                            </div>
+                            <div class="purse-box planets">
+                                <img src='/templates/<?= $config["skin"]; ?>/assets/images/user-space/planeta.png'>
+                                <div class="purse-info">
+                                    <span class="purse-value"><?= number_format(userHome('activity_points')); ?></span>
+                                    <span class="purse-label">Planetas</span>
+                                </div>
+                            </div>
+                            <div class="purse-box diamonds">
+                                <img src='/templates/<?= $config["skin"]; ?>/assets/images/user-space/esmeralda.png'>
+                                <div class="purse-info">
+                                    <span class="purse-value"><?= number_format(userHome('vip_points')); ?></span>
+                                    <span class="purse-label">Esmeraldas</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </aside>
+
+                <!-- Center: Content Column -->
+                <main class="profile-main-column">
+                    <!-- Badges Showcase -->
+                    <div class="modern-card glass animate-slide-up">
+                        <div class="card-header">
+                            <i class="icon-badges"></i>
+                            <h3>Mis Placas</h3>
+                        </div>
+                        <div class="card-body badges-display">
                             <?php include_once("get/profile/homeBadges.php"); ?>
                         </div>
                     </div>
 
-                    <!-- Friends Widget -->
-                    <div class="habbo-widget">
-                        <div class="widget-header">
-                            <img src="/assets/images/collider/users.png" alt="">
-                            <span>Amigos</span>
+                    <!-- Photos Gallery -->
+                    <div class="modern-card glass animate-slide-up delay-1">
+                        <div class="card-header">
+                            <i class="icon-camera"></i>
+                            <h3>Momentos</h3>
                         </div>
-                        <div class="widget-content friends-widget">
-                            <?php include_once("get/profile/homeFriends.php"); ?>
+                        <div class="card-body photos-display">
+                            <?php include_once("get/profile/homePhotos.php"); ?>
                         </div>
                     </div>
-                </div>
+                </main>
 
-                <!-- Column 2 -->
-                <div class="habbo-column">
-                    <!-- Rooms Widget -->
-                    <div class="habbo-widget">
-                        <div class="widget-header">
-                            <img src="/assets/images/collider/rooms.png" alt="">
-                            <span>Mis Salas</span>
+                <!-- Right: Social Column -->
+                <aside class="profile-info-column">
+                    <!-- Rooms -->
+                    <div class="modern-card glass animate-slide-up delay-2">
+                        <div class="card-header">
+                            <i class="icon-rooms"></i>
+                            <h3>Salas</h3>
                         </div>
-                        <div class="widget-content rooms-widget">
+                        <div class="card-body rooms-display">
                             <?php include_once("get/profile/homeRooms.php"); ?>
                         </div>
                     </div>
 
-                    <!-- Groups Widget -->
-                    <div class="habbo-widget">
-                        <div class="widget-header">
-                            <img src="/assets/images/collider/groups.png" alt="">
-                            <span>Grupos</span>
+                    <!-- Friends -->
+                    <div class="modern-card glass animate-slide-up delay-3">
+                        <div class="card-header">
+                            <i class="icon-friends"></i>
+                            <h3>Amigos</h3>
                         </div>
-                        <div class="widget-content groups-widget">
+                        <div class="card-body friends-display">
+                            <?php include_once("get/profile/homeFriends.php"); ?>
+                        </div>
+                    </div>
+
+                    <!-- Groups -->
+                    <div class="modern-card glass animate-slide-up delay-4">
+                        <div class="card-header">
+                            <i class="icon-groups"></i>
+                            <h3>Grupos</h3>
+                        </div>
+                        <div class="card-body groups-display">
                             <?php include_once("get/profile/homeGroups.php"); ?>
                         </div>
                     </div>
-                </div>
+                </aside>
 
-                <!-- Column 3 (Photos - Full Width below on mobile) -->
-                <div class="habbo-column full-width">
-                    <div class="habbo-widget">
-                        <div class="widget-header">
-                            <img src="/assets/images/collider/camera.png" alt="">
-                            <span>Galería de Fotos</span>
-                        </div>
-                        <div class="widget-content photos-widget">
-                            <?php include_once("get/profile/homePhotos.php"); ?>
-                        </div>
-                    </div>
-                </div>
             </div>
+
+            <footer class="modern-profile-footer">
+                <p>© <?= date('Y') ?> <?= $config['hotelName'] ?> Hotel - Todos los derechos reservados.</p>
+            </footer>
         </div>
 
         <?php include_once('includes/footer.php'); ?>
