@@ -32,87 +32,23 @@ $articleImage = (!empty($article['image'])) ? $article['image'] : "/assets/image
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Theme loading is already in menu.php but we keep it here for safety or let menu.php handle it -->
     <link rel="stylesheet" type="text/css" href="/assets/styles/app.css" media="(prefers-color-scheme: light)">
     <link rel="stylesheet" type="text/css" href="/assets/styles/app-dark.css" media="(prefers-color-scheme: dark)">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <title><?= $config['hotelName'] ?>: <?= $articleFound ? filter($article['title']) : $lang["Nnews"] ?></title>
 
     <style>
-        /* Modern Theme Variables */
-        :root {
-            --article-bg: #fff;
-            --article-text: #1e293b;
-            --article-secondary: #475569;
-            --article-muted: #64748b;
-            --article-border: #f1f5f9;
-            --article-footer-bg: #f8fafc;
-            --archive-active-bg: #fef3c7;
-            --archive-active-text: #b45309;
-            --sidebar-bg: #fff;
-            --card-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-        }
-
-        @media (prefers-color-scheme: dark) {
-            :root {
-                --article-bg: #1f2937;
-                --article-text: #f1f5f9;
-                --article-secondary: #cbd5e1;
-                --article-muted: #94a3b8;
-                --article-border: rgba(255, 255, 255, 0.05);
-                --article-footer-bg: rgba(0, 0, 0, 0.2);
-                --archive-active-bg: rgba(251, 191, 36, 0.1);
-                --archive-active-text: #fbbf24;
-                --sidebar-bg: #1f2937;
-                --card-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
-            }
-        }
-
-        /* Layout Fixes (Safety) */
-        .page-content-max-width.has-sidebar {
-            display: flex !important;
-            flex-direction: row !important;
-            align-items: flex-start !important;
-            gap: 30px;
-            margin-top: 40px;
-            margin-bottom: 40px;
-        }
-
-        .page-content-main-column {
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-            min-width: 0;
-        }
-
-        .page-content-sidebar {
-            width: 350px;
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
-            flex-shrink: 0;
-        }
-
-        .sidebar-widget {
-            background: var(--sidebar-bg);
-            border-radius: 16px;
-            padding: 24px;
-            box-shadow: var(--card-shadow);
-            border: 1px solid var(--article-border);
-        }
-
-        /* Article Styles */
-        .article-container {
-            background: var(--article-bg);
-            border-radius: 20px;
+        /* Article Specific Styles that use Theme Classes */
+        .article-view {
+            padding: 0; /* Override padding for hero effect */
             overflow: hidden;
-            box-shadow: var(--card-shadow);
             margin-bottom: 30px;
-            border: 1px solid var(--article-border);
         }
 
-        .article-header {
+        .article-hero {
             position: relative;
-            height: 320px;
+            height: 350px;
             background-size: cover;
             background-position: center;
             display: flex;
@@ -120,246 +56,141 @@ $articleImage = (!empty($article['image'])) ? $article['image'] : "/assets/image
             padding: 40px;
         }
 
-        .article-header::before {
+        .article-hero::after {
             content: '';
             position: absolute;
             top: 0; left: 0; right: 0; bottom: 0;
-            background: rgba(0,0,0,0.2);
-            z-index: 0;
-        }
-
-        .article-header::after {
-            content: '';
-            position: absolute;
-            top: 0; left: 0; right: 0; bottom: 0;
-            background: linear-gradient(0deg, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.4) 50%, rgba(0,0,0,0.2) 100%);
+            background: linear-gradient(0deg, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.4) 50%, rgba(0,0,0,0.1) 100%);
             z-index: 1;
         }
 
-        .article-header-content {
+        .article-hero-content {
             position: relative;
             z-index: 2;
             width: 100%;
         }
 
-        .article-category {
-            background: #eeb425;
-            color: #fff;
-            padding: 6px 16px;
-            border-radius: 8px;
-            font-size: 11px;
-            font-weight: 800;
-            text-transform: uppercase;
-            margin-bottom: 15px;
-            display: inline-block;
-            letter-spacing: 0.8px;
-            box-shadow: 0 4px 15px rgba(238, 180, 37, 0.4);
-        }
-
-        .article-title {
+        .article-hero-title {
             color: #fff !important;
-            font-size: 42px;
-            font-weight: 900;
+            font-size: 40px;
+            font-weight: 800;
             margin: 0;
-            text-shadow: 0 2px 15px rgba(0,0,0,0.6);
+            text-shadow: 0 2px 10px rgba(0,0,0,0.7) !important;
             line-height: 1.1;
         }
 
-        .article-body {
-            padding: 45px;
+        .article-content {
+            padding: 40px;
         }
 
-        .article-shortstory {
-            font-size: 22px;
-            color: var(--article-text);
+        .article-lead {
+            font-size: 19px;
             font-weight: 700;
-            line-height: 1.5;
-            margin-bottom: 35px;
-            padding-left: 28px;
-            border-left: 6px solid #eeb425;
+            line-height: 1.6;
+            margin-bottom: 30px;
+            padding-left: 20px;
+            border-left: 4px solid #eeb425;
+            color: var(--article-text, inherit);
         }
 
-        .article-longstory {
-            font-size: 17px;
-            color: var(--article-secondary);
-            line-height: 1.9;
+        .article-full-text {
+            font-size: 16px;
+            line-height: 1.8;
+            color: var(--article-secondary, inherit);
         }
 
-        .article-longstory p {
-            margin-bottom: 1.6em;
-            color: inherit !important;
+        .article-full-text p {
+            margin-bottom: 1.5em;
         }
 
-        .article-footer {
-            padding: 28px 45px;
-            background: var(--article-footer-bg);
-            border-top: 1px solid var(--article-border);
+        .article-meta {
+            padding: 20px 40px;
+            background: rgba(0,0,0,0.05);
             display: flex;
             justify-content: space-between;
             align-items: center;
+            border-top: 1px solid rgba(0,0,0,0.05);
         }
 
-        .article-author {
+        @media (prefers-color-scheme: dark) {
+            .article-meta {
+                background: rgba(255,255,255,0.03);
+                border-top: 1px solid rgba(255,255,255,0.05);
+            }
+        }
+
+        .author-box {
             display: flex;
             align-items: center;
-            gap: 18px;
+            gap: 12px;
         }
 
-        .article-author-avatar {
-            width: 64px;
-            height: 64px;
-            background: var(--article-border);
-            border-radius: 18px;
-            overflow: hidden;
+        .author-avatar {
+            width: 48px;
+            height: 48px;
+            background: rgba(0,0,0,0.1);
+            border-radius: 12px;
             position: relative;
-            border: 1px solid rgba(255,255,255,0.1);
-            box-shadow: inset 0 2px 4px rgba(0,0,0,0.1);
+            overflow: hidden;
         }
 
-        .article-author-avatar img {
+        @media (prefers-color-scheme: dark) {
+            .author-avatar {
+                background: rgba(255,255,255,0.05);
+            }
+        }
+
+        .author-avatar img {
             position: absolute;
             top: 45%;
             left: 50%;
             transform: translate(-50%, -40%);
-            width: 110px;
+            width: 90px;
             image-rendering: pixelated;
         }
 
-        .article-author-info {
+        .archive-list {
             display: flex;
             flex-direction: column;
             gap: 4px;
         }
 
-        .article-author-name {
-            font-weight: 800;
-            color: var(--article-text);
-            font-size: 18px;
-            text-decoration: none;
-            transition: color 0.2s;
-        }
-
-        .article-author-name:hover {
-            color: #eeb425;
-        }
-
-        .article-date {
-            font-size: 13px;
-            color: var(--article-muted);
-            font-weight: 600;
-        }
-
-        /* Sidebar Archive Widget */
-        .news-archive-widget {
-            padding: 0;
-        }
-
-        .news-archive-header {
-            padding: 24px 24px 10px 24px;
-            border-bottom: 1px solid var(--article-border);
-        }
-
-        .archive-section-title {
-            font-size: 11px;
-            font-weight: 800;
-            color: var(--article-muted);
-            text-transform: uppercase;
-            letter-spacing: 1.2px;
-            margin: 25px 24px 12px 24px;
+        .archive-link {
             display: block;
-        }
-
-        .archive-section-title:first-of-type {
-            margin-top: 15px;
-        }
-
-        .news-archive-list {
-            padding: 0 14px 20px 14px;
-        }
-
-        .news-archive-item {
-            display: flex;
-            align-items: center;
-            padding: 12px 16px;
-            color: var(--article-secondary);
-            font-size: 14px;
-            font-weight: 600;
-            border-radius: 12px;
-            transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
-            margin-bottom: 4px;
+            padding: 10px 15px;
+            border-radius: 8px;
+            color: inherit;
             text-decoration: none;
-        }
-
-        .news-archive-item::before {
-            content: '';
-            width: 6px;
-            height: 6px;
-            background: var(--article-muted);
-            border-radius: 50%;
-            margin-right: 12px;
+            font-size: 14px;
+            font-weight: 500;
             transition: all 0.2s;
-            flex-shrink: 0;
         }
 
-        .news-archive-item:hover {
-            background: var(--article-border);
-            color: var(--article-text);
-            transform: translateX(5px);
+        .archive-link:hover {
+            background: rgba(0,0,0,0.05);
+            padding-left: 20px;
         }
 
-        .news-archive-item:hover::before {
-            background: #eeb425;
-            transform: scale(1.5);
+        @media (prefers-color-scheme: dark) {
+            .archive-link:hover {
+                background: rgba(255,255,255,0.05);
+            }
         }
 
-        .news-archive-item.active {
-            background: var(--archive-active-bg);
-            color: var(--archive-active-text);
-            box-shadow: inset 0 0 0 1px rgba(238, 180, 37, 0.2);
-        }
-
-        .news-archive-item.active::before {
-            background: #eeb425;
-            transform: scale(1.5);
-        }
-
-        /* Error state */
-        .error-container {
-            text-align: center;
-            padding: 100px 40px;
-        }
-
-        .error-image {
-            margin-bottom: 30px;
-            filter: drop-shadow(0 15px 30px rgba(0,0,0,0.3));
-        }
-
-        .error-title {
-            font-size: 32px;
-            font-weight: 900;
-            color: var(--article-text);
-            margin-bottom: 15px;
-        }
-
-        .btn-primary {
-            display: inline-block;
+        .archive-link.active {
             background: #eeb425;
             color: #fff !important;
-            padding: 14px 36px;
-            border-radius: 12px;
-            font-weight: 800;
-            text-decoration: none;
-            box-shadow: 0 4px 14px 0 rgba(238, 180, 37, 0.39);
-            transition: all 0.3s;
-            text-transform: uppercase;
-            font-size: 13px;
-            letter-spacing: 0.5px;
+            font-weight: 700;
         }
 
-        .btn-primary:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 25px 0 rgba(238, 180, 37, 0.45);
-            background: #f3be3c;
+        .section-title {
+            display: block;
+            font-size: 11px;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin: 20px 0 10px 15px;
+            opacity: 0.6;
         }
     </style>
 </head>
@@ -383,65 +214,55 @@ $articleImage = (!empty($article['image'])) ? $article['image'] : "/assets/image
                 <!-- Main Content -->
                 <div class="page-content-main-column">
                     <?php if ($articleFound): ?>
-                        <div class="article-container">
-                            <div class="article-header" style="background-image: url('<?= filter($articleImage) ?>')">
-                                <div class="article-header-content">
+                        <div class="article-view staff-card">
+                            <div class="article-hero" style="background-image: url('<?= filter($articleImage) ?>')">
+                                <div class="article-hero-content">
                                     <span class="article-category"><?= $lang["Nnews"] ?></span>
-                                    <h1 class="article-title"><?= filter($article['title']) ?></h1>
+                                    <h1 class="article-hero-title"><?= filter($article['title']) ?></h1>
                                 </div>
                             </div>
 
-                            <div class="article-body">
-                                <div class="article-shortstory">
+                            <div class="article-content">
+                                <div class="article-lead">
                                     <?= html_entity_decode($article['shortstory']) ?>
                                 </div>
-                                <div class="article-longstory">
+                                <div class="article-full-text">
                                     <?= html_entity_decode($article['longstory']) ?>
                                 </div>
                             </div>
 
-                            <div class="article-footer">
-                                <div class="article-author">
-                                    <div class="article-author-avatar">
-                                        <img src="<?= $config['AvatarURL'] ?><?= filter($authorLook) ?>&direction=2&head_direction=3&gesture=sml&size=m">
+                            <div class="article-meta">
+                                <div class="author-box">
+                                    <div class="author-avatar">
+                                        <img src="<?= $config['AvatarURL'] ?><?= filter($authorLook) ?>&direction=2&head_direction=2&gesture=sml&headonly=0&size=b">
                                     </div>
-                                    <div class="article-author-info">
-                                        <a href="/profile/<?= filter($authorName) ?>" class="article-author-name"><?= filter($authorName) ?></a>
-                                        <span class="article-date"><?= date('d F, Y', $article['date']) ?></span>
+                                    <div class="author-info">
+                                        <a href="/profile/<?= filter($authorName) ?>" style="font-weight: 800; color: inherit; text-decoration: none;"><?= filter($authorName) ?></a>
+                                        <div style="font-size: 12px; opacity: 0.7;"><?= date('d F, Y', $article['date']) ?></div>
                                     </div>
-                                </div>
-                                <div class="article-share">
-                                    <!-- Share logic could go here -->
                                 </div>
                             </div>
                         </div>
                     <?php else: ?>
-                        <div class="article-container">
-                            <div class="error-container">
-                                <div class="error-image">
-                                    <img src="/assets/images/not-found/fank_walksaway.png">
-                                </div>
-                                <h2 class="error-title"><?= $lang["Nnotfoundheader"] ?></h2>
-                                <p class="error-text"><?= $lang["Nnotfoundtxt"] ?></p>
-                                <a href="/me" class="btn-primary">Volver al inicio</a>
-                            </div>
+                        <div class="sidebar-widget" style="text-align: center; padding: 60px;">
+                            <img src="/assets/images/not-found/fank_walksaway.png" style="margin-bottom: 20px;">
+                            <h2 style="font-size: 24px; font-weight: 800;"><?= $lang["Nnotfoundheader"] ?></h2>
+                            <p style="opacity: 0.7; margin-bottom: 30px;"><?= $lang["Nnotfoundtxt"] ?></p>
+                            <a href="/me" class="enter-hotel-btn" style="display: inline-block; padding: 12px 30px;">Volver al inicio</a>
                         </div>
                     <?php endif; ?>
                 </div>
 
                 <!-- Sidebar -->
                 <div class="page-content-sidebar">
-                    <div class="sidebar-widget news-archive-widget">
-                        <div class="news-archive-header">
-                            <div class="widget-title" style="display: flex; align-items: center; gap: 12px;">
-                                <img src="/assets/images/collider/feeds.png" style="width: 24px; height: 24px;">
-                                <h3 style="font-size: 17px; font-weight: 800; color: var(--article-text); margin: 0;"><?= $lang["Nnews"] ?></h3>
-                            </div>
+                    <div class="sidebar-widget">
+                        <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 20px;">
+                            <img src="/assets/images/collider/feeds.png" style="width: 24px; height: 24px;">
+                            <h3 style="font-size: 16px; font-weight: 800; margin: 0;"><?= $lang["Nnews"] ?></h3>
                         </div>
 
-                        <div class="news-archive-content">
+                        <div class="archive-list">
                             <?php
-                            // News archive sections
                             $sections = [
                                 ['name' => $lang["Ntoday"], 'min' => time() - 86400, 'max' => time()],
                                 ['name' => $lang["Nyesterday"], 'min' => time() - 172800, 'max' => time() - 86400],
@@ -458,14 +279,11 @@ $articleImage = (!empty($article['image'])) ? $article['image'] : "/assets/image
                                 $stmt->execute();
 
                                 if ($stmt->rowCount() > 0) {
-                                    echo '<span class="archive-section-title">' . filter($section['name']) . '</span>';
-                                    echo '<div class="news-archive-list">';
+                                    echo '<span class="section-title">' . filter($section['name']) . '</span>';
                                     while ($a = $stmt->fetch()) {
                                         $activeClass = (isset($_GET['id']) && $_GET['id'] == $a['id']) ? 'active' : '';
-                                        // Using standard URL format for this project
-                                        echo '<a href="/articles/' . filter($a['id']) . '" class="news-archive-item ' . $activeClass . '">' . filter($a['title']) . '</a>';
+                                        echo '<a href="/articles/' . filter($a['id']) . '" class="archive-link ' . $activeClass . '">' . filter($a['title']) . '</a>';
                                     }
-                                    echo '</div>';
                                 }
                             }
                             ?>
