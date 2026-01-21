@@ -1,16 +1,16 @@
 :root {
-  --cosmic-purple: #6366f1;
-  --cosmic-deep: #0f172a;
-  --cosmic-glass: rgba(15, 23, 42, 0.7);
-  --cosmic-border: rgba(255, 255, 255, 0.1);
-  --cosmic-text: #f8fafc;
-  --cosmic-muted: #94a3b8;
-  --cosmic-bg-url: url('https://images.unsplash.com/photo-1534796636912-3b95b3ab5986?ixlib=rb-1.2.1&auto=format&fit=crop&w=2000&q=80');
-  --identity-grad: linear-gradient(160deg, #4f46e5 0%, #1e1b4b 100%);
+  --cosmic-purple: #0076a3;
+  --cosmic-deep: #f0f2f5;
+  --cosmic-glass: rgba(255, 255, 255, 0.85);
+  --cosmic-border: rgba(0, 0, 0, 0.08);
+  --cosmic-text: #1f2937;
+  --cosmic-muted: #6b7280;
+  --cosmic-bg-url: url('https://i.imgur.com/2s7S7uC.png');
+  --identity-grad: linear-gradient(160deg, #00b4d8 0%, #0076a3 100%);
 }
 
 body.profile-page-body {
-    background: #020617 !important;
+    background: #f0f2f5 !important;
     color: var(--cosmic-text);
     overflow-x: hidden;
 }
@@ -22,7 +22,7 @@ body.profile-page-body {
     width: 100%;
     height: 100%;
     background: var(--cosmic-bg-url) center/cover no-repeat;
-    opacity: 0.4;
+    opacity: 0.8;
     z-index: -1;
     pointer-events: none;
 }
@@ -51,7 +51,7 @@ body.profile-page-body {
     border-radius: 18px;
     overflow: hidden;
     margin-bottom: 20px;
-    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
     transition: all 0.3s ease;
 }
 
@@ -64,8 +64,8 @@ body.profile-page-body {
 .cosmic-card-header h3 {
     margin: 0;
     font-size: 1rem;
-    font-weight: 600;
-    color: #fff;
+    font-weight: 700;
+    color: var(--cosmic-text);
     letter-spacing: 0.5px;
 }
 
@@ -108,7 +108,7 @@ body.profile-page-body {
     font-size: 1.6rem;
     font-weight: 700;
     margin: 0 0 10px;
-    color: #fff;
+    color: var(--cosmic-text);
 }
 
 .cosmic-motto {
@@ -138,7 +138,7 @@ body.profile-page-body {
 }
 
 .stat-box {
-    background: rgba(255, 255, 255, 0.05);
+    background: rgba(0, 0, 0, 0.03);
     border: 1px solid var(--cosmic-border);
     border-radius: 12px;
     padding: 12px 15px;
@@ -168,7 +168,7 @@ body.profile-page-body {
 .stat-value {
     font-weight: 700;
     font-size: 1.1rem;
-    color: #fff;
+    color: var(--cosmic-text);
 }
 
 .stat-label {
@@ -202,7 +202,7 @@ body.profile-page-body {
 }
 
 .rooms-container .page-content-collider-content-profile-card-wrapper-aligner-content-room {
-    background: rgba(255, 255, 255, 0.03) !important;
+    background: rgba(0, 0, 0, 0.03) !important;
     border: 1px solid var(--cosmic-border) !important;
     border-radius: 12px !important;
     padding: 12px !important;
@@ -210,7 +210,7 @@ body.profile-page-body {
     display: flex !important;
     align-items: center !important;
     gap: 15px !important;
-    color: #fff !important;
+    color: var(--cosmic-text) !important;
     transition: all 0.3s ease;
 }
 

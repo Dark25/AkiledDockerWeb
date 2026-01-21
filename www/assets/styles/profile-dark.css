@@ -8,8 +8,9 @@
     --cosmic-deep: #020617;
     --cosmic-glass: rgba(2, 6, 23, 0.85);
     --cosmic-border: rgba(139, 92, 246, 0.2);
-    --cosmic-bg-url: url('https://images.unsplash.com/photo-1462331940025-496dfbfc7564?ixlib=rb-1.2.1&auto=format&fit=crop&w=2000&q=80');
+    --cosmic-bg-url: url('https://i.imgur.com/S8kYqE5.png');
     --identity-grad: linear-gradient(160deg, #7c3aed 0%, #0f172a 100%);
+    --cosmic-text: #f8fafc;
   }
 }
 
@@ -19,22 +20,29 @@ body.dark-mode {
     --cosmic-deep: #020617;
     --cosmic-glass: rgba(2, 6, 23, 0.85);
     --cosmic-border: rgba(139, 92, 246, 0.2);
-    --cosmic-bg-url: url('https://images.unsplash.com/photo-1462331940025-496dfbfc7564?ixlib=rb-1.2.1&auto=format&fit=crop&w=2000&q=80');
+    --cosmic-bg-url: url('https://i.imgur.com/S8kYqE5.png');
     --identity-grad: linear-gradient(160deg, #7c3aed 0%, #0f172a 100%);
+    --cosmic-text: #f8fafc;
 }
 
 /* Specific dark mode enhancements */
 @media (prefers-color-scheme: dark) {
     .cosmic-overlay { opacity: 0.6; }
     .cosmic-card:hover { box-shadow: 0 0 30px rgba(139, 92, 246, 0.2); }
-    .cosmic-username { text-shadow: 0 0 10px rgba(139, 92, 246, 0.5); }
+    .cosmic-username { text-shadow: 0 0 10px rgba(139, 92, 246, 0.5); color: #fff; }
+    .cosmic-card-header h3 { color: #fff; }
+    .stat-value { color: #ddd6fe; }
     .animate-launch { animation: launch-glow 4s infinite ease-in-out; }
+    .rooms-container .page-content-collider-content-profile-card-wrapper-aligner-content-room { color: #fff !important; background: rgba(139, 92, 246, 0.05) !important; }
 }
 
 body.dark-mode .cosmic-overlay { opacity: 0.6; }
 body.dark-mode .cosmic-card:hover { box-shadow: 0 0 30px rgba(139, 92, 246, 0.2); }
-body.dark-mode .cosmic-username { text-shadow: 0 0 10px rgba(139, 92, 246, 0.5); }
+body.dark-mode .cosmic-username { text-shadow: 0 0 10px rgba(139, 92, 246, 0.5); color: #fff; }
+body.dark-mode .cosmic-card-header h3 { color: #fff; }
+body.dark-mode .stat-value { color: #ddd6fe; }
 body.dark-mode .animate-launch { animation: launch-glow 4s infinite ease-in-out; }
+body.dark-mode .rooms-container .page-content-collider-content-profile-card-wrapper-aligner-content-room { color: #fff !important; background: rgba(139, 92, 246, 0.05) !important; }
 
 @keyframes launch-glow {
     0%, 100% { transform: translateY(0); filter: drop-shadow(0 0 20px rgba(255, 100, 0, 0.4)); }
