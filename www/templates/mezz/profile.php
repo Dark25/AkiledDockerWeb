@@ -51,9 +51,10 @@ if ($news->RowCount() == 0) {
                             <img src="<?php echo $config['AvatarURL']; ?><?= userHome('look'); ?>&direction=2&head_direction=3&gesture=sml&action=wav&size=l" alt="<?= filter(userHome('username')); ?>">
                         </div>
                         <div class="hero-info">
-                            <p>Hola, mi nombre es</p>
+                            <p>Miembro de <?= $config['hotelName'] ?></p>
                             <h1><?= filter(userHome('username')); ?></h1>
                             <p>"<?= filter(userHome('motto')); ?>"</p>
+                            <small style="opacity: 0.7; font-size: 0.8rem;">Última conexión: <?= date('d/m/Y H:i', userHome('last_online')); ?></small>
                         </div>
                     </div>
 
@@ -61,17 +62,17 @@ if ($news->RowCount() == 0) {
                     <div class="bento-item stats">
                         <div class="stat-box">
                             <img src='/templates/<?= $config["skin"]; ?>/assets/images/user-space/credits.png' alt="Credits">
-                            <span class="stat-value"><?= filter(userHome('credits')); ?></span>
+                            <span class="stat-value"><?= number_format(userHome('credits')); ?></span>
                             <span class="stat-label">Créditos</span>
                         </div>
                         <div class="stat-box">
-                            <img src='/templates/<?= $config["skin"]; ?>/assets/images/user-space/planeta.png' alt="Duckets">
-                            <span class="stat-value"><?= userHome('activity_points'); ?></span>
+                            <img src='/templates/<?= $config["skin"]; ?>/assets/images/user-space/planeta.png' alt="Planets">
+                            <span class="stat-value"><?= number_format(userHome('activity_points')); ?></span>
                             <span class="stat-label">Planetas</span>
                         </div>
                         <div class="stat-box">
-                            <img src='/templates/<?= $config["skin"]; ?>/assets/images/user-space/esmeralda.png' alt="Diamonds">
-                            <span class="stat-value"><?= userHome('vip_points'); ?></span>
+                            <img src='/templates/<?= $config["skin"]; ?>/assets/images/user-space/esmeralda.png' alt="Emeralds">
+                            <span class="stat-value"><?= number_format(userHome('vip_points')); ?></span>
                             <span class="stat-label">Esmeraldas</span>
                         </div>
                     </div>
@@ -123,7 +124,8 @@ if ($news->RowCount() == 0) {
 
                     <!-- Footer -->
                     <div class="profile-footer">
-                        Unido a <?= $config['hotelName'] ?> el <?= date('d-m-Y', userHome('account_created')); ?>
+                        <p>Descubre más sobre <?= filter(userHome('username')); ?> en <?= $config['hotelName'] ?>.</p>
+                        <span>Unido el <?= date('d-m-Y', userHome('account_created')); ?></span>
                     </div>
                 </div>
             </div>

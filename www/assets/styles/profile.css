@@ -6,12 +6,16 @@
   --bento-text: #1a202c;
   --bento-text-muted: #718096;
   --bento-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  --accent-primary: #6366f1;
+  --accent-secondary: #a855f7;
+  --accent-success: #22c55e;
 }
 
 .profile-container {
   max-width: 1250px;
-  margin: 40px auto;
+  margin: 60px auto;
   padding: 0 20px;
+  perspective: 1000px;
 }
 
 .bento-grid {
@@ -25,15 +29,29 @@
   background: var(--bento-bg);
   border: 1px solid var(--bento-border);
   border-radius: var(--bento-radius);
-  padding: 24px;
+  padding: 28px;
   box-shadow: var(--bento-shadow);
   overflow: hidden;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+  position: relative;
+  opacity: 0;
+  animation: bentoIn 0.6s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+@keyframes bentoIn {
+    from {
+        opacity: 0;
+        transform: translateY(30px) scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
 }
 
 .bento-item:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+  transform: translateY(-8px) scale(1.01);
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
 }
 
 /* Hero Section */
@@ -41,38 +59,65 @@
   grid-column: span 2;
   display: flex;
   align-items: center;
-  gap: 24px;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  gap: 32px;
+  background: linear-gradient(135deg, #6366f1 0%, #a855f7 100%);
   color: white;
   border: none;
+  z-index: 1;
+}
+
+.bento-item.hero::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+    animation: rotate 10s linear infinite;
+    pointer-events: none;
+}
+
+@keyframes rotate {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
 }
 
 .hero-avatar {
-  width: 100px;
-  height: 100px;
+  width: 120px;
+  height: 120px;
   background: rgba(255, 255, 255, 0.2);
-  border-radius: 50%;
+  border-radius: 32px;
   display: flex;
   align-items: center;
   justify-content: center;
   backdrop-filter: blur(10px);
   flex-shrink: 0;
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  transition: transform 0.3s ease;
+}
+
+.bento-item.hero:hover .hero-avatar {
+    transform: rotate(-5deg) scale(1.1);
 }
 
 .hero-avatar img {
     margin-top: -20px;
+    filter: drop-shadow(0 4px 8px rgba(0,0,0,0.3));
 }
 
 .hero-info h1 {
-  font-size: 2rem;
-  font-weight: 700;
-  margin-bottom: 4px;
+  font-size: 2.5rem;
+  font-weight: 800;
+  margin-bottom: 8px;
+  letter-spacing: -1px;
 }
 
 .hero-info p {
-  font-size: 1rem;
+  font-size: 1.1rem;
   opacity: 0.9;
-  font-style: italic;
+  font-weight: 400;
 }
 
 /* Stats Section */
@@ -81,78 +126,57 @@
   display: flex;
   justify-content: space-around;
   align-items: center;
+  background: var(--bento-bg);
 }
 
 .stat-box {
   text-align: center;
+  transition: transform 0.3s ease;
+}
+
+.stat-box:hover {
+    transform: scale(1.15);
 }
 
 .stat-box img {
-  width: 32px;
-  height: 32px;
-  margin-bottom: 8px;
+  width: 42px;
+  height: 42px;
+  margin-bottom: 12px;
   object-fit: contain;
+  filter: drop-shadow(0 4px 6px rgba(0,0,0,0.1));
 }
 
 .stat-value {
   display: block;
-  font-size: 1.25rem;
-  font-weight: 600;
+  font-size: 1.5rem;
+  font-weight: 700;
   color: var(--bento-text);
 }
 
 .stat-label {
-  font-size: 0.75rem;
+  font-size: 0.8rem;
   color: var(--bento-text-muted);
   text-transform: uppercase;
-  letter-spacing: 0.05em;
+  letter-spacing: 0.1em;
+  font-weight: 600;
 }
 
 /* Common Styles */
 .bento-title {
-  font-size: 1.1rem;
-  font-weight: 600;
-  margin-bottom: 16px;
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin-bottom: 20px;
   color: var(--bento-text);
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 12px;
 }
 
 .bento-title img {
-    width: 20px;
+    width: 24px;
 }
 
-/* Badges Section */
-.bento-item.badges {
-  grid-column: span 2;
-}
-
-/* Rooms Section */
-.bento-item.rooms {
-  grid-column: span 2;
-}
-
-/* Friends Section */
-.bento-item.friends {
-  grid-column: span 2;
-}
-
-/* Photos Section */
-.bento-item.photos {
-    grid-column: span 4;
-}
-
-/* Footer / Joined Date */
-.profile-footer {
-    grid-column: span 4;
-    text-align: center;
-    padding: 20px;
-    color: var(--bento-text-muted);
-    font-size: 0.9rem;
-}
-
-/* Overrides for includes */
+/* Includes Overrides */
 .page-content-collider-content-profile-card-wrapper-aligner-content-title {
     display: none;
 }
@@ -162,41 +186,51 @@
     padding: 0 !important;
     display: flex;
     flex-wrap: wrap;
-    gap: 10px;
+    gap: 12px;
 }
 
 .page-content-collider-content-profile-card-wrapper-aligner-content-badge {
     margin: 0 !important;
-    padding: 5px !important;
-    background: rgba(0,0,0,0.05);
-    border-radius: 8px;
-    transition: transform 0.2s;
+    padding: 8px !important;
+    background: rgba(0,0,0,0.04);
+    border-radius: 12px;
+    transition: all 0.3s ease;
+    border: 1px solid transparent;
 }
 
 .page-content-collider-content-profile-card-wrapper-aligner-content-badge:hover {
-    transform: scale(1.1);
+    transform: scale(1.2) rotate(5deg);
+    background: white;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    border-color: var(--accent-primary);
 }
 
 .page-content-collider-content-profile-card-wrapper-aligner-content-room {
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 120px;
-    background: rgba(0,0,0,0.03);
-    padding: 10px;
-    border-radius: 12px;
-    gap: 8px;
+    width: 140px;
+    background: rgba(0,0,0,0.02);
+    padding: 16px;
+    border-radius: 16px;
+    gap: 12px;
     text-align: center;
+    border: 1px solid rgba(0,0,0,0.05);
 }
 
 .page-content-collider-content-profile-card-wrapper-aligner-content-room-image {
     width: 100%;
-    border-radius: 8px;
+    border-radius: 12px;
+    transition: transform 0.3s ease;
+}
+
+.page-content-collider-content-profile-card-wrapper-aligner-content-room:hover .page-content-collider-content-profile-card-wrapper-aligner-content-room-image {
+    transform: scale(1.05);
 }
 
 .page-content-collider-content-profile-card-wrapper-aligner-content-room-name {
-    font-size: 0.8rem;
-    font-weight: 500;
+    font-size: 0.85rem;
+    font-weight: 600;
     color: var(--bento-text);
 }
 
@@ -204,22 +238,64 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 80px;
-    gap: 5px;
+    width: 90px;
+    gap: 8px;
+    transition: transform 0.3s ease;
+}
+
+.page-content-collider-content-profile-card-wrapper-aligner-content-friend:hover {
+    transform: translateY(-5px);
 }
 
 .page-content-collider-content-profile-card-wrapper-aligner-content-friend-figure {
-    width: 60px;
-    height: 60px;
+    width: 70px;
+    height: 70px;
     object-fit: cover;
-    background: rgba(0,0,0,0.03);
+    background: rgba(0,0,0,0.04);
     border-radius: 50%;
+    border: 2px solid transparent;
+    transition: border-color 0.3s ease;
+}
+
+.page-content-collider-content-profile-card-wrapper-aligner-content-friend:hover .page-content-collider-content-profile-card-wrapper-aligner-content-friend-figure {
+    border-color: var(--accent-secondary);
 }
 
 .page-content-collider-content-profile-card-wrapper-aligner-content-friend-username {
-    font-size: 0.75rem;
-    font-weight: 500;
+    font-size: 0.8rem;
+    font-weight: 600;
     color: var(--bento-text);
+}
+
+/* Photos Section */
+.bento-item.photos {
+    grid-column: span 4;
+}
+
+/* Animation Delays */
+.bento-item:nth-child(1) { animation-delay: 0.1s; }
+.bento-item:nth-child(2) { animation-delay: 0.2s; }
+.bento-item:nth-child(3) { animation-delay: 0.3s; }
+.bento-item:nth-child(4) { animation-delay: 0.4s; }
+.bento-item:nth-child(5) { animation-delay: 0.5s; }
+.bento-item:nth-child(6) { animation-delay: 0.6s; }
+.bento-item:nth-child(7) { animation-delay: 0.7s; }
+
+/* Footer */
+.profile-footer {
+    grid-column: span 4;
+    text-align: center;
+    padding: 40px;
+    color: var(--bento-text-muted);
+    font-size: 1rem;
+    font-weight: 500;
+    opacity: 0;
+    animation: fadeIn 1s ease forwards 1s;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 0.8; }
 }
 
 /* Responsive */
@@ -242,4 +318,5 @@
   .bento-item.hero, .bento-item.stats, .bento-item.badges, .bento-item.rooms, .bento-item.friends, .bento-item.photos, .profile-footer {
     grid-column: span 1;
   }
+  .hero-info h1 { font-size: 1.8rem; }
 }
