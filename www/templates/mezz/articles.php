@@ -54,6 +54,7 @@ if ($readingTime < 1) $readingTime = 1;
     <link rel="stylesheet" type="text/css" href="/assets/styles/app.css">
     <link rel="stylesheet" type="text/css" href="/assets/styles/app-dark.css" media="(prefers-color-scheme: dark)">
     <link rel="stylesheet" type="text/css" href="/assets/styles/news.css">
+    <link rel="stylesheet" type="text/css" href="/assets/styles/news-dark.css" media="(prefers-color-scheme: dark)">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <title><?= $config['hotelName'] ?>: <?= $articleFound ? filter($article['title']) : $lang["Nnews"] ?></title>
 </head>
@@ -243,10 +244,10 @@ if ($readingTime < 1) $readingTime = 1;
                     </div>
 
                     <!-- Staff Online Widget -->
-                    <div class="sidebar-widget">
+                    <div class="sidebar-widget-premium">
                         <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 20px;">
                             <img src="/assets/images/collider/users.png" style="width: 24px; height: 24px;">
-                            <h3 style="font-size: 16px; font-weight: 800; margin: 0;"><?= $lang["Mstaff"] ?> Online</h3>
+                            <h3 style="font-size: 16px; font-weight: 800; margin: 0; color: var(--premium-text);"><?= $lang["Mstaff"] ?> Online</h3>
                         </div>
                         <div class="staff-online-widget">
                             <?php
@@ -274,10 +275,10 @@ if ($readingTime < 1) $readingTime = 1;
                     </div>
 
                     <!-- Latest Photos Widget -->
-                    <div class="sidebar-widget">
+                    <div class="sidebar-widget-premium">
                         <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 20px;">
                             <img src="/assets/images/collider/camera.png" style="width: 24px; height: 24px;">
-                            <h3 style="font-size: 16px; font-weight: 800; margin: 0;"><?= $lang["Plastphotos"] ?></h3>
+                            <h3 style="font-size: 16px; font-weight: 800; margin: 0; color: var(--premium-text);"><?= $lang["Plastphotos"] ?></h3>
                         </div>
                         <div class="photo-grid-widget">
                             <?php
