@@ -1,319 +1,253 @@
 :root {
-  --hotel-primary: #0081bb;
-  --hotel-primary-dark: #00567a;
-  --hotel-accent: #eeb425;
-  --hotel-bg: #f4f7f9;
-  --card-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.05);
+  --hotel-blue: #0076a3;
+  --hotel-gold: #eeb425;
   --card-bg: #ffffff;
-  --text-main: #1f2937;
+  --card-border: #e5e7eb;
+  --text-dark: #1f2937;
   --text-muted: #6b7280;
+  --bg-main: #f0f2f5;
+}
+
+body.container {
+    background-color: var(--bg-main) !important;
 }
 
 .modern-profile-container {
   max-width: 1300px;
-  margin: 60px auto;
+  margin: 40px auto;
   padding: 0 20px;
-  min-height: 80vh;
 }
 
 .modern-profile-grid {
   display: grid;
-  grid-template-columns: 380px 1fr 320px;
-  gap: 30px;
+  grid-template-columns: 350px 1fr 320px;
+  gap: 25px;
+  align-items: start;
 }
 
 /* Card Base */
 .modern-card {
   background: var(--card-bg);
-  border-radius: 24px;
-  border: 1px solid #e5e7eb;
+  border-radius: 20px;
+  border: 1px solid var(--card-border);
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
   overflow: hidden;
-  box-shadow: var(--card-shadow);
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.modern-card.glass {
-    background: rgba(255, 255, 255, 0.8);
-    backdrop-filter: blur(12px);
+  transition: transform 0.2s ease;
 }
 
 .modern-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+    transform: translateY(-4px);
 }
 
-/* Hero Card Styling */
-.hero-card {
+/* Identity Card */
+.identity-card {
     text-align: center;
-    position: sticky;
-    top: 100px;
 }
 
 .card-hero-header {
-    height: 160px;
-    background: linear-gradient(135deg, var(--hotel-primary) 0%, #00b4d8 100%);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-bottom: 60px;
+    height: 140px;
+    background: linear-gradient(135deg, var(--hotel-blue) 0%, #00b4d8 100%);
     position: relative;
-}
-
-.card-hero-header::after {
-    content: '';
-    position: absolute;
-    bottom: -1px;
-    left: 0;
-    right: 0;
-    height: 40px;
-    background: var(--card-bg);
-    clip-path: polygon(0 100%, 100% 100%, 100% 0);
+    margin-bottom: 50px;
 }
 
 .avatar-glow-ring {
-    width: 140px;
-    height: 140px;
-    background: var(--card-bg);
+    width: 120px;
+    height: 120px;
+    background: #fff;
     border-radius: 50%;
     position: absolute;
-    bottom: -50px;
+    bottom: -40px;
+    left: 50%;
+    transform: translateX(-50%);
     display: flex;
     align-items: center;
     justify-content: center;
-    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
-    border: 6px solid var(--card-bg);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+    border: 4px solid #fff;
 }
 
 .main-avatar {
-    margin-top: -20px;
+    margin-top: -15px;
     image-rendering: pixelated;
-    transform: scale(1.2);
+    z-index: 2;
 }
 
 .card-hero-body {
-    padding: 0 30px 30px;
+    padding: 0 20px 20px;
 }
 
 .profile-name {
-    font-size: 2.25rem;
+    font-size: 1.8rem;
     font-weight: 800;
-    color: var(--text-main);
-    margin-bottom: 10px;
-    letter-spacing: -1px;
+    color: var(--text-dark);
+    margin: 0 0 10px;
 }
 
-.profile-motto-bubble {
-    background: #f3f4f6;
-    padding: 12px 20px;
-    border-radius: 16px;
-    margin-bottom: 20px;
-    position: relative;
+.profile-motto-wrap {
+    background: #f9fafb;
+    border: 1px solid #f3f4f6;
+    padding: 10px 15px;
+    border-radius: 12px;
+    margin-bottom: 15px;
     display: inline-block;
 }
 
-.profile-motto-bubble p {
+.profile-motto {
     font-style: italic;
     color: var(--text-muted);
     font-weight: 500;
     margin: 0;
 }
 
-.profile-meta {
-    margin-bottom: 30px;
-}
-
-.meta-item {
-    font-size: 0.85rem;
-    font-weight: 600;
-    color: var(--hotel-primary);
+.profile-join-badge {
+    font-size: 0.8rem;
+    color: var(--hotel-blue);
+    font-weight: 700;
     text-transform: uppercase;
-    letter-spacing: 1px;
 }
 
-/* Purse Styling */
-.profile-purse-grid {
-    padding: 0 30px 30px;
+/* Purse Section */
+.profile-purse-section {
+    padding: 0 20px 20px;
     display: flex;
     flex-direction: column;
-    gap: 12px;
+    gap: 10px;
 }
 
-.purse-box {
+.purse-row {
     display: flex;
     align-items: center;
-    gap: 15px;
-    padding: 12px 20px;
+    gap: 12px;
+    padding: 10px 15px;
     background: #f9fafb;
-    border-radius: 16px;
+    border-radius: 12px;
     border: 1px solid #f3f4f6;
-    transition: transform 0.2s ease;
 }
 
-.purse-box:hover {
-    transform: translateX(8px);
-    background: #fff;
-    border-color: var(--hotel-primary);
-}
+.purse-icon { width: 28px; height: 28px; object-fit: contain; }
+.purse-data { text-align: left; }
+.purse-val { display: block; font-weight: 700; color: var(--text-dark); }
+.purse-lbl { font-size: 0.65rem; color: var(--text-muted); text-transform: uppercase; font-weight: 600; }
 
-.purse-box img { width: 32px; height: 32px; object-fit: contain; }
-
-.purse-info { text-align: left; }
-
-.purse-value { display: block; font-weight: 800; font-size: 1.1rem; color: var(--text-main); }
-
-.purse-label { font-size: 0.7rem; color: var(--text-muted); text-transform: uppercase; font-weight: 700; }
-
-/* Main Content Styling */
-.card-header {
-    padding: 20px 25px;
+/* Section & Social Cards */
+.section-title-bar {
+    background: #f9fafb;
+    padding: 15px 20px;
     border-bottom: 1px solid #f3f4f6;
     display: flex;
     align-items: center;
     gap: 12px;
 }
 
-.card-header h3 {
-    font-size: 1.1rem;
-    font-weight: 700;
-    color: var(--text-main);
+.section-icon { width: 22px; height: 22px; object-fit: contain; image-rendering: pixelated; }
+
+.section-title-bar h3 {
     margin: 0;
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--text-dark);
     text-transform: uppercase;
-    letter-spacing: 0.5px;
 }
 
-.card-body {
-    padding: 25px;
+.section-content {
+    padding: 20px;
+    color: var(--text-muted);
+    font-size: 0.9rem;
 }
 
-/* Includes Overrides */
-.page-content-collider-content-profile-card-wrapper-aligner-content-title { display: none; }
+/* Hide legacy include titles */
+.section-content h2,
+.section-content .page-content-collider-content-profile-card-wrapper-aligner-content-title {
+    display: none !important;
+}
 
+/* Include content adjustments */
 .page-content-collider-content-profile-card-wrapper-aligner-content {
-    display: flex !important;
-    flex-wrap: wrap !important;
-    gap: 12px !important;
-    background: transparent !important;
     padding: 0 !important;
+    background: transparent !important;
 }
 
-.page-content-collider-content-profile-card-wrapper-aligner-content-badge {
-    background: #f4f7f9 !important;
-    padding: 10px !important;
-    border-radius: 12px !important;
-    margin: 0 !important;
+.badges-area img {
+    background: #f3f4f6 !important;
     border: 1px solid #e5e7eb !important;
+    border-radius: 10px !important;
+    padding: 8px !important;
+    margin: 0 5px 5px 0 !important;
 }
 
-.rooms-display .page-content-collider-content-profile-card-wrapper-aligner-content-room {
+.photos-area .page-content-collider-content-profile-photos {
+    display: grid !important;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)) !important;
+    gap: 15px !important;
+    margin-top: 0 !important;
+}
+
+.photos-area .page-content-collider-content-profile-photo {
     width: 100% !important;
+    height: 180px !important;
+    margin: 0 !important;
+    border-radius: 15px !important;
+}
+
+.rooms-area .page-content-collider-content-profile-card-wrapper-aligner-content-room {
+    width: 100% !important;
+    margin: 0 0 10px 0 !important;
     background: #f9fafb !important;
-    border-radius: 16px !important;
-    padding: 15px !important;
-    margin: 0 0 12px 0 !important;
     border: 1px solid #f3f4f6 !important;
+    border-radius: 12px !important;
+    padding: 10px !important;
     display: flex !important;
     flex-direction: row !important;
     align-items: center !important;
-    gap: 15px !important;
+    gap: 10px !important;
 }
 
-.rooms-display .page-content-collider-content-profile-card-wrapper-aligner-content-room-image {
-    width: 64px !important;
-    border-radius: 10px !important;
+.rooms-area .page-content-collider-content-profile-card-wrapper-aligner-content-room-image {
+    width: 50px !important;
+    height: 50px !important;
 }
 
-.friends-display .page-content-collider-content-profile-card-wrapper-aligner-content-friend {
-    width: 80px !important;
-    text-align: center !important;
+.friends-area .page-content-collider-content-profile-card-wrapper-aligner-content-friend {
+    width: 70px !important;
+    margin: 0 5px 5px 0 !important;
 }
 
-.friends-display img {
+.friends-area img {
+    width: 50px !important;
+    height: 50px !important;
+    object-fit: cover !important;
     border-radius: 50% !important;
-    background: #f4f7f9 !important;
+    background: #f3f4f6 !important;
 }
-
-.photos-display .page-content-collider-content-profile-photos {
-    display: grid !important;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)) !important;
-    gap: 20px !important;
-    margin: 0 !important;
-}
-
-.photos-display .page-content-collider-content-profile-photo {
-    width: 100% !important;
-    height: 200px !important;
-    margin: 0 !important;
-    border-radius: 16px !important;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.05) !important;
-}
-
-.photos-display .page-content-collider-content-profile-photos-title { display: none !important; }
 
 /* Animations */
-.animate-slide-up {
-    opacity: 0;
-    animation: slideUp 0.8s cubic-bezier(0.22, 1, 0.36, 1) forwards;
-}
+.animate-fade-in { animation: fadeIn 0.8s ease forwards; }
+.animate-slide-up { opacity: 0; animation: slideUp 0.6s ease forwards; }
 
-@keyframes slideUp {
-    from { opacity: 0; transform: translateY(30px); }
-    to { opacity: 1; transform: translateY(0); }
-}
-
-.animate-fade-in {
-    opacity: 0;
-    animation: fadeIn 1s ease forwards;
-}
-
-@keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
-}
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+@keyframes slideUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
 
 .delay-1 { animation-delay: 0.1s; }
 .delay-2 { animation-delay: 0.2s; }
 .delay-3 { animation-delay: 0.3s; }
 .delay-4 { animation-delay: 0.4s; }
 
-/* Icons */
-[class^="icon-"] {
-    width: 24px;
-    height: 24px;
-    background-size: contain;
-    background-repeat: no-repeat;
-}
-
-.icon-badges { background-image: url('/assets/images/collider/feeds.png'); }
-.icon-camera { background-image: url('/assets/images/collider/camera.png'); }
-.icon-rooms { background-image: url('/assets/images/collider/rooms.png'); }
-.icon-friends { background-image: url('/assets/images/collider/users.png'); }
-.icon-groups { background-image: url('/assets/images/collider/groups.png'); }
-
 /* Footer */
-.modern-profile-footer {
-    grid-column: span 3;
+.profile-simple-footer {
     text-align: center;
-    padding: 60px 0;
+    padding: 40px 0;
     color: var(--text-muted);
-    font-size: 0.9rem;
+    font-size: 0.8rem;
 }
 
 /* Responsive */
 @media (max-width: 1200px) {
-    .modern-profile-grid {
-        grid-template-columns: 1fr 1fr;
-    }
-    .profile-side-column {
-        grid-column: span 2;
-    }
-    .hero-card { position: static; }
+    .modern-profile-grid { grid-template-columns: 1fr 1fr; }
+    .profile-left-column { grid-column: span 2; }
 }
 
 @media (max-width: 768px) {
-    .modern-profile-grid {
-        grid-template-columns: 1fr;
-    }
-    .profile-side-column, .profile-main-column, .profile-info-column {
-        grid-column: span 1;
-    }
+    .modern-profile-grid { grid-template-columns: 1fr; }
+    .profile-left-column, .profile-center-column, .profile-right-column { grid-column: span 1; }
 }

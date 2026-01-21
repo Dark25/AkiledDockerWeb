@@ -45,9 +45,9 @@ if ($news->RowCount() == 0) {
         <div class="modern-profile-container">
             <div class="modern-profile-grid">
 
-                <!-- Left: Hero Column -->
-                <aside class="profile-side-column">
-                    <div class="modern-card hero-card animate-fade-in">
+                <!-- Left Column: User Identity -->
+                <aside class="profile-left-column">
+                    <div class="modern-card identity-card animate-fade-in">
                         <div class="card-hero-header">
                             <div class="avatar-glow-ring">
                                 <img src="<?php echo $config['AvatarURL']; ?><?= userHome('look'); ?>&direction=2&head_direction=3&gesture=sml&action=wav&size=l" alt="<?= filter(userHome('username')); ?>" class="main-avatar">
@@ -55,97 +55,96 @@ if ($news->RowCount() == 0) {
                         </div>
                         <div class="card-hero-body">
                             <h2 class="profile-name"><?= filter(userHome('username')); ?></h2>
-                            <div class="profile-motto-bubble">
-                                <p>"<?= filter(userHome('motto')); ?>"</p>
+                            <div class="profile-motto-wrap">
+                                <p class="profile-motto">"<?= filter(userHome('motto')); ?>"</p>
                             </div>
-
-                            <div class="profile-meta">
-                                <span class="meta-item join-date">Hotelero desde <?= date('M Y', userHome('account_created')); ?></span>
+                            <div class="profile-join-badge">
+                                Hotelero desde <?= date('M Y', userHome('account_created')); ?>
                             </div>
                         </div>
 
-                        <div class="profile-purse-grid">
-                            <div class="purse-box credits">
-                                <img src='/templates/<?= $config["skin"]; ?>/assets/images/user-space/credits.png'>
-                                <div class="purse-info">
-                                    <span class="purse-value"><?= number_format(userHome('credits')); ?></span>
-                                    <span class="purse-label">Créditos</span>
+                        <div class="profile-purse-section">
+                            <div class="purse-row credits">
+                                <img src='/templates/<?= $config["skin"]; ?>/assets/images/user-space/credits.png' class="purse-icon">
+                                <div class="purse-data">
+                                    <span class="purse-val"><?= number_format(userHome('credits')); ?></span>
+                                    <span class="purse-lbl">Créditos</span>
                                 </div>
                             </div>
-                            <div class="purse-box planets">
-                                <img src='/templates/<?= $config["skin"]; ?>/assets/images/user-space/planeta.png'>
-                                <div class="purse-info">
-                                    <span class="purse-value"><?= number_format(userHome('activity_points')); ?></span>
-                                    <span class="purse-label">Planetas</span>
+                            <div class="purse-row planets">
+                                <img src='/templates/<?= $config["skin"]; ?>/assets/images/user-space/planeta.png' class="purse-icon">
+                                <div class="purse-data">
+                                    <span class="purse-val"><?= number_format(userHome('activity_points')); ?></span>
+                                    <span class="purse-lbl">Planetas</span>
                                 </div>
                             </div>
-                            <div class="purse-box diamonds">
-                                <img src='/templates/<?= $config["skin"]; ?>/assets/images/user-space/esmeralda.png'>
-                                <div class="purse-info">
-                                    <span class="purse-value"><?= number_format(userHome('vip_points')); ?></span>
-                                    <span class="purse-label">Esmeraldas</span>
+                            <div class="purse-row emeralds">
+                                <img src='/templates/<?= $config["skin"]; ?>/assets/images/user-space/esmeralda.png' class="purse-icon">
+                                <div class="purse-data">
+                                    <span class="purse-val"><?= number_format(userHome('vip_points')); ?></span>
+                                    <span class="purse-lbl">Esmeraldas</span>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </aside>
 
-                <!-- Center: Content Column -->
-                <main class="profile-main-column">
-                    <!-- Badges Showcase -->
-                    <div class="modern-card glass animate-slide-up">
-                        <div class="card-header">
-                            <i class="icon-badges"></i>
+                <!-- Center Column: Content Feed -->
+                <main class="profile-center-column">
+                    <!-- Badges -->
+                    <div class="modern-card section-card animate-slide-up">
+                        <div class="section-title-bar">
+                            <img src="/assets/images/collider/feeds.png" class="section-icon">
                             <h3>Mis Placas</h3>
                         </div>
-                        <div class="card-body badges-display">
+                        <div class="section-content badges-area">
                             <?php include_once("get/profile/homeBadges.php"); ?>
                         </div>
                     </div>
 
-                    <!-- Photos Gallery -->
-                    <div class="modern-card glass animate-slide-up delay-1">
-                        <div class="card-header">
-                            <i class="icon-camera"></i>
+                    <!-- Photos -->
+                    <div class="modern-card section-card animate-slide-up delay-1">
+                        <div class="section-title-bar">
+                            <img src="/assets/images/collider/camera.png" class="section-icon">
                             <h3>Momentos</h3>
                         </div>
-                        <div class="card-body photos-display">
+                        <div class="section-content photos-area">
                             <?php include_once("get/profile/homePhotos.php"); ?>
                         </div>
                     </div>
                 </main>
 
-                <!-- Right: Social Column -->
-                <aside class="profile-info-column">
+                <!-- Right Column: Social -->
+                <aside class="profile-right-column">
                     <!-- Rooms -->
-                    <div class="modern-card glass animate-slide-up delay-2">
-                        <div class="card-header">
-                            <i class="icon-rooms"></i>
+                    <div class="modern-card social-card animate-slide-up delay-2">
+                        <div class="section-title-bar">
+                            <img src="/assets/images/collider/rooms.png" class="section-icon">
                             <h3>Salas</h3>
                         </div>
-                        <div class="card-body rooms-display">
+                        <div class="section-content rooms-area">
                             <?php include_once("get/profile/homeRooms.php"); ?>
                         </div>
                     </div>
 
                     <!-- Friends -->
-                    <div class="modern-card glass animate-slide-up delay-3">
-                        <div class="card-header">
-                            <i class="icon-friends"></i>
+                    <div class="modern-card social-card animate-slide-up delay-3">
+                        <div class="section-title-bar">
+                            <img src="/assets/images/collider/users.png" class="section-icon">
                             <h3>Amigos</h3>
                         </div>
-                        <div class="card-body friends-display">
+                        <div class="section-content friends-area">
                             <?php include_once("get/profile/homeFriends.php"); ?>
                         </div>
                     </div>
 
                     <!-- Groups -->
-                    <div class="modern-card glass animate-slide-up delay-4">
-                        <div class="card-header">
-                            <i class="icon-groups"></i>
+                    <div class="modern-card social-card animate-slide-up delay-4">
+                        <div class="section-title-bar">
+                            <img src="/assets/images/collider/groups.png" class="section-icon">
                             <h3>Grupos</h3>
                         </div>
-                        <div class="card-body groups-display">
+                        <div class="section-content groups-area">
                             <?php include_once("get/profile/homeGroups.php"); ?>
                         </div>
                     </div>
@@ -153,8 +152,8 @@ if ($news->RowCount() == 0) {
 
             </div>
 
-            <footer class="modern-profile-footer">
-                <p>© <?= date('Y') ?> <?= $config['hotelName'] ?> Hotel - Todos los derechos reservados.</p>
+            <footer class="profile-simple-footer">
+                <p>© <?= date('Y') ?> <?= $config['hotelName'] ?> Hotel. Rediseñado para una mejor experiencia.</p>
             </footer>
         </div>
 
