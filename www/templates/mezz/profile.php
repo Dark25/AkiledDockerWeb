@@ -45,114 +45,114 @@ if ($news->RowCount() == 0) {
         <?php include_once("includes/menu.php"); ?>
 
         <div class="page-content-collider" style="background-color: transparent;">
-            <div class="page-content-max-width has-sidebar">
-                <div class="page-content-main-column">
+            <div class="page-content-max-width">
 
-                    <!-- Profile Header Card -->
-                    <div class="profile-header-card">
-                        <div class="profile-header-banner" style="background-image: url('/assets/images/profile/background.png');"></div>
-                        <div class="profile-header-content">
-                            <div class="profile-avatar-wrapper">
-                                <img src="<?php echo $config['AvatarURL']; ?><?= userHome('look'); ?>&direction=2&head_direction=3&gesture=sml&action=wav&size=l" alt="<?= filter(userHome('username')); ?>" class="profile-avatar-img">
+                <div class="profile-bento-grid">
+
+                    <!-- Hero Section -->
+                    <div class="bento-item hero">
+                        <div class="hero-banner" style="background-image: url('/assets/images/profile/background.png');"></div>
+                        <div class="hero-content">
+                            <div class="hero-avatar">
+                                <img src="<?php echo $config['AvatarURL']; ?><?= userHome('look'); ?>&direction=2&head_direction=3&gesture=sml&action=wav&size=l" alt="<?= filter(userHome('username')); ?>">
                             </div>
-                            <div class="profile-header-info">
-                                <h1 class="profile-username"><?= filter(userHome('username')); ?></h1>
-                                <p class="profile-motto"><?= filter(userHome('motto')); ?></p>
+                            <div class="hero-info">
+                                <div class="hero-badge-status">Online</div>
+                                <h1 class="hero-username"><?= filter(userHome('username')); ?></h1>
+                                <p class="hero-motto">“<?= filter(userHome('motto')); ?>”</p>
                             </div>
                         </div>
                     </div>
 
-                    <!-- User Photos -->
-                    <div class="profile-section-card">
-                        <div class="profile-section-header">
-                            <img src="/assets/images/collider/camera.png" class="section-icon">
-                            <h3>Mis Momentos</h3>
+                    <!-- Stats Card -->
+                    <div class="bento-item stats">
+                        <div class="bento-header">
+                            <img src="/assets/images/user-space/credits.png" alt="stats">
+                            <span>Balance Global</span>
                         </div>
-                        <div class="profile-section-body">
+                        <div class="stats-list">
+                            <div class="stat-row">
+                                <img src='/assets/images/user-space/credits.png'>
+                                <span class="stat-name">Créditos</span>
+                                <span class="stat-count"><?= number_format(userHome('credits')); ?></span>
+                            </div>
+                            <div class="stat-row">
+                                <img src='/assets/images/user-space/planeta.png'>
+                                <span class="stat-name">Planetas</span>
+                                <span class="stat-count"><?= userHome('activity_points'); ?></span>
+                            </div>
+                            <div class="stat-row">
+                                <img src='/assets/images/user-space/esmeralda.png'>
+                                <span class="stat-name">Esmeraldas</span>
+                                <span class="stat-count"><?= userHome('vip_points'); ?></span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Photos Card -->
+                    <div class="bento-item photos">
+                        <div class="bento-header">
+                            <img src="/assets/images/collider/camera.png" alt="photos">
+                            <span>Galería Reciente</span>
+                        </div>
+                        <div class="bento-body">
                             <?php include_once("get/profile/homePhotos.php"); ?>
                         </div>
                     </div>
 
-                    <!-- User Rooms -->
-                    <div class="profile-section-card">
-                        <div class="profile-section-header">
-                            <img src="/assets/images/collider/public-room.png" class="section-icon">
-                            <h3>Mis Salas</h3>
+                    <!-- Badges Card -->
+                    <div class="bento-item badges">
+                        <div class="bento-header">
+                            <img src="/assets/images/highscores/trophy-gold.png" alt="badges">
+                            <span>Colección de Placas</span>
                         </div>
-                        <div class="profile-section-body">
+                        <div class="bento-body">
+                            <div class="badges-flex">
+                                <?php include_once("get/profile/homeBadges.php"); ?>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Rooms Card -->
+                    <div class="bento-item rooms">
+                        <div class="bento-header">
+                            <img src="/assets/images/collider/public-room.png" alt="rooms">
+                            <span>Mis Creaciones</span>
+                        </div>
+                        <div class="bento-body-rooms">
                             <?php include_once("get/profile/homeRooms.php"); ?>
                         </div>
                     </div>
 
-                </div>
-
-                <div class="page-content-sidebar">
-
-                    <!-- Stats Widget -->
-                    <div class="sidebar-widget user-stats-card">
-                        <div class="widget-title-modern">
-                            <img src="/assets/images/user-space/credits.png">
-                            <h3>Estadísticas</h3>
+                    <!-- Social Card -->
+                    <div class="bento-item social">
+                        <div class="bento-header">
+                            <img src="/assets/images/collider/feeds.png" alt="friends">
+                            <span>Círculo Social</span>
                         </div>
-                        <div class="stats-grid">
-                            <div class="stat-item">
-                                <img src='/assets/images/user-space/credits.png'>
-                                <div class="stat-info">
-                                    <span class="stat-value"><?= number_format(userHome('credits')); ?></span>
-                                    <span class="stat-label">Monedas</span>
-                                </div>
+                        <div class="social-tabs">
+                            <div class="social-grid">
+                                <?php include_once("get/profile/homeFriends.php"); ?>
                             </div>
-                            <div class="stat-item">
-                                <img src='/assets/images/user-space/planeta.png'>
-                                <div class="stat-info">
-                                    <span class="stat-value"><?= userHome('activity_points'); ?></span>
-                                    <span class="stat-label">Planetas</span>
-                                </div>
-                            </div>
-                            <div class="stat-item">
-                                <img src='/assets/images/user-space/esmeralda.png'>
-                                <div class="stat-info">
-                                    <span class="stat-value"><?= userHome('vip_points'); ?></span>
-                                    <span class="stat-label">Esmeraldas</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="profile-joined-date">
-                            Miembro desde el <?= date('d-m-Y', userHome('account_created')); ?>
                         </div>
                     </div>
 
-                    <!-- Badges Widget -->
-                    <div class="sidebar-widget profile-badges-card">
-                        <div class="widget-title-modern">
-                            <img src="/assets/images/highscores/trophy-gold.png">
-                            <h3>Placas Reales</h3>
+                    <!-- Groups Card -->
+                    <div class="bento-item groups">
+                         <div class="bento-header">
+                            <img src="/assets/images/collider/users.png" alt="groups">
+                            <span>Comunidades</span>
                         </div>
-                        <div class="profile-badges-grid">
-                            <?php include_once("get/profile/homeBadges.php"); ?>
-                        </div>
-                    </div>
-
-                    <!-- Groups Widget -->
-                    <div class="sidebar-widget profile-groups-card">
-                        <div class="widget-title-modern">
-                            <img src="/assets/images/collider/users.png">
-                            <h3>Mis Grupos</h3>
-                        </div>
-                        <div class="profile-groups-grid">
-                            <?php include_once("get/profile/homeGroups.php"); ?>
+                        <div class="bento-body">
+                            <div class="groups-flex">
+                                <?php include_once("get/profile/homeGroups.php"); ?>
+                            </div>
                         </div>
                     </div>
 
-                    <!-- Friends Widget -->
-                    <div class="sidebar-widget profile-friends-card">
-                        <div class="widget-title-modern">
-                            <img src="/assets/images/collider/feeds.png">
-                            <h3>Mis Amigos</h3>
-                        </div>
-                        <div class="profile-friends-grid">
-                            <?php include_once("get/profile/homeFriends.php"); ?>
-                        </div>
+                    <!-- Footer Info Card -->
+                    <div class="bento-item info-footer">
+                        <p>Miembro oficial desde el <strong><?= date('d-m-Y', userHome('account_created')); ?></strong></p>
                     </div>
 
                 </div>

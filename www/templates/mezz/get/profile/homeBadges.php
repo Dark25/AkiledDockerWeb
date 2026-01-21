@@ -10,6 +10,6 @@ if ($stmt->RowCount() > 0) {
 <?php
     }
 } else {
-    echo '<p>' . filter(userHome('username')) . ' no tiene placas en este momento.</p>';
+    echo '<p style="color: var(--bento-text-muted);">' . filter(userHome('username')) . ' no tiene placas en este momento.</p>';
 }
 ?>

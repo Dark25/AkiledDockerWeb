@@ -1,6 +1,6 @@
 <?php
 $userId = userHome('id');
-$sql = $dbh->prepare("SELECT * FROM messenger_friendships WHERE user_one_id=:userid OR user_two_id=:userid");
+$sql = $dbh->prepare("SELECT * FROM messenger_friendships WHERE user_one_id=:userid OR user_two_id=:userid LIMIT 12");
 $sql->bindParam(':userid', $userId);
 $sql->execute();
 if ($sql->RowCount() > 0) {
@@ -18,6 +18,6 @@ if ($sql->RowCount() > 0) {
 <?php
     }
 } else {
-    echo '<p style="grid-column: 1 / -1; color: var(--profile-text-muted);">' . filter(userHome('username')) . ' no tiene amigos en este momento.</p>';
+    echo '<p style="grid-column: 1 / -1; color: var(--bento-text-muted);">' . filter(userHome('username')) . ' no tiene amigos en este momento.</p>';
 }
 ?>

@@ -1,7 +1,27 @@
 :root {
-    --profile-bg: rgba(20, 20, 20, 0.7);
-    --profile-card-bg: rgba(30, 30, 30, 0.5);
-    --profile-border: rgba(255, 255, 255, 0.1);
-    --profile-text: #eee;
-    --profile-text-muted: #aaa;
+    --bento-bg: #1e293b;
+    --bento-item-bg: #0f172a;
+    --bento-border: #334155;
+    --bento-text: #f8fafc;
+    --bento-text-muted: #94a3b8;
+    --bento-accent: #818cf8;
+    --bento-accent-soft: rgba(129, 140, 248, 0.1);
+    --bento-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3), 0 2px 4px -1px rgba(0, 0, 0, 0.2);
+}
+
+.hero-banner::after {
+    background: linear-gradient(to bottom, rgba(0,0,0,0.1), rgba(0,0,0,0.4) 50%, var(--bento-item-bg));
+}
+
+.hero-badge-status {
+    background: #059669;
+}
+
+.page-content-collider-content-profile-card-wrapper-aligner-content-badge:hover {
+    background: var(--bento-bg) !important;
+    box-shadow: 0 10px 15px -3px rgba(129, 140, 248, 0.3) !important;
+}
+
+.bento-item.info-footer {
+    background: var(--bento-accent);
 }

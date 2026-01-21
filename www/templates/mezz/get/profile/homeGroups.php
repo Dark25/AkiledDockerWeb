@@ -10,6 +10,6 @@ if ($stmt->RowCount() > 0) {
 <?php
     }
 } else {
-    echo '<p style="grid-column: 1 / -1; color: var(--profile-text-muted);">' . filter(userHome('username')) . ' no tiene grupos en este momento.</p>';
+    echo '<p style="grid-column: 1 / -1; color: var(--bento-text-muted);">' . filter(userHome('username')) . ' no tiene grupos en este momento.</p>';
 }
 ?>
