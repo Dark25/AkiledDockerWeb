@@ -6924,4 +6924,357 @@ a[data-gender*="F"].sex-active {
   background: #3b82f6 !important;
   color: #fff !important;
   font-weight: 500;
+/* Modern Shop Redesign Styles (Added by Jules) */
+.shop-header {
+    position: relative;
+    width: 100%;
+    height: 180px;
+    background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+    border-radius: 16px;
+    margin-bottom: 30px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    padding: 0 40px;
+    box-shadow: 0 10px 25px rgba(59, 130, 246, 0.2);
+}
+
+.shop-header::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: url('/assets/images/header/pattern.png');
+    opacity: 0.1;
+    pointer-events: none;
+}
+
+.shop-header-content {
+    position: relative;
+    z-index: 2;
+}
+
+.shop-header-title {
+    font-size: 32px;
+    font-weight: 800;
+    color: #fff;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 8px;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.shop-header-subtitle {
+    font-size: 16px;
+    color: rgba(255, 255, 255, 0.9);
+    font-weight: 400;
+}
+
+.shop-header-image {
+    position: absolute;
+    right: 40px;
+    bottom: -20px;
+    height: 200px;
+    z-index: 1;
+    filter: drop-shadow(0 10px 15px rgba(0, 0, 0, 0.2));
+    animation: shop_float 4s ease-in-out infinite;
+}
+
+@keyframes shop_float {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+    100% { transform: translateY(0px); }
+}
+
+.loteria-card {
+    background: #fff;
+    border-radius: 16px;
+    padding: 30px;
+    margin-bottom: 30px;
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+.section-title {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom: 20px;
+    color: #1e293b;
+}
+
+.section-title img {
+    width: 32px;
+    height: 32px;
+}
+
+.loteria-desc {
+    font-size: 15px;
+    line-height: 1.6;
+    color: #64748b;
+    margin-bottom: 25px;
+}
+
+.badges-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 20px;
+}
+
+.badge-card {
+    background: #f8fafc;
+    border-radius: 16px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    border: 1px solid #f1f5f9;
+    transition: all 0.3s ease;
+}
+
+.badge-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+    border-color: #eeb425;
+}
+
+.badge-image {
+    width: 50px;
+    height: 50px;
+    object-fit: contain;
+    filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.1));
+    image-rendering: pixelated;
+}
+
+.badge-buy-btn {
+    width: 100%;
+    padding: 8px;
+    background: #eeb425;
+    color: #fff;
+    border-radius: 8px;
+    font-weight: 700;
+    font-size: 13px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    transition: all 0.2s ease;
+}
+
+.badge-buy-btn:hover {
+    background: #d9a322;
+}
+
+.badge-buy-btn.owned {
+    background: #64748b;
+    cursor: default;
+}
+
+.badge-buy-btn img {
+    width: 14px;
+    height: 14px;
+}
+
+.purse-widget {
+    background: #fff;
+    border-radius: 16px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.purse-item {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 12px 15px;
+    background: #f8fafc;
+    border-radius: 12px;
+    border: 1px solid #f1f5f9;
+    transition: all 0.2s ease;
+}
+
+.purse-item:hover {
+    transform: translateX(5px);
+    border-color: #e2e8f0;
+}
+
+.purse-icon {
+    width: 30px;
+    height: 30px;
+    object-fit: contain;
+}
+
+.purse-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.purse-value {
+    font-size: 18px;
+    font-weight: 800;
+    color: #1e293b;
+}
+
+.purse-label {
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    color: #94a3b8;
+    letter-spacing: 0.5px;
+}
+
+.vip-card {
+    background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+    border-radius: 16px;
+    padding: 24px;
+    color: #fff;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 10px 20px rgba(16, 185, 129, 0.2);
+}
+
+.vip-card::before {
+    content: '';
+    position: absolute;
+    top: -20px;
+    right: -20px;
+    width: 100px;
+    height: 100px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+}
+
+.vip-title {
+    font-size: 20px;
+    font-weight: 800;
+    margin-bottom: 10px;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    color: #fff !important;
+}
+
+.vip-desc {
+    font-size: 14px;
+    opacity: 0.9;
+    line-height: 1.5;
+    margin-bottom: 20px;
+    color: #fff !important;
+}
+
+.vip-btn {
+    width: 100%;
+    padding: 12px;
+    background: #fff;
+    color: #059669;
+    border-radius: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: 14px;
+    border: none;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.help-box {
+    font-size: 14px;
+    color: #64748b;
+    line-height: 1.6;
+}
+
+.help-box b {
+    color: #1e293b;
+}
+
+.help-box a {
+    color: #eeb425;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.loteria-inputs {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 20px;
+    justify-content: center;
+}
+
+.loteria-input {
+    width: 120px;
+    height: 50px;
+    background: #f1f5f9;
+    border: 2px solid transparent;
+    border-radius: 12px;
+    text-align: center;
+    font-size: 18px;
+    font-weight: 700;
+    color: #1e293b;
+    transition: all 0.2s ease;
+}
+
+.loteria-input:focus {
+    border-color: #eeb425;
+    background: #fff;
+}
+
+.loteria-btn {
+    background: #eeb425;
+    color: #fff;
+    padding: 12px 30px;
+    border-radius: 12px;
+    font-weight: 700;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 0 auto;
+    border-bottom: 4px solid #d9a322;
+    transition: all 0.1s ease;
+}
+
+.successhop {
+    color: #059669;
+    font-size: 15px;
+    margin-top: 15px;
+}
+
+.errorshop {
+    color: #dc2626;
+    font-size: 15px;
+    margin-top: 15px;
+}
+
+.sidebar-widget.user-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+    transition: all 0.3s ease;
+}
+
+/* Surprise touch for Light Mode Badges */
+.badge-card {
+    position: relative;
+    overflow: hidden;
+}
+
+.badge-card::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(238, 180, 37, 0.1) 0%, transparent 70%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+}
+
+.badge-card:hover::after {
+    opacity: 1;
 }
