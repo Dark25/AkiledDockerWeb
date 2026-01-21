@@ -4,17 +4,21 @@ $menu = "me";
 
 if (empty($_GET['user'])) {
     header("Location:/");
+    exit;
 }
 
-$news = $dbh->prepare("SELECT * FROM users WHERE username = :name");
-$news->bindParam(':name', $_GET['user']);
-$news->execute();
-if ($news->RowCount() == 0) {
+$user_query = $dbh->prepare("SELECT * FROM users WHERE username = :name");
+$user_query->bindParam(':name', $_GET['user']);
+$user_query->execute();
+if ($user_query->rowCount() == 0) {
     header("Location:/");
+    exit;
 }
+$userData = $user_query->fetch();
 ?>
 
-<html lang="en">
+<!DOCTYPE html>
+<html lang="es">
 
 <head>
     <meta charset="UTF-8">
@@ -24,18 +28,18 @@ if ($news->RowCount() == 0) {
     <link rel="stylesheet" type="text/css" href="/assets/styles/app-dark.css" media="(prefers-color-scheme: dark)">
     <link rel="stylesheet" type="text/css" href="/assets/styles/profile.css">
     <link rel="stylesheet" type="text/css" href="/assets/styles/profile-dark.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <title><?= filter(userHome('username')); ?> @ <?= $config['hotelName'] ?></title>
 </head>
 
-<body class="container profile-page-body">
+<body class="profile-page-body">
     <script src="/assets/scripts/page-load.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 
-    <!-- Cosmic Background Overlay -->
-    <div class="cosmic-overlay"></div>
+    <div class="profile-background-overlay"></div>
 
-    <div class="page-content">
-
+    <div class="page-container">
         <?php
         if (!isset($_SESSION['id'])) {
             include('auth/login.php');
@@ -46,127 +50,105 @@ if ($news->RowCount() == 0) {
 
         <?php include_once("includes/menu.php"); ?>
 
-        <div class="cosmic-profile-wrapper">
-            <div class="cosmic-profile-grid">
+        <div class="profile-main-wrapper">
+            <div class="bento-grid">
 
-                <!-- Left Column: Identity & Stats -->
-                <aside class="profile-col-left">
-                    <div class="cosmic-card identity-card animate-fade-in">
-                        <div class="identity-header">
-                            <div class="identity-avatar-box">
-                                <img src="<?php echo $config['AvatarURL']; ?><?= userHome('look'); ?>&direction=2&head_direction=3&gesture=sml&action=wav&size=l" alt="<?= filter(userHome('username')); ?>" class="cosmic-avatar">
-                            </div>
-                        </div>
-
-                        <div class="identity-info">
-                            <h2 class="cosmic-username"><?= filter(userHome('username')); ?></h2>
-                            <p class="cosmic-motto">"<?= filter(userHome('motto')); ?>"</p>
-                            <span class="cosmic-join-date">Hotelero desde <?= date('M Y', userHome('account_created')); ?></span>
-                        </div>
-
-                        <div class="cosmic-stats">
-                            <div class="stat-box stat-credits">
-                                <img src='/templates/<?= $config["skin"]; ?>/assets/images/user-space/credits.png' class="stat-icon">
-                                <div class="stat-details">
-                                    <span class="stat-value"><?= number_format(userHome('credits')); ?></span>
-                                    <span class="stat-label">CRÉDITOS</span>
-                                </div>
-                            </div>
-                            <div class="stat-box stat-planets">
-                                <img src='/templates/<?= $config["skin"]; ?>/assets/images/user-space/planeta.png' class="stat-icon">
-                                <div class="stat-details">
-                                    <span class="stat-value"><?= number_format(userHome('activity_points')); ?></span>
-                                    <span class="stat-label">PLANETAS</span>
-                                </div>
-                            </div>
-                            <div class="stat-box stat-emeralds">
-                                <img src='/templates/<?= $config["skin"]; ?>/assets/images/user-space/esmeralda.png' class="stat-icon">
-                                <div class="stat-details">
-                                    <span class="stat-value"><?= number_format(userHome('vip_points')); ?></span>
-                                    <span class="stat-label">ESMERALDAS</span>
-                                </div>
-                            </div>
+                <!-- Hero Section: Identity -->
+                <section class="bento-item hero-section animate-in">
+                    <div class="hero-header">
+                        <div class="avatar-container">
+                            <div class="avatar-glow"></div>
+                            <img src="<?php echo $config['AvatarURL']; ?><?= userHome('look'); ?>&direction=2&head_direction=3&gesture=sml&action=wav&size=l" alt="<?= filter(userHome('username')); ?>" class="profile-avatar">
                         </div>
                     </div>
-
-                    <!-- Piles of gold/gems decoration at the bottom of left column -->
-                    <div class="decoration-gems animate-fade-in delay-2">
-                        <img src="https://i.imgur.com/0Pz5n3s.png" alt="gems" class="gem-pile">
-                    </div>
-                </aside>
-
-                <!-- Center Column: Badges, Photos, Rocket -->
-                <main class="profile-col-center">
-                    <!-- Badges -->
-                    <div class="cosmic-card section-card animate-slide-up">
-                        <div class="cosmic-card-header">
-                            <h3>Mis Placas</h3>
+                    <div class="hero-body">
+                        <div class="username-row">
+                            <h2 class="username"><?= filter(userHome('username')); ?></h2>
+                            <div class="status-indicator <?= userHome('online') ? 'online' : 'offline' ?>" title="<?= userHome('online') ? 'Conectado' : 'Desconectado' ?>"></div>
                         </div>
-                        <div class="cosmic-card-body badges-container">
-                            <?php include_once("get/profile/homeBadges.php"); ?>
+                        <p class="motto"><?= filter(userHome('motto')); ?></p>
+                        <div class="user-meta">
+                            <span class="join-date"><i class="far fa-calendar-alt"></i> Miembro desde <?= date('M Y', userHome('account_created')); ?></span>
                         </div>
                     </div>
-
-                    <!-- Photos -->
-                    <div class="cosmic-card section-card animate-slide-up delay-1">
-                        <div class="cosmic-card-header">
-                            <h3>Fotos</h3>
+                    <div class="hero-stats">
+                        <div class="stat-pill">
+                            <img src='/templates/<?= $config["skin"]; ?>/assets/images/user-space/credits.png' alt="cr">
+                            <span><?= number_format(userHome('credits')); ?></span>
                         </div>
-                        <div class="cosmic-card-body photos-container">
-                            <?php include_once("get/profile/homePhotos.php"); ?>
+                        <div class="stat-pill">
+                            <img src='/templates/<?= $config["skin"]; ?>/assets/images/user-space/planeta.png' alt="pl">
+                            <span><?= number_format(userHome('activity_points')); ?></span>
                         </div>
-                    </div>
-
-                    <!-- Rocket Decoration -->
-                    <div class="decoration-rocket animate-launch">
-                        <img src="https://i.imgur.com/vH9Z3lO.png" alt="rocket" class="rocket-img">
-                    </div>
-                </main>
-
-                <!-- Right Column: Rooms, Friends, Groups -->
-                <aside class="profile-col-right">
-                    <!-- Rooms -->
-                    <div class="cosmic-card section-card animate-slide-up delay-2">
-                        <div class="cosmic-card-header">
-                            <h3>Salas</h3>
-                        </div>
-                        <div class="cosmic-card-body rooms-container">
-                            <?php include_once("get/profile/homeRooms.php"); ?>
+                        <div class="stat-pill">
+                            <img src='/templates/<?= $config["skin"]; ?>/assets/images/user-space/esmeralda.png' alt="es">
+                            <span><?= number_format(userHome('vip_points')); ?></span>
                         </div>
                     </div>
+                </section>
 
-                    <!-- Friends -->
-                    <div class="cosmic-card section-card animate-slide-up delay-3">
-                        <div class="cosmic-card-header">
-                            <h3>Amigos</h3>
-                        </div>
-                        <div class="cosmic-card-body friends-container">
-                            <?php include_once("get/profile/homeFriends.php"); ?>
-                        </div>
+                <!-- Badges Section -->
+                <section class="bento-item badges-section animate-in delay-1">
+                    <div class="section-title">
+                        <i class="fas fa-id-badge"></i> Mis Placas
                     </div>
+                    <div class="section-content scrollable">
+                        <?php include_once("get/profile/homeBadges.php"); ?>
+                    </div>
+                </section>
 
-                    <!-- Groups -->
-                    <div class="cosmic-card section-card animate-slide-up delay-4">
-                        <div class="cosmic-card-header">
-                            <h3>Grupos</h3>
-                        </div>
-                        <div class="cosmic-card-body groups-container">
-                            <?php include_once("get/profile/homeGroups.php"); ?>
-                        </div>
+                <!-- Photos Section -->
+                <section class="bento-item photos-section animate-in delay-2">
+                    <div class="section-title">
+                        <i class="fas fa-camera"></i> Fotos Recientes
                     </div>
-                </aside>
+                    <div class="section-content scrollable">
+                        <?php include_once("get/profile/homePhotos.php"); ?>
+                    </div>
+                </section>
+
+                <!-- Rooms Section -->
+                <section class="bento-item rooms-section animate-in delay-3">
+                    <div class="section-title">
+                        <i class="fas fa-door-open"></i> Salas de <?= filter(userHome('username')); ?>
+                    </div>
+                    <div class="section-content scrollable">
+                        <?php include_once("get/profile/homeRooms.php"); ?>
+                    </div>
+                </section>
+
+                <!-- Friends Section -->
+                <section class="bento-item friends-section animate-in delay-4">
+                    <div class="section-title">
+                        <i class="fas fa-users"></i> Amigos
+                    </div>
+                    <div class="section-content">
+                        <?php include_once("get/profile/homeFriends.php"); ?>
+                    </div>
+                </section>
+
+                <!-- Groups Section -->
+                <section class="bento-item groups-section animate-in delay-5">
+                    <div class="section-title">
+                        <i class="fas fa-users-cog"></i> Grupos
+                    </div>
+                    <div class="section-content">
+                        <?php include_once("get/profile/homeGroups.php"); ?>
+                    </div>
+                </section>
 
             </div>
 
-            <footer class="cosmic-footer">
-                <p>© <?= date('Y') ?> <?= $config['hotelName'] ?> Hotel.</p>
+            <footer class="profile-footer">
+                <p>&copy; <?= date('Y') ?> <?= $config['hotelName'] ?>. Todos los derechos reservados.</p>
             </footer>
         </div>
 
         <?php include_once('includes/footer.php'); ?>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-        <script src="/assets/scripts/app.js"></script>
     </div>
+
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <script src="/assets/scripts/app.js"></script>
 </body>
 
 </html>

@@ -1,304 +1,286 @@
 :root {
-  --cosmic-purple: #0076a3;
-  --cosmic-deep: #f0f2f5;
-  --cosmic-glass: rgba(255, 255, 255, 0.85);
-  --cosmic-border: rgba(0, 0, 0, 0.08);
-  --cosmic-text: #1f2937;
-  --cosmic-muted: #6b7280;
-  --cosmic-bg-url: url('https://i.imgur.com/2s7S7uC.png');
-  --identity-grad: linear-gradient(160deg, #00b4d8 0%, #0076a3 100%);
+    --glass-bg: rgba(255, 255, 255, 0.7);
+    --glass-border: rgba(255, 255, 255, 0.4);
+    --glass-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.15);
+    --accent-color: #00b4d8;
+    --text-main: #1e293b;
+    --text-muted: #64748b;
+    --card-radius: 24px;
+    --font-poppins: 'Poppins', sans-serif;
+    --bg-url: url('https://i.imgur.com/2s7S7uC.png');
 }
 
 body.profile-page-body {
-    background: #f0f2f5 !important;
-    color: var(--cosmic-text);
-    overflow-x: hidden;
+    background: #f1f5f9;
+    font-family: var(--font-poppins);
+    color: var(--text-main);
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
 }
 
-.cosmic-overlay {
+.profile-background-overlay {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background: var(--cosmic-bg-url) center/cover no-repeat;
-    opacity: 0.8;
+    background: var(--bg-url) center/cover no-repeat;
+    filter: blur(10px) brightness(0.9);
+    transform: scale(1.1);
     z-index: -1;
-    pointer-events: none;
 }
 
-.cosmic-profile-wrapper {
-    max-width: 1200px;
+.profile-main-wrapper {
+    max-width: 1300px;
     margin: 40px auto;
     padding: 0 20px;
-    position: relative;
-    z-index: 1;
 }
 
-.cosmic-profile-grid {
+.bento-grid {
     display: grid;
-    grid-template-columns: 320px 1fr 320px;
-    gap: 20px;
-    align-items: start;
+    grid-template-columns: 360px 1fr 320px;
+    grid-auto-rows: min-content;
+    gap: 24px;
+    grid-template-areas:
+        "hero badges rooms"
+        "hero photos friends"
+        "hero photos groups";
 }
 
-/* Card Styling */
-.cosmic-card {
-    background: var(--cosmic-glass);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    border: 1px solid var(--cosmic-border);
-    border-radius: 18px;
+/* Bento Item Base */
+.bento-item {
+    background: var(--glass-bg);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid var(--glass-border);
+    border-radius: var(--card-radius);
+    box-shadow: var(--glass-shadow);
+    padding: 24px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
     overflow: hidden;
-    margin-bottom: 20px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-    transition: all 0.3s ease;
 }
 
-.cosmic-card-header {
-    padding: 15px 20px;
-    border-bottom: 1px solid var(--cosmic-border);
-    background: rgba(255, 255, 255, 0.03);
+.bento-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 40px 0 rgba(31, 38, 135, 0.25);
 }
 
-.cosmic-card-header h3 {
-    margin: 0;
-    font-size: 1rem;
-    font-weight: 700;
-    color: var(--cosmic-text);
-    letter-spacing: 0.5px;
-}
+/* Section Grid Areas */
+.hero-section { grid-area: hero; display: flex; flex-direction: column; align-items: center; text-align: center; }
+.badges-section { grid-area: badges; }
+.photos-section { grid-area: photos; }
+.rooms-section { grid-area: rooms; }
+.friends-section { grid-area: friends; }
+.groups-section { grid-area: groups; }
 
-.cosmic-card-body {
-    padding: 20px;
-}
-
-/* Identity Card */
-.identity-header {
-    height: 180px;
-    background: var(--identity-grad);
-    display: flex;
-    justify-content: center;
-    align-items: center;
+/* Hero Section Styling */
+.hero-header {
     position: relative;
-    clip-path: polygon(0 0, 100% 0, 100% 85%, 0% 100%);
+    width: 100%;
+    height: 150px;
+    margin-bottom: 80px;
+    background: linear-gradient(135deg, #00b4d8 0%, #0077b6 100%);
+    border-radius: 18px;
+    display: flex;
+    justify-content: center;
 }
 
-.identity-avatar-box {
-    width: 150px;
-    height: 150px;
+.avatar-container {
+    position: absolute;
+    bottom: -60px;
+    width: 140px;
+    height: 140px;
+    background: white;
+    border-radius: 50%;
+    padding: 10px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
     display: flex;
     align-items: center;
     justify-content: center;
-    z-index: 2;
-    filter: drop-shadow(0 10px 20px rgba(0,0,0,0.4));
 }
 
-.cosmic-avatar {
+.profile-avatar {
     image-rendering: pixelated;
-    transform: scale(1.5);
+    transform: scale(1.4);
+    animation: float 3s ease-in-out infinite;
 }
 
-.identity-info {
-    text-align: center;
-    padding: 20px;
+@keyframes float {
+    0%, 100% { transform: scale(1.4) translateY(0); }
+    50% { transform: scale(1.4) translateY(-10px); }
 }
 
-.cosmic-username {
-    font-size: 1.6rem;
-    font-weight: 700;
-    margin: 0 0 10px;
-    color: var(--cosmic-text);
-}
+.hero-body { margin-top: 20px; width: 100%; }
 
-.cosmic-motto {
-    font-style: italic;
-    color: var(--cosmic-muted);
-    font-size: 0.95rem;
-    margin-bottom: 15px;
-    background: rgba(0, 0, 0, 0.2);
-    padding: 10px;
-    border-radius: 10px;
-    display: inline-block;
-}
-
-.cosmic-join-date {
-    font-size: 0.75rem;
-    color: var(--cosmic-purple);
-    font-weight: 600;
-    text-transform: uppercase;
-}
-
-/* Stats */
-.cosmic-stats {
-    padding: 0 15px 20px;
+.username-row {
     display: flex;
-    flex-direction: column;
+    align-items: center;
+    justify-content: center;
     gap: 10px;
+    margin-bottom: 5px;
 }
 
-.stat-box {
-    background: rgba(0, 0, 0, 0.03);
-    border: 1px solid var(--cosmic-border);
-    border-radius: 12px;
-    padding: 12px 15px;
+.username {
+    font-size: 1.8rem;
+    font-weight: 700;
+    margin: 0;
+    color: var(--text-main);
+}
+
+.status-indicator {
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    border: 2px solid white;
+}
+
+.status-indicator.online { background: #10b981; box-shadow: 0 0 10px #10b981; }
+.status-indicator.offline { background: #94a3b8; }
+
+.motto {
+    font-size: 0.95rem;
+    color: var(--text-muted);
+    font-style: italic;
+    background: rgba(0,0,0,0.05);
+    padding: 8px 16px;
+    border-radius: 20px;
+    display: inline-block;
+    margin: 10px 0;
+}
+
+.user-meta { margin-top: 10px; font-size: 0.8rem; color: var(--text-muted); }
+
+.hero-stats {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 12px;
+    width: 100%;
+    margin-top: 30px;
+}
+
+.stat-pill {
     display: flex;
     align-items: center;
     gap: 15px;
-    transition: all 0.3s ease;
+    background: rgba(255,255,255,0.4);
+    padding: 12px 20px;
+    border-radius: 16px;
+    border: 1px solid var(--glass-border);
+    transition: background 0.2s;
 }
 
-.stat-box:hover {
-    background: rgba(255, 255, 255, 0.08);
-    border-color: var(--cosmic-purple);
-    transform: translateX(5px);
-}
+.stat-pill:hover { background: rgba(255,255,255,0.6); }
 
-.stat-icon {
-    width: 24px;
-    height: 24px;
-    object-fit: contain;
-}
+.stat-pill img { width: 28px; height: 28px; }
+.stat-pill span { font-weight: 600; font-size: 1.1rem; }
 
-.stat-details {
-    display: flex;
-    flex-direction: column;
-}
-
-.stat-value {
+/* Section Content Styling */
+.section-title {
     font-weight: 700;
     font-size: 1.1rem;
-    color: var(--cosmic-text);
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: var(--text-main);
 }
 
-.stat-label {
-    font-size: 0.65rem;
-    font-weight: 600;
-    color: var(--cosmic-muted);
+.section-content { position: relative; }
+
+.scrollable {
+    max-height: 400px;
+    overflow-y: auto;
+    padding-right: 5px;
 }
 
-/* Include Content Customization */
-.badges-container, .rooms-container, .friends-container, .groups-container, .photos-container {
-    font-size: 0.9rem;
-}
+.scrollable::-webkit-scrollbar { width: 5px; }
+.scrollable::-webkit-scrollbar-thumb { background: rgba(0,0,0,0.1); border-radius: 10px; }
 
-.cosmic-card-body h2,
-.cosmic-card-body .page-content-collider-content-profile-card-wrapper-aligner-content-title {
+/* Customizing includes content */
+.page-content-collider-content-profile-card-wrapper-aligner-content-title,
+.page-content-collider-content-profile-card-wrapper-aligner-content h2 {
     display: none !important;
 }
 
-.badges-container img {
-    background: rgba(255, 255, 255, 0.05) !important;
-    border: 1px solid rgba(255, 255, 255, 0.1) !important;
-    border-radius: 8px !important;
-    padding: 5px !important;
-    margin: 0 5px 5px 0 !important;
-    transition: transform 0.2s;
-}
-
-.badges-container img:hover {
-    transform: scale(1.1);
-    border-color: var(--cosmic-purple) !important;
-}
-
-.rooms-container .page-content-collider-content-profile-card-wrapper-aligner-content-room {
-    background: rgba(0, 0, 0, 0.03) !important;
-    border: 1px solid var(--cosmic-border) !important;
-    border-radius: 12px !important;
-    padding: 12px !important;
-    margin-bottom: 12px !important;
-    display: flex !important;
-    align-items: center !important;
-    gap: 15px !important;
-    color: var(--cosmic-text) !important;
-    transition: all 0.3s ease;
-}
-
-.rooms-container .page-content-collider-content-profile-card-wrapper-aligner-content-room:hover {
-    background: rgba(255, 255, 255, 0.08) !important;
-    transform: scale(1.02);
-}
-
-.rooms-container img {
-    border-radius: 8px !important;
-    width: 60px !important;
-    height: 60px !important;
-}
-
-.friends-container {
+.badges-section .section-content {
     display: flex;
     flex-wrap: wrap;
     gap: 10px;
 }
 
-.friends-container img {
-    width: 45px !important;
-    height: 45px !important;
-    border-radius: 50% !important;
-    background: rgba(255, 255, 255, 0.1) !important;
-    border: 2px solid var(--cosmic-border) !important;
+.badges-section img {
+    background: rgba(255,255,255,0.5) !important;
+    border: 1px solid var(--glass-border) !important;
+    border-radius: 12px !important;
+    padding: 8px !important;
+    margin: 0 !important;
+    width: 50px;
+    height: 50px;
 }
 
-/* Decorations */
-.decoration-gems {
-    text-align: center;
-    margin-top: -20px;
+.rooms-section .page-content-collider-content-profile-card-wrapper-aligner-content-room {
+    background: rgba(255,255,255,0.4) !important;
+    border: 1px solid var(--glass-border) !important;
+    border-radius: 16px !important;
+    padding: 15px !important;
+    margin-bottom: 12px !important;
+    display: flex !important;
+    align-items: center !important;
+    gap: 15px !important;
+    text-decoration: none !important;
+    color: var(--text-main) !important;
 }
 
-.gem-pile {
-    width: 200px;
-    filter: drop-shadow(0 10px 15px rgba(0,0,0,0.5));
-}
-
-.decoration-rocket {
-    text-align: center;
-    padding: 20px 0;
-}
-
-.rocket-img {
-    width: 150px;
-    filter: drop-shadow(0 0 20px rgba(255, 100, 0, 0.4));
-}
+.rooms-section img { border-radius: 10px !important; width: 50px !important; height: 50px !important; }
 
 /* Animations */
-.animate-launch {
-    animation: launch 4s infinite ease-in-out;
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
 }
 
-@keyframes launch {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-15px); }
+.animate-in {
+    opacity: 0;
+    animation: fadeInUp 0.6s ease-out forwards;
 }
-
-.animate-fade-in { animation: fadeIn 1s ease-out forwards; }
-.animate-slide-up { opacity: 0; animation: slideUp 0.8s ease-out forwards; }
-
-@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
-@keyframes slideUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
 
 .delay-1 { animation-delay: 0.1s; }
 .delay-2 { animation-delay: 0.2s; }
 .delay-3 { animation-delay: 0.3s; }
 .delay-4 { animation-delay: 0.4s; }
+.delay-5 { animation-delay: 0.5s; }
 
-.cosmic-footer {
+.profile-footer {
     text-align: center;
-    padding: 40px 0;
-    color: var(--cosmic-muted);
-    font-size: 0.8rem;
+    margin-top: 50px;
+    padding-bottom: 40px;
+    color: var(--text-muted);
+    font-size: 0.9rem;
 }
 
 /* Responsive */
-@media (max-width: 1100px) {
-    .cosmic-profile-grid {
-        grid-template-columns: 1fr 1fr;
+@media (max-width: 1200px) {
+    .bento-grid {
+        grid-template-columns: 340px 1fr;
+        grid-template-areas:
+            "hero badges"
+            "hero photos"
+            "rooms friends"
+            "groups groups";
     }
-    .profile-col-left { grid-column: span 2; }
 }
 
-@media (max-width: 768px) {
-    .cosmic-profile-grid {
+@media (max-width: 900px) {
+    .bento-grid {
         grid-template-columns: 1fr;
+        grid-template-areas:
+            "hero"
+            "badges"
+            "photos"
+            "rooms"
+            "friends"
+            "groups";
     }
-    .profile-col-left, .profile-col-center, .profile-col-right { grid-column: span 1; }
+    .hero-section { height: auto; }
 }

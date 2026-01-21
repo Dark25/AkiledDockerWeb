@@ -1,50 +1,94 @@
 :root {
-  /* Default dark vars for systems that prefer dark mode */
+    /* Default dark vars for systems that prefer dark mode */
 }
 
 @media (prefers-color-scheme: dark) {
-  :root {
-    --cosmic-purple: #8b5cf6;
-    --cosmic-deep: #020617;
-    --cosmic-glass: rgba(2, 6, 23, 0.85);
-    --cosmic-border: rgba(139, 92, 246, 0.2);
-    --cosmic-bg-url: url('https://i.imgur.com/S8kYqE5.png');
-    --identity-grad: linear-gradient(160deg, #7c3aed 0%, #0f172a 100%);
-    --cosmic-text: #f8fafc;
-  }
+    :root {
+        --glass-bg: rgba(15, 23, 42, 0.75);
+        --glass-border: rgba(255, 255, 255, 0.08);
+        --glass-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.5);
+        --accent-color: #8b5cf6;
+        --text-main: #f8fafc;
+        --text-muted: #94a3b8;
+        --bg-url: url('https://i.imgur.com/S8kYqE5.png');
+    }
+
+    .hero-header {
+        background: linear-gradient(135deg, #7c3aed 0%, #4c1d95 100%) !important;
+    }
+
+    .avatar-container {
+        background: #1e293b !important;
+    }
+
+    .stat-pill {
+        background: rgba(255,255,255,0.05) !important;
+    }
+
+    .stat-pill:hover {
+        background: rgba(255,255,255,0.1) !important;
+    }
+
+    .motto {
+        background: rgba(255,255,255,0.05) !important;
+    }
+
+    .badges-section img {
+        background: rgba(255,255,255,0.05) !important;
+    }
+
+    .rooms-section .page-content-collider-content-profile-card-wrapper-aligner-content-room {
+        background: rgba(255,255,255,0.05) !important;
+        color: #f8fafc !important;
+    }
 }
 
-/* Overrides for manual dark mode toggle */
+/* Manual Dark Mode Toggle */
 body.dark-mode {
-    --cosmic-purple: #8b5cf6;
-    --cosmic-deep: #020617;
-    --cosmic-glass: rgba(2, 6, 23, 0.85);
-    --cosmic-border: rgba(139, 92, 246, 0.2);
-    --cosmic-bg-url: url('https://i.imgur.com/S8kYqE5.png');
-    --identity-grad: linear-gradient(160deg, #7c3aed 0%, #0f172a 100%);
-    --cosmic-text: #f8fafc;
+    --glass-bg: rgba(15, 23, 42, 0.75);
+    --glass-border: rgba(255, 255, 255, 0.08);
+    --glass-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.5);
+    --accent-color: #8b5cf6;
+    --text-main: #f8fafc;
+    --text-muted: #94a3b8;
+    --bg-url: url('https://i.imgur.com/S8kYqE5.png');
 }
 
-/* Specific dark mode enhancements */
-@media (prefers-color-scheme: dark) {
-    .cosmic-overlay { opacity: 0.6; }
-    .cosmic-card:hover { box-shadow: 0 0 30px rgba(139, 92, 246, 0.2); }
-    .cosmic-username { text-shadow: 0 0 10px rgba(139, 92, 246, 0.5); color: #fff; }
-    .cosmic-card-header h3 { color: #fff; }
-    .stat-value { color: #ddd6fe; }
-    .animate-launch { animation: launch-glow 4s infinite ease-in-out; }
-    .rooms-container .page-content-collider-content-profile-card-wrapper-aligner-content-room { color: #fff !important; background: rgba(139, 92, 246, 0.05) !important; }
+body.dark-mode .hero-header {
+    background: linear-gradient(135deg, #7c3aed 0%, #4c1d95 100%) !important;
 }
 
-body.dark-mode .cosmic-overlay { opacity: 0.6; }
-body.dark-mode .cosmic-card:hover { box-shadow: 0 0 30px rgba(139, 92, 246, 0.2); }
-body.dark-mode .cosmic-username { text-shadow: 0 0 10px rgba(139, 92, 246, 0.5); color: #fff; }
-body.dark-mode .cosmic-card-header h3 { color: #fff; }
-body.dark-mode .stat-value { color: #ddd6fe; }
-body.dark-mode .animate-launch { animation: launch-glow 4s infinite ease-in-out; }
-body.dark-mode .rooms-container .page-content-collider-content-profile-card-wrapper-aligner-content-room { color: #fff !important; background: rgba(139, 92, 246, 0.05) !important; }
+body.dark-mode .avatar-container {
+    background: #1e293b !important;
+}
 
-@keyframes launch-glow {
-    0%, 100% { transform: translateY(0); filter: drop-shadow(0 0 20px rgba(255, 100, 0, 0.4)); }
-    50% { transform: translateY(-20px); filter: drop-shadow(0 0 40px rgba(255, 100, 0, 0.8)); }
+body.dark-mode .stat-pill {
+    background: rgba(255,255,255,0.05) !important;
+}
+
+body.dark-mode .stat-pill:hover {
+    background: rgba(255,255,255,0.1) !important;
+}
+
+body.dark-mode .motto {
+    background: rgba(255,255,255,0.05) !important;
+}
+
+body.dark-mode .badges-section img {
+    background: rgba(255,255,255,0.05) !important;
+}
+
+body.dark-mode .rooms-section .page-content-collider-content-profile-card-wrapper-aligner-content-room {
+    background: rgba(255,255,255,0.05) !important;
+    color: #f8fafc !important;
+}
+
+/* Specific dark enhancements */
+body.dark-mode .bento-item:hover {
+    box-shadow: 0 0 30px rgba(139, 92, 246, 0.2);
+    border-color: rgba(139, 92, 246, 0.3);
+}
+
+body.dark-mode .username {
+    text-shadow: 0 0 10px rgba(139, 92, 246, 0.4);
 }
