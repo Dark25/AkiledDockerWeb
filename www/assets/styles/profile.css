@@ -1,0 +1,245 @@
+:root {
+  --bento-gap: 20px;
+  --bento-radius: 24px;
+  --bento-bg: #ffffff;
+  --bento-border: #e2e8f0;
+  --bento-text: #1a202c;
+  --bento-text-muted: #718096;
+  --bento-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+.profile-container {
+  max-width: 1250px;
+  margin: 40px auto;
+  padding: 0 20px;
+}
+
+.bento-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: auto;
+  gap: var(--bento-gap);
+}
+
+.bento-item {
+  background: var(--bento-bg);
+  border: 1px solid var(--bento-border);
+  border-radius: var(--bento-radius);
+  padding: 24px;
+  box-shadow: var(--bento-shadow);
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.bento-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+}
+
+/* Hero Section */
+.bento-item.hero {
+  grid-column: span 2;
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  border: none;
+}
+
+.hero-avatar {
+  width: 100px;
+  height: 100px;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  backdrop-filter: blur(10px);
+  flex-shrink: 0;
+}
+
+.hero-avatar img {
+    margin-top: -20px;
+}
+
+.hero-info h1 {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+
+.hero-info p {
+  font-size: 1rem;
+  opacity: 0.9;
+  font-style: italic;
+}
+
+/* Stats Section */
+.bento-item.stats {
+  grid-column: span 2;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.stat-box {
+  text-align: center;
+}
+
+.stat-box img {
+  width: 32px;
+  height: 32px;
+  margin-bottom: 8px;
+  object-fit: contain;
+}
+
+.stat-value {
+  display: block;
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--bento-text);
+}
+
+.stat-label {
+  font-size: 0.75rem;
+  color: var(--bento-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* Common Styles */
+.bento-title {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-bottom: 16px;
+  color: var(--bento-text);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.bento-title img {
+    width: 20px;
+}
+
+/* Badges Section */
+.bento-item.badges {
+  grid-column: span 2;
+}
+
+/* Rooms Section */
+.bento-item.rooms {
+  grid-column: span 2;
+}
+
+/* Friends Section */
+.bento-item.friends {
+  grid-column: span 2;
+}
+
+/* Photos Section */
+.bento-item.photos {
+    grid-column: span 4;
+}
+
+/* Footer / Joined Date */
+.profile-footer {
+    grid-column: span 4;
+    text-align: center;
+    padding: 20px;
+    color: var(--bento-text-muted);
+    font-size: 0.9rem;
+}
+
+/* Overrides for includes */
+.page-content-collider-content-profile-card-wrapper-aligner-content-title {
+    display: none;
+}
+
+.page-content-collider-content-profile-card-wrapper-aligner-content {
+    background: transparent !important;
+    padding: 0 !important;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.page-content-collider-content-profile-card-wrapper-aligner-content-badge {
+    margin: 0 !important;
+    padding: 5px !important;
+    background: rgba(0,0,0,0.05);
+    border-radius: 8px;
+    transition: transform 0.2s;
+}
+
+.page-content-collider-content-profile-card-wrapper-aligner-content-badge:hover {
+    transform: scale(1.1);
+}
+
+.page-content-collider-content-profile-card-wrapper-aligner-content-room {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 120px;
+    background: rgba(0,0,0,0.03);
+    padding: 10px;
+    border-radius: 12px;
+    gap: 8px;
+    text-align: center;
+}
+
+.page-content-collider-content-profile-card-wrapper-aligner-content-room-image {
+    width: 100%;
+    border-radius: 8px;
+}
+
+.page-content-collider-content-profile-card-wrapper-aligner-content-room-name {
+    font-size: 0.8rem;
+    font-weight: 500;
+    color: var(--bento-text);
+}
+
+.page-content-collider-content-profile-card-wrapper-aligner-content-friend {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 80px;
+    gap: 5px;
+}
+
+.page-content-collider-content-profile-card-wrapper-aligner-content-friend-figure {
+    width: 60px;
+    height: 60px;
+    object-fit: cover;
+    background: rgba(0,0,0,0.03);
+    border-radius: 50%;
+}
+
+.page-content-collider-content-profile-card-wrapper-aligner-content-friend-username {
+    font-size: 0.75rem;
+    font-weight: 500;
+    color: var(--bento-text);
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .bento-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .bento-item.photos {
+    grid-column: span 2;
+  }
+  .profile-footer {
+      grid-column: span 2;
+  }
+}
+
+@media (max-width: 640px) {
+  .bento-grid {
+    grid-template-columns: 1fr;
+  }
+  .bento-item.hero, .bento-item.stats, .bento-item.badges, .bento-item.rooms, .bento-item.friends, .bento-item.photos, .profile-footer {
+    grid-column: span 1;
+  }
+}
