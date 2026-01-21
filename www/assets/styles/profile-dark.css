@@ -1,77 +1,97 @@
 @media (prefers-color-scheme: dark) {
     :root {
-        --solaris-bg: #020617;
-        --solaris-card-bg: rgba(15, 23, 42, 0.6);
-        --solaris-card-border: rgba(255, 255, 255, 0.08);
-        --solaris-text: #f8fafc;
-        --solaris-text-muted: #94a3b8;
-        --solaris-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.3);
+        --profile-bg: #020617;
+        --profile-card: #0f172a;
+        --profile-text: #f8fafc;
+        --profile-text-muted: #94a3b8;
+        --profile-border: rgba(255, 255, 255, 0.1);
+        --profile-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.4), 0 10px 10px -5px rgba(0, 0, 0, 0.2);
     }
 
-    .profile-background-overlay {
-        background:
-            radial-gradient(circle at 20% 30%, rgba(99, 102, 241, 0.25) 0%, transparent 40%),
-            radial-gradient(circle at 80% 70%, rgba(244, 63, 94, 0.2) 0%, transparent 40%),
-            url('https://i.imgur.com/S8kYqE5.png') center/cover no-repeat;
-        filter: blur(5px) brightness(0.6);
+    .header-banner::after {
+        background: linear-gradient(to top, var(--profile-card), transparent);
     }
 
-    .hero-stat-item {
-        background: rgba(255,255,255,0.03) !important;
+    .q-stat {
+        background: rgba(255, 255, 255, 0.05);
     }
 
-    .badges-list img {
-        background: rgba(255,255,255,0.05) !important;
+    .badges-display-grid img {
+        background: rgba(255, 255, 255, 0.05);
     }
 
-    .rooms-list .page-content-collider-content-profile-card-wrapper-aligner-content-room {
-        background: rgba(255,255,255,0.03) !important;
-        color: #f8fafc !important;
+    .rooms-display-list .page-content-collider-content-profile-card-wrapper-aligner-content-room {
+        background: rgba(255, 255, 255, 0.03) !important;
     }
 
-    .friends-mini, .groups-mini {
-        background: rgba(255,255,255,0.02) !important;
+    .rooms-display-list .page-content-collider-content-profile-card-wrapper-aligner-content-room:hover {
+        background: rgba(255, 255, 255, 0.06) !important;
     }
 
-    .hero-username {
-        text-shadow: 0 0 20px rgba(99, 102, 241, 0.4);
+    .page-content-collider-content-profile-card-wrapper-aligner-content-friend-figure {
+        background: rgba(255, 255, 255, 0.05);
+    }
+
+    .avatar-ring {
+        background: var(--profile-card);
+        border-color: var(--profile-card);
+    }
+
+    .status-badge.online {
+        background: rgba(5, 150, 105, 0.2);
+        color: #34d399;
+    }
+
+    .status-badge.offline {
+        background: rgba(220, 38, 38, 0.2);
+        color: #f87171;
     }
 }
 
 body.dark-mode {
-    --solaris-bg: #020617;
-    --solaris-card-bg: rgba(15, 23, 42, 0.6);
-    --solaris-card-border: rgba(255, 255, 255, 0.08);
-    --solaris-text: #f8fafc;
-    --solaris-text-muted: #94a3b8;
-    --solaris-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.3);
+    --profile-bg: #020617;
+    --profile-card: #0f172a;
+    --profile-text: #f8fafc;
+    --profile-text-muted: #94a3b8;
+    --profile-border: rgba(255, 255, 255, 0.1);
+    --profile-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.4), 0 10px 10px -5px rgba(0, 0, 0, 0.2);
 }
 
-body.dark-mode .profile-background-overlay {
-    background:
-        radial-gradient(circle at 20% 30%, rgba(99, 102, 241, 0.25) 0%, transparent 40%),
-        radial-gradient(circle at 80% 70%, rgba(244, 63, 94, 0.2) 0%, transparent 40%),
-        url('https://i.imgur.com/S8kYqE5.png') center/cover no-repeat;
-    filter: blur(5px) brightness(0.6);
+body.dark-mode .header-banner::after {
+    background: linear-gradient(to top, var(--profile-card), transparent);
 }
 
-body.dark-mode .hero-stat-item {
-    background: rgba(255,255,255,0.03) !important;
+body.dark-mode .q-stat {
+    background: rgba(255, 255, 255, 0.05);
 }
 
-body.dark-mode .badges-list img {
-    background: rgba(255,255,255,0.05) !important;
+body.dark-mode .badges-display-grid img {
+    background: rgba(255, 255, 255, 0.05);
 }
 
-body.dark-mode .rooms-list .page-content-collider-content-profile-card-wrapper-aligner-content-room {
-    background: rgba(255,255,255,0.03) !important;
-    color: #f8fafc !important;
+body.dark-mode .rooms-display-list .page-content-collider-content-profile-card-wrapper-aligner-content-room {
+    background: rgba(255, 255, 255, 0.03) !important;
 }
 
-    body.dark-mode .friends-mini, body.dark-mode .groups-mini {
-        background: rgba(255,255,255,0.02) !important;
-    }
+body.dark-mode .rooms-display-list .page-content-collider-content-profile-card-wrapper-aligner-content-room:hover {
+    background: rgba(255, 255, 255, 0.06) !important;
+}
 
-body.dark-mode .hero-username {
-    text-shadow: 0 0 20px rgba(99, 102, 241, 0.4);
+body.dark-mode .page-content-collider-content-profile-card-wrapper-aligner-content-friend-figure {
+    background: rgba(255, 255, 255, 0.05);
+}
+
+body.dark-mode .avatar-ring {
+    background: var(--profile-card);
+    border-color: var(--profile-card);
+}
+
+body.dark-mode .status-badge.online {
+    background: rgba(5, 150, 105, 0.2);
+    color: #34d399;
+}
+
+body.dark-mode .status-badge.offline {
+    background: rgba(220, 38, 38, 0.2);
+    color: #f87171;
 }

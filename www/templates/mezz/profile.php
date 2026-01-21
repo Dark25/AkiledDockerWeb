@@ -14,6 +14,7 @@ if ($user_query->rowCount() == 0) {
     header("Location:/");
     exit;
 }
+    $userData = $user_query->fetch();
 ?>
 
 <!DOCTYPE html>
@@ -27,7 +28,7 @@ if ($user_query->rowCount() == 0) {
     <link rel="stylesheet" type="text/css" href="/assets/styles/app-dark.css" media="(prefers-color-scheme: dark)">
     <link rel="stylesheet" type="text/css" href="/assets/styles/profile.css">
     <link rel="stylesheet" type="text/css" href="/assets/styles/profile-dark.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <title><?= filter(userHome('username')); ?> @ <?= $config['hotelName'] ?></title>
@@ -36,7 +37,7 @@ if ($user_query->rowCount() == 0) {
 <body class="profile-page-body">
     <script src="/assets/scripts/page-load.js"></script>
 
-    <div class="profile-background-overlay"></div>
+    <div class="profile-mesh-bg"></div>
 
     <div class="page-container">
         <?php
@@ -49,108 +50,132 @@ if ($user_query->rowCount() == 0) {
 
         <?php include_once("includes/menu.php"); ?>
 
-        <div class="profile-main-wrapper">
-            <div class="solaris-grid">
-
-                <!-- Hero Column -->
-                <aside class="solaris-card hero-card animate-up">
-                    <div class="hero-cover">
-                        <div class="avatar-wrapper">
-                            <img src="<?php echo $config['AvatarURL']; ?><?= userHome('look'); ?>&direction=2&head_direction=3&gesture=sml&action=wav&size=l" alt="<?= filter(userHome('username')); ?>" class="profile-avatar">
+        <div class="profile-content-container">
+            <!-- Profile Header Card -->
+            <div class="profile-header-card animate-fade-in">
+                <div class="header-banner"></div>
+                <div class="header-main-info">
+                    <div class="avatar-container">
+                        <div class="avatar-ring"></div>
+                        <img src="<?php echo $config['AvatarURL']; ?><?= userHome('look'); ?>&direction=2&head_direction=2&gesture=sml&action=wav&size=l" alt="<?= filter(userHome('username')); ?>" class="profile-avatar-img">
+                    </div>
+                    <div class="user-text-info">
+                        <h1 class="user-name-display"><?= filter(userHome('username')); ?></h1>
+                        <p class="user-motto-display"><?= filter(userHome('motto')); ?></p>
+                        <div class="user-badges-mini">
+                             <?php if($userData['online'] == 1): ?>
+                                <span class="status-badge online">En línea</span>
+                             <?php else: ?>
+                                <span class="status-badge offline">Desconectado</span>
+                             <?php endif; ?>
                         </div>
                     </div>
-
-                    <div class="hero-info">
-                        <h2 class="hero-username"><?= filter(userHome('username')); ?></h2>
-                        <span class="hero-motto">"<?= filter(userHome('motto')); ?>"</span>
-
-                        <div class="hero-stats-grid">
-                            <div class="hero-stat-item">
-                                <div class="stat-info">
-                                    <img src="/templates/<?= $config["skin"]; ?>/assets/images/user-space/credits.png" class="stat-icon">
-                                    <span class="stat-label">Créditos</span>
-                                </div>
-                                <span class="stat-value"><?= number_format(userHome('credits')); ?></span>
-                            </div>
-                            <div class="hero-stat-item">
-                                <div class="stat-info">
-                                    <img src="/templates/<?= $config["skin"]; ?>/assets/images/user-space/planeta.png" class="stat-icon">
-                                    <span class="stat-label">Planetas</span>
-                                </div>
-                                <span class="stat-value"><?= number_format(userHome('activity_points')); ?></span>
-                            </div>
-                            <div class="hero-stat-item">
-                                <div class="stat-info">
-                                    <img src="/templates/<?= $config["skin"]; ?>/assets/images/user-space/esmeralda.png" class="stat-icon">
-                                    <span class="stat-label">Esmeraldas</span>
-                                </div>
-                                <span class="stat-value"><?= number_format(userHome('vip_points')); ?></span>
-                            </div>
+                    <div class="header-quick-stats">
+                        <div class="q-stat">
+                            <span class="q-val"><?= number_format(userHome('credits')); ?></span>
+                            <span class="q-lab">Créditos</span>
+                        </div>
+                        <div class="q-stat">
+                            <span class="q-val"><?= number_format(userHome('activity_points')); ?></span>
+                            <span class="q-lab">Planetas</span>
+                        </div>
+                        <div class="q-stat">
+                            <span class="q-val"><?= number_format(userHome('vip_points')); ?></span>
+                            <span class="q-lab">Esmeraldas</span>
                         </div>
                     </div>
-                </aside>
-
-                <!-- Middle Column: Badges & Photos -->
-                <main class="center-column">
-                    <!-- Badges -->
-                    <section class="solaris-card animate-up delay-1" style="margin-bottom: 30px;">
-                        <header class="section-header">
-                            <div class="section-icon"><i class="fas fa-certificate"></i></div>
-                            <h3 class="section-title">Colección de Placas</h3>
-                        </header>
-                        <div class="badges-list">
-                            <?php include_once("get/profile/homeBadges.php"); ?>
-                        </div>
-                    </section>
-
-                    <!-- Photos -->
-                    <section class="solaris-card animate-up delay-2">
-                        <header class="section-header">
-                            <div class="section-icon"><i class="fas fa-camera-retro"></i></div>
-                            <h3 class="section-title">Momentos Recientes</h3>
-                        </header>
-                        <div class="photos-list">
-                            <?php include_once("get/profile/homePhotos.php"); ?>
-                        </div>
-                    </section>
-                </main>
-
-                <!-- Right Column: Rooms, Friends, Groups -->
-                <aside class="right-column">
-                    <!-- Rooms -->
-                    <section class="solaris-card animate-up delay-1" style="margin-bottom: 30px;">
-                        <header class="section-header">
-                            <div class="section-icon"><i class="fas fa-door-open"></i></div>
-                            <h3 class="section-title">Salas Propias</h3>
-                        </header>
-                        <div class="rooms-list">
-                            <?php include_once("get/profile/homeRooms.php"); ?>
-                        </div>
-                    </section>
-
-                    <!-- Social Bento (Friends + Groups) -->
-                    <section class="solaris-card animate-up delay-2">
-                        <header class="section-header">
-                            <div class="section-icon"><i class="fas fa-share-nodes"></i></div>
-                            <h3 class="section-title">Social</h3>
-                        </header>
-                        <div class="social-tabs" style="display: flex; gap: 20px; flex-direction: column;">
-                            <div class="friends-mini">
-                                <h4 style="font-size: 0.9rem; color: var(--solaris-text-muted); margin-bottom: 10px;">Amigos</h4>
-                                <?php include_once("get/profile/homeFriends.php"); ?>
-                            </div>
-                            <div class="groups-mini">
-                                <h4 style="font-size: 0.9rem; color: var(--solaris-text-muted); margin-bottom: 10px;">Grupos</h4>
-                                <?php include_once("get/profile/homeGroups.php"); ?>
-                            </div>
-                        </div>
-                    </section>
-                </aside>
-
+                </div>
             </div>
 
-            <footer style="text-align: center; margin-top: 60px; color: var(--solaris-text-muted); font-size: 0.9rem;">
-                <p>&copy; <?= date('Y') ?> <?= $config['hotelName'] ?>. Rediseñado con <i class="fas fa-heart" style="color: var(--solaris-accent);"></i></p>
+            <div class="profile-grid-layout">
+                <!-- Left Sidebar -->
+                <div class="profile-grid-aside">
+                    <!-- Statistics Card -->
+                    <div class="card-modern animate-fade-in delay-1">
+                        <div class="card-header">
+                            <i class="fas fa-calendar-alt"></i>
+                            <span>Información</span>
+                        </div>
+                        <div class="card-body">
+                            <div class="stat-row">
+                                <span class="stat-name">Miembro desde</span>
+                                <span class="stat-number"><?= date('d/m/Y', userHome('account_created')); ?></span>
+                            </div>
+                            <div class="stat-row">
+                                <span class="stat-name">Última conexión</span>
+                                <span class="stat-number"><?= date('d/m/Y', userHome('last_online')); ?></span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Groups Card -->
+                    <div class="card-modern animate-fade-in delay-2">
+                        <div class="card-header">
+                            <i class="fas fa-users"></i>
+                            <span>Grupos</span>
+                        </div>
+                        <div class="card-body groups-overflow">
+                            <?php include_once("get/profile/homeGroups.php"); ?>
+                        </div>
+                    </div>
+
+                    <!-- Friends Card -->
+                    <div class="card-modern animate-fade-in delay-3">
+                        <div class="card-header">
+                            <i class="fas fa-heart"></i>
+                            <span>Amigos</span>
+                        </div>
+                        <div class="card-body friends-grid-mini">
+                            <?php include_once("get/profile/homeFriends.php"); ?>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Main Content Area -->
+                <div class="profile-grid-main">
+                    <!-- Badges Section -->
+                    <div class="card-modern animate-fade-in delay-1">
+                        <div class="card-header">
+                            <i class="fas fa-award"></i>
+                            <span>Colección de Placas</span>
+                        </div>
+                        <div class="card-body">
+                            <div class="badges-display-grid">
+                                <?php include_once("get/profile/homeBadges.php"); ?>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Rooms Section -->
+                    <div class="card-modern animate-fade-in delay-2">
+                        <div class="card-header">
+                            <i class="fas fa-door-open"></i>
+                            <span>Salas Creadas</span>
+                        </div>
+                        <div class="card-body">
+                            <div class="rooms-display-list">
+                                <?php include_once("get/profile/homeRooms.php"); ?>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Photos Section -->
+                    <div class="card-modern animate-fade-in delay-3">
+                        <div class="card-header">
+                            <i class="fas fa-camera"></i>
+                            <span>Galería de Fotos</span>
+                        </div>
+                        <div class="card-body">
+                            <div class="photos-display-grid">
+                                <?php include_once("get/profile/homePhotos.php"); ?>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <footer class="profile-footer">
+                <p>&copy; <?= date('Y') ?> <?= $config['hotelName'] ?> Hotel. Todos los derechos reservados.</p>
             </footer>
         </div>
 
