@@ -51,343 +51,11 @@ if ($readingTime < 1) $readingTime = 1;
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="/assets/styles/app.css" media="(prefers-color-scheme: light)">
+    <link rel="stylesheet" type="text/css" href="/assets/styles/app.css">
     <link rel="stylesheet" type="text/css" href="/assets/styles/app-dark.css" media="(prefers-color-scheme: dark)">
+    <link rel="stylesheet" type="text/css" href="/assets/styles/news.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <title><?= $config['hotelName'] ?>: <?= $articleFound ? filter($article['title']) : $lang["Nnews"] ?></title>
-
-    <style>
-        :root {
-            --accent-color: #eeb425;
-            --card-bg: #ffffff;
-            --text-main: #1e293b;
-            --text-muted: #64748b;
-            --border-color: rgba(0,0,0,0.06);
-        }
-
-        @media (prefers-color-scheme: dark) {
-            :root {
-                --card-bg: #1f2937;
-                --text-main: #f1f5f9;
-                --text-muted: #94a3b8;
-                --border-color: rgba(255,255,255,0.05);
-            }
-        }
-
-        .news-container {
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
-            width: 100%;
-        }
-
-        /* Breadcrumbs */
-        .breadcrumbs {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            font-size: 13px;
-            font-weight: 500;
-            color: var(--text-muted);
-            margin-bottom: 5px;
-            animation: fadeInDown 0.5s ease-out;
-        }
-
-        .breadcrumbs a {
-            color: var(--text-muted);
-            text-decoration: none;
-            transition: color 0.2s;
-        }
-
-        .breadcrumbs a:hover {
-            color: var(--accent-color);
-        }
-
-        .breadcrumbs span {
-            opacity: 0.5;
-        }
-
-        @keyframes fadeInDown {
-            from { opacity: 0; transform: translateY(-10px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        /* Article Card */
-        .article-card {
-            background: var(--card-bg);
-            border-radius: 20px;
-            overflow: hidden;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
-            border: 1px solid var(--border-color);
-            animation: fadeInUp 0.6s ease-out;
-        }
-
-        @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        .article-hero {
-            position: relative;
-            height: 280px;
-            background-size: cover;
-            background-position: center;
-            display: flex;
-            align-items: flex-end;
-        }
-
-        .article-hero::after {
-            content: '';
-            position: absolute;
-            bottom: 0; left: 0; right: 0; top: 0;
-            background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0) 60%);
-        }
-
-        .article-hero-overlay {
-            position: relative;
-            z-index: 2;
-            padding: 30px 40px;
-            width: 100%;
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-end;
-        }
-
-        .article-title-box h1 {
-            color: #fff !important;
-            font-size: 32px;
-            font-weight: 800;
-            margin: 0;
-            line-height: 1.2;
-            text-shadow: 0 2px 10px rgba(0,0,0,0.5);
-        }
-
-        .article-category-badge {
-            background: var(--accent-color);
-            color: #fff;
-            padding: 4px 12px;
-            border-radius: 100px;
-            font-size: 11px;
-            font-weight: 800;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-bottom: 10px;
-            display: inline-block;
-        }
-
-        .article-body {
-            padding: 40px;
-        }
-
-        .article-lead-text {
-            font-size: 18px;
-            font-weight: 600;
-            color: var(--text-main);
-            line-height: 1.6;
-            margin-bottom: 25px;
-            padding-left: 20px;
-            border-left: 4px solid var(--accent-color);
-        }
-
-        .article-main-text {
-            font-size: 15px;
-            line-height: 1.8;
-            color: var(--text-muted);
-        }
-
-        .article-main-text p {
-            margin-bottom: 1.5rem;
-        }
-
-        .article-main-text img {
-            max-width: 100%;
-            border-radius: 12px;
-            margin: 10px 0;
-        }
-
-        /* Footer Meta */
-        .article-footer {
-            padding: 25px 40px;
-            background: rgba(0,0,0,0.02);
-            border-top: 1px solid var(--border-color);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        @media (prefers-color-scheme: dark) {
-            .article-footer {
-                background: rgba(255,255,255,0.02);
-            }
-        }
-
-        .author-info-box {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-        }
-
-        .author-avatar-circle {
-            width: 50px;
-            height: 50px;
-            background: rgba(0,0,0,0.05);
-            border-radius: 50%;
-            position: relative;
-            overflow: hidden;
-            border: 2px solid var(--accent-color);
-        }
-
-        .author-avatar-circle img {
-            position: absolute;
-            top: 45%;
-            left: 50%;
-            transform: translate(-50%, -40%);
-            width: 100px;
-        }
-
-        .author-details a {
-            display: block;
-            font-weight: 700;
-            color: var(--text-main);
-            text-decoration: none;
-            font-size: 15px;
-        }
-
-        .author-details span {
-            font-size: 12px;
-            color: var(--text-muted);
-        }
-
-        /* Archive Widget */
-        .archive-widget {
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-        }
-
-        .archive-section-label {
-            font-size: 11px;
-            font-weight: 800;
-            color: var(--accent-color);
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
-            margin-top: 10px;
-            padding-left: 5px;
-        }
-
-        .archive-item {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            padding: 10px;
-            border-radius: 12px;
-            text-decoration: none;
-            transition: all 0.2s;
-            border: 1px solid transparent;
-        }
-
-        .archive-item:hover {
-            background: rgba(238, 180, 37, 0.05);
-            border-color: rgba(238, 180, 37, 0.1);
-            transform: translateX(5px);
-        }
-
-        .archive-item.active {
-            background: var(--accent-color);
-        }
-
-        .archive-item.active * {
-            color: #fff !important;
-        }
-
-        .archive-icon {
-            width: 36px;
-            height: 36px;
-            background: rgba(0,0,0,0.05);
-            border-radius: 8px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-shrink: 0;
-        }
-
-        @media (prefers-color-scheme: dark) {
-            .archive-icon {
-                background: rgba(255,255,255,0.05);
-            }
-        }
-
-        .archive-item-info {
-            flex: 1;
-            min-width: 0;
-        }
-
-        .archive-item-title {
-            display: block;
-            font-size: 14px;
-            font-weight: 600;
-            color: var(--text-main);
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
-        }
-
-        /* Related News */
-        .related-news {
-            margin-top: 30px;
-        }
-
-        .related-news-title {
-            font-size: 18px;
-            font-weight: 800;
-            color: var(--text-main);
-            margin-bottom: 20px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .related-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
-            gap: 20px;
-        }
-
-        .related-card {
-            background: var(--card-bg);
-            border-radius: 16px;
-            overflow: hidden;
-            border: 1px solid var(--border-color);
-            transition: transform 0.3s;
-            text-decoration: none;
-        }
-
-        .related-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-        }
-
-        .related-thumb {
-            height: 120px;
-            background-size: cover;
-            background-position: center;
-        }
-
-        .related-info {
-            padding: 15px;
-        }
-
-        .related-card-title {
-            font-size: 14px;
-            font-weight: 700;
-            color: var(--text-main);
-            display: -webkit-box;
-            -webkit-line-clamp: 2;
-            -webkit-box-orient: vertical;
-            overflow: hidden;
-            line-height: 1.4;
-        }
-    </style>
 </head>
 
 <body class="container">
@@ -526,6 +194,54 @@ if ($readingTime < 1) $readingTime = 1;
                                 }
                             }
                             ?>
+                        </div>
+                    </div>
+
+                    <!-- Staff Online Widget -->
+                    <div class="sidebar-widget">
+                        <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 20px;">
+                            <img src="/assets/images/collider/users.png" style="width: 24px; height: 24px;">
+                            <h3 style="font-size: 16px; font-weight: 800; margin: 0;">Staff Online</h3>
+                        </div>
+                        <div class="staff-online-widget">
+                            <?php
+                            $stmt = $dbh->prepare("SELECT username, look, online FROM users WHERE rank >= 10 AND online = 1 LIMIT 5");
+                            $stmt->execute();
+                            if ($stmt->rowCount() > 0) {
+                                while ($staff = $stmt->fetch()):
+                            ?>
+                                <a href="/profile/<?= filter($staff['username']) ?>" class="staff-online-item">
+                                    <div class="staff-online-avatar">
+                                        <img src="<?= $config['AvatarURL'] ?><?= filter($staff['look']) ?>&direction=2&head_direction=3&gesture=sml&size=s">
+                                    </div>
+                                    <div class="staff-online-info">
+                                        <div class="staff-online-name"><?= filter($staff['username']) ?></div>
+                                        <div class="staff-online-rank">En línea</div>
+                                    </div>
+                                </a>
+                            <?php
+                                endwhile;
+                            } else {
+                                echo '<p style="font-size: 13px; color: var(--text-muted); text-align: center;">No hay staff en línea.</p>';
+                            }
+                            ?>
+                        </div>
+                    </div>
+
+                    <!-- Latest Photos Widget -->
+                    <div class="sidebar-widget">
+                        <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 20px;">
+                            <img src="/assets/images/collider/camera.png" style="width: 24px; height: 24px;">
+                            <h3 style="font-size: 16px; font-weight: 800; margin: 0;"><?= $lang["Plastphotos"] ?></h3>
+                        </div>
+                        <div class="photo-grid-widget">
+                            <?php
+                            $stmt = $dbh->prepare("SELECT photo FROM user_photos ORDER BY time DESC LIMIT 6");
+                            $stmt->execute();
+                            while ($photo = $stmt->fetch()):
+                            ?>
+                                <div class="photo-item-sm" style="background-image: url('<?= $config['roomphotos'] ?><?= filter($photo['photo']) ?>.png')"></div>
+                            <?php endwhile; ?>
                         </div>
                     </div>
 
