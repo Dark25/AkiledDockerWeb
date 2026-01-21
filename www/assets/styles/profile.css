@@ -8,24 +8,6 @@
     --profile-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.15);
 }
 
-body.dark-mode {
-    --profile-bg: rgba(20, 20, 20, 0.7);
-    --profile-card-bg: rgba(30, 30, 30, 0.5);
-    --profile-border: rgba(255, 255, 255, 0.1);
-    --profile-text: #eee;
-    --profile-text-muted: #aaa;
-}
-
-@media (prefers-color-scheme: dark) {
-    :root:not(.light-mode) {
-        --profile-bg: rgba(20, 20, 20, 0.7);
-        --profile-card-bg: rgba(30, 30, 30, 0.5);
-        --profile-border: rgba(255, 255, 255, 0.1);
-        --profile-text: #eee;
-        --profile-text-muted: #aaa;
-    }
-}
-
 .profile-header-card {
     position: relative;
     background: var(--profile-bg);

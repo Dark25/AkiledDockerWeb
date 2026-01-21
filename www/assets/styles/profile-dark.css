@@ -1,0 +1,7 @@
+:root {
+    --profile-bg: rgba(20, 20, 20, 0.7);
+    --profile-card-bg: rgba(30, 30, 30, 0.5);
+    --profile-border: rgba(255, 255, 255, 0.1);
+    --profile-text: #eee;
+    --profile-text-muted: #aaa;
+}
