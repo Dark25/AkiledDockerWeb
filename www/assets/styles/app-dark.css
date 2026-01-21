@@ -1018,7 +1018,6 @@ a,
   justify-content: center;
   background-color: #111827;
   width: 100%;
-  z-index: 100;
   border-bottom: 1px solid rgba(255, 255, 255, 0.05);
   box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.2);
 }
