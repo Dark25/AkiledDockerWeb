@@ -31,7 +31,9 @@ $me_active = 'active';
                     <?php include_once("get/getNews.php"); ?>
                     <?php include_once("get/getPhotos.php"); ?>
                 </div>
-                <?php include_once("includes/sidebar.php"); ?>
+                <div class="page-content-sidebar">
+                    <?php include_once("includes/sidebar.php"); ?>
+                </div>
             </div>
         </div>
         <?php include_once('includes/footer.php'); ?>
