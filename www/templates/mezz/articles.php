@@ -58,8 +58,14 @@ if ($readingTime < 1) $readingTime = 1;
     <title><?= $config['hotelName'] ?>: <?= $articleFound ? filter($article['title']) : $lang["Nnews"] ?></title>
 </head>
 
-<body class="container">
+<body class="container news-page-theme">
     <script src="/assets/scripts/page-load.js"></script>
+
+    <!-- Reading Progress Bar -->
+    <div class="reading-progress-container">
+        <div class="reading-progress-bar" id="progressBar"></div>
+    </div>
+
     <div class="page-content">
         <?php
         if (!isset($_SESSION['id'])) {
@@ -78,67 +84,100 @@ if ($readingTime < 1) $readingTime = 1;
                 <div class="page-content-main-column">
                     <div class="news-container">
 
-                        <!-- Breadcrumbs -->
-                        <div class="breadcrumbs">
-                            <a href="/me"><?= $lang["Minicio"] ?></a>
-                            <span>/</span>
-                            <a href="/articles"><?= $lang["Nnews"] ?></a>
+                        <!-- Premium Breadcrumbs -->
+                        <div class="breadcrumbs-premium">
+                            <a href="/me" class="breadcrumb-item"><?= $lang["Minicio"] ?></a>
+                            <div class="breadcrumb-separator"></div>
+                            <a href="/articles" class="breadcrumb-item"><?= $lang["Nnews"] ?></a>
                             <?php if ($articleFound): ?>
-                                <span>/</span>
-                                <span style="color: var(--accent-color);"><?= filter($article['title']) ?></span>
+                                <div class="breadcrumb-separator"></div>
+                                <span class="breadcrumb-item active"><?= filter($article['title']) ?></span>
                             <?php endif; ?>
                         </div>
 
                         <?php if ($articleFound): ?>
-                            <article class="article-card">
-                                <div class="article-hero" style="background-image: url('<?= filter($articleImage) ?>')">
-                                    <div class="article-hero-overlay">
-                                        <div class="article-title-box">
-                                            <span class="article-category-badge"><?= $lang["Nnews"] ?></span>
-                                            <h1><?= filter($article['title']) ?></h1>
+                            <article class="premium-article">
+                                <!-- Immersive Hero Section -->
+                                <div class="article-hero-premium">
+                                    <div class="hero-bg-blur" style="background-image: url('<?= filter($articleImage) ?>')"></div>
+                                    <div class="hero-main-image" style="background-image: url('<?= filter($articleImage) ?>')"></div>
+                                    <div class="hero-overlay-premium">
+                                        <div class="hero-content-premium">
+                                            <div class="article-badge-premium"><?= $lang["Nnews"] ?></div>
+                                            <h1 class="article-title-premium"><?= filter($article['title']) ?></h1>
+
+                                            <div class="article-meta-premium">
+                                                <div class="meta-item-premium">
+                                                    <img src="/assets/images/collider/users.png" class="meta-icon">
+                                                    <span><?= filter($authorName) ?></span>
+                                                </div>
+                                                <div class="meta-divider"></div>
+                                                <div class="meta-item-premium">
+                                                    <img src="/assets/images/collider/feeds.png" class="meta-icon">
+                                                    <span><?= date('d M, Y', $article['date']) ?></span>
+                                                </div>
+                                                <div class="meta-divider"></div>
+                                                <div class="meta-item-premium">
+                                                    <img src="/assets/images/user-space/planeta.png" class="meta-icon" style="filter: hue-rotate(180deg);">
+                                                    <span><?= $readingTime ?> min <?= $lang["leermas"] ?></span>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
 
-                                <div class="article-body">
-                                    <div class="article-lead-text">
+                                <!-- Content Body -->
+                                <div class="article-body-premium">
+                                    <div class="article-lead-premium">
                                         <?= html_entity_decode($article['shortstory']) ?>
                                     </div>
-                                    <div class="article-main-text">
+                                    <div class="article-text-premium">
                                         <?= html_entity_decode($article['longstory']) ?>
                                     </div>
                                 </div>
 
-                                <div class="article-footer">
-                                    <div class="author-info-box">
-                                        <div class="author-avatar-circle">
-                                            <img src="<?= $config['AvatarURL'] ?><?= filter($authorLook) ?>&direction=2&head_direction=2&gesture=sml&headonly=0&size=b">
+                                <!-- Redesigned Author Card (Inspired by image.png) -->
+                                <div class="author-card-premium">
+                                    <div class="author-card-header">
+                                        <div class="author-avatar-wrapper">
+                                            <div class="author-avatar-bg">
+                                                <img src="<?= $config['AvatarURL'] ?><?= filter($authorLook) ?>&direction=2&head_direction=3&gesture=sml&size=l" class="author-avatar-img">
+                                            </div>
                                         </div>
-                                        <div class="author-details">
-                                            <a href="/profile/<?= filter($authorName) ?>"><?= filter($authorName) ?></a>
-                                            <span><?= $lang["newspubli2"] ?> <?= date('d F, Y', $article['date']) ?> &bull; <?= $readingTime ?> min de lectura</span>
+                                        <div class="author-info-premium">
+                                            <h3 class="author-name-premium"><?= filter($authorName) ?></h3>
+                                            <p class="author-role-premium"><?= $lang["Staffinfo"] ?></p>
                                         </div>
+                                        <a href="/profile/<?= filter($authorName) ?>" class="author-visit-btn">
+                                            <?= $lang["Mprofile"] ?>
+                                        </a>
                                     </div>
                                 </div>
                             </article>
 
-                            <!-- More News Section -->
-                            <div class="related-news">
-                                <div class="related-news-title">
-                                    <img src="/assets/images/collider/feeds.png" style="width: 20px;">
-                                    <?= $lang["Nlastnews"] ?>
+                            <!-- Premium Related News Section -->
+                            <div class="related-news-premium">
+                                <div class="related-header-premium">
+                                    <div class="related-icon-premium">
+                                        <img src="/assets/images/collider/feeds.png">
+                                    </div>
+                                    <h3><?= $lang["Nlastnews"] ?></h3>
                                 </div>
-                                <div class="related-grid">
+                                <div class="related-grid-premium">
                                     <?php
-                                    $stmt = $dbh->prepare("SELECT id, title, image, shortstory FROM cms_news WHERE id != :id ORDER BY date DESC LIMIT 3");
+                                    $stmt = $dbh->prepare("SELECT id, title, image, date FROM cms_news WHERE id != :id ORDER BY date DESC LIMIT 3");
                                     $stmt->bindParam(':id', $article['id']);
                                     $stmt->execute();
                                     while ($r = $stmt->fetch()):
                                         $rImg = (!empty($r['image'])) ? $r['image'] : "/assets/images/news/default_news.png";
                                     ?>
-                                        <a href="/articles/<?= $r['id'] ?>" class="related-card">
-                                            <div class="related-thumb" style="background-image: url('<?= filter($rImg) ?>')"></div>
-                                            <div class="related-info">
+                                        <a href="/articles/<?= $r['id'] ?>" class="related-card-premium">
+                                            <div class="related-card-thumb" style="background-image: url('<?= filter($rImg) ?>')">
+                                                <div class="related-card-overlay">
+                                                    <div class="related-card-badge"><?= date('d M', $r['date']) ?></div>
+                                                </div>
+                                            </div>
+                                            <div class="related-card-info">
                                                 <div class="related-card-title"><?= filter($r['title']) ?></div>
                                             </div>
                                         </a>
@@ -159,41 +198,48 @@ if ($readingTime < 1) $readingTime = 1;
 
                 <!-- Sidebar -->
                 <div class="page-content-sidebar" style="width: 380px;">
-                    <!-- Archive Widget -->
-                    <div class="sidebar-widget">
-                        <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 20px;">
-                            <img src="/assets/images/collider/feeds.png" style="width: 24px; height: 24px;">
-                            <h3 style="font-size: 16px; font-weight: 800; margin: 0;"><?= $lang["newslist"] ?></h3>
-                        </div>
+                    <!-- Redesigned Premium Sidebar -->
+                    <div class="premium-sidebar">
 
-                        <div class="archive-widget">
-                            <?php
-                            $sections = [
-                                ['name' => $lang["Ntoday"], 'min' => time() - 86400, 'max' => time()],
-                                ['name' => $lang["Nyesterday"], 'min' => time() - 172800, 'max' => time() - 86400],
-                                ['name' => $lang["Nthismonth"], 'min' => time() - 2592000, 'max' => time() - 172800],
-                            ];
+                        <!-- Premium Archive Widget -->
+                        <div class="sidebar-widget-premium">
+                            <div class="widget-header-premium">
+                                <div class="widget-icon-box">
+                                    <img src="/assets/images/collider/feeds.png">
+                                </div>
+                                <h4><?= $lang["newslist"] ?></h4>
+                            </div>
 
-                            foreach ($sections as $section) {
-                                $stmt = $dbh->prepare("SELECT id, title FROM cms_news WHERE date >= :min AND date <= :max ORDER BY date DESC LIMIT 5");
-                                $stmt->bindParam(':min', $section['min']);
-                                $stmt->bindParam(':max', $section['max']);
-                                $stmt->execute();
+                            <div class="premium-archive-list">
+                                <?php
+                                $sections = [
+                                    ['name' => $lang["Ntoday"], 'min' => time() - 86400, 'max' => time()],
+                                    ['name' => $lang["Nyesterday"], 'min' => time() - 172800, 'max' => time() - 86400],
+                                    ['name' => $lang["Nthismonth"], 'min' => time() - 2592000, 'max' => time() - 172800],
+                                ];
 
-                                if ($stmt->rowCount() > 0) {
-                                    echo '<div class="archive-section-label">' . filter($section['name']) . '</div>';
-                                    while ($a = $stmt->fetch()) {
-                                        $activeClass = ($articleFound && $article['id'] == $a['id']) ? 'active' : '';
-                                        echo '<a href="/articles/' . filter($a['id']) . '" class="archive-item ' . $activeClass . '">
-                                                <div class="archive-icon"><img src="/assets/images/collider/feeds.png" style="width: 16px;"></div>
-                                                <div class="archive-item-info">
-                                                    <span class="archive-item-title">' . filter($a['title']) . '</span>
-                                                </div>
-                                              </a>';
+                                foreach ($sections as $section) {
+                                    $stmt = $dbh->prepare("SELECT id, title, date FROM cms_news WHERE date >= :min AND date <= :max ORDER BY date DESC LIMIT 5");
+                                    $stmt->bindParam(':min', $section['min']);
+                                    $stmt->bindParam(':max', $section['max']);
+                                    $stmt->execute();
+
+                                    if ($stmt->rowCount() > 0) {
+                                        echo '<div class="archive-label-premium">' . filter($section['name']) . '</div>';
+                                        while ($a = $stmt->fetch()) {
+                                            $activeClass = ($articleFound && $article['id'] == $a['id']) ? 'active' : '';
+                                            echo '<a href="/articles/' . filter($a['id']) . '" class="premium-archive-item ' . $activeClass . '">
+                                                    <div class="archive-dot"></div>
+                                                    <div class="archive-item-content">
+                                                        <span class="archive-item-name">' . filter($a['title']) . '</span>
+                                                        <span class="archive-item-date">' . date('d M', $a['date']) . '</span>
+                                                    </div>
+                                                  </a>';
+                                        }
                                     }
                                 }
-                            }
-                            ?>
+                                ?>
+                            </div>
                         </div>
                     </div>
 
@@ -266,6 +312,17 @@ if ($readingTime < 1) $readingTime = 1;
         <?php if (file_exists('includes/footer.php')) include_once('includes/footer.php'); ?>
     </div>
     <script src="/assets/scripts/app.js"></script>
+    <script>
+        // Reading Progress Logic
+        window.onscroll = function() { updateProgressBar() };
+
+        function updateProgressBar() {
+            var winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+            var height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            var scrolled = (winScroll / height) * 100;
+            document.getElementById("progressBar").style.width = scrolled + "%";
+        }
+    </script>
 </body>
 
 </html>
