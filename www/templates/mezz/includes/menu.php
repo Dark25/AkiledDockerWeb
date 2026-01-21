@@ -31,7 +31,7 @@
                 <?= $lang["Mcomunidad"] ?>
             </a>
             <div class="page-content-nav-item-dropdown-content">
-                <a href="/articles/1" class="page-content-nav-item-sub-text"><?= $lang["Mnews"] ?></a>
+                <a href="/articles" class="page-content-nav-item-sub-text"><?= $lang["Mnews"] ?></a>
                 <a href="/community/photos" class="page-content-nav-item-sub-text"><?= $lang["Mfotos"] ?></a>
                 <a href="/community/rooms" class="page-content-nav-item-sub-text"><?= $lang["Mhabita"] ?></a>
                 <a href="/community/fansites" class="page-content-nav-item-sub-text"><?= $lang["Mfansites"] ?></a>
