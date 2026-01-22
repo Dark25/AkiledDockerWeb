@@ -1,0 +1,239 @@
+:root {
+    --photos-primary: #7c4dff;
+    --photos-primary-light: #b47cff;
+    --photos-secondary: #ff4081;
+    --photos-bg: #f5f7fb;
+    --photos-card-bg: rgba(255, 255, 255, 0.8);
+    --photos-card-border: rgba(255, 255, 255, 0.5);
+    --photos-text: #333333;
+    --photos-text-muted: #666666;
+    --photos-hero-gradient: linear-gradient(135deg, #6e45e2 0%, #88d3ce 100%);
+    --photos-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.1);
+}
+
+body.dark-mode {
+    --photos-bg: #1a1a1a;
+    --photos-card-bg: #2d2d2d;
+    --photos-card-border: rgba(255, 255, 255, 0.1);
+    --photos-text: #ffffff;
+    --photos-text-muted: #aaaaaa;
+}
+
+@media (prefers-color-scheme: dark) {
+    :root:not(.light-mode) { /* Optional: if we want to respect system preference but allow override */
+        /* But usually body.dark-mode is the source of truth for the toggle */
+    }
+}
+
+/* Base Styles */
+.photos-hero {
+    width: 100%;
+    background: var(--photos-hero-gradient);
+    border-radius: 15px;
+    padding: 40px;
+    margin-bottom: 30px;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+    box-shadow: var(--photos-shadow);
+}
+
+.photos-hero::before {
+    content: '';
+    position: absolute;
+    top: -50px;
+    right: -50px;
+    width: 200px;
+    height: 200px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+}
+
+.photos-hero-content {
+    position: relative;
+    z-index: 1;
+    max-width: 60%;
+}
+
+.photos-hero-badge {
+    background: rgba(255, 255, 255, 0.2);
+    padding: 5px 15px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: bold;
+    display: inline-block;
+    margin-bottom: 15px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.photos-hero-title {
+    font-size: 32px;
+    margin: 0 0 10px 0;
+    font-weight: 800;
+}
+
+.photos-hero-subtitle {
+    font-size: 16px;
+    opacity: 0.9;
+    margin: 0;
+}
+
+.photos-hero-icon {
+    font-size: 80px;
+    opacity: 0.3;
+    transform: rotate(-15deg);
+}
+
+/* Grid Layout */
+.photos-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 20px;
+    margin-bottom: 40px;
+}
+
+/* Photo Card */
+.photo-card {
+    background: var(--photos-card-bg);
+    border: 1px solid var(--photos-card-border);
+    border-radius: 15px;
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    display: flex;
+    flex-direction: column;
+}
+
+.photo-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+}
+
+.photo-image-container {
+    position: relative;
+    width: 100%;
+    padding-top: 75%; /* 4:3 Aspect Ratio */
+    background: #e0e0e0;
+}
+
+.photo-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    transition: transform 0.5s ease;
+}
+
+.photo-card:hover .photo-image {
+    transform: scale(1.05);
+}
+
+.photo-details {
+    padding: 15px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    border-top: 1px solid var(--photos-card-border);
+}
+
+.photo-author-avatar {
+    width: 45px;
+    height: 45px;
+    background-color: rgba(0,0,0,0.05);
+    background-position: center -10px;
+    background-repeat: no-repeat;
+    border-radius: 50%;
+    border: 2px solid var(--photos-primary);
+    flex-shrink: 0;
+}
+
+.photo-meta {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.photo-author-name {
+    color: var(--photos-text);
+    font-weight: 700;
+    font-size: 14px;
+    text-decoration: none;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.photo-author-name:hover {
+    color: var(--photos-primary);
+}
+
+.photo-time {
+    color: var(--photos-text-muted);
+    font-size: 12px;
+}
+
+.photo-action-btn {
+    width: 32px;
+    height: 32px;
+    border-radius: 8px;
+    background: var(--photos-primary);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    transition: background 0.2s;
+}
+
+.photo-action-btn:hover {
+    background: var(--photos-secondary);
+}
+
+/* Empty State */
+.photos-empty {
+    grid-column: 1 / -1;
+    text-align: center;
+    padding: 60px;
+    background: var(--photos-card-bg);
+    border-radius: 15px;
+    border: 1px dashed var(--photos-card-border);
+}
+
+.photos-empty i {
+    font-size: 48px;
+    color: var(--photos-text-muted);
+    margin-bottom: 20px;
+    display: block;
+}
+
+.photos-empty p {
+    color: var(--photos-text);
+    font-size: 16px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .photos-hero {
+        padding: 25px;
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .photos-hero-content {
+        max-width: 100%;
+        margin-bottom: 20px;
+    }
+
+    .photos-hero-icon {
+        display: none;
+    }
+}
