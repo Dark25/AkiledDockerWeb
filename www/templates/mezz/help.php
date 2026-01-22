@@ -9,8 +9,9 @@ $report_active = 'active';
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="/assets/styles/app.css">
-    <link rel="stylesheet" type="text/css" href="/assets/styles/help.css">
+    <link rel="stylesheet" href="/assets/styles/app.css">
+    <link rel="stylesheet" href="/assets/styles/help.css" media="(prefers-color-scheme: light)">
+    <link rel="stylesheet" href="/assets/styles/help-dark.css" media="(prefers-color-scheme: dark)">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <title><?= $config['hotelName'] ?>: <?= $lang["TittleHader12"] ?></title>
@@ -34,8 +35,13 @@ $report_active = 'active';
                     <div class="help-hero-text">
                         <div class="help-hero-badge">Soporte Oficial</div>
                         <h1 class="help-hero-title">Centro de Ayuda</h1>
-                        <p class="help-hero-subtitle">¿Tienes algún problema? Nuestro equipo técnico y de moderación está disponible para apoyarte en lo que necesites.</p>
+                        <p class="help-hero-subtitle">¿Tienes algún problema? Nuestro equipo técnico y de moderación
+                            está disponible para apoyarte en lo que necesites.</p>
                     </div>
+
+                    <!-- Thematic game images (decorative) -->
+                    <img src="/templates/sloptv4.2/assets/images/park.png" alt="park" class="help-hero-figure help-hero-figure--left">
+
                     <div class="help-hero-icon-container">
                         <i class="fas fa-headset"></i>
                     </div>
@@ -49,7 +55,8 @@ $report_active = 'active';
                     <div class="help-main-card">
                         <div class="help-card-header">
                             <h2 class="help-card-main-title">Enviar un reporte</h2>
-                            <p class="help-card-main-subtitle">Completa el formulario y nos pondremos en contacto contigo lo antes posible.</p>
+                            <p class="help-card-main-subtitle">Completa el formulario y nos pondremos en contacto
+                                contigo lo antes posible.</p>
                         </div>
                         <?php include_once("report/sendReport.php"); ?>
                     </div>
@@ -67,7 +74,8 @@ $report_active = 'active';
 
                     <div class="help-side-card">
                         <div class="help-side-card-header">
-                            <h3 class="help-side-card-title"><i class="fas fa-external-link-alt mr-2"></i> Enlaces Útiles</h3>
+                            <h3 class="help-side-card-title"><i class="fas fa-external-link-alt mr-2"></i> Enlaces
+                                Útiles</h3>
                         </div>
                         <div class="help-side-card-body">
                             <a href="/safety/habbo-way" class="help-sidebar-link">

@@ -1,38 +1,41 @@
 /* help.css - Modern Re-design */
 
+/* help-dark.css - DARK MODE */
+
 :root {
-    --help-primary: #4f46e5;
-    --help-primary-hover: #4338ca;
-    --help-primary-alpha: rgba(79, 70, 229, 0.1);
+    --help-primary: #6366f1;
+    --help-primary-hover: #818cf8;
+    --help-primary-alpha: rgba(99, 102, 241, .2);
 
-    --help-header-bg: #f3f4f6;
-    --help-hero-bg: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
-    --help-hero-text: #ffffff;
+    --help-header-bg: #030712;
+    --help-hero-bg: linear-gradient(135deg, #1e1b4b 0%, #312e81 100%);
+    --help-hero-text: #f3f4f6;
 
-    --help-card-bg: #ffffff;
-    --help-card-border: 1px solid #e5e7eb;
-    --help-card-shadow: 0 10px 15px -3px rgba(0, 0, 0, .1),
-        0 4px 6px -2px rgba(0, 0, 0, .05);
+    --help-card-bg: #111827;
+    --help-card-border: 1px solid #1f2937;
+    --help-card-shadow: 0 20px 25px -5px rgba(0, 0, 0, .6);
 
-    --help-text-main: #111827;
-    --help-text-muted: #6b7280;
-    --help-border-color: #e5e7eb;
+    --help-text-main: #f9fafb;
+    --help-text-muted: #9ca3af;
+    --help-border-color: #1f2937;
 
-    --help-input-bg: #ffffff;
-    --help-input-border: #d1d5db;
-    --help-input-text: #1f2937;
+    --help-input-bg: #030712;
+    --help-input-border: #374151;
+    --help-input-text: #f9fafb;
 
     --help-submit-text: #ffffff;
-    --help-item-hover: #f9fafb;
+    --help-item-hover: #1f2937;
 
-    --badge-open-bg: #dcfce7;
-    --badge-open-text: #15803d;
-    --badge-progress-bg: #dbeafe;
-    --badge-progress-text: #1d4ed8;
-    --badge-closed-bg: #fee2e2;
-    --badge-closed-text: #b91c1c;
+    --badge-open-bg: rgba(21, 128, 61, .2);
+    --badge-open-text: #4ade80;
+    --badge-progress-bg: rgba(29, 78, 216, .2);
+    --badge-progress-text: #60a5fa;
+    --badge-closed-bg: rgba(185, 28, 28, .2);
+    --badge-closed-text: #f87171;
 }
 
+/* TODO lo demás es EXACTAMENTE IGUAL que help.css */
+/* No se repite para evitar conflictos */
 
 
 /* Header Section */
@@ -122,7 +125,7 @@
 
 .help-hero-icon-container {
     font-size: 100px;
-    color: rgb(255, 255, 255);
+    color: rgba(255, 255, 255, 0.2);
     position: relative;
     z-index: 1;
     transition: transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
@@ -368,7 +371,7 @@
     margin-right: 8px;
 }
 
-/* Decorative game images inside hero (scaled up) */
+/* Decorative game images inside hero - dark (scaled up) */
 .help-hero-figure {
     position: absolute;
     bottom: 12px;
@@ -380,7 +383,6 @@
     z-index: 0;
     transition: transform 0.6s ease, opacity 0.3s ease;
 }
-
 
 /* Responsive tweaks for Help page */
 @media (max-width: 900px) {

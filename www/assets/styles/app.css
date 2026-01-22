@@ -90,7 +90,10 @@ a,
 
 .page-content .page-content-max-width {
   display: flex;
-  width: 1250px;
+  width: 100%;
+  max-width: 1250px;
+  margin: 0 auto;
+  padding: 0 24px;
 }
 
 .page-content .page-content-modal {
