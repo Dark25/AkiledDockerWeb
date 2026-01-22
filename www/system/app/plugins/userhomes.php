@@ -35,7 +35,7 @@
 			}
 			else
 			{	
-				$getUser = $dbh->prepare("SELECT id,username,motto,credits,look,account_created,last_online,mail FROM users WHERE username = :user");
+				$getUser = $dbh->prepare("SELECT id,username,motto,credits,look,account_created,last_online,mail,online FROM users WHERE username = :user");
 				$getUser->bindParam(':user', $_GET['user']);
 				$getUser->execute();
 				$usersSql = $getUser->fetch();
@@ -43,7 +43,7 @@
 			}
 		}
 		else{
-			$getUser = $dbh->prepare("SELECT id,username,motto,credits,vip_points,activity_points,look,account_created,last_online,mail FROM users WHERE username = :user LIMIT 1");
+			$getUser = $dbh->prepare("SELECT id,username,motto,credits,vip_points,activity_points,look,account_created,last_online,mail,online FROM users WHERE username = :user LIMIT 1");
 			$getUser->bindParam(':user',$_GET['user']);
 			$getUser->execute();
 			$usersSql = $getUser->fetch();
