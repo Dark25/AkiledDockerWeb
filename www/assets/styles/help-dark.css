@@ -149,7 +149,107 @@
 }
 
 .help-main-card {
-    padding: 40px;
+    padding: 36px;
+}
+
+/* MyReports adjustments (dark) */
+.help-main-card .help-main-body {
+    margin-top: 16px;
+    color: var(--help-text-main);
+    font-size: 15px;
+    line-height: 1.6;
+}
+
+/* Chat styles (dark) */
+.help-chat { display:flex; flex-direction:column; gap:18px; margin-top: 20px; }
+.help-chat-message { display:flex; gap:12px; align-items:flex-start; max-width: 90%; }
+.help-chat-message--staff { align-self: flex-end; flex-direction: row-reverse; }
+.help-chat-avatar img { width:40px; height:40px; border-radius:6px; display:block; }
+.help-chat-bubble { background: var(--help-card-bg); border-radius: 12px; padding: 12px 14px; border: 1px solid var(--help-border-color); box-shadow: var(--help-card-shadow); color: var(--help-text-main); }
+.help-chat-message--staff .help-chat-bubble { background: var(--help-primary); color: var(--help-submit-text); border-color: transparent; }
+.help-chat-meta { font-size: 12px; color: var(--help-text-muted); margin-bottom: 6px; display:flex; gap:10px; align-items:center; }
+.help-chat-time { font-weight:500; font-size:11px; color: var(--help-text-muted); }
+.help-chat-text { font-size: 15px; line-height: 1.5; }
+
+@media (max-width: 900px) {
+    .help-chat-message { max-width: 100%; }
+    .help-chat-message--staff { align-self: flex-start; flex-direction: row; }
+}
+
+.help-main-card .page-content-collider-content-news-right-side-content-article-author,
+.help-main-card .page-content-collider-content-news-right-side-content-article-author-username {
+    margin-top: 14px;
+}
+
+.help-main-card .help-card-header { padding-bottom: 12px; border-bottom: 1px solid var(--help-border-color); margin-bottom: 18px; display: flex; align-items: flex-start; justify-content: space-between; gap: 20px; flex-wrap: wrap; }
+
+/* Header badge (large) */
+.help-header-badge {
+    padding: 8px 12px;
+    border-radius: 8px;
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: none;
+}
+
+/* Author info on header: inline to the right */
+.help-author {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.help-author-figure {
+    width: 48px;
+    height: 48px;
+    border-radius: 8px;
+    background-size: cover;
+    background-position: center;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.08) inset, 0 4px 12px rgba(0,0,0,0.1);
+    overflow: hidden;
+}
+
+.help-author-figure img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.help-author-name {
+    color: var(--help-text-muted);
+    font-weight: 700;
+}
+
+/* Small screens: stack title and meta */
+@media (max-width: 600px) {
+    .help-main-card .help-card-header { align-items: center; }
+    .help-author { margin-top: 6px; }
+}
+.help-main-card .page-content-collider-content-settings-right-side-item-input,
+.help-main-card .help-custom-textarea { width: 100%; max-width: 100%; min-height: 100px; }
+
+.help-main-card .help-submit-btn { background: #00813e; border-radius: 6px; padding: 12px 20px; }
+
+/* Small screens: move badge inline */
+@media (max-width: 600px) {
+    .help-header-badge { position: static; display: inline-block; margin-left: 8px; }
+    .help-author { position: static; margin-top: 12px; }
+}
+
+/* Inline report status (legacy) */
+.report-status-inline {
+    display: inline-block;
+    padding: 6px 10px;
+    border-radius: 8px;
+    font-size: 12px;
+    font-weight: 700;
+    margin: 6px 0;
+}
+
+/* Hide legacy inline status inside the new help card to avoid duplicates */
+.help-main-card .report-status-inline {
+    display: none;
 }
 
 .help-card-header {
