@@ -1,0 +1,202 @@
+.help-hero {
+    background: linear-gradient(135deg, #eeb425 0%, #d49a00 100%);
+    border-radius: 10px;
+    padding: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 30px;
+    color: white;
+    box-shadow: 0 4px 15px rgba(238, 180, 37, 0.3);
+    width: 100%;
+}
+
+.help-hero-title {
+    font-size: 32px;
+    font-weight: 700;
+    margin-bottom: 10px;
+    color: white;
+}
+
+.help-hero-subtitle {
+    font-size: 18px;
+    opacity: 0.9;
+}
+
+.help-hero-icon {
+    width: 100px;
+    height: 100px;
+    filter: drop-shadow(0 4px 8px rgba(0,0,0,0.2));
+    transition: transform 0.3s ease;
+}
+
+.help-hero:hover .help-hero-icon {
+    transform: scale(1.1) rotate(5deg);
+}
+
+.help-body {
+    display: flex;
+    gap: 30px;
+    width: 100%;
+}
+
+.help-main-content {
+    flex: 1;
+}
+
+.help-side-content {
+    width: 350px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.help-card {
+    background-color: white;
+    border-radius: 15px;
+    padding: 30px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+    border: 1px solid rgba(0,0,0,0.05);
+    margin-bottom: 30px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.help-card:hover {
+    box-shadow: 0 15px 35px rgba(0,0,0,0.08);
+}
+
+.help-card-title {
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom: 20px;
+    padding-bottom: 12px;
+    border-bottom: 2px solid #f0f0f0;
+    color: #333;
+    display: block;
+}
+
+.help-link {
+    display: block;
+    padding: 12px 18px;
+    margin-bottom: 10px;
+    background-color: #f8f9fa;
+    border-radius: 8px;
+    color: #555;
+    transition: all 0.2s ease;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.help-link:hover {
+    background-color: #eeb425;
+    color: white;
+    transform: translateX(8px);
+}
+
+/* Report Styles */
+.report-section-title {
+    font-size: 12px;
+    font-weight: 800;
+    text-transform: uppercase;
+    color: #999;
+    margin: 25px 0 12px 0;
+    display: block;
+    letter-spacing: 1px;
+}
+
+.report-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.report-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 15px;
+    background-color: #f9fafb;
+    border: 1px solid #e5e7eb;
+    border-radius: 10px;
+    text-decoration: none;
+    color: #374151;
+    transition: all 0.2s ease;
+}
+
+.report-item:hover {
+    background-color: #f3f4f6;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+}
+
+.report-item.active {
+    border-color: #eeb425;
+    background-color: #fffbeb;
+    box-shadow: 0 0 0 2px rgba(238, 180, 37, 0.2);
+}
+
+.report-item-title {
+    font-size: 14px;
+    font-weight: 600;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 180px;
+}
+
+.report-badge {
+    font-size: 10px;
+    font-weight: 800;
+    padding: 3px 10px;
+    border-radius: 50px;
+    color: white;
+    text-transform: uppercase;
+}
+
+.status-open { background-color: #10b981; }
+.status-progress { background-color: #f59e0b; }
+.status-closed { background-color: #6b7280; }
+
+.report-empty {
+    font-size: 13px;
+    color: #9ca3af;
+    font-style: italic;
+    padding: 10px;
+}
+
+/* Form improvements */
+.help-form-group {
+    margin-bottom: 25px;
+}
+
+.help-label {
+    display: block;
+    font-size: 16px;
+    font-weight: 700;
+    margin-bottom: 8px;
+    color: #333;
+}
+
+.help-input-desc {
+    font-size: 13px;
+    color: #777;
+    margin-top: 5px;
+    display: block;
+    line-height: 1.4;
+}
+
+.help-save-container {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 20px;
+}
+
+@media (max-width: 1000px) {
+    .help-body {
+        flex-direction: column;
+    }
+    .help-side-content {
+        width: 100%;
+    }
+}

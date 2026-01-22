@@ -1,0 +1,64 @@
+.help-card {
+    background-color: #111827;
+    border-color: rgba(255,255,255,0.05);
+    box-shadow: 0 8px 30px rgba(0,0,0,0.3);
+    color: #e5e7eb;
+}
+
+.help-card-title {
+    color: #f3f4f6;
+    border-bottom-color: #1f2937;
+}
+
+.help-link {
+    background-color: #1f2937;
+    color: #9ca3af;
+}
+
+.help-link:hover {
+    background-color: #eeb425;
+    color: white;
+}
+
+.report-item {
+    background-color: #1f2937;
+    border-color: #374151;
+    color: #d1d5db;
+}
+
+.report-item:hover {
+    background-color: #374151;
+    color: #fff;
+}
+
+.report-item.active {
+    background-color: #1e1b1e;
+    border-color: #eeb425;
+}
+
+.report-section-title {
+    color: #6b7280;
+}
+
+.help-label {
+    color: #e5e7eb;
+}
+
+.help-input-desc {
+    color: #9ca3af;
+}
+
+/* Form input dark mode overrides */
+.help-card select,
+.help-card input[type="text"],
+.help-card textarea {
+    background-color: #1f2937 !important;
+    border: 1px solid #374151 !important;
+    color: #fff !important;
+}
+
+.help-card select:focus,
+.help-card input[type="text"]:focus,
+.help-card textarea:focus {
+    border-color: #eeb425 !important;
+}
