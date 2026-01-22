@@ -1,23 +1,29 @@
-<div class="page-content-collider-content">
+<div class="shop-grid">
     <?php
-    $sql = $dbh->prepare("SELECT * FROM  mezz_shop ORDER BY mezz_shop.id asc");
+    $sql = $dbh->prepare("SELECT * FROM mezz_shop ORDER BY id ASC");
     $sql->execute();
-    while ($news = $sql->fetch()) {
+    while ($item = $sql->fetch()) {
     ?>
-
-        <a href="/articleshop/<?php echo filter($news["id"]); ?>" class="page-content-collider-content-article">
-           <span class="page-content-collider-content-article-promo pixelated" style="background-image: url('<?php echo filter($news["image"]); ?>')"></span>
-                            <h2 class="page-content-collider-content-article-title" style=" text-align: center; "><?php echo filter($news["price"]); ?>$</h2>
-                            <div class="page-content-collider-content-article-bottom-side">
-                                <div class="page-content-collider-content-article-bottom-side-avatar">
-<span class="page-content-collider-content-article-bottom-side-avatar-figure pixelated" style="background-image: url(/assets/images/shop/esmeralda.png);background-size: 16px;image-rendering: pixelated;"></span>                                  
-  <span class="page-content-collider-content-article-bottom-side-avatar-username"><?php echo filter($news["esmeraldas"]); ?> esmeraldas</span>
-                                </div>
-                                <div class="page-content-collider-content-article-bottom-side-avatar">
-<span class="page-content-collider-content-article-bottom-side-avatar-figure pixelated" style="background-image: url(/assets/images/user-space/planeta.png);background-size: 16px;image-rendering: pixelated;"></span>   
-                                 <span class="page-content-collider-content-article-bottom-side-avatar-username"><?php echo filter($news["planetas"]); ?> planetas</span>
-                </div>
+        <div class="shop-item-card">
+            <div class="shop-item-image-wrapper">
+                <div class="shop-item-price-tag"><?php echo filter($item["price"]); ?>$</div>
+                <img src="<?php echo filter($item["image"]); ?>" class="shop-item-image pixelated" alt="Shop Item">
             </div>
-        </a>
+
+            <div class="shop-item-content">
+                <div class="shop-item-reward-list">
+                    <div class="shop-item-reward">
+                        <img src="/assets/images/shop/esmeralda.png" alt="Esmeralda" class="pixelated">
+                        <span class="shop-item-reward-text"><?php echo filter($item["esmeraldas"]); ?> Esmeraldas</span>
+                    </div>
+                    <div class="shop-item-reward">
+                        <img src="/assets/images/user-space/planeta.png" alt="Planeta" class="pixelated">
+                        <span class="shop-item-reward-text"><?php echo filter($item["planetas"]); ?> Planetas</span>
+                    </div>
+                </div>
+
+                <a href="/articleshop/<?php echo filter($item["id"]); ?>" class="shop-item-buy-btn">Comprar ahora</a>
+            </div>
+        </div>
     <?php } ?>
 </div>
