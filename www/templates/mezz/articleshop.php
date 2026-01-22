@@ -3,13 +3,15 @@ $shop_active = 'active';
 ?>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="/assets/styles/app.css">
     <link rel="stylesheet" type="text/css" href="/assets/styles/articleshop.css" media="(prefers-color-scheme: light)">
-    <link rel="stylesheet" type="text/css" href="/assets/styles/articleshop-dark.css" media="(prefers-color-scheme: dark)">
+    <link rel="stylesheet" type="text/css" href="/assets/styles/articleshop-dark.css"
+        media="(prefers-color-scheme: dark)">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <title><?= $config['hotelName'] ?>: Tienda de Monedas</title>
@@ -70,7 +72,7 @@ $shop_active = 'active';
                     }
 
                     if (empty($_GET['id'])) {
-                    ?>
+                        ?>
                         <div class="alert-modern error">
                             <i class="fas fa-search"></i>
                             <div>
@@ -78,7 +80,7 @@ $shop_active = 'active';
                                 <?= $lang["Nnotfoundtxt"] ?>
                             </div>
                         </div>
-                    <?php
+                        <?php
                     } else {
                         if (!is_numeric($_GET['id'])) {
                             exit('Nothing!');
@@ -90,11 +92,12 @@ $shop_active = 'active';
 
                         if ($news->RowCount() == 1) {
                             $news2 = $news->fetch();
-                    ?>
+                            ?>
                             <div class="article-hero">
                                 <div class="article-hero-content">
                                     <div class="article-hero-image-wrapper">
-                                        <img src="<?= filter($news2["image"]) ?>" class="article-hero-image pixelated" alt="Article Image">
+                                        <img src="<?= filter($news2["image"]) ?>" class="article-hero-image pixelated"
+                                            alt="Article Image">
                                     </div>
                                     <div class="article-hero-details">
                                         <h1 class="article-hero-title"><?= filter($news2["title"]) ?></h1>
@@ -119,7 +122,9 @@ $shop_active = 'active';
                                 </div>
                             </div>
 
-                            <script src="https://www.paypal.com/sdk/js?client-id=<?= $config['payclient_id']; ?>&enable-funding=venmo&currency=USD" data-sdk-integration-source="button-factory"></script>
+                            <script
+                                src="https://www.paypal.com/sdk/js?client-id=<?= $config['payclient_id']; ?>&enable-funding=venmo&currency=USD"
+                                data-sdk-integration-source="button-factory"></script>
                             <script>
                                 function initPayPalButton() {
                                     paypal.Buttons({
@@ -129,7 +134,7 @@ $shop_active = 'active';
                                             layout: 'vertical',
                                             label: 'paypal',
                                         },
-                                        createOrder: function(data, actions) {
+                                        createOrder: function (data, actions) {
                                             return actions.order.create({
                                                 purchase_units: [{
                                                     "description": "<?= filter($news2["planetas"]); ?>",
@@ -151,12 +156,12 @@ $shop_active = 'active';
                                                             "value": <?= filter($news2["price"]); ?>
                                                         },
                                                         "quantity": "1"
-                                                    }, ]
+                                                    },]
                                                 }]
                                             });
                                         },
-                                        onApprove: function(data, actions) {
-                                            return actions.order.capture().then(function(detalles) {
+                                        onApprove: function (data, actions) {
+                                            return actions.order.capture().then(function (detalles) {
                                                 let url = '/shopvalidpack1'
                                                 return fetch(url, {
                                                     method: 'post',
@@ -166,13 +171,13 @@ $shop_active = 'active';
                                                     body: JSON.stringify({
                                                         detalles: detalles
                                                     })
-                                                }).then(function() {
+                                                }).then(function () {
                                                     const element = document.getElementById('paypal-button-container');
                                                     element.innerHTML = '<div class="alert-modern success">Compra realizada con éxito. Recarga la página para canjear tu compra.</div>';
                                                 });
                                             });
                                         },
-                                        onError: function(err) {
+                                        onError: function (err) {
                                             console.log(err);
                                         }
                                     }).render('#paypal-button-container');
@@ -180,9 +185,9 @@ $shop_active = 'active';
                                 initPayPalButton();
                             </script>
 
-                        <?php
+                            <?php
                         } else {
-                        ?>
+                            ?>
                             <div class="alert-modern error">
                                 <i class="fas fa-exclamation-circle"></i>
                                 <div>
@@ -190,49 +195,12 @@ $shop_active = 'active';
                                     <?= $lang["Nnotfoundtxtmezz"] ?>
                                 </div>
                             </div>
-                    <?php
+                            <?php
                         }
                     }
                     ?>
 
-                    <div class="chests-section-modern">
-                        <div class="section-header-modern">
-                            <img src="/assets/images/collider/rooms.png" class="section-header-icon pixelated" alt="">
-                            <h2 class="section-header-title">Cofres Disponibles</h2>
-                        </div>
-
-                        <div class="chests-grid-modern">
-                            <?php
-                            $belcr_get = $dbh->prepare("SELECT * FROM mezz_currency WHERE user_id = :userid AND reclaim = '0'");
-                            $belcr_get->bindValue(':userid', User::userData('id'));
-                            $belcr_get->execute();
-
-                            if ($belcr_get->RowCount() > 0) {
-                                while ($consuloro = $belcr_get->fetch()) {
-                            ?>
-                                    <div class="chest-card-modern">
-                                        <div class="chest-image-bg-modern">
-                                            <img src="/assets/images/fondos/cofre3.png" class="chest-image-modern pixelated" alt="Chest">
-                                        </div>
-                                        <h4 class="chest-title-modern"><?= filter($consuloro['product']) ?></h4>
-                                        <form method="post" action="">
-                                            <input type="hidden" name="planetas" value="<?= filter($consuloro['planetas']) ?>" />
-                                            <input type="hidden" name="esmeraldas" value="<?= filter($consuloro['esmeraldas']) ?>" />
-                                            <input type="hidden" name="producto" value="<?= filter($consuloro['product']) ?>" />
-                                            <input type="hidden" name="producid" value="<?= filter($consuloro['id']) ?>" />
-                                            <button type="submit" name="pack1" class="chest-redeem-btn-modern">Canjear</button>
-                                        </form>
-                                    </div>
-                                <?php
-                                }
-                            } else {
-                                ?>
-                                <p style="color: var(--article-text-secondary);"><?= $lang["Nnotfoundtxtmezz2"] ?></p>
-                            <?php
-                            }
-                            ?>
-                        </div>
-                    </div>
+                 
                 </div>
 
                 <?php include_once('includes/sidebar.php'); ?>
@@ -243,4 +211,5 @@ $shop_active = 'active';
     </div>
     <script src="/assets/scripts/app.js"></script>
 </body>
+
 </html>
