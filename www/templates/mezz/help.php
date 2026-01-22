@@ -2,7 +2,8 @@
 $report_active = 'active';
 ?>
 
-<html lang="en">
+<!DOCTYPE html>
+<html lang="es">
 
 <head>
     <meta charset="UTF-8">
@@ -10,6 +11,7 @@ $report_active = 'active';
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="/assets/styles/app.css">
     <link rel="stylesheet" type="text/css" href="/assets/styles/help.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <title><?= $config['hotelName'] ?>: <?= $lang["TittleHader12"] ?></title>
 </head>
@@ -30,11 +32,12 @@ $report_active = 'active';
             <div class="page-content-max-width">
                 <div class="help-hero-card">
                     <div class="help-hero-text">
+                        <div class="help-hero-badge">Soporte Oficial</div>
                         <h1 class="help-hero-title">Centro de Ayuda</h1>
-                        <p class="help-hero-subtitle">¿Tienes algún problema? Nuestro equipo está aquí para apoyarte.</p>
+                        <p class="help-hero-subtitle">¿Tienes algún problema? Nuestro equipo técnico y de moderación está disponible para apoyarte en lo que necesites.</p>
                     </div>
                     <div class="help-hero-icon-container">
-                        <i class="fas fa-life-ring"></i>
+                        <i class="fas fa-headset"></i>
                     </div>
                 </div>
             </div>
@@ -46,7 +49,7 @@ $report_active = 'active';
                     <div class="help-main-card">
                         <div class="help-card-header">
                             <h2 class="help-card-main-title">Enviar un reporte</h2>
-                            <p class="help-card-main-subtitle">Cuéntanos qué sucede y te ayudaremos lo antes posible.</p>
+                            <p class="help-card-main-subtitle">Completa el formulario y nos pondremos en contacto contigo lo antes posible.</p>
                         </div>
                         <?php include_once("report/sendReport.php"); ?>
                     </div>
@@ -55,7 +58,7 @@ $report_active = 'active';
                 <div class="page-content-sidebar">
                     <div class="help-side-card">
                         <div class="help-side-card-header">
-                            <h3 class="help-side-card-title">Mis Informes</h3>
+                            <h3 class="help-side-card-title"><i class="fas fa-history mr-2"></i> Mis Informes</h3>
                         </div>
                         <div class="help-side-card-body">
                             <?php include_once("report/ListMyReports.php"); ?>
@@ -64,19 +67,19 @@ $report_active = 'active';
 
                     <div class="help-side-card">
                         <div class="help-side-card-header">
-                            <h3 class="help-side-card-title">Enlaces Útiles</h3>
+                            <h3 class="help-side-card-title"><i class="fas fa-external-link-alt mr-2"></i> Enlaces Útiles</h3>
                         </div>
                         <div class="help-side-card-body">
                             <a href="/safety/habbo-way" class="help-sidebar-link">
-                                <span class="link-icon">📜</span>
+                                <span class="link-icon"><i class="fas fa-scroll"></i></span>
                                 <span class="link-text">La Manera de Akiled</span>
                             </a>
                             <a href="/safety/safety" class="help-sidebar-link">
-                                <span class="link-icon">🛡️</span>
+                                <span class="link-icon"><i class="fas fa-shield-alt"></i></span>
                                 <span class="link-text">Consejos de Seguridad</span>
                             </a>
                             <a href="/safety/how-to-play" class="help-sidebar-link">
-                                <span class="link-icon">❓</span>
+                                <span class="link-icon"><i class="fas fa-question-circle"></i></span>
                                 <span class="link-text">Preguntas Frecuentes</span>
                             </a>
                         </div>

@@ -7,7 +7,7 @@
     <input type="hidden" id="content" name="author" value="<?php echo User::userData("username") ?>">
 
     <div class="help-form-field">
-      <label class="help-form-label" for="report_title">Título del Reporte</label>
+      <label class="help-form-label" for="report_title"><i class="fas fa-tag mr-2"></i>Título del Reporte</label>
       <div class="help-input-wrapper">
         <input type="text" name="title" id="report_title" class="help-custom-input" placeholder="Ej: Problema con la carga de furnis" required>
       </div>
@@ -15,7 +15,7 @@
     </div>
 
     <div class="help-form-field">
-      <label class="help-form-label" for="report_category">Categoría del problema</label>
+      <label class="help-form-label" for="report_category"><i class="fas fa-list mr-2"></i>Categoría del problema</label>
       <div class="help-input-wrapper">
         <select name="category" id="report_category" class="help-custom-select" required>
           <option value="" disabled selected>Selecciona una categoría...</option>
@@ -31,7 +31,7 @@
     </div>
 
     <div class="help-form-field">
-      <label class="help-form-label" for="report_problem">Descripción detallada</label>
+      <label class="help-form-label" for="report_problem"><i class="fas fa-align-left mr-2"></i>Descripción detallada</label>
       <div class="help-input-wrapper">
         <textarea name="problem" id="report_problem" class="help-custom-textarea" placeholder="Explica detalladamente qué sucedió..." required></textarea>
       </div>

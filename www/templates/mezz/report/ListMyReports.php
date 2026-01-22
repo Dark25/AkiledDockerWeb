@@ -5,7 +5,7 @@
         <div class="report-items-list">
             <?php
             $getArticles = $dbh->prepare("SELECT * FROM cms_reports WHERE state = 'Abierto' AND author = :author ORDER BY id DESC");
-            $getArticles->bindParam(':author', User::userData('username'));
+            $getArticles->bindValue(':author', User::userData('username'));
             $getArticles->execute();
             $foundOpen = false;
             while ($a = $getArticles->fetch()) {
@@ -14,7 +14,7 @@
                 ?>
                 <a href="/myreports/<?= filter($a['id']) ?>" class="report-row <?= $activeClass ?>">
                     <div class="report-row-content">
-                        <span class="report-row-title"><?= filter($a['title']) ?></span>
+                        <span class="report-row-title"><i class="far fa-file-alt mr-2"></i><?= filter($a['title']) ?></span>
                         <span class="report-status-badge status-open">Abierto</span>
                     </div>
                 </a>
@@ -30,7 +30,7 @@
         <div class="report-items-list">
             <?php
             $getArticles = $dbh->prepare("SELECT * FROM cms_reports WHERE state = 'Tratamiento' AND author = :author ORDER BY id DESC");
-            $getArticles->bindParam(':author', User::userData('username'));
+            $getArticles->bindValue(':author', User::userData('username'));
             $getArticles->execute();
             $foundTrat = false;
             while ($a = $getArticles->fetch()) {
@@ -39,7 +39,7 @@
                 ?>
                 <a href="/myreports/<?= filter($a['id']) ?>" class="report-row <?= $activeClass ?>">
                     <div class="report-row-content">
-                        <span class="report-row-title"><?= filter($a['title']) ?></span>
+                        <span class="report-row-title"><i class="far fa-file-alt mr-2"></i><?= filter($a['title']) ?></span>
                         <span class="report-status-badge status-progress">En curso</span>
                     </div>
                 </a>
@@ -55,7 +55,7 @@
         <div class="report-items-list">
             <?php
             $getArticles = $dbh->prepare("SELECT * FROM cms_reports WHERE state = 'Cerrado' AND author = :author ORDER BY id DESC");
-            $getArticles->bindParam(':author', User::userData('username'));
+            $getArticles->bindValue(':author', User::userData('username'));
             $getArticles->execute();
             $foundClosed = false;
             while ($a = $getArticles->fetch()) {
@@ -64,7 +64,7 @@
                 ?>
                 <a href="/myreports/<?= filter($a['id']) ?>" class="report-row <?= $activeClass ?>">
                     <div class="report-row-content">
-                        <span class="report-row-title"><?= filter($a['title']) ?></span>
+                        <span class="report-row-title"><i class="far fa-file-alt mr-2"></i><?= filter($a['title']) ?></span>
                         <span class="report-status-badge status-closed">Cerrado</span>
                     </div>
                 </a>
