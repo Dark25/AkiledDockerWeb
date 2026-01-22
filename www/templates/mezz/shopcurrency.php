@@ -75,7 +75,8 @@ $shop_active = 'active';
                                 </script>
                     <?php
                             }
-                        } else {
+                        }
+                        else {
                             echo '<div class="alert-modern error">Hubo un error con tu compra, por favor comunícate con el soporte técnico del hotel.</div>';
                         }
                     }
@@ -93,19 +94,20 @@ $shop_active = 'active';
                         <?php include_once("get/getshop.php"); ?>
                     </div>
 
-                    <div class="chests-section">
-                        <div class="section-title">
-                            <img src="/assets/images/collider/rooms.png" class="pixelated" alt="">
-                            Cofres Disponibles
-                        </div>
+                    <?php
+                    $belcr_get = $dbh->prepare("SELECT * FROM mezz_currency WHERE user_id = :userid AND reclaim = '0'");
+                    $belcr_get->bindParam(':userid', User::userData('id'));
+                    $belcr_get->execute();
+                    if ($belcr_get->RowCount() > 0) {
+                    ?>
+                        <div class="chests-section">
+                            <div class="section-title">
+                                <img src="/assets/images/collider/rooms.png" class="pixelated" alt="">
+                                Cofres Disponibles
+                            </div>
 
-                        <div class="chests-grid">
-                            <?php
-                            $belcr_get = $dbh->prepare("SELECT * FROM mezz_currency WHERE user_id = :userid AND reclaim = '0'");
-                            $belcr_get->bindParam(':userid', User::userData('id'));
-                            $belcr_get->execute();
-
-                            if ($belcr_get->RowCount() > 0) {
+                            <div class="chests-grid">
+                                <?php
                                 while ($consuloro = $belcr_get->fetch()) { ?>
                                     <div class="chest-card">
                                         <div class="chest-image-bg">
@@ -124,12 +126,10 @@ $shop_active = 'active';
                                     </div>
                                 <?php
                                 }
-                            } else {
-                                echo '<p class="no-chests-text">' . $lang["Nnotfoundtxtmezz2"] . '</p>';
-                            }
-                            ?>
+                                ?>
+                            </div>
                         </div>
-                    </div>
+                    <?php } ?>
                 </div>
 
                 <div class="page-content-sidebar">
