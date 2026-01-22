@@ -6924,6 +6924,8 @@ a[data-gender*="F"].sex-active {
   background: #3b82f6 !important;
   color: #fff !important;
   font-weight: 500;
+}
+
 /* Modern Shop Redesign Styles (Added by Jules) */
 .shop-header {
     position: relative;
@@ -7279,324 +7281,322 @@ a[data-gender*="F"].sex-active {
     opacity: 1;
 }
 
-/* --- PROFILE REDESIGN START --- */
-.profile-container {
+
+/* --- PROFILE REDESIGN V2 START --- */
+.mezz-profile-wrapper {
     width: 100%;
-    max-width: 1100px;
+    max-width: 1200px;
     margin: 40px auto;
     padding: 0 20px;
-    --p-card-bg: #ffffff;
-    --p-text-main: #1c1e21;
-    --p-text-sec: #65676b;
-    --p-accent: #1877f2;
-    --p-border: #dddfe2;
-    --p-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-    --p-stats-bg: #f0f2f5;
+    --m-bg: #f8fafc;
+    --m-card: #ffffff;
+    --m-glass: rgba(255, 255, 255, 0.7);
+    --m-text: #1e293b;
+    --m-text-low: #64748b;
+    --m-accent: #3b82f6;
+    --m-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+    --m-border: #e2e8f0;
 }
 
-.profile-header {
-    position: relative;
-    background: var(--p-card-bg);
-    border-radius: 24px;
+.mezz-profile-header {
+    background: var(--m-card);
+    border-radius: 30px;
     overflow: hidden;
-    box-shadow: var(--p-shadow);
-    margin-bottom: 35px;
-    animation: pFadeInDown 0.8s ease-out;
+    box-shadow: var(--m-shadow);
+    margin-bottom: 40px;
 }
 
-.profile-cover {
-    height: 260px;
-    background: linear-gradient(45deg, #1877f2, #00d2ff);
+.mezz-profile-cover {
+    height: 280px;
+    background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
     background-image: url('/assets/images/header/default-background.png');
     background-size: cover;
     background-position: center;
+    position: relative;
 }
 
-.profile-info {
+.mezz-profile-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 150px;
+    background: linear-gradient(to top, rgba(0,0,0,0.3), transparent);
+}
+
+.mezz-profile-main-info {
     display: flex;
     align-items: flex-end;
-    padding: 0 45px 35px;
-    margin-top: -90px;
+    padding: 0 40px 40px;
+    margin-top: -100px;
     position: relative;
-    z-index: 2;
+    z-index: 5;
 }
 
-.profile-avatar-wrapper {
-    background: var(--p-card-bg);
+.mezz-profile-avatar {
+    position: relative;
+}
+
+.mezz-avatar-circle {
+    width: 180px;
+    height: 180px;
+    background: var(--m-card);
+    border-radius: 40px;
     padding: 10px;
-    border-radius: 50%;
-    box-shadow: var(--p-shadow);
-    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
 }
 
-.profile-avatar-wrapper:hover {
-    transform: scale(1.08) rotate(-5deg);
-}
-
-.profile-avatar-img {
-    width: 160px;
-    height: 160px;
-    background: #f0f2f5;
-    border-radius: 50%;
-    display: block;
+.mezz-avatar-circle img {
+    width: 100%;
+    height: 100%;
     object-fit: none;
     object-position: center -20px;
 }
 
-.profile-details {
-    margin-left: 30px;
-    margin-bottom: 20px;
-    flex-grow: 1;
-}
-
-.profile-username {
-    font-size: 36px;
-    font-weight: 800;
-    color: var(--p-text-main);
-    margin: 0;
-    letter-spacing: -1px;
-}
-
-.profile-motto {
-    font-size: 18px;
-    color: var(--p-text-sec);
-    margin: 10px 0 0;
-    font-style: italic;
-    background: var(--p-stats-bg);
-    padding: 6px 18px;
-    border-radius: 25px;
-    display: inline-block;
-}
-
-.profile-stats-row {
-    display: flex;
-    gap: 25px;
-    padding: 30px 45px;
-    background: var(--p-stats-bg);
-    border-top: 1px solid var(--p-border);
-}
-
-.stat-card {
-    display: flex;
-    align-items: center;
-    gap: 18px;
-    background: var(--p-card-bg);
-    padding: 18px 24px;
-    border-radius: 18px;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.02);
-    flex: 1;
-    transition: all 0.3s ease;
-}
-
-.stat-card:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 12px 30px rgba(0,0,0,0.1);
-}
-
-.stat-card img {
-    width: 36px;
-    height: 36px;
-}
-
-.stat-value {
-    font-weight: 800;
-    color: var(--p-text-main);
-    font-size: 20px;
-    display: block;
-}
-
-.stat-label {
-    font-size: 12px;
-    color: var(--p-text-sec);
-    text-transform: uppercase;
-    letter-spacing: 1.2px;
-    font-weight: 600;
-}
-
-.profile-content-grid {
-    display: grid;
-    grid-template-columns: 1.8fr 1.2fr;
-    gap: 35px;
-    animation: pFadeInUp 0.8s ease-out;
-}
-
-.profile-section {
-    background: var(--p-card-bg);
-    border-radius: 24px;
-    padding: 30px;
-    box-shadow: var(--p-shadow);
-    margin-bottom: 35px;
-}
-
-.section-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 30px;
-    border-bottom: 3px solid var(--p-stats-bg);
-    padding-bottom: 15px;
-}
-
-.section-title {
-    font-size: 22px;
-    font-weight: 800;
-    color: var(--p-text-main);
-    margin: 0;
-    position: relative;
-}
-
-.section-title::after {
-    content: '';
+.mezz-online-status {
     position: absolute;
-    bottom: -18px;
-    left: 0;
-    width: 60px;
-    height: 4px;
-    background: var(--p-accent);
-    border-radius: 2px;
+    bottom: 10px;
+    right: 10px;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    border: 4px solid var(--m-card);
 }
 
-@keyframes pFadeInDown {
-    from { opacity: 0; transform: translateY(-40px); }
-    to { opacity: 1; transform: translateY(0); }
+.mezz-online-status.online { background: #10b981; box-shadow: 0 0 15px #10b981; }
+.mezz-online-status.offline { background: #94a3b8; }
+
+.mezz-profile-text {
+    margin-left: 35px;
+    flex-grow: 1;
+    margin-bottom: 15px;
 }
 
-@keyframes pFadeInUp {
-    from { opacity: 0; transform: translateY(40px); }
-    to { opacity: 1; transform: translateY(0); }
-}
-
-/* Overrides for dynamic content */
-.profile-container .page-content-collider-content-profile-card-wrapper-aligner-content {
-    display: flex !important;
-    flex-wrap: wrap !important;
-    gap: 15px !important;
-    padding: 0 !important;
-}
-
-.profile-container .page-content-collider-content-profile-card-wrapper-aligner-content-title {
-    display: none !important;
-}
-
-.profile-container .page-content-collider-content-profile-card-wrapper-aligner-content-badge {
-    margin: 0 !important;
-    padding: 10px !important;
-    background: var(--p-stats-bg);
-    border-radius: 15px;
-    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275) !important;
-    border: 1px solid transparent;
-}
-
-.profile-container .page-content-collider-content-profile-card-wrapper-aligner-content-badge:hover {
-    transform: scale(1.2) rotate(8deg) !important;
-    background: var(--p-card-bg);
-    border-color: var(--p-accent);
-    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
-}
-
-.profile-container .page-content-collider-content-profile-card-wrapper-aligner-content-friend {
-    width: 100px !important;
-    text-align: center;
-    background: var(--p-stats-bg);
-    border-radius: 20px;
-    padding: 15px 10px;
-    transition: all 0.3s ease !important;
-    float: none !important;
-    margin: 0 !important;
-}
-
-.profile-container .page-content-collider-content-profile-card-wrapper-aligner-content-friend:hover {
-    background: var(--p-accent);
-    transform: translateY(-5px);
-}
-
-.profile-container .p-friend:hover .page-content-collider-content-profile-card-wrapper-aligner-content-friend-username {
-    color: #ffffff !important;
-}
-
-.profile-container .page-content-collider-content-profile-card-wrapper-aligner-content-friend-figure {
-    width: 64px !important;
-    height: 64px !important;
-    object-fit: none;
-    object-position: center -15px;
-    margin-bottom: 8px;
-}
-
-.profile-container .page-content-collider-content-profile-card-wrapper-aligner-content-friend-username {
-    font-size: 13px;
-    font-weight: 700;
-    color: var(--p-text-main);
+.mezz-username {
+    font-size: 42px;
+    font-weight: 900;
+    color: var(--m-text);
     margin: 0;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
+    letter-spacing: -1.5px;
+    text-shadow: 0 2px 10px rgba(255,255,255,0.5);
 }
 
-.profile-container .page-content-collider-content-profile-card-wrapper-aligner-content-room {
-    display: flex !important;
-    align-items: center !important;
-    gap: 20px !important;
-    background: var(--p-stats-bg);
-    padding: 18px !important;
-    border-radius: 18px !important;
-    margin-bottom: 15px !important;
-    transition: all 0.3s ease !important;
-    width: 100% !important;
+.mezz-motto-bubble {
+    background: var(--m-glass);
+    backdrop-filter: blur(8px);
+    padding: 8px 20px;
+    border-radius: 15px;
+    margin-top: 10px;
+    display: inline-block;
+    border: 1px solid rgba(255,255,255,0.5);
 }
 
-.profile-container .page-content-collider-content-profile-card-wrapper-aligner-content-room:hover {
-    transform: translateX(12px);
-    background: var(--p-card-bg);
-    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-}
-
-.profile-container .page-content-collider-content-profile-card-wrapper-aligner-content-room-name {
-    font-size: 16px !important;
-    font-weight: 700 !important;
-    color: var(--p-text-main) !important;
-    margin: 0 !important;
-}
-
-.profile-container .photos-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-    gap: 20px;
-}
-
-.profile-container .page-content-collider-content-profile-photo {
-    width: 100% !important;
-    height: 180px !important;
-    border-radius: 18px;
-    overflow: hidden;
-    box-shadow: 0 8px 25px rgba(0,0,0,0.1);
-    transition: all 0.4s ease;
-    margin: 0 !important;
-}
-
-.profile-container .page-content-collider-content-profile-photo:hover {
-    transform: scale(1.05);
-    box-shadow: 0 12px 40px rgba(0,0,0,0.2);
-}
-
-.profile-container .page-content-collider-content-profile-photo-promo {
-    width: 100% !important;
-    height: 100% !important;
-    background-size: cover !important;
-    background-position: center !important;
-}
-
-.profile-footer-info {
-    text-align: center;
-    color: var(--p-text-sec);
-    font-size: 14px;
-    margin: 50px 0;
+.mezz-motto {
+    font-size: 16px;
+    color: var(--m-text-low);
+    margin: 0;
     font-weight: 500;
 }
 
-@media (max-width: 950px) {
-    .profile-content-grid { grid-template-columns: 1fr; }
-    .profile-info { flex-direction: column; align-items: center; text-align: center; margin-top: -100px; }
-    .profile-details { margin-left: 0; margin-top: 20px; }
-    .profile-stats-row { flex-wrap: wrap; }
+.mezz-profile-actions {
+    margin-bottom: 25px;
 }
-/* --- PROFILE REDESIGN END --- */
+
+.mezz-join-date {
+    background: rgba(255,255,255,0.15);
+    backdrop-filter: blur(10px);
+    padding: 10px 20px;
+    border-radius: 15px;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    border: 1px solid rgba(255,255,255,0.2);
+}
+
+.mezz-join-date span { font-size: 11px; text-transform: uppercase; opacity: 0.8; }
+.mezz-join-date strong { font-size: 15px; }
+
+.mezz-profile-stats {
+    display: flex;
+    padding: 30px 40px;
+    background: #f1f5f9;
+    border-top: 1px solid var(--m-border);
+    gap: 30px;
+}
+
+.mezz-stat-item {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    background: var(--m-card);
+    padding: 20px;
+    border-radius: 20px;
+    transition: all 0.3s ease;
+    border: 1px solid var(--m-border);
+}
+
+.mezz-stat-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.05);
+    border-color: var(--m-accent);
+}
+
+.mezz-stat-item img { width: 42px; height: 42px; }
+.mezz-stat-value { display: block; font-size: 22px; font-weight: 800; color: var(--m-text); }
+.mezz-stat-label { font-size: 12px; color: var(--m-text-low); text-transform: uppercase; letter-spacing: 1px; font-weight: 600; }
+
+.mezz-profile-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 40px;
+}
+
+.mezz-card {
+    background: var(--m-card);
+    border-radius: 25px;
+    padding: 30px;
+    box-shadow: var(--m-shadow);
+    margin-bottom: 40px;
+    border: 1px solid var(--m-border);
+}
+
+.mezz-card-header {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 25px;
+    border-bottom: 2px solid #f1f5f9;
+    padding-bottom: 15px;
+}
+
+.mezz-card-title {
+    font-size: 22px;
+    font-weight: 800;
+    color: var(--m-text);
+    margin: 0;
+}
+
+/* Fix for dynamic content inside mezz-card */
+.mezz-card-content .page-content-collider-content-profile-card-wrapper-aligner-content {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    gap: 12px !important;
+    padding: 0 !important;
+    justify-content: flex-start !important;
+}
+
+.mezz-card-content .page-content-collider-content-profile-card-wrapper-aligner-content-title {
+    display: none !important;
+}
+
+.mezz-card-content .page-content-collider-content-profile-card-wrapper-aligner-content-badge {
+    margin: 0 !important;
+    padding: 10px !important;
+    background: #f8fafc;
+    border-radius: 15px;
+    border: 1px solid #e2e8f0;
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275) !important;
+}
+
+.mezz-card-content .page-content-collider-content-profile-card-wrapper-aligner-content-badge:hover {
+    transform: scale(1.15) rotate(5deg) !important;
+    background: #ffffff;
+    border-color: var(--m-accent);
+}
+
+.mezz-card-content .page-content-collider-content-profile-card-wrapper-aligner-content-friend {
+    width: 90px !important;
+    text-align: center;
+    background: #f8fafc;
+    border-radius: 20px;
+    padding: 15px 5px;
+    transition: all 0.3s ease !important;
+    float: none !important;
+}
+
+.mezz-card-content .page-content-collider-content-profile-card-wrapper-aligner-content-friend:hover {
+    background: #eff6ff;
+    transform: translateY(-5px);
+}
+
+.mezz-card-content .page-content-collider-content-profile-card-wrapper-aligner-content-friend-figure {
+    width: 60px !important;
+    height: 60px !important;
+    object-fit: none;
+    object-position: center -15px;
+}
+
+.mezz-card-content .page-content-collider-content-profile-card-wrapper-aligner-content-friend-username {
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--m-text);
+    margin: 5px 0 0 !important;
+}
+
+.mezz-card-content .page-content-collider-content-profile-card-wrapper-aligner-content-room {
+    display: flex !important;
+    align-items: center !important;
+    gap: 15px !important;
+    background: #f8fafc;
+    padding: 15px !important;
+    border-radius: 20px !important;
+    border: 1px solid #e2e8f0;
+    transition: all 0.3s ease !important;
+    width: 100% !important;
+    margin-bottom: 12px !important;
+}
+
+.mezz-card-content .page-content-collider-content-profile-card-wrapper-aligner-content-room:hover {
+    transform: translateX(10px);
+    background: #ffffff;
+    border-color: var(--m-accent);
+}
+
+.mezz-card-content .page-content-collider-content-profile-card-wrapper-aligner-content-room-name {
+    font-size: 15px !important;
+    font-weight: 700 !important;
+    color: var(--m-text) !important;
+    margin: 0 !important;
+}
+
+.mezz-photos-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 20px;
+}
+
+.mezz-card-content .page-content-collider-content-profile-photo {
+    width: 100% !important;
+    height: 200px !important;
+    border-radius: 20px;
+    overflow: hidden;
+    margin: 0 !important;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+}
+
+.mezz-card-content .page-content-collider-content-profile-photo-promo {
+    width: 100% !important;
+    height: 100% !important;
+    background-size: cover !important;
+}
+
+.mezz-profile-footer {
+    text-align: center;
+    padding: 40px 0;
+    color: var(--m-text-low);
+    font-weight: 500;
+}
+
+@media (max-width: 1000px) {
+    .mezz-profile-grid { grid-template-columns: 1fr; }
+    .mezz-profile-main-info { flex-direction: column; align-items: center; text-align: center; }
+    .mezz-profile-text { margin-left: 0; margin-top: 20px; }
+    .mezz-profile-stats { flex-wrap: wrap; }
+}
+/* --- PROFILE REDESIGN V2 END --- */

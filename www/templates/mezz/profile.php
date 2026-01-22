@@ -25,7 +25,7 @@ if ($news->RowCount() == 0) {
     <title>Perfil de: <?= userHome('username'); ?></title>
 </head>
 
-<body class="container">
+<body class="container profile-page-active">
     <script src="/assets/scripts/page-load.js"></script>
     <div class="page-content">
 
@@ -39,94 +39,129 @@ if ($news->RowCount() == 0) {
 
         <?php include_once("includes/menu.php"); ?>
 
-        <div class="profile-container">
-            <!-- Header Section -->
-            <div class="profile-header">
-                <div class="profile-cover"></div>
-                <div class="profile-info">
-                    <div class="profile-avatar-wrapper">
-                        <img src="<?php echo $config['AvatarURL']; ?><?= userHome('look'); ?>&direction=2&head_direction=3&gesture=sml&action=wav&size=l"
-                             alt="<?= filter(userHome('username')); ?>"
-                             class="profile-avatar-img">
+        <div class="mezz-profile-wrapper">
+            <!-- Glassmorphism Profile Header -->
+            <div class="mezz-profile-header">
+                <div class="mezz-profile-cover">
+                    <div class="mezz-profile-overlay"></div>
+                </div>
+
+                <div class="mezz-profile-main-info">
+                    <div class="mezz-profile-avatar">
+                        <div class="mezz-avatar-circle">
+                            <img src="<?php echo $config['AvatarURL']; ?><?= userHome('look'); ?>&direction=2&head_direction=3&gesture=sml&action=wav&size=l"
+                                 alt="<?= filter(userHome('username')); ?>">
+                        </div>
+                        <div class="mezz-online-status <?php echo (userHome('online') == '1' ? 'online' : 'offline'); ?>"></div>
                     </div>
-                    <div class="profile-details">
-                        <h1 class="profile-username"><?= filter(userHome('username')); ?></h1>
-                        <p class="profile-motto"><?= filter(userHome('motto')); ?></p>
+
+                    <div class="mezz-profile-text">
+                        <h1 class="mezz-username"><?= filter(userHome('username')); ?></h1>
+                        <div class="mezz-motto-bubble">
+                            <p class="mezz-motto"><?= filter(userHome('motto')); ?></p>
+                        </div>
+                    </div>
+
+                    <div class="mezz-profile-actions">
+                        <div class="mezz-join-date">
+                            <span>Miembro desde</span>
+                            <strong><?= date('M Y', userHome('account_created')); ?></strong>
+                        </div>
                     </div>
                 </div>
 
-                <div class="profile-stats-row">
-                    <div class="stat-card">
+                <div class="mezz-profile-stats">
+                    <div class="mezz-stat-item">
                         <img src='/templates/<?= $config["skin"]; ?>/assets/images/user-space/credits.png'>
-                        <div class="stat-info">
-                            <span class="stat-value"><?= number_format(userHome('credits')); ?></span>
-                            <span class="stat-label">Créditos</span>
+                        <div class="mezz-stat-details">
+                            <span class="mezz-stat-value"><?= number_format(userHome('credits')); ?></span>
+                            <span class="mezz-stat-label">Créditos</span>
                         </div>
                     </div>
-                    <div class="stat-card">
+                    <div class="mezz-stat-item">
                         <img src='/templates/<?= $config["skin"]; ?>/assets/images/user-space/planeta.png'>
-                        <div class="stat-info">
-                            <span class="stat-value"><?= number_format(userHome('activity_points')); ?></span>
-                            <span class="stat-label">Planetas</span>
+                        <div class="mezz-stat-details">
+                            <span class="mezz-stat-value"><?= number_format(userHome('activity_points')); ?></span>
+                            <span class="mezz-stat-label">Planetas</span>
                         </div>
                     </div>
-                    <div class="stat-card">
+                    <div class="mezz-stat-item">
                         <img src='/templates/<?= $config["skin"]; ?>/assets/images/user-space/esmeralda.png'>
-                        <div class="stat-info">
-                            <span class="stat-value"><?= number_format(userHome('vip_points')); ?></span>
-                            <span class="stat-label">Esmeraldas</span>
+                        <div class="mezz-stat-details">
+                            <span class="mezz-stat-value"><?= number_format(userHome('vip_points')); ?></span>
+                            <span class="mezz-stat-label">Esmeraldas</span>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <div class="profile-content-grid">
-                <!-- Left Column -->
-                <div class="profile-main-content">
-                    <div class="profile-section">
-                        <div class="section-header">
-                            <h2 class="section-title">Placas Recientes</h2>
+            <div class="mezz-profile-grid">
+                <!-- Main Content -->
+                <div class="mezz-profile-column-main">
+                    <!-- Badges -->
+                    <div class="mezz-card">
+                        <div class="mezz-card-header">
+                            <i class="mezz-icon-badge"></i>
+                            <h2 class="mezz-card-title">Colección de Placas</h2>
                         </div>
-                        <?php include_once("get/profile/homeBadges.php"); ?>
+                        <div class="mezz-card-content p-badges">
+                            <?php include_once("get/profile/homeBadges.php"); ?>
+                        </div>
                     </div>
 
-                    <div class="profile-section">
-                        <div class="section-header">
-                            <h2 class="section-title">Grupos</h2>
+                    <!-- Groups -->
+                    <div class="mezz-card">
+                        <div class="mezz-card-header">
+                            <i class="mezz-icon-group"></i>
+                            <h2 class="mezz-card-title">Grupos</h2>
                         </div>
-                        <?php include_once("get/profile/homeGroups.php"); ?>
+                        <div class="mezz-card-content p-groups">
+                            <?php include_once("get/profile/homeGroups.php"); ?>
+                        </div>
                     </div>
 
-                    <div class="profile-section">
-                        <div class="section-header">
-                            <h2 class="section-title">Galería de Fotos</h2>
+                    <!-- Photos -->
+                    <div class="mezz-card">
+                        <div class="mezz-card-header">
+                            <i class="mezz-icon-camera"></i>
+                            <h2 class="mezz-card-title">Galería de Fotos</h2>
                         </div>
-                        <div class="photos-grid">
-                            <?php include_once("get/profile/homePhotos.php"); ?>
+                        <div class="mezz-card-content p-photos">
+                            <div class="mezz-photos-container">
+                                <?php include_once("get/profile/homePhotos.php"); ?>
+                            </div>
                         </div>
                     </div>
                 </div>
 
-                <!-- Right Column -->
-                <div class="profile-sidebar">
-                    <div class="profile-section">
-                        <div class="section-header">
-                            <h2 class="section-title">Amigos</h2>
+                <!-- Sidebar Content -->
+                <div class="mezz-profile-column-side">
+                    <!-- Friends -->
+                    <div class="mezz-card">
+                        <div class="mezz-card-header">
+                            <i class="mezz-icon-friends"></i>
+                            <h2 class="mezz-card-title">Amigos</h2>
                         </div>
-                        <?php include_once("get/profile/homeFriends.php"); ?>
+                        <div class="mezz-card-content p-friends">
+                            <?php include_once("get/profile/homeFriends.php"); ?>
+                        </div>
                     </div>
 
-                    <div class="profile-section">
-                        <div class="section-header">
-                            <h2 class="section-title">Habitaciones</h2>
+                    <!-- Rooms -->
+                    <div class="mezz-card">
+                        <div class="mezz-card-header">
+                            <i class="mezz-icon-room"></i>
+                            <h2 class="mezz-card-title">Habitaciones</h2>
                         </div>
-                        <?php include_once("get/profile/homeRooms.php"); ?>
+                        <div class="mezz-card-content p-rooms">
+                            <?php include_once("get/profile/homeRooms.php"); ?>
+                        </div>
                     </div>
                 </div>
             </div>
 
-            <div class="profile-footer-info">
-                Unido a <?= $config['hotelName'] ?> en <?= date('d-m-Y', userHome('account_created')); ?>
+            <div class="mezz-profile-footer">
+                <p>Estás viendo el perfil de <strong><?= filter(userHome('username')); ?></strong> en <?= $config['hotelName'] ?></p>
             </div>
         </div>
 
