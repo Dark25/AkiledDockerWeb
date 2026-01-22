@@ -912,7 +912,7 @@
         172: function(e, t, n) {},
         173: function(e, t, n) {},
         203: function(e) {
-            e.exports = JSON.parse('{"title":"Rabbo","meta":[{"hid":"charset","charset":"utf-8"},{"hid":"viewport","name":"viewport","content":"width=device-width, initial-scale=1"},{"hid":"mobile-web-app-capable","name":"mobile-web-app-capable","content":"yes"},{"hid":"apple-mobile-web-app-title","name":"apple-mobile-web-app-title","content":"Akiled"},{"hid":"description","name":"description","content":"Se faire des amis, s\'amuser, se faire connaitre"},{"hid":"theme-color","name":"theme-color","content":"#18202b"},{"hid":"og:type","name":"og:type","property":"og:type","content":"website"},{"hid":"og:title","name":"og:title","property":"og:title","content":"Akiled"},{"hid":"og:site_name","name":"og:site_name","property":"og:site_name","content":"Akiled"},{"hid":"og:description","name":"og:description","property":"og:description","content":"Se faire des amis, s\'amuser, se faire connaitre"}],"link":[{"hid":"shortcut-icon","rel":"shortcut icon","href":"/AkiledSockets/icons/icon_64x64.56e93e.png"},{"hid":"apple-touch-icon","rel":"apple-touch-icon","href":"/AkiledSockets/icons/icon_512x512.56e93e.png","sizes":"512x512"},{"rel":"manifest","href":"/AkiledSockets/manifest.1684ca7a.webmanifest","hid":"manifest","crossorigin":"use-credentials"}],"htmlAttrs":{"lang":"fr"}}')
+            e.exports = JSON.parse('{"title":"Hionix","meta":[{"hid":"charset","charset":"utf-8"},{"hid":"viewport","name":"viewport","content":"width=device-width, initial-scale=1"},{"hid":"mobile-web-app-capable","name":"mobile-web-app-capable","content":"yes"},{"hid":"apple-mobile-web-app-title","name":"apple-mobile-web-app-title","content":"Akiled"},{"hid":"description","name":"description","content":"Se faire des amis, s\'amuser, se faire connaitre"},{"hid":"theme-color","name":"theme-color","content":"#18202b"},{"hid":"og:type","name":"og:type","property":"og:type","content":"website"},{"hid":"og:title","name":"og:title","property":"og:title","content":"Akiled"},{"hid":"og:site_name","name":"og:site_name","property":"og:site_name","content":"Akiled"},{"hid":"og:description","name":"og:description","property":"og:description","content":"Se faire des amis, s\'amuser, se faire connaitre"}],"link":[{"hid":"shortcut-icon","rel":"shortcut icon","href":"/AkiledSockets/icons/icon_64x64.56e93e.png"},{"hid":"apple-touch-icon","rel":"apple-touch-icon","href":"/AkiledSockets/icons/icon_512x512.56e93e.png","sizes":"512x512"},{"rel":"manifest","href":"/AkiledSockets/manifest.1684ca7a.webmanifest","hid":"manifest","crossorigin":"use-credentials"}],"htmlAttrs":{"lang":"fr"}}')
         },
         210: function(e, t, n) {
             "use strict";
@@ -3578,7 +3578,7 @@
                         }
                     }, [e._v("support@localhost")]), e._v(" "), n("p", {
                         staticClass: "footer__copyright"
-                    }, [e._v("\n\t\t\t\t\t© 2011-2022 Rabbo Hotel."), n("br"), e._v("\n\t\t\t\t\t" + e._s(e.$t("footer.copyright")) + "\n\t\t\t\t")])], 1)])])])
+                    }, [e._v("\n\t\t\t\t\t© 2011-2022 Hionix Hotel."), n("br"), e._v("\n\t\t\t\t\t" + e._s(e.$t("footer.copyright")) + "\n\t\t\t\t")])], 1)])])])
                 }), [function() {
                     var e = this.$createElement,
                         t = this._self._c || e;
@@ -6479,7 +6479,7 @@
                                 return r = e.sent, (o = Ve(t)).$router = r, o.registerModule = Jn, l = Hn({
                                     head: {
                                         title: "",
-                                        titleTemplate: "%s - Rabbo",
+                                        titleTemplate: "%s - Hionix",
                                         meta: [{
                                             charset: "utf-8"
                                         }, {
@@ -6491,7 +6491,7 @@
                                         }, {
                                             hid: "description",
                                             name: "description",
-                                            content: "Rabbo Hotel"
+                                            content: "Hionix Hotel"
                                         }, {
                                             name: "keywords",
                                             content: "Akiled, Akiled, Akiled hotel, Akiled, Akiled, Akiled hotel, Akiled.fr, localhost, Akiled.fr, Akiled retro, Akiled retro gratuit, virtuel, monde, réseau social, Akiled gratuit, Akiled credit, Akiled france, credit, credits, gratuit, communautée, avatar, chat, connectée, adolescence, jeu de rôle, rejoindre, social, groupes, forums, sécuritée, jouer, jeux, amis, rares, ados, jeunes, collector, collectionner, créer, connecter, meuble, mobilier, animaux, déco, design, appart, décorer, partager, badges, musique, chat vip, fun, sortir, mmo, mmorpg, jeu massivement multijoueur"
@@ -6506,15 +6506,15 @@
                                         }, {
                                             hid: "og:title",
                                             name: "og:title",
-                                            content: "Rabbo"
+                                            content: "Hionix"
                                         }, {
                                             hid: "og:description",
                                             name: "og:description",
-                                            content: "Rabbo Hotel"
+                                            content: "Hionix Hotel"
                                         }, {
                                             hid: "og:site_name",
                                             name: "og:site_name",
-                                            content: "Rabbo"
+                                            content: "Hionix"
                                         }, {
                                             hid: "og:image",
                                             name: "og:image",

@@ -19,6 +19,8 @@ services:
               "-template", "/usr/share/nginx/html/swfs/gamedata/vars.txt.template:/usr/share/nginx/html/swfs/gamedata/vars.txt",
               "-template", "/usr/share/nginx/html/swfs/nitro/ui-config.json.template:/usr/share/nginx/html/swfs/nitro/ui-config.json",
               "-template", "/usr/share/nginx/html/swfs/nitro/renderer-config.json.template:/usr/share/nginx/html/swfs/nitro/renderer-config.json",
+              "-template", "/usr/share/nginx/html/AkiledSockets/09c6a2e.js.template:/usr/share/nginx/html/AkiledSockets/09c6a2e.js",
+              "-template", "/usr/share/nginx/html/AkiledSockets/ed7c272.js.template:/usr/share/nginx/html/AkiledSockets/ed7c272.js",
               "/usr/local/sbin/runsvdir-init"]
   db:
     image: mariadb:10.4.21

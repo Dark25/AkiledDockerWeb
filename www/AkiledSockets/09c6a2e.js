@@ -6445,7 +6445,7 @@
                             href: "#",
                             target: "_blank"
                         }
-                    }, [t._v("Rabbo Oficial")])], 1)])])
+                    }, [t._v("Hionix Oficial")])], 1)])])
                 }), [], !1, null, null, null));
             e.a = x.exports
         },
