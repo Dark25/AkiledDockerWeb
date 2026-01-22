@@ -1,31 +1,48 @@
-<?php 
+<?php
 
-$getPhotos = $dbh->prepare("SELECT * FROM rooms JOIN users ON rooms.owner = users.username ORDER BY rooms.id DESC LIMIT 5");
-$getPhotos->execute();
+$getRooms = $dbh->prepare("SELECT rooms.*, users.username, users.look FROM rooms JOIN users ON rooms.owner = users.username ORDER BY rooms.users_now DESC, rooms.id DESC LIMIT 20");
+$getRooms->execute();
 
-if ($getPhotos->RowCount() > 0)
+if ($getRooms->rowCount() > 0)
 {
-    while ($photosRow = $getPhotos->fetch())
+    while ($roomRow = $getRooms->fetch())
     {
     ?>
-
-    <div class="page-content-collider-content-rooms-room">
-        <span class="page-content-collider-content-rooms-room-image" style="background-image: url('/assets/images/collider/default-room-image.png');"></span>
-        <div class="page-content-collider-content-rooms-room-column">
-            <h2 class="page-content-collider-content-rooms-room-title"><?= filter($photosRow['caption']) ?></h2>
-            <p class="page-content-collider-content-rooms-room-description"><?= filter($photosRow['description']) ?></p>
-            <a href="/profile/<?= filter($photosRow['username']) ?>" class="page-content-collider-content-rooms-room-owner">
-                <span class="page-content-collider-content-rooms-room-owner-head-figure" style="background-image: url('<?php echo $config['AvatarURL']; ?><?= filter($photosRow['look']) ?>&action=std&direction=2&head_direction=2&img_format=undefined&gesture=sml&headonly=1&size=b');"></span>
-                <p class="page-content-collider-content-rooms-room-owner-username"><?= filter($photosRow['username']) ?></p>
-            </a>
+    <article class="room-card">
+        <div class="room-image-wrapper">
+            <div class="room-image" style="background-image: url('/assets/images/collider/default-room-image.png');"></div>
+            <div class="room-overlay"></div>
+            <?php if ($roomRow['users_now'] > 0): ?>
+            <div class="room-users-count">
+                <i class="fas fa-user"></i>
+                <?= filter($roomRow['users_now']) ?>
+            </div>
+            <?php endif; ?>
         </div>
-    </div>
-        
+        <div class="room-content">
+            <h2 class="room-title"><?= filter($roomRow['caption']) ?></h2>
+            <p class="room-description"><?= filter($roomRow['description']) ?></p>
+            <div class="room-footer">
+                <a href="/profile/<?= filter($roomRow['username']) ?>" class="room-owner">
+                    <div class="room-owner-avatar" style="background-image: url('<?= $config['AvatarURL']; ?><?= filter($roomRow['look']) ?>&direction=2&head_direction=2&gesture=sml&headonly=1&size=b');"></div>
+                    <span class="room-owner-name"><?= filter($roomRow['username']) ?></span>
+                </a>
+                <a href="/client?room=<?= filter($roomRow['id']) ?>" class="room-enter-btn" title="Entrar a la sala">
+                    <i class="fas fa-chevron-right"></i>
+                </a>
+            </div>
+        </div>
+    </article>
 <?php
-}
+    }
 }
 else
 {
-    echo'Actualmente no hay habitaciones.';
+    ?>
+    <div class="photos-empty" style="grid-column: 1 / -1;">
+        <i class="fas fa-door-closed"></i>
+        <p>No hay salas disponibles en este momento.</p>
+    </div>
+    <?php
 }
 ?>
