@@ -842,7 +842,7 @@ $lang["tutoapp1"] = "Tutorial App";
 	$lang["SettingsButton"] = "Guardar";
 
 	//Reports -- Mezz ----------------------------------------------------------------------------------------
-
+	$lang["ReportePage"] = "Reportes";
 	$lang["TitutloReport"] = "Título del Report";
 	$lang["Descriporeport"] = "Ingrese un título para su problema";
 	$lang["TituloReportCategoria"] = "Categoria";
