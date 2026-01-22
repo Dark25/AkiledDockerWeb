@@ -17,7 +17,7 @@
             $roomsCount->execute();
             $rooms = $roomsCount->fetchColumn();
 
-            $friendsCount = $dbh->prepare("SELECT COUNT(*) FROM messenger_friendships WHERE user_one_id = :id OR user_two_id = :id");
+            $friendsCount = $dbh->prepare("SELECT COUNT(DISTINCT CASE WHEN user_one_id = :id THEN user_two_id ELSE user_one_id END) FROM messenger_friendships WHERE user_one_id = :id OR user_two_id = :id");
             $friendsCount->bindParam(':id', $_SESSION['id']);
             $friendsCount->execute();
             $friends = $friendsCount->fetchColumn();
