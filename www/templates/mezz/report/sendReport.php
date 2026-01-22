@@ -1,53 +1,48 @@
-<form action="" method="POST">
-
+<div class="help-form-container">
   <?php
   User::CreateReport();
-
-  $getReport = $dbh->prepare("SELECT * FROM cms_reports WHERE id = :id");
-  $getReport->bindParam(':id', $_SESSION['id']);
-  $getReport->execute();
-  $report = $getReport->fetch();
   ?>
 
-  <div class="page-content-collider-content-settings-right-side" style="width: 800px; border: solid 1px grey;">
-
+  <form action="" method="POST" class="help-report-form">
     <input type="hidden" id="content" name="author" value="<?php echo User::userData("username") ?>">
 
-    <div class="page-content-collider-content-settings-right-side-item">
-      <div class="page-content-collider-content-settings-right-side-item-column">
-        <h3 class="page-content-collider-content-settings-right-side-item-title"><?= $lang["TitutloReport"] ?>:</h3>
-        <input type="text" name="title" id="report" class="page-content-collider-content-settings-right-side-item-input" placeholder="Título del Report">
-        <p class="page-content-collider-content-settings-right-side-item-description"><?= $lang["Descriporeport"] ?></p>
+    <div class="help-form-field">
+      <label class="help-form-label" for="report_title"><i class="fas fa-tag mr-2"></i>Título del Reporte</label>
+      <div class="help-input-wrapper">
+        <input type="text" name="title" id="report_title" class="help-custom-input" placeholder="Ej: Problema con la carga de furnis" required>
       </div>
+      <p class="help-field-desc">Resume tu problema en pocas palabras.</p>
     </div>
 
-    <div class="page-content-collider-content-settings-right-side-item">
-      <div class="page-content-collider-content-settings-right-side-item-column">
-        <h3 class="page-content-collider-content-settings-right-side-item-title"><?= $lang["TituloReportCategoria"] ?></h3>
-        <select name="category" id="report" class="page-content-collider-content-settings-right-side-item-input">
-          <option class="page-content-collider-content-settings-right-side-item-input" <?php if ($report['category'] == "Problema tecnico") echo 'selected'; ?> value="Problema tecnico"><?= $lang["ReportOption1"] ?>
-          </option>
-          <option class="page-content-collider-content-settings-right-side-item-input" <?php if ($report['category'] == "Problema en la tienda") echo 'selected'; ?> value="Problema en la tienda"><?= $lang["ReportOption1"] ?></option>
-          <option class="page-content-collider-content-settings-right-side-item-input" <?php if ($report['category'] == "Problema de Moderación") echo 'selected'; ?> value="Problema de Moderación"><?= $lang["ReportOption2"] ?></option>
-          <option class="page-content-collider-content-settings-right-side-item-input" <?php if ($report['category'] == "Problema con los furnis") echo 'selected'; ?> value="Problema con los furnis"><?= $lang["ReportOption3"] ?></option>
-          <option class="page-content-collider-content-settings-right-side-item-input" <?php if ($report['category'] == "Furnis faltantes") echo 'selected'; ?> value="Furnis faltantes"><?= $lang["ReportOption4"] ?></option>
-          <option class="page-content-collider-content-settings-right-side-item-input" <?php if ($report['category'] == "Reportar un Staff") echo 'selected'; ?> value="Reportar un Staff"><?= $lang["ReportOption5"] ?></option>
-          <option class="page-content-collider-content-settings-right-side-item-input" <?php if ($report['category'] == "Sugerencias") echo 'selected'; ?> value="Sugerencias"><?= $lang["ReportOption6"] ?></option>
+    <div class="help-form-field">
+      <label class="help-form-label" for="report_category"><i class="fas fa-list mr-2"></i>Categoría del problema</label>
+      <div class="help-input-wrapper">
+        <select name="category" id="report_category" class="help-custom-select" required>
+          <option value="" disabled selected>Selecciona una categoría...</option>
+          <option value="Problema tecnico"><?= $lang["ReportOption1"] ?></option>
+          <option value="Problema en la tienda">Problema en la tienda</option>
+          <option value="Problema de Moderación"><?= $lang["ReportOption2"] ?></option>
+          <option value="Problema con los furnis"><?= $lang["ReportOption3"] ?></option>
+          <option value="Furnis faltantes"><?= $lang["ReportOption4"] ?></option>
+          <option value="Reportar un Staff"><?= $lang["ReportOption5"] ?></option>
+          <option value="Sugerencias"><?= $lang["ReportOption6"] ?></option>
         </select>
-        <p class="page-content-collider-content-settings-right-side-item-description"><?= $lang["ReportDescOptions"] ?></p>
       </div>
     </div>
 
-    <div class="page-content-collider-content-settings-right-side-item">
-      <div class="page-content-collider-content-settings-right-side-item-column">
-        <h3 class="page-content-collider-content-settings-right-side-item-title"><?= $lang["ReportTituloComent"] ?></h3>
-        <textarea type="text" name="problem" id="report" class="page-content-collider-content-settings-right-side-item-input" placeholder="<?= $lang["ReportTituloComent"] ?>"></textarea>
-        <p class="page-content-collider-content-settings-right-side-item-description"><?= $lang["ReportDescDetail"] ?></p>
+    <div class="help-form-field">
+      <label class="help-form-label" for="report_problem"><i class="fas fa-align-left mr-2"></i>Descripción detallada</label>
+      <div class="help-input-wrapper">
+        <textarea name="problem" id="report_problem" class="help-custom-textarea" placeholder="Explica detalladamente qué sucedió..." required></textarea>
       </div>
+      <p class="help-field-desc">Incluye pasos para reproducir el error si es posible.</p>
     </div>
 
-    <button type="submit" name="report" id="report" autocomplete="off" class="page-content-collider-content-settings-right-side-default-button fill save" style="float:right;"><?= $lang["SettingsButton"] ?></button>
-
-  </div>
-
-</form>
+    <div class="help-form-footer">
+        <button type="submit" name="report" class="help-submit-btn">
+            <span>Enviar Reporte</span>
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
+        </button>
+    </div>
+  </form>
+</div>

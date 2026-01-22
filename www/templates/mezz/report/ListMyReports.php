@@ -1,101 +1,78 @@
-<h3 class="page-content-collider-content-settings-right-side-item-title" style="align-self: left;"><?= $lang["ReportListOpen"] ?></h3>
+<div class="report-history-container">
 
-<?php
-$getArticles = $dbh->prepare("SELECT * FROM cms_reports WHERE state = 'Abierto' ORDER BY id DESC");
-$getArticles->execute();
-if ($getArticles->RowCount() > 0) {
-?>
+    <div class="report-section">
+        <h4 class="report-status-group-title"><?= $lang["ReportListOpen"] ?></h4>
+        <div class="report-items-list">
+            <?php
+            $getArticles = $dbh->prepare("SELECT * FROM cms_reports WHERE state = 'Abierto' AND author = :author ORDER BY id DESC");
+            $getArticles->bindValue(':author', User::userData('username'));
+            $getArticles->execute();
+            $foundOpen = false;
+            while ($a = $getArticles->fetch()) {
+                $foundOpen = true;
+                $activeClass = (isset($_GET['id']) && $_GET['id'] == $a['id']) ? 'is-active' : '';
+                ?>
+                <a href="/myreports/<?= filter($a['id']) ?>" class="report-row <?= $activeClass ?>">
+                    <div class="report-row-content">
+                        <span class="report-row-title"><i class="far fa-file-alt mr-2"></i><?= filter($a['title']) ?></span>
+                        <span class="report-status-badge status-open">Abierto</span>
+                    </div>
+                </a>
+                <?php
+            }
+            if (!$foundOpen) echo '<div class="report-empty-state">No tienes informes abiertos</div>';
+            ?>
+        </div>
+    </div>
 
-  <h2 style="  font-size: 100%;"><?= filter($sectionName) ?></h2>
+    <div class="report-section">
+        <h4 class="report-status-group-title"><?= $lang["ReportListTratamiento"] ?></h4>
+        <div class="report-items-list">
+            <?php
+            $getArticles = $dbh->prepare("SELECT * FROM cms_reports WHERE state = 'Tratamiento' AND author = :author ORDER BY id DESC");
+            $getArticles->bindValue(':author', User::userData('username'));
+            $getArticles->execute();
+            $foundTrat = false;
+            while ($a = $getArticles->fetch()) {
+                $foundTrat = true;
+                $activeClass = (isset($_GET['id']) && $_GET['id'] == $a['id']) ? 'is-active' : '';
+                ?>
+                <a href="/myreports/<?= filter($a['id']) ?>" class="report-row <?= $activeClass ?>">
+                    <div class="report-row-content">
+                        <span class="report-row-title"><i class="far fa-file-alt mr-2"></i><?= filter($a['title']) ?></span>
+                        <span class="report-status-badge status-progress">En curso</span>
+                    </div>
+                </a>
+                <?php
+            }
+            if (!$foundTrat) echo '<div class="report-empty-state">No hay informes en tratamiento</div>';
+            ?>
+        </div>
+    </div>
 
-  <?php
-  while ($a = $getArticles->fetch()) {
-    $username = $a['author'];
-    if (User::userData('username') == $username) {
-  ?>
+    <div class="report-section">
+        <h4 class="report-status-group-title"><?= $lang["ReportListClose"] ?></h4>
+        <div class="report-items-list">
+            <?php
+            $getArticles = $dbh->prepare("SELECT * FROM cms_reports WHERE state = 'Cerrado' AND author = :author ORDER BY id DESC");
+            $getArticles->bindValue(':author', User::userData('username'));
+            $getArticles->execute();
+            $foundClosed = false;
+            while ($a = $getArticles->fetch()) {
+                $foundClosed = true;
+                $activeClass = (isset($_GET['id']) && $_GET['id'] == $a['id']) ? 'is-active' : '';
+                ?>
+                <a href="/myreports/<?= filter($a['id']) ?>" class="report-row <?= $activeClass ?>">
+                    <div class="report-row-content">
+                        <span class="report-row-title"><i class="far fa-file-alt mr-2"></i><?= filter($a['title']) ?></span>
+                        <span class="report-status-badge status-closed">Cerrado</span>
+                    </div>
+                </a>
+                <?php
+            }
+            if (!$foundClosed) echo '<div class="report-empty-state">No tienes informes cerrados</div>';
+            ?>
+        </div>
+    </div>
 
-      <a href="/myreports/<?= filter($a['id']) ?>" class="<?php if ($_GET['id'] == filter($a['id'])) {
-                                                          echo 'active';
-                                                        } else {
-                                                          echo 'noactive';
-                                                        } ?>">
-        <?= filter($a['title']) ?>&nbsp;&raquo;
-      </a>
-
-<?php
-    }
-  }
-}
-?>
-
-<br>
-
-<h3 class="page-content-collider-content-settings-right-side-item-title" style="align-self: left;"><?= $lang["ReportListTratamiento"] ?></h3>
-
-<?php
-$getArticles = $dbh->prepare("SELECT * FROM cms_reports WHERE state = 'Tratamiento' ORDER BY id DESC");
-$getArticles->execute();
-if ($getArticles->RowCount() > 0) {
-?>
-
-  <h2 style="  font-size: 100%;"><?= filter($sectionName) ?></h2>
-
-  <?php
-  while ($a = $getArticles->fetch()) {
-    $username = $a['author'];
-    if (User::userData('username') == $username) {
-  ?>
-
-      <a href="/myreports/<?= filter($a['id']) ?>" class="<?php if ($_GET['id'] == filter($a['id'])) {
-                                                          echo 'active';
-                                                        } else {
-                                                          echo 'noactive';
-                                                        } ?>">
-        <?= filter($a['title']) ?>&nbsp;&raquo;
-      </a>
-
-<?php
-    }
-  }
-}
-?>
-
-<br>
-
-<h3 class="page-content-collider-content-settings-right-side-item-title" style="align-self: left;"><?= $lang["ReportListClose"] ?></h3>
-
-<?php
-$getArticles = $dbh->prepare("SELECT * FROM cms_reports WHERE state = 'Cerrado' ORDER BY id DESC");
-$getArticles->execute();
-if ($getArticles->RowCount() > 0) {
-?>
-
-  <?php
-  while ($a = $getArticles->fetch()) {
-    $username = $a['author'];
-    if (User::userData('username') == $username) {
-  ?>
-
-      <a href="/myreports/<?= filter($a['id']) ?>" class="<?php if ($_GET['id'] == filter($a['id'])) {
-                                                          echo 'active';
-                                                        } else {
-                                                          echo 'noactive';
-                                                        } ?>">
-        <?= filter($a['title']) ?>&nbsp;&raquo;
-      </a>
-
-<?php
-    }
-  }
-}
-?>
-
-<style>
-  a {
-    color: black;
-  }
-
-  .active {
-    color: #cf8f01;
-  }
-</style>
+</div>

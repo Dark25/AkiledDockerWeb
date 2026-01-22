@@ -9,7 +9,7 @@
         while ($groups = $stmt->fetch()) {
 
     ?>
-            <img src=<?= $config['badgeURL'] ?><?= filter($groups["badge"]) ?>.png class='page-content-collider-content-profile-card-wrapper-aligner-content-badge' data-toggle='tooltip' data-original-title='<?= filter($groups["name"]) ?>' style='padding: 5px 5px; margin: 0 20px 20px 0;'>
+            <img src=<?= $config['groupBadgeURL'] ?><?= filter($groups["badge"]) ?> class='page-content-collider-content-profile-card-wrapper-aligner-content-badge' data-toggle='tooltip' data-original-title='<?= filter($groups["name"]) ?>' style='padding: 5px 5px; margin: 0 20px 20px 0;'>
     <?php
         }
     } else {
