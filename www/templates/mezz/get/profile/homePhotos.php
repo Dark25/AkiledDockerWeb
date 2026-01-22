@@ -1,5 +1,4 @@
 <div class="page-content-collider-content-profile-photos">
-    <h2 class="page-content-collider-content-profile-photos-title">Fotos</h2>
 
     <?php
     $userId = userHome('id');
@@ -10,8 +9,16 @@
         while ($photos = $stmt->fetch()) {
     ?>
             <div class='page-content-collider-content-profile-photo'>
+                <?php
+                $rawPhoto = filter($photos["photo"]);
+                if (preg_match('/\.(png|jpg|jpeg|gif)$/i', $rawPhoto)) {
+                    $photoUrl = $config['roomphotos'] . $rawPhoto;
+                } else {
+                    $photoUrl = $config['roomphotos'] . $rawPhoto . '.png';
+                }
+                ?>
 
-                <span class='page-content-collider-content-profile-photo-promo pixelated' style='background-image: url(<?php echo $config['roomphotos'] ?><?= filter($photos["photo"]) ?>.png)'></span>
+                <img class='page-content-collider-content-profile-photo-promo' src='<?php echo $photoUrl ?>' alt='photo' style='width:100%;height:100%;object-fit:cover;border-radius:8px;display:block;'>
 
             </div>
     <?php

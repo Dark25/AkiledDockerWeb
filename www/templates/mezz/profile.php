@@ -49,7 +49,7 @@ if ($news->RowCount() == 0) {
                 <div class="mezz-profile-main-info">
                     <div class="mezz-profile-avatar">
                         <div class="mezz-avatar-circle">
-                            <img src="<?php echo $config['AvatarURL']; ?><?= userHome('look'); ?>&direction=2&head_direction=3&gesture=sml&action=wav&size=l"
+                            <img src="<?php echo $config['AvatarURL']; ?><?= userHome('look'); ?>&direction=2&head_direction=3&gesture=sml&action=wav&size=m"
                                  alt="<?= filter(userHome('username')); ?>">
                         </div>
                         <div class="mezz-online-status <?php echo (userHome('online') == '1' ? 'online' : 'offline'); ?>"></div>
