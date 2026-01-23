@@ -8,8 +8,8 @@ $fansite_active = 'active';
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/assets/styles/app.css">
-    <link rel="stylesheet" href="/assets/styles/fansites.css">
+    <link rel="stylesheet" href="/assets/styles/fansites.css" media="(prefers-color-scheme: light)">
+    <link rel="stylesheet" href="/assets/styles/fansites-dark.css" media="(prefers-color-scheme: dark)">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <title><?= $config['hotelName'] ?>: <?= $lang["TittleHader14"] ?></title>
@@ -85,7 +85,9 @@ $fansite_active = 'active';
 
                     <!-- Sidebar: Premium Info Boxes -->
                     <div class="page-content-sidebar">
-                        <div class="info-box-premium">
+                    
+                        <?php include_once('includes/sidebar.php'); ?>
+                         <div class="info-box-premium">
                             <h3 class="info-box-premium-title">
                                 <i class="fas fa-rocket"></i> Únete al Programa
                             </h3>
@@ -100,8 +102,6 @@ $fansite_active = 'active';
                                 <?= $lang["FsDesc3"] ?>
                             </p>
                         </div>
-
-                        <?php include_once('includes/sidebar.php'); ?>
                     </div>
                 </div>
 
