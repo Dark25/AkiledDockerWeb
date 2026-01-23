@@ -1,21 +1,44 @@
 :root {
-    /* Light Mode Variables */
-    --rooms-bg: #f9fafb;
+    --rooms-bg: #eaf2f5;
     --rooms-card-bg: #ffffff;
-    --rooms-card-text: #1e293b;
+    --rooms-card-text: #2c3039;
     --rooms-card-sub: #64748b;
-    --rooms-card-border: rgba(0, 0, 0, 0.05);
-    --rooms-card-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
-    /* Hero background: gradient + banner image (coloca /assets/images/banner-rooms.jpg) */
+    --rooms-card-border: rgba(0, 0, 0, 0.08);
+    --rooms-card-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+    --rooms-hero-bg: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
+    --rooms-hero-title: #ffffff;
+    --rooms-btn-bg: #eeb425;
+    --rooms-btn-hover: #d9a322;
     --rooms-hero-bg: linear-gradient(135deg, rgba(59,130,246,0.65) 0%, rgba(37,99,235,0.65) 100%), url('/assets/images/bannerdiamante2.png');
-    --rooms-btn-bg: #3b82f6;
-    --rooms-btn-hover: #2563eb;
-    --rooms-btn-shadow: rgba(0, 0, 0, 0.1);
+    --rooms-btn-shadow: rgba(238, 180, 37, 0.3);
+}
+
+/* Dark Mode Overrides (Triggered by manual toggle class or system preference) */
+body.dark-mode {
+    --rooms-bg: #1d232f;
+    --rooms-card-bg: #1f2937;
+    --rooms-card-text: #f1f5f9;
+    --rooms-card-sub: #94a3b8;
+    --rooms-card-border: rgba(255, 255, 255, 0.08);
+    --rooms-card-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3);
+    --rooms-btn-shadow: rgba(0, 0, 0, 0.3);
+}
+
+/* Handle system preference as well */
+@media (prefers-color-scheme: dark) {
+    :root:not(.light-mode) body:not(.light-mode) {
+        --rooms-bg: #1d232f;
+        --rooms-card-bg: #1f2937;
+        --rooms-card-text: #f1f5f9;
+        --rooms-card-sub: #94a3b8;
+        --rooms-card-border: rgba(255, 255, 255, 0.08);
+        --rooms-card-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3);
+    }
 }
 
 /* Hero Section */
 .rooms-hero {
-    position: relative;
+  position: relative;
     width: 100%;
     height: 180px;
     background: var(--rooms-hero-bg);
@@ -78,7 +101,6 @@
     color: rgba(255, 255, 255, 0.9);
     font-weight: 400;
     max-width: 500px;
-    margin: 0;
 }
 
 .rooms-hero-icon {
@@ -200,7 +222,6 @@ body.dark-mode .room-card:hover {
 
 .room-card-actions {
     margin-top: auto;
-    padding-top: 10px;
 }
 
 .room-enter-btn {
@@ -216,10 +237,8 @@ body.dark-mode .room-card:hover {
     font-size: 15px;
     text-transform: uppercase;
     letter-spacing: 0.5px;
-    transition: all 0.2s ease;
-    border: none;
-    border-bottom: 4px solid rgba(0, 0, 0, 0.2);
-    cursor: pointer;
+    transition: all 0.2s;
+    border-bottom: 4px solid #d9a322;
 }
 
 .room-enter-btn:hover {
@@ -229,7 +248,7 @@ body.dark-mode .room-card:hover {
 }
 
 .room-enter-btn:active {
-    transform: translateY(1px);
+    transform: translateY(0);
     border-bottom-width: 2px;
 }
 
@@ -248,13 +267,11 @@ body.dark-mode .room-card:hover {
     color: var(--rooms-card-sub);
     margin-bottom: 15px;
     opacity: 0.5;
-    display: block;
 }
 
 .rooms-empty p {
     color: var(--rooms-card-sub);
     font-size: 16px;
-    margin: 0;
 }
 
 /* Responsive */
@@ -262,14 +279,8 @@ body.dark-mode .room-card:hover {
     .page-content-max-width.has-sidebar {
         flex-direction: column;
     }
-
     .page-content-sidebar {
         width: 100%;
-    }
-
-    .rooms-grid {
-        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-        gap: 20px;
     }
 }
 
@@ -277,25 +288,14 @@ body.dark-mode .room-card:hover {
     .rooms-hero {
         padding: 30px;
         height: auto;
-        min-height: 140px;
         flex-direction: column;
         align-items: flex-start;
         text-align: left;
     }
-
     .rooms-hero-icon {
         display: none;
     }
-
     .rooms-hero-title {
-        font-size: 24px;
-    }
-
-    .rooms-hero-subtitle {
-        font-size: 14px;
-    }
-
-    .rooms-grid {
-        grid-template-columns: 1fr;
+        font-size: 28px;
     }
 }
