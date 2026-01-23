@@ -30,29 +30,30 @@ $rooms_active = 'active';
 
         <div class="page-content-collider" style="background-color: transparent;">
             <div class="page-content-max-width">
-                <!-- Hero Section -->
-                <div class="rooms-hero">
-                    <div class="rooms-hero-content">
-                        <div class="rooms-hero-badge">COMUNIDAD</div>
-                        <h1 class="rooms-hero-title"><?= $lang["RoomTitle"] ?></h1>
-                        <p class="rooms-hero-subtitle"><?= $lang["RoomDesc"] ?></p>
-                    </div>
-                    <div class="rooms-hero-icon">
-                        <i class="fas fa-door-open"></i>
-                    </div>
-                </div>
 
-                <div class="page-content-max-width has-sidebar">
-                    <div class="page-content-main-column">
-                        <div class="rooms-grid">
-                            <?php include_once('get/getRooms.php'); ?>
+                <div class="rooms-container-flex">
+                    <!-- Vertical Hero sidebar -->
+                    <div class="rooms-hero-vertical">
+                        <div class="rooms-hero-vertical-badge">COMUNIDAD</div>
+                        <h1 class="rooms-hero-vertical-title"><?= $lang["RoomTitle"] ?></h1>
+                        <p class="rooms-hero-vertical-subtitle"><?= $lang["RoomDesc"] ?></p>
+                        <div class="rooms-hero-vertical-icon">
+                            <i class="fas fa-door-open"></i>
                         </div>
                     </div>
 
-                    <div class="page-content-sidebar">
-                        <?php include_once('includes/sidebar.php'); ?>
+                    <!-- Main content and sidebar -->
+                    <div class="rooms-content-wrapper">
+                        <div class="rooms-main-grid">
+                            <?php include_once('get/getRooms.php'); ?>
+                        </div>
+
+                        <div class="rooms-sidebar">
+                            <?php include_once('includes/sidebar.php'); ?>
+                        </div>
                     </div>
                 </div>
+
             </div>
         </div>
 
