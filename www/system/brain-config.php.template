@@ -41,7 +41,7 @@ $config['precioloteria'] = "30"; // Lottery price month - Precio de lotería mes
 $config['homeRoom'] = "2104"; // Welcome Room - Sala de Bienvenida.
 $config['onlineCounter'] = true; // Counter of users - Contador de usuarios. 
 $config['groupBadgeURL'] = "{{ .Env.WEB_URL }}/habbo-imaging/badge.php?badge=";
-$config['roomthumball'] = "{{ .Env.WEB_URL }}/newfoto/thumbnail/";
+$config['roomthumball'] = "{{ .Env.WEB_URL }}/swfs/newfoto/thumbnail/";
 $config['roomphotos'] = "{{ .Env.WEB_URL }}/swfs/newfoto/photos/";
 $config['badgeURL'] = "{{ .Env.WEB_URL }}/swfs/c_images/album1584/";
 $config['badgeURLu'] = "{{ .Env.WEB_URL }}/swfs/c_images/placas/";
