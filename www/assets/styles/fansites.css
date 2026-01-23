@@ -1,290 +1,278 @@
 :root {
-    /* Light Mode Variables */
-    --fs-bg: #f3f4f6;
-    --fs-card-bg: #ffffff;
-    --fs-card-text: #1e293b;
-    --fs-card-sub: #64748b;
+    /* Light Mode - Soft & Premium */
+    --fs-bg: #f8fafc;
+    --fs-card-bg: rgba(255, 255, 255, 0.9);
     --fs-card-border: rgba(0, 0, 0, 0.05);
-    --fs-card-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+    --fs-card-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    --fs-card-glow: rgba(124, 58, 237, 0.1);
 
-    --fs-hero-bg: linear-gradient(135deg, #7c3aed 0%, #3b82f6 100%);
-    --fs-hero-text: #ffffff;
+    --fs-text-main: #0f172a;
+    --fs-text-muted: #64748b;
 
-    --fs-btn-bg: #7c3aed;
-    --fs-btn-hover: #6d28d9;
-    --fs-btn-text: #ffffff;
+    --fs-accent: #7c3aed;
+    --fs-accent-hover: #6d28d9;
+    --fs-accent-glow: rgba(124, 58, 237, 0.3);
 
-    --fs-sidebar-title: #111827;
-    --fs-sidebar-text: #4b5563;
+    --fs-hero-gradient: linear-gradient(45deg, #4f46e5 0%, #7c3aed 100%);
+    --fs-card-header-gradient: linear-gradient(to right, #6366f1, #a855f7);
 }
 
 body.dark-mode {
-    /* Dark Mode Variables */
-    --fs-bg: #111827;
-    --fs-card-bg: rgba(31, 41, 55, 0.7);
-    --fs-card-text: #f1f5f9;
-    --fs-card-sub: #94a3b8;
-    --fs-card-border: rgba(255, 255, 255, 0.1);
-    --fs-card-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.4);
+    /* Dark Mode - Neon & Immersive */
+    --fs-bg: #0f172a;
+    --fs-card-bg: rgba(30, 41, 59, 0.7);
+    --fs-card-border: rgba(255, 255, 255, 0.08);
+    --fs-card-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.5);
+    --fs-card-glow: rgba(139, 92, 246, 0.2);
 
-    --fs-hero-bg: linear-gradient(135deg, #6d28d9 0%, #1e40af 100%);
+    --fs-text-main: #f1f5f9;
+    --fs-text-muted: #94a3b8;
 
-    --fs-sidebar-title: #f9fafb;
-    --fs-sidebar-text: #d1d5db;
+    --fs-accent: #8b5cf6;
+    --fs-accent-hover: #a78bfa;
+    --fs-accent-glow: rgba(139, 92, 246, 0.5);
+
+    --fs-hero-gradient: linear-gradient(45deg, #1e1b4b 0%, #4c1d95 100%);
+    --fs-card-header-gradient: linear-gradient(to right, #4338ca, #7e22ce);
 }
 
-/* Hero Section */
-.fansites-hero {
+/* Immersive Hero */
+.fansites-hero-v2 {
     position: relative;
     width: 100%;
-    height: 200px;
-    background: var(--fs-hero-bg);
-    border-radius: 24px;
-    margin-bottom: 30px;
-    overflow: hidden;
-    display: flex;
-    align-items: center;
-    padding: 0 50px;
-    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
-    color: var(--fs-hero-text);
-}
-
-.fansites-hero::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-image: url('/assets/images/header/pattern.png');
-    opacity: 0.1;
-    pointer-events: none;
-}
-
-.fansites-hero-content {
-    position: relative;
-    z-index: 2;
-}
-
-.fansites-hero-badge {
-    display: inline-block;
-    background: rgba(255, 255, 255, 0.2);
-    backdrop-filter: blur(10px);
-    padding: 6px 16px;
-    border-radius: 100px;
-    font-size: 12px;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    margin-bottom: 16px;
-    border: 1px solid rgba(255, 255, 255, 0.2);
-}
-
-.fansites-hero-title {
-    font-size: 36px;
-    font-weight: 800;
-    margin: 0 0 10px 0;
-    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-    text-transform: uppercase;
-}
-
-.fansites-hero-subtitle {
-    font-size: 18px;
-    opacity: 0.9;
-    max-width: 550px;
-    margin: 0;
-}
-
-.fansites-hero-icon {
-    position: absolute;
-    right: 50px;
-    font-size: 100px;
-    color: rgba(255, 255, 255, 0.15);
-    transform: rotate(-15deg);
-    z-index: 1;
-    transition: transform 0.5s ease;
-}
-
-.fansites-hero:hover .fansites-hero-icon {
-    transform: rotate(0deg) scale(1.1);
-}
-
-/* Grid Layout */
-.fansites-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    gap: 25px;
+    min-height: 280px;
+    background: var(--fs-hero-gradient);
+    border-radius: 32px;
     margin-bottom: 40px;
-}
-
-/* Fansite Card */
-.fansite-card {
-    background: var(--fs-card-bg);
-    border: 1px solid var(--fs-card-border);
-    border-radius: 20px;
-    padding: 25px;
     display: flex;
     flex-direction: column;
-    gap: 20px;
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    box-shadow: var(--fs-card-shadow);
-    backdrop-filter: blur(12px);
-}
-
-.fansite-card:hover {
-    transform: translateY(-8px);
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 40px;
+    overflow: hidden;
     box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.2);
-    border-color: var(--fs-btn-bg);
 }
 
-.fansite-card-header {
+.fansites-hero-v2::before {
+    content: '';
+    position: absolute;
+    width: 200%;
+    height: 200%;
+    background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    opacity: 0.3;
+    animation: slide 60s linear infinite;
+}
+
+@keyframes slide {
+    from { transform: translate(0, 0); }
+    to { transform: translate(-50%, -50%); }
+}
+
+.fansites-hero-v2-badge {
+    position: relative;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    padding: 8px 20px;
+    border-radius: 100px;
+    color: #fff;
+    font-size: 14px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 20px;
+}
+
+.fansites-hero-v2-title {
+    position: relative;
+    font-size: 48px;
+    font-weight: 900;
+    color: #fff;
+    margin: 0;
+    text-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.fansites-hero-v2-subtitle {
+    position: relative;
+    font-size: 20px;
+    color: rgba(255, 255, 255, 0.8);
+    max-width: 600px;
+    margin-top: 15px;
+}
+
+/* Premium Social Grid */
+.fansites-social-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 30px;
+}
+
+/* Social Card Design */
+.social-fs-card {
+    background: var(--fs-card-bg);
+    border: 1px solid var(--fs-card-border);
+    border-radius: 24px;
+    overflow: hidden;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    box-shadow: var(--fs-card-shadow);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
     display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
+    flex-direction: column;
 }
 
-.fansite-verified-badge {
-    color: #3b82f6;
-    font-size: 24px;
+.social-fs-card:hover {
+    transform: translateY(-12px);
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25), 0 0 20px var(--fs-card-glow);
+    border-color: var(--fs-accent);
 }
 
-.fansite-owner-avatar {
-    width: 60px;
-    height: 60px;
+.social-fs-card-header {
+    height: 100px;
+    background: var(--fs-card-header-gradient);
+    position: relative;
+}
+
+.social-fs-card-avatar-wrap {
+    position: absolute;
+    bottom: -40px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 80px;
+    background: var(--fs-card-bg);
+    border-radius: 50%;
+    padding: 5px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.social-fs-card-avatar {
+    width: 100%;
+    height: 100%;
     background-color: rgba(0, 0, 0, 0.05);
     background-position: center -15px;
     background-repeat: no-repeat;
     border-radius: 50%;
-    border: 3px solid var(--fs-card-border);
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border: 2px solid var(--fs-accent);
 }
 
-.fansite-card-body {
+.social-fs-card-body {
+    padding: 55px 25px 25px 25px;
+    text-align: center;
+    flex-grow: 1;
     display: flex;
     flex-direction: column;
-    gap: 10px;
 }
 
-.fansite-name {
-    font-size: 22px;
+.social-fs-card-name {
+    font-size: 24px;
     font-weight: 800;
-    color: var(--fs-card-text);
-    margin: 0;
+    color: var(--fs-text-main);
+    margin-bottom: 10px;
 }
 
-.fansite-description {
+.social-fs-card-desc {
     font-size: 15px;
-    color: var(--fs-card-sub);
-    line-height: 1.5;
-    margin: 0;
+    color: var(--fs-text-muted);
+    line-height: 1.6;
+    margin-bottom: 20px;
     display: -webkit-box;
     -webkit-line-clamp: 3;
     -webkit-box-orient: vertical;
     overflow: hidden;
-    height: 67px;
 }
 
-.fansite-owner-info {
+.social-fs-card-meta {
+    margin-top: auto;
+    padding-top: 15px;
+    border-top: 1px solid var(--fs-card-border);
+    display: flex;
+    justify-content: center;
+    gap: 15px;
     font-size: 13px;
-    color: var(--fs-card-sub);
+    color: var(--fs-text-muted);
 }
 
-.fansite-owner-info strong {
-    color: var(--fs-card-text);
+.social-fs-card-meta strong {
+    color: var(--fs-text-main);
 }
 
-.fansite-visit-btn {
+.social-fs-card-footer {
+    padding: 0 25px 25px 25px;
+}
+
+.social-fs-visit-btn {
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 10px;
-    padding: 12px;
-    background: var(--fs-btn-bg);
-    color: var(--fs-btn-text);
+    width: 100%;
+    padding: 14px;
+    background: var(--fs-accent);
+    color: #fff;
     text-decoration: none;
-    border-radius: 12px;
+    border-radius: 16px;
     font-weight: 700;
-    font-size: 15px;
-    transition: all 0.2s;
-    border-bottom: 4px solid rgba(0, 0, 0, 0.2);
+    font-size: 16px;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 14px var(--fs-accent-glow);
 }
 
-.fansite-visit-btn:hover {
-    background: var(--fs-btn-hover);
-    transform: translateY(-2px);
+.social-fs-visit-btn:hover {
+    background: var(--fs-accent-hover);
+    transform: scale(1.02);
+    box-shadow: 0 6px 20px var(--fs-accent-glow);
 }
 
-.fansite-visit-btn:active {
-    transform: translateY(1px);
-    border-bottom-width: 2px;
-}
-
-/* Sidebar Styling */
-.fansite-sidebar-card {
+/* Integrated Sidebar Info */
+.info-box-premium {
     background: var(--fs-card-bg);
     border: 1px solid var(--fs-card-border);
-    border-radius: 20px;
-    padding: 25px;
-    margin-bottom: 25px;
+    border-radius: 24px;
+    padding: 30px;
+    margin-bottom: 30px;
+    backdrop-filter: blur(12px);
     box-shadow: var(--fs-card-shadow);
 }
 
-.fansite-sidebar-title {
-    font-size: 18px;
-    font-weight: 700;
-    color: var(--fs-sidebar-title);
-    margin: 0 0 15px 0;
+.info-box-premium-title {
+    font-size: 20px;
+    font-weight: 800;
+    color: var(--fs-text-main);
+    margin-bottom: 15px;
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 12px;
 }
 
-.fansite-sidebar-title i {
-    color: var(--fs-btn-bg);
+.info-box-premium-title i {
+    color: var(--fs-accent);
 }
 
-.fansite-sidebar-text {
-    font-size: 14px;
-    color: var(--fs-sidebar-text);
-    line-height: 1.6;
+.info-box-premium-text {
+    font-size: 15px;
+    color: var(--fs-text-muted);
+    line-height: 1.7;
     margin: 0;
 }
 
-.fansite-sidebar-divider {
+.info-box-premium-divider {
     height: 1px;
     background: var(--fs-card-border);
-    margin: 20px 0;
+    margin: 25px 0;
 }
 
 /* Responsive */
-@media (max-width: 1024px) {
-    .fansites-hero {
-        padding: 0 30px;
-    }
-}
-
 @media (max-width: 768px) {
-    .fansites-hero {
-        height: auto;
-        padding: 40px 30px;
-        flex-direction: column;
-        align-items: flex-start;
-        text-align: left;
+    .fansites-hero-v2-title {
+        font-size: 32px;
     }
-
-    .fansites-hero-icon {
-        display: none;
+    .fansites-hero-v2-subtitle {
+        font-size: 16px;
     }
-
-    .fansites-hero-title {
-        font-size: 28px;
-    }
-
-    .fansites-hero-subtitle {
-        font-size: 15px;
-    }
-
-    .fansites-grid {
+    .fansites-social-grid {
         grid-template-columns: 1fr;
     }
 }
