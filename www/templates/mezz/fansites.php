@@ -37,9 +37,10 @@ $fansite_active = 'active';
                                 <?php
                                 $getFs = $dbh->prepare("SELECT * FROM cms_fansites c INNER JOIN users u ON c.ceo = u.username");
                                 $getFs->execute();
+                                $allFs = $getFs->fetchAll();
 
-                                if ($getFs->RowCount() > 0) {
-                                    while ($FsRow = $getFs->fetch()) {
+                                if (count($allFs) > 0) {
+                                    foreach ($allFs as $FsRow) {
                                 ?>
 
                                         <ul class="page-content-collider-content-fansites-list-space-list">
