@@ -1,44 +1,49 @@
 <?php
+if (!isset($dbh)) {
+    include_once('../../../system/brain-config.php');
+}
 
-$getRooms = $dbh->prepare("SELECT rooms.*, users.username, users.look FROM rooms JOIN users ON rooms.owner = users.username ORDER BY rooms.users_now DESC, rooms.id DESC LIMIT 20");
+$getRooms = $dbh->prepare("SELECT r.id, r.caption, r.description, r.users_now, u.username, u.look
+                           FROM rooms r
+                           JOIN users u ON r.owner = u.username
+                           ORDER BY r.users_now DESC
+                           LIMIT 20");
 $getRooms->execute();
 
-if ($getRooms->rowCount() > 0)
-{
-    while ($roomRow = $getRooms->fetch())
-    {
-    ?>
-    <article class="room-card-v2">
-        <div class="room-card-v2-image" style="background-image: url('/assets/images/collider/default-room-image.png');">
-            <?php if ($roomRow['users_now'] > 0): ?>
-            <div class="room-card-v2-users">
-                <i class="fas fa-user"></i>
-                <?= filter($roomRow['users_now']) ?>
+if ($getRooms->rowCount() > 0) {
+    while ($room = $getRooms->fetch()) {
+        $roomName = filter($room['caption']);
+        $ownerName = filter($room['username']);
+        $usersNow = (int)$room['users_now'];
+        $look = filter($room['look']);
+        ?>
+        <article class="room-card">
+            <div class="room-card-preview" style="background-image: url('<?= $config['AvatarURL'] . $look ?>&direction=2&head_direction=2&gesture=sml&size=m&headonly=1'); background-size: auto; background-repeat: no-repeat; background-position: center;">
+                <div class="room-users-count">
+                    <i class="fas fa-users"></i>
+                    <span><?= $usersNow ?></span>
+                </div>
             </div>
-            <?php endif; ?>
-        </div>
-        <div class="room-card-v2-info">
-            <h2 class="room-card-v2-title"><?= filter($roomRow['caption']) ?></h2>
-            <div class="room-card-v2-footer">
-                <a href="/profile/<?= filter($roomRow['username']) ?>" class="room-card-v2-owner">
-                    <div class="room-card-v2-avatar" style="background-image: url('<?= $config['AvatarURL']; ?><?= filter($roomRow['look']) ?>&direction=2&head_direction=2&gesture=sml&headonly=1&size=b');"></div>
-                    <span class="room-card-v2-name"><?= filter($roomRow['username']) ?></span>
-                </a>
-                <a href="/client?room=<?= filter($roomRow['id']) ?>" class="room-card-v2-btn" title="Entrar a la sala">
-                    <i class="fas fa-chevron-right"></i>
-                </a>
+            <div class="room-card-info">
+                <h3 class="room-card-name"><?= $roomName ?></h3>
+                <div class="room-card-owner">
+                    <img src="<?= $config['AvatarURL'] . $look ?>&direction=2&head_direction=2&gesture=sml&size=s&headonly=1" alt="<?= $ownerName ?>">
+                    <span>Por <strong><?= $ownerName ?></strong></span>
+                </div>
+                <div class="room-card-actions">
+                    <a href="/client?roomid=<?= $room['id'] ?>" class="room-enter-btn">
+                        <?= $lang["Ienter"] ?>
+                    </a>
+                </div>
             </div>
-        </div>
-    </article>
-<?php
+        </article>
+        <?php
     }
-}
-else
-{
+} else {
     ?>
-    <div class="photos-empty" style="grid-column: 1 / -1;">
+    <div class="rooms-empty">
         <i class="fas fa-door-closed"></i>
-        <p>No hay salas disponibles en este momento.</p>
+        <p>Actualmente no hay habitaciones.</p>
     </div>
     <?php
 }
