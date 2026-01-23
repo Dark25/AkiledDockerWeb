@@ -43,7 +43,7 @@ $rooms_active = 'active';
                     </div>
                 </div>
 
-                <div class="page-content-max-width has-sidebar">
+                <div class="page-content-max-width has-sidebar" style="width: 100%; padding: 0;">
                     <!-- Main Content: Rooms Grid -->
                     <div class="page-content-main-column">
                         <div id="rooms-container" class="rooms-grid">
