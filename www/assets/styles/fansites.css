@@ -1,6 +1,6 @@
 :root {
     /* Light Mode - Soft & Premium */
-    --fs-bg: #f8fafc;
+    --fs-bg: #0f172a;
     --fs-card-bg: rgba(255, 255, 255, 0.9);
     --fs-card-border: rgba(0, 0, 0, 0.05);
     --fs-card-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
@@ -13,34 +13,15 @@
     --fs-accent-hover: #6d28d9;
     --fs-accent-glow: rgba(124, 58, 237, 0.3);
 
-    --fs-hero-gradient: linear-gradient(45deg, #4f46e5 0%, #7c3aed 100%);
+    --fs-hero-gradient: linear-gradient(45deg, #3b3950 0%, #8878a0 100%);
     --fs-card-header-gradient: linear-gradient(to right, #6366f1, #a855f7);
-}
-
-body.dark-mode {
-    /* Dark Mode - Neon & Immersive */
-    --fs-bg: #0f172a;
-    --fs-card-bg: rgba(30, 41, 59, 0.7);
-    --fs-card-border: rgba(255, 255, 255, 0.08);
-    --fs-card-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.5);
-    --fs-card-glow: rgba(139, 92, 246, 0.2);
-
-    --fs-text-main: #f1f5f9;
-    --fs-text-muted: #94a3b8;
-
-    --fs-accent: #8b5cf6;
-    --fs-accent-hover: #a78bfa;
-    --fs-accent-glow: rgba(139, 92, 246, 0.5);
-
-    --fs-hero-gradient: linear-gradient(45deg, #1e1b4b 0%, #4c1d95 100%);
-    --fs-card-header-gradient: linear-gradient(to right, #4338ca, #7e22ce);
 }
 
 /* Immersive Hero */
 .fansites-hero-v2 {
     position: relative;
     width: 100%;
-    min-height: 280px;
+    height: 210px;
     background: var(--fs-hero-gradient);
     border-radius: 32px;
     margin-bottom: 40px;
@@ -57,16 +38,43 @@ body.dark-mode {
 .fansites-hero-v2::before {
     content: '';
     position: absolute;
-    width: 200%;
-    height: 200%;
+    width: 100%;
+    height: 100%;
     background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
     opacity: 0.3;
     animation: slide 60s linear infinite;
 }
 
 @keyframes slide {
-    from { transform: translate(0, 0); }
-    to { transform: translate(-50%, -50%); }
+    from {
+        transform: translate(0, 0);
+    }
+
+    to {
+        transform: translate(-50%, -50%);
+    }
+}
+
+
+.fansites-hero-v2::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: url("../images/image.png");
+    background-position: left bottom;
+    background-repeat: no-repeat;
+    background-size: 50%;
+    opacity: 0.9;
+    pointer-events: none;
+    mix-blend-mode: overlay;
+    z-index: 0;
+}
+
+
+.fansites-hero-v2-badge,
+.fansites-hero-v2-title,
+.fansites-hero-v2-subtitle {
+    z-index: 2;
 }
 
 .fansites-hero-v2-badge {
@@ -79,7 +87,7 @@ body.dark-mode {
     border-radius: 100px;
     color: #fff;
     font-size: 14px;
-    font-weight: 700;
+    font-weight: 500;
     text-transform: uppercase;
     letter-spacing: 2px;
     margin-bottom: 20px;
@@ -87,7 +95,7 @@ body.dark-mode {
 
 .fansites-hero-v2-title {
     position: relative;
-    font-size: 48px;
+    font-size: 38px;
     font-weight: 900;
     color: #fff;
     margin: 0;
@@ -96,17 +104,45 @@ body.dark-mode {
 
 .fansites-hero-v2-subtitle {
     position: relative;
-    font-size: 20px;
+    font-size: 16px;
     color: rgba(255, 255, 255, 0.8);
     max-width: 600px;
     margin-top: 15px;
 }
 
-/* Premium Social Grid */
+/* Premium Social Grid (column layout for sidebar design) */
 .fansites-social-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.fas {
+    color: #ebcd22;
+}
+
+/* Two-column page layout when there's a sidebar */
+.page-content-max-width.has-sidebar {
+    display: flex;
     gap: 30px;
+    align-items: flex-start;
+}
+
+.page-content-main-column {
+    /* Columna principal estrecha y alineada a la izquierda */
+    flex: 0 0 560px;
+    min-width: 0;
+}
+
+.page-content-sidebar {
+    flex: 0 0 320px;
+    width: 320px;
+}
+
+/* Constrain card width so the left column looks like a stacked list */
+.social-fs-card {
+    width: 100%;
+    margin: 0 0 16px 0;
 }
 
 /* Social Card Design */
@@ -130,36 +166,36 @@ body.dark-mode {
 }
 
 .social-fs-card-header {
-    height: 100px;
+    height: 56px;
     background: var(--fs-card-header-gradient);
     position: relative;
 }
 
 .social-fs-card-avatar-wrap {
     position: absolute;
-    bottom: -40px;
+    bottom: -14px;
     left: 50%;
     transform: translateX(-50%);
-    width: 80px;
-    height: 80px;
+    width: 56px;
+    height: 56px;
     background: var(--fs-card-bg);
     border-radius: 50%;
-    padding: 5px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    padding: 3px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.06);
 }
 
 .social-fs-card-avatar {
     width: 100%;
     height: 100%;
     background-color: rgba(0, 0, 0, 0.05);
-    background-position: center -15px;
+    background-position: center -26px;
     background-repeat: no-repeat;
     border-radius: 50%;
     border: 2px solid var(--fs-accent);
 }
 
 .social-fs-card-body {
-    padding: 55px 25px 25px 25px;
+    padding: 20px 16px 16px 16px;
     text-align: center;
     flex-grow: 1;
     display: flex;
@@ -167,17 +203,17 @@ body.dark-mode {
 }
 
 .social-fs-card-name {
-    font-size: 24px;
+    font-size: 20px;
     font-weight: 800;
     color: var(--fs-text-main);
-    margin-bottom: 10px;
+    margin-bottom: 8px;
 }
 
 .social-fs-card-desc {
-    font-size: 15px;
+    font-size: 14px;
     color: var(--fs-text-muted);
-    line-height: 1.6;
-    margin-bottom: 20px;
+    line-height: 1.5;
+    margin-bottom: 14px;
     display: -webkit-box;
     -webkit-line-clamp: 3;
     -webkit-box-orient: vertical;
@@ -207,17 +243,17 @@ body.dark-mode {
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 10px;
+    gap: 8px;
     width: 100%;
-    padding: 14px;
+    padding: 8px 10px;
     background: var(--fs-accent);
     color: #fff;
     text-decoration: none;
-    border-radius: 16px;
+    border-radius: 10px;
     font-weight: 700;
-    font-size: 16px;
-    transition: all 0.3s ease;
-    box-shadow: 0 4px 14px var(--fs-accent-glow);
+    font-size: 14px;
+    transition: all 0.15s ease;
+    box-shadow: 0 2px 8px var(--fs-accent-glow);
 }
 
 .social-fs-visit-btn:hover {
@@ -269,10 +305,31 @@ body.dark-mode {
     .fansites-hero-v2-title {
         font-size: 32px;
     }
+
     .fansites-hero-v2-subtitle {
         font-size: 16px;
     }
+
     .fansites-social-grid {
         grid-template-columns: 1fr;
+    }
+
+    .page-content-max-width.has-sidebar {
+        flex-direction: column;
+    }
+
+    .page-content-sidebar {
+        width: 100%;
+        flex: none;
+        order: 2;
+    }
+
+    .page-content-main-column {
+        order: 1;
+    }
+
+    .social-fs-card {
+        max-width: 100%;
+        margin: 0;
     }
 }
