@@ -2,6 +2,7 @@
 $whatishabbo_active = 'active';
 ?>
 
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -9,8 +10,10 @@ $whatishabbo_active = 'active';
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="/assets/styles/app.css">
+    <link rel="stylesheet" type="text/css" href="/assets/styles/what-is-habbo.css" media="(prefers-color-scheme: light)">
+    <link rel="stylesheet" type="text/css" href="/assets/styles/what-is-habbo-dark.css" media="(prefers-color-scheme: dark)">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <title><?= $lang['TittleHader2']?>?</title>
+    <title><?= $lang['TittleHader2'] ?>?</title>
 </head>
 
 <body class="container">
@@ -24,107 +27,99 @@ $whatishabbo_active = 'active';
         }
         ?>
         <?php include_once("includes/menu.php"); ?>
-        <div class="page-content-collider">
-            <div class="page-content-max-width" style="width: 900px; justify-content: center;">
-                <div class="page-content-collider-item">
-                    <div class="page-content-collider-content playing-habbo">
 
-                        <div class="page-content-collider-content-playing-habbo-item">
-                            <h2 class="page-content-collider-content-playing-habbo-item-title">
-                                <?= $lang["FAQtitle1"] ?>
-                            </h2>
-                            <p class="page-content-collider-content-playing-habbo-item-description">
+        <div class="page-content-collider">
+            <div class="page-content-max-width" style="flex-direction: column; align-items: center;">
+                <div class="what-is-habbo-container">
+                    <section class="hero-section">
+                        <div class="hero-content">
+                            <h1 class="hero-title"><?= $lang["FAQtitle1"] ?></h1>
+                            <p class="hero-subtitle">
                                 <?= $config['hotelName'] ?> <?= $lang["FAQdesc1"] ?>
-                                <b class="page-content-collider-content-playing-habbo-item-bolder">
-                                    <?= $lang["FAQdesc1bold"] ?>
-                                </b>
+                                <strong><?= $lang["FAQdesc1bold"] ?></strong>
                                 <?= $lang["FAQdesc1.2"] ?>
                             </p>
+                            <div class="hero-image">
+                                <img src="/assets/images/playing-habbo/ill_15.png" alt="Habbo Hero">
+                            </div>
                         </div>
+                    </section>
 
-                        <div class="page-content-collider-content-playing-habbo-item">
-                            <h2 class="page-content-collider-content-playing-habbo-item-title">
-                                <?= $lang["FAQtitle2"] ?>
-                            </h2>
-                            <p class="page-content-collider-content-playing-habbo-item-description">
-                                <img src="/assets/images/playing-habbo/ill_15.png" alt="More than just a game..." class="page-content-collider-content-playing-habbo-item-image">
-                                <?= $lang["FAQdesc2"] ?>
-                                <b class="page-content-collider-content-playing-habbo-item-bolder">
-                                    <?= $lang["FAQdesc2bold"] ?>
-                                </b>
-                                <?= $lang["FAQdesc2.1"] ?>
-                                <b class="page-content-collider-content-playing-habbo-item-bolder">
-                                    <?= $lang["FAQdesc2.1bold"] ?>
-                                </b>
-                                <?= $lang["FAQdesc2.2"] ?>
-                            </p>
-                        </div>
-
-                        <div class="page-content-collider-content-playing-habbo-item">
-                            <h2 class="page-content-collider-content-playing-habbo-item-title">
-                                <?= $lang["FAQtitle3"] ?>
-                            </h2>
-                            <p class="page-content-collider-content-playing-habbo-item-description">
-                                <?= $lang["FAQdesc3"] ?>
-                                <b class="page-content-collider-content-playing-habbo-item-bolder">
-                                    <?= $lang["FAQdesc3bold"] ?>
-                                </b>
-                                <?= $lang["FAQdesc3.1"] ?>
-                            </p>
-                        </div>
-
-                        <div class="page-content-collider-content-playing-habbo-item">
-                            <h2 class="page-content-collider-content-playing-habbo-item-title">
-                                <?= $lang["FAQtitle4"] ?>
-                            </h2>
-                            <p class="page-content-collider-content-playing-habbo-item-description">
-                                <img src="/assets/images/playing-habbo/ill_16.png" alt="Express yourself" class="page-content-collider-content-playing-habbo-item-image">
+                    <section class="features-grid">
+                        <div class="feature-card">
+                            <div class="feature-icon">
+                                <img src="/assets/images/playing-habbo/ill_16.png" alt="Express yourself">
+                            </div>
+                            <h3 class="feature-title"><?= $lang["FAQtitle4"] ?></h3>
+                            <p class="feature-desc">
                                 <?= $lang["FAQdesc4"] ?>
-                                <b class="page-content-collider-content-playing-habbo-item-bolder">
-                                    <?= $lang["FAQdesc4bold"] ?>
-                                </b>
+                                <strong><?= $lang["FAQdesc4bold"] ?></strong>
                                 <?= $lang["FAQdesc4.1"] ?>
                             </p>
                         </div>
 
-                        <div class="page-content-collider-content-playing-habbo-item">
-                            <h2 class="page-content-collider-content-playing-habbo-item-title">
-                                <?= $lang["FAQtitle5"] ?>
-                            </h2>
-                            <p class="page-content-collider-content-playing-habbo-item-description">
-                                <?= $config['hotelName'] ?>
-                                <?= $lang["FAQdesc5"] ?>
-                                <b class="page-content-collider-content-playing-habbo-item-bolder">
-                                    <?= $lang["FAQdesc5bold"] ?></b>, <?= $lang["FAQdesc5.1"] ?>
+                        <div class="feature-card">
+                            <div class="feature-icon">
+                                <img src="/assets/images/playing-habbo/navigator.png" alt="Find your community">
+                            </div>
+                            <h3 class="feature-title"><?= $lang["FAQtitle3"] ?></h3>
+                            <p class="feature-desc">
+                                <?= $lang["FAQdesc3"] ?>
+                                <strong><?= $lang["FAQdesc3bold"] ?></strong>
+                                <?= $lang["FAQdesc3.1"] ?>
                             </p>
-                            <p class="page-content-collider-content-playing-habbo-item-description">
+                        </div>
+
+                        <div class="feature-card">
+                            <div class="feature-icon">
+                                <img src="/assets/images/playing-habbo/shop.png" alt="Play for free">
+                            </div>
+                            <h3 class="feature-title"><?= $lang["FAQtitle5"] ?></h3>
+                            <p class="feature-desc">
+                                <?= $config['hotelName'] ?> <?= $lang["FAQdesc5"] ?>
+                                <strong><?= $lang["FAQdesc5bold"] ?></strong>,
+                                <?= $lang["FAQdesc5.1"] ?>
                                 <?= $lang["FAQdesc5.2"] ?>
                                 <?= $lang["FAQdescshoplink"] ?>
                             </p>
                         </div>
 
-                        <div class="page-content-collider-content-playing-habbo-item">
-                            <h2 class="page-content-collider-content-playing-habbo-item-title">
-                                <?= $lang["FAQtitle6"] ?>
-                            </h2>
-                            <p class="page-content-collider-content-playing-habbo-item-description">
-                                <img src="/assets/images/playing-habbo/ill_17.png" alt="Always here to help..." class="page-content-collider-content-playing-habbo-item-image">
+                        <div class="feature-card">
+                            <div class="feature-icon">
+                                <img src="/assets/images/playing-habbo/ill_17.png" alt="Always here to help">
+                            </div>
+                            <h3 class="feature-title"><?= $lang["FAQtitle6"] ?></h3>
+                            <p class="feature-desc">
                                 <?= $lang["FAQdesc6"] ?>
-                                <?= $lang["FAQdescsafetylink"] ?>
-                            </p>
-                            <p class="page-content-collider-content-playing-habbo-item-description">
+                                <?= $lang["FAQdescsafetylink"] ?>.
                                 <?= $lang["FAQdesc6.1"] ?>
-                                <b class="page-content-collider-content-playing-habbo-item-bolder">
-                                    <?= $lang["FAQdesc6bold"] ?>
-                                </b>
+                                <strong><?= $lang["FAQdesc6bold"] ?></strong>
                                 <?= $lang["FAQdesc6.2"] ?>
                             </p>
                         </div>
+                    </section>
 
-                    </div>
+                    <section class="more-than-game">
+                        <div class="more-content">
+                            <div class="more-text">
+                                <h2 class="more-title"><?= $lang["FAQtitle2"] ?></h2>
+                                <p>
+                                    <?= $lang["FAQdesc2"] ?>
+                                    <strong><?= $lang["FAQdesc2bold"] ?></strong>
+                                    <?= $lang["FAQdesc2.1"] ?>
+                                    <strong><?= $lang["FAQdesc2.1bold"] ?></strong>
+                                    <?= $lang["FAQdesc2.2"] ?>
+                                </p>
+                            </div>
+                            <div class="more-image">
+                                <img src="/assets/images/playing-habbo/gamehub.png" alt="Game Hub">
+                            </div>
+                        </div>
+                    </section>
                 </div>
             </div>
         </div>
+
         <?php include_once('includes/footer.php'); ?>
     </div>
     <script src="/assets/scripts/app.js"></script>
