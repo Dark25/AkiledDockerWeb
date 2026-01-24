@@ -1,0 +1,285 @@
+:root {
+      --settings-bg: #111827;
+    --settings-card-bg: #1f2937;
+    --settings-text-main: #f9fafb;
+    --settings-text-secondary: #9ca3af;
+    --settings-accent: #eeb425;
+    --settings-accent-hover: #d9a322;
+    --settings-success: #10b981;
+     --settings-border: #374151;
+    --settings-menu-hover: #2d3748;
+    --settings-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.5);
+}
+
+/* Base Layout for Settings */
+.settings-main-container {
+    display: flex;
+    gap: 30px;
+    width: 100%;
+    padding: 20px 0;
+}
+
+/* Menu Sidebar */
+.settings-menu-container {
+    width: 280px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    flex-shrink: 0;
+}
+
+.settings-menu-item {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 15px 20px;
+    border-radius: 15px;
+    background: var(--settings-card-bg);
+    color: var(--settings-text-secondary);
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    border: 1px solid var(--settings-border);
+    box-shadow: var(--settings-shadow);
+}
+
+.settings-menu-item:hover {
+    background: var(--settings-menu-hover);
+    color: var(--settings-text-main);
+    transform: translateX(8px);
+}
+
+.settings-menu-item.active {
+    background: var(--settings-accent);
+    color: #fff;
+    border-color: var(--settings-accent);
+    transform: translateX(8px);
+}
+
+.settings-menu-item-icon {
+    width: 22px;
+    height: 22px;
+    stroke: currentColor;
+    fill: none;
+    stroke-width: 2px;
+}
+
+/* Card Content Area */
+.settings-right-side {
+    flex: 1;
+    min-width: 0;
+}
+
+.settings-card {
+    background: var(--settings-card-bg);
+    border-radius: 24px;
+    padding: 40px;
+    box-shadow: var(--settings-shadow);
+    border: 1px solid var(--settings-border);
+    animation: settings-fade-in 0.5s ease-out;
+}
+
+@keyframes settings-fade-in {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.settings-title {
+    font-size: 26px;
+    font-weight: 800;
+    color: var(--settings-text-main);
+    margin-bottom: 8px;
+    letter-spacing: -0.02em;
+}
+
+.settings-description {
+    font-size: 15px;
+    color: var(--settings-text-secondary);
+    margin-bottom: 35px;
+    line-height: 1.6;
+}
+
+/* Form Styling */
+.settings-form {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+.settings-form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.settings-label {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--settings-text-main);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+}
+
+.settings-input {
+    width: 100%;
+    padding: 14px 18px;
+    border-radius: 12px;
+    background: var(--settings-bg);
+    border: 2px solid transparent;
+    color: var(--settings-text-main);
+    font-size: 15px;
+    font-weight: 500;
+    transition: all 0.2s ease;
+}
+
+.settings-input:focus {
+    border-color: var(--settings-accent);
+    background: var(--settings-card-bg);
+    box-shadow: 0 0 0 4px rgba(238, 180, 37, 0.15);
+}
+
+.settings-input::placeholder {
+    color: var(--settings-text-secondary);
+    opacity: 0.5;
+}
+
+.settings-select {
+    width: 100%;
+    padding: 14px 18px;
+    border-radius: 12px;
+    background: var(--settings-bg);
+    border: 2px solid transparent;
+    color: var(--settings-text-main);
+    font-size: 15px;
+    font-weight: 500;
+    cursor: pointer;
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%239ca3af'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M19 9l-7 7-7-7'%3E%3C/path%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 18px center;
+    background-size: 18px;
+    transition: all 0.2s ease;
+}
+
+.settings-select:focus {
+    border-color: var(--settings-accent);
+    box-shadow: 0 0 0 4px rgba(238, 180, 37, 0.15);
+}
+
+.settings-button-container {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 10px;
+}
+
+.settings-button {
+    background: var(--settings-accent);
+    color: #fff;
+    padding: 14px 35px;
+    border-radius: 12px;
+    font-weight: 700;
+    font-size: 15px;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    box-shadow: 0 4px 14px rgba(238, 180, 37, 0.3);
+}
+
+.settings-button:hover {
+    background: var(--settings-accent-hover);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(238, 180, 37, 0.4);
+}
+
+.settings-button:active {
+    transform: translateY(-1px);
+}
+
+.settings-button.save-btn {
+    background: var(--settings-success);
+    box-shadow: 0 4px 14px rgba(16, 185, 129, 0.3);
+}
+
+.settings-button.save-btn:hover {
+    background: #059669;
+    box-shadow: 0 8px 25px rgba(16, 185, 129, 0.4);
+}
+
+/* Emoji Redesign */
+.emoji-category-section {
+    margin-bottom: 35px;
+}
+
+.emoji-category-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--settings-text-main);
+    margin-bottom: 15px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid var(--settings-border);
+}
+
+.emoji-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(55px, 1fr));
+    gap: 12px;
+}
+
+.emojibox-modern {
+    font-size: 26px;
+    width: 100%;
+    aspect-ratio: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--settings-bg);
+    border-radius: 14px;
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    cursor: pointer;
+    border: 1px solid var(--settings-border);
+    padding: 0;
+}
+
+.emojibox-modern:hover {
+    transform: scale(1.15);
+    background: var(--settings-accent);
+    box-shadow: 0 8px 20px rgba(238, 180, 37, 0.3);
+    z-index: 2;
+    border-color: transparent;
+}
+
+.emoji-grid-scroll {
+    max-height: 600px;
+    overflow-y: auto;
+    padding-right: 15px;
+    scrollbar-width: thin;
+    scrollbar-color: var(--settings-accent) transparent;
+}
+
+.emoji-grid-scroll::-webkit-scrollbar {
+    width: 6px;
+}
+
+.emoji-grid-scroll::-webkit-scrollbar-thumb {
+    background-color: var(--settings-accent);
+    border-radius: 10px;
+}
+
+@media (max-width: 992px) {
+    .settings-main-container {
+        flex-direction: column;
+    }
+    .settings-menu-container {
+        width: 100%;
+        flex-direction: row;
+        overflow-x: auto;
+        padding-bottom: 10px;
+    }
+    .settings-menu-item {
+        flex-shrink: 0;
+        white-space: nowrap;
+    }
+}
