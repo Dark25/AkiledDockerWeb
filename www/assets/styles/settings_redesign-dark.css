@@ -1,14 +1,14 @@
 :root {
-    --settings-bg: #f3f4f6;
-    --settings-card-bg: #ffffff;
-    --settings-text-main: #1f2937;
-    --settings-text-secondary: #6b7280;
+      --settings-bg: #111827;
+    --settings-card-bg: #1f2937;
+    --settings-text-main: #f9fafb;
+    --settings-text-secondary: #9ca3af;
     --settings-accent: #eeb425;
     --settings-accent-hover: #d9a322;
     --settings-success: #10b981;
-    --settings-border: #e5e7eb;
-    --settings-menu-hover: #f9fafb;
-    --settings-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+     --settings-border: #374151;
+    --settings-menu-hover: #2d3748;
+    --settings-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.5);
 }
 
 /* Base Layout for Settings */
