@@ -1,7 +1,8 @@
 /* Redesign by Jules for Mezz Template - Safety and Habbo Way (Dark Mode) */
 @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
 
-.safety-container, .habbo-way-container {
+.safety-container,
+.habbo-way-container {
     max-width: 1100px;
     margin: 0 auto;
     padding: 20px;
@@ -11,7 +12,11 @@
 
 /* Hero Section */
 .hero-section {
-    background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+    background-image: linear-gradient(135deg, rgba(30, 41, 59, 0.95) 0%, rgba(15, 23, 42, 0.95) 100%), url("/assets/images/playing-habbo/safetytips3_n.png");
+    background-size: contain;
+    background-position: left;
+    background-repeat: no-repeat;
+    background-blend-mode: multiply;
     border-radius: 20px;
     padding: 60px 40px;
     margin-bottom: 40px;
@@ -24,17 +29,28 @@
 }
 
 .hero-section.safety {
-    background: linear-gradient(135deg, #c026d3 0%, #701a75 100%);
+    background-image: linear-gradient(135deg, rgb(192 38 211 / 36%) 0%, rgba(112, 26, 117, 0.9) 100%), url(/assets/images/playing-habbo/safetytips3_n.png);
+    background-size: contain;
+    background-position: left;
+    background-repeat: no-repeat;
+    background-blend-mode: multiply;
 }
 
 .hero-section.habbo-way {
-    background: linear-gradient(135deg, #0ea5e9 0%, #0369a1 100%);
+    background-image: linear-gradient(40deg, rgb(14 165 233 / 23%) 0%, rgba(3, 105, 161, 0.9) 100%), url(/assets/images/playing-habbo/habboway_3a.png);
+    background-size: contain;
+    background-position: left;
+    background-repeat: no-repeat;
+    background-blend-mode: multiply;
 }
 
 .hero-section::before {
     content: "";
     position: absolute;
-    top: 0; left: 0; right: 0; bottom: 0;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
     background-image: url("/assets/images/header/pattern.png");
     opacity: 0.05;
 }
@@ -128,8 +144,13 @@
     text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
 }
 
-.way-column-title.do { color: #10b981; }
-.way-column-title.dont { color: #ef4444; }
+.way-column-title.do {
+    color: #10b981;
+}
+
+.way-column-title.dont {
+    color: #ef4444;
+}
 
 .rule-card {
     background: #1e293b;
