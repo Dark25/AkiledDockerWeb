@@ -1,0 +1,183 @@
+/* Redesign by Jules for Mezz Template - How to Play (Dark Mode) */
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
+.how-to-play-container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 20px;
+    font-family: 'Poppins', sans-serif;
+    color: #cbd5e1;
+}
+
+/* Hero Section */
+.htp-hero {
+    background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+    border-radius: 20px;
+    padding: 60px 40px;
+    margin-bottom: 50px;
+    color: #fff;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    text-align: center;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.htp-hero::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background-image: url("/assets/images/header/pattern.png");
+    opacity: 0.05;
+}
+
+.htp-hero-content {
+    position: relative;
+    z-index: 2;
+}
+
+.htp-hero-title {
+    font-size: 42px;
+    font-weight: 800;
+    margin-bottom: 20px;
+    text-shadow: 0 4px 15px rgba(0,0,0,0.5);
+    animation: fadeInDown 0.8s ease-out;
+}
+
+.htp-hero-description {
+    font-size: 18px;
+    max-width: 700px;
+    margin: 0 auto;
+    line-height: 1.6;
+    color: #94a3b8;
+    animation: fadeInUp 0.8s ease-out 0.2s backwards;
+}
+
+/* Steps Section */
+.htp-steps {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    margin-bottom: 60px;
+}
+
+.htp-step-card {
+    background: #1e293b;
+    border-radius: 20px;
+    padding: 40px;
+    display: flex;
+    align-items: center;
+    gap: 40px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.htp-step-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 35px rgba(0,0,0,0.5);
+    border-color: #eeb425;
+}
+
+.htp-step-card:nth-child(even) {
+    flex-direction: row-reverse;
+}
+
+.htp-step-image {
+    flex-shrink: 0;
+    width: 200px;
+    height: 150px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #0f172a;
+    border-radius: 16px;
+    padding: 20px;
+}
+
+.htp-step-image img {
+    max-width: 100%;
+    max-height: 100%;
+    image-rendering: pixelated;
+    filter: drop-shadow(0 5px 15px rgba(0,0,0,0.3));
+}
+
+.htp-step-content {
+    flex: 1;
+}
+
+.htp-step-number {
+    display: inline-block;
+    background: #eeb425;
+    color: #fff;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 30px;
+    font-weight: 800;
+    margin-bottom: 15px;
+    font-size: 14px;
+}
+
+.htp-step-title {
+    font-size: 24px;
+    font-weight: 700;
+    margin-bottom: 15px;
+    color: #f1f5f9;
+}
+
+.htp-step-desc {
+    font-size: 15px;
+    line-height: 1.7;
+    color: #94a3b8;
+}
+
+/* Footer Info Card */
+.htp-footer-info {
+    background: #0f172a;
+    color: #fff;
+    border-radius: 20px;
+    padding: 40px;
+    text-align: center;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.htp-footer-title {
+    font-size: 28px;
+    font-weight: 700;
+    margin-bottom: 20px;
+    color: #f1f5f9;
+}
+
+.htp-footer-desc {
+    font-size: 16px;
+    line-height: 1.8;
+    color: #94a3b8;
+    max-width: 800px;
+    margin: 0 auto 15px;
+}
+
+/* Animations */
+@keyframes fadeInDown {
+    from { opacity: 0; transform: translateY(-30px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .htp-step-card, .htp-step-card:nth-child(even) {
+        flex-direction: column;
+        text-align: center;
+        padding: 30px;
+    }
+    .htp-hero-title {
+        font-size: 32px;
+    }
+}
