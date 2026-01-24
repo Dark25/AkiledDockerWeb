@@ -1,0 +1,75 @@
+:root {
+    --bg-dark: #1a1c23;
+    --card-bg-dark: #242731;
+    --text-main-dark: #f5f6fa;
+    --text-muted-dark: #a4b0be;
+    --border-color-dark: #333946;
+}
+
+body.dark-mode,
+[data-theme="dark"] {
+    --bg-color: var(--bg-dark);
+    --card-bg: var(--card-bg-dark);
+    --text-main: var(--text-main-dark);
+    --text-muted: var(--text-muted-dark);
+    --border-color: var(--border-color-dark);
+}
+body.dark-mode .dark-mode-toggle,
+[data-theme="dark"] .dark-mode-toggle {
+    background: var(--card-bg);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    color: --text-main-dark;
+}
+
+body.dark-mode .registration-form-container,
+[data-theme="dark"] .registration-form-container {
+    background-color: var(--bg-color);
+}
+
+body.dark-mode .registration-form-card,
+[data-theme="dark"] .registration-form-card {
+    background: var(--card-bg);
+    box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+}
+
+body.dark-mode .page-content-collider-content-registration-item-input,
+[data-theme="dark"] .page-content-collider-content-registration-item-input {
+    background: #2f3542;
+    border-color: var(--border-color);
+    color: #fff;
+}
+
+body.dark-mode .page-content-collider-content-registration-item-input:focus,
+[data-theme="dark"] .page-content-collider-content-registration-item-input:focus {
+    background: #333946;
+}
+
+body.dark-mode .minimal-footer,
+[data-theme="dark"] .minimal-footer {
+    border-top-color: var(--border-color);
+}
+
+body.dark-mode .back-link,
+[data-theme="dark"] .back-link {
+    color: var(--text-muted);
+}
+
+body.dark-mode .registration-hero,
+[data-theme="dark"] .registration-hero {
+    background-image: url('../images/header/default-background.png');
+}
+
+body.dark-mode .hero-background-overlay,
+[data-theme="dark"] .hero-background-overlay {
+    background: linear-gradient(135deg, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.4) 100%);
+}
+
+body.dark-mode .hero-avatar-showcase,
+[data-theme="dark"] .hero-avatar-showcase {
+    filter: drop-shadow(0 10px 20px rgba(0,0,0,0.6));
+}
+
+body.dark-mode .form-title,
+[data-theme="dark"] .form-title {
+    color: #fff;
+}
