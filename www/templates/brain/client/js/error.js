@@ -1,3 +1,0 @@
- window.NGHFlashAPI = {
-                loaderProgress: function() {}
- }
