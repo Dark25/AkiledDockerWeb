@@ -18,8 +18,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="assets/styles/app.css">
-    <link rel="stylesheet" type="text/css" href="assets/styles/registration-redesign.css">
-    <link rel="stylesheet" type="text/css" href="assets/styles/registration-redesign-dark.css">
+    <link rel="stylesheet" type="text/css" href="assets/styles/registration-redesign.css" mwedia="(prefers-color-scheme: light)">
+    <link rel="stylesheet" type="text/css" href="assets/styles/registration-redesign-dark.css" media="(prefers-color-scheme: dark)">
     <script src='https://www.google.com/recaptcha/api.js'></script>
     <script src="https://code.jquery.com/jquery-latest.min.js"></script>
     <title><?= $lang["Rtittle"]; ?> - <?= $lang["NameHotel"]; ?></title>
@@ -35,9 +35,6 @@
         <!-- Left Side: Immersive Hero -->
         <div class="registration-hero">
             <div class="hero-content-inner">
-                <div class="hero-logo-container">
-                    <img src="https://habbofont.net/font/habbo_big/habbo.gif" alt="Habbo Logo" class="hero-logo">
-                </div>
                 <h1 class="hero-title"><?= $lang["NameHotel"]; ?></h1>
                 <p class="hero-description"><?= $lang["Idesclogin"]; ?></p>
                 <div class="hero-avatar-showcase">
@@ -68,14 +65,6 @@
                 <div class="registration-form-card">
                     <h2 class="form-title"><?= $lang["Rtitulos"]; ?></h2>
                     <?php include_once("auth/register.php"); ?>
-
-                    <div class="form-footer-links">
-                        <p><?= $lang["Ihola2"]; ?> <a href="#" onclick="document.getElementById('login').style.display='block'"><?= $lang["Ilogin"]; ?></a></p>
-                    </div>
-                </div>
-
-                <?php include_once("auth/login.php"); ?>
-            </div>
 
             <footer class="minimal-footer">
                 &copy; <?= date("Y"); ?> <?= $config['hotelName']; ?> Hotel.

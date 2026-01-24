@@ -24,10 +24,16 @@
     width: 100vw;
 }
 
+.dark-mode-toggle {
+    background: var(--card-bg);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    color: var(--text-main);
+}
+
 /* Left Side: Hero */
 .registration-hero {
     flex: 1;
-    background-image: url('../images/registration/background.png');
+    background-image: url('../images/header/default-background.png');
     background-size: cover;
     background-position: center;
     position: relative;
@@ -40,7 +46,7 @@
 .hero-background-overlay {
     position: absolute;
     inset: 0;
-    background: linear-gradient(135deg, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0.2) 100%);
+    background: linear-gradient(135deg, rgba(0, 0, 0, 0.6) 0%, rgba(0, 0, 0, 0.2) 100%);
     z-index: 1;
 }
 
@@ -58,7 +64,7 @@
 }
 
 .hero-logo {
-    filter: drop-shadow(0 4px 8px rgba(0,0,0,0.5));
+    filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.5));
     transform: scale(1.5);
 }
 
@@ -68,7 +74,7 @@
     margin: 0;
     text-transform: uppercase;
     letter-spacing: -2px;
-    text-shadow: 0 10px 20px rgba(0,0,0,0.3);
+    text-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
 }
 
 .hero-description {
@@ -85,7 +91,7 @@
     background-repeat: no-repeat;
     background-position: center;
     background-size: contain;
-    filter: drop-shadow(0 10px 15px rgba(0,0,0,0.3));
+    filter: drop-shadow(0 10px 15px rgba(0, 0, 0, 0.3));
     animation: float 3s ease-in-out infinite;
 }
 
@@ -98,7 +104,7 @@
     flex-direction: column;
     position: relative;
     z-index: 5;
-    box-shadow: -10px 0 30px rgba(0,0,0,0.1);
+    box-shadow: -10px 0 30px rgba(0, 0, 0, 0.1);
 }
 
 .form-scroll-area {
@@ -132,7 +138,7 @@
     background: var(--card-bg);
     padding: 40px;
     border-radius: 24px;
-    box-shadow: 0 10px 40px rgba(0,0,0,0.05);
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.05);
     animation: slideInRight 0.8s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
@@ -226,24 +232,45 @@
 
 /* Login Modal Overrides */
 .page-content-modal {
-    background: rgba(0,0,0,0.8);
+    background: rgba(0, 0, 0, 0.8);
     backdrop-filter: blur(5px);
 }
 
 /* Animations */
 @keyframes fadeInScale {
-    from { opacity: 0; transform: scale(0.9); }
-    to { opacity: 1; transform: scale(1); }
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
 }
 
 @keyframes slideInRight {
-    from { opacity: 0; transform: translateX(50px); }
-    to { opacity: 1; transform: translateX(0); }
+    from {
+        opacity: 0;
+        transform: translateX(50px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
 }
 
 @keyframes float {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-20px); }
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-20px);
+    }
 }
 
 /* Responsive */
@@ -251,6 +278,7 @@
     .registration-hero {
         display: none;
     }
+
     .registration-form-container {
         width: 100%;
     }
