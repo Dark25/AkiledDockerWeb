@@ -1,0 +1,335 @@
+:root {
+    /* Light Mode - Soft & Premium */
+    --fs-bg: #0f172a;
+    --fs-card-bg: rgba(255, 255, 255, 0.9);
+    --fs-card-border: rgba(0, 0, 0, 0.05);
+    --fs-card-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    --fs-card-glow: rgba(124, 58, 237, 0.1);
+
+    --fs-text-main: #0f172a;
+    --fs-text-muted: #64748b;
+
+    --fs-accent: #7c3aed;
+    --fs-accent-hover: #6d28d9;
+    --fs-accent-glow: rgba(124, 58, 237, 0.3);
+
+    --fs-hero-gradient: linear-gradient(45deg, #3b3950 0%, #8878a0 100%);
+    --fs-card-header-gradient: linear-gradient(to right, #6366f1, #a855f7);
+}
+
+/* Immersive Hero */
+.fansites-hero-v2 {
+    position: relative;
+    width: 100%;
+    height: 210px;
+    background: var(--fs-hero-gradient);
+    border-radius: 32px;
+    margin-bottom: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 40px;
+    overflow: hidden;
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.2);
+}
+
+.fansites-hero-v2::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    opacity: 0.3;
+    animation: slide 60s linear infinite;
+}
+
+@keyframes slide {
+    from {
+        transform: translate(0, 0);
+    }
+
+    to {
+        transform: translate(-50%, -50%);
+    }
+}
+
+
+.fansites-hero-v2::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: url("../images/image.png");
+    background-position: left bottom;
+    background-repeat: no-repeat;
+    background-size: 50%;
+    opacity: 0.9;
+    pointer-events: none;
+    mix-blend-mode: overlay;
+    z-index: 0;
+}
+
+
+.fansites-hero-v2-badge,
+.fansites-hero-v2-title,
+.fansites-hero-v2-subtitle {
+    z-index: 2;
+}
+
+.fansites-hero-v2-badge {
+    position: relative;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    padding: 8px 20px;
+    border-radius: 100px;
+    color: #fff;
+    font-size: 14px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 20px;
+}
+
+.fansites-hero-v2-title {
+    position: relative;
+    font-size: 38px;
+    font-weight: 900;
+    color: #fff;
+    margin: 0;
+    text-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.fansites-hero-v2-subtitle {
+    position: relative;
+    font-size: 16px;
+    color: rgba(255, 255, 255, 0.8);
+    max-width: 600px;
+    margin-top: 15px;
+}
+
+/* Premium Social Grid (column layout for sidebar design) */
+.fansites-social-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.fas {
+    color: #ebcd22;
+}
+
+/* Two-column page layout when there's a sidebar */
+.page-content-max-width.has-sidebar {
+    display: flex;
+    gap: 30px;
+    align-items: flex-start;
+}
+
+.page-content-main-column {
+    /* Columna principal estrecha y alineada a la izquierda */
+    flex: 0 0 560px;
+    min-width: 0;
+}
+
+.page-content-sidebar {
+    flex: 0 0 320px;
+    width: 320px;
+}
+
+/* Constrain card width so the left column looks like a stacked list */
+.social-fs-card {
+    width: 100%;
+    margin: 0 0 16px 0;
+}
+
+/* Social Card Design */
+.social-fs-card {
+    background: var(--fs-card-bg);
+    border: 1px solid var(--fs-card-border);
+    border-radius: 24px;
+    overflow: hidden;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    box-shadow: var(--fs-card-shadow);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    display: flex;
+    flex-direction: column;
+}
+
+.social-fs-card:hover {
+    transform: translateY(-12px);
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25), 0 0 20px var(--fs-card-glow);
+    border-color: var(--fs-accent);
+}
+
+.social-fs-card-header {
+    height: 56px;
+    background: var(--fs-card-header-gradient);
+    position: relative;
+}
+
+.social-fs-card-avatar-wrap {
+    position: absolute;
+    bottom: -14px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 56px;
+    height: 56px;
+    background: var(--fs-card-bg);
+    border-radius: 50%;
+    padding: 3px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.06);
+}
+
+.social-fs-card-avatar {
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.05);
+    background-position: center -26px;
+    background-repeat: no-repeat;
+    border-radius: 50%;
+    border: 2px solid var(--fs-accent);
+}
+
+.social-fs-card-body {
+    padding: 20px 16px 16px 16px;
+    text-align: center;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.social-fs-card-name {
+    font-size: 20px;
+    font-weight: 800;
+    color: var(--fs-text-main);
+    margin-bottom: 8px;
+}
+
+.social-fs-card-desc {
+    font-size: 14px;
+    color: var(--fs-text-muted);
+    line-height: 1.5;
+    margin-bottom: 14px;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.social-fs-card-meta {
+    margin-top: auto;
+    padding-top: 15px;
+    border-top: 1px solid var(--fs-card-border);
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    font-size: 13px;
+    color: var(--fs-text-muted);
+}
+
+.social-fs-card-meta strong {
+    color: var(--fs-text-main);
+}
+
+.social-fs-card-footer {
+    padding: 0 25px 25px 25px;
+}
+
+.social-fs-visit-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    width: 100%;
+    padding: 8px 10px;
+    background: var(--fs-accent);
+    color: #fff;
+    text-decoration: none;
+    border-radius: 10px;
+    font-weight: 700;
+    font-size: 14px;
+    transition: all 0.15s ease;
+    box-shadow: 0 2px 8px var(--fs-accent-glow);
+}
+
+.social-fs-visit-btn:hover {
+    background: var(--fs-accent-hover);
+    transform: scale(1.02);
+    box-shadow: 0 6px 20px var(--fs-accent-glow);
+}
+
+/* Integrated Sidebar Info */
+.info-box-premium {
+    background: var(--fs-card-bg);
+    border: 1px solid var(--fs-card-border);
+    border-radius: 24px;
+    padding: 30px;
+    margin-bottom: 30px;
+    backdrop-filter: blur(12px);
+    box-shadow: var(--fs-card-shadow);
+}
+
+.info-box-premium-title {
+    font-size: 20px;
+    font-weight: 800;
+    color: var(--fs-text-main);
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.info-box-premium-title i {
+    color: var(--fs-accent);
+}
+
+.info-box-premium-text {
+    font-size: 15px;
+    color: var(--fs-text-muted);
+    line-height: 1.7;
+    margin: 0;
+}
+
+.info-box-premium-divider {
+    height: 1px;
+    background: var(--fs-card-border);
+    margin: 25px 0;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .fansites-hero-v2-title {
+        font-size: 32px;
+    }
+
+    .fansites-hero-v2-subtitle {
+        font-size: 16px;
+    }
+
+    .fansites-social-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .page-content-max-width.has-sidebar {
+        flex-direction: column;
+    }
+
+    .page-content-sidebar {
+        width: 100%;
+        flex: none;
+        order: 2;
+    }
+
+    .page-content-main-column {
+        order: 1;
+    }
+
+    .social-fs-card {
+        max-width: 100%;
+        margin: 0;
+    }
+}
