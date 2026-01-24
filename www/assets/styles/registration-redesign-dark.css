@@ -1,222 +1,69 @@
 :root {
-    --primary-color: #EEB425;
-    --primary-hover: #f3be3c;
-    --bg-color: #1a1c23;
-    --text-color: #e2e2e2;
-    --glass-bg: rgba(30, 32, 40, 0.85);
-    --glass-border: rgba(255, 255, 255, 0.1);
-    --input-bg: rgba(255, 255, 255, 0.05);
-    --input-border: rgba(255, 255, 255, 0.05);
+    --bg-dark: #1a1c23;
+    --card-bg-dark: #242731;
+    --text-main-dark: #f5f6fa;
+    --text-muted-dark: #a4b0be;
+    --border-color-dark: #333946;
 }
 
-/* Animations */
-@keyframes slideUp {
-    from { transform: translateY(50px); opacity: 0; }
-    to { transform: translateY(0); opacity: 1; }
+body.dark-mode,
+[data-theme="dark"] {
+    --bg-color: var(--bg-dark);
+    --card-bg: var(--card-bg-dark);
+    --text-main: var(--text-main-dark);
+    --text-muted: var(--text-muted-dark);
+    --border-color: var(--border-color-dark);
 }
 
-@keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
+body.dark-mode .registration-form-container,
+[data-theme="dark"] .registration-form-container {
+    background-color: var(--bg-color);
 }
 
-@keyframes pulse {
-    0% { transform: scale(1); opacity: 0.2; }
-    50% { transform: scale(1.1); opacity: 0.3; }
-    100% { transform: scale(1); opacity: 0.2; }
+body.dark-mode .registration-form-card,
+[data-theme="dark"] .registration-form-card {
+    background: var(--card-bg);
+    box-shadow: 0 10px 40px rgba(0,0,0,0.3);
 }
 
-@keyframes slideInRight {
-    from { transform: translateX(100%); opacity: 0; }
-    to { transform: translateX(0); opacity: 1; }
-}
-
-/* Background elements */
-.registration-bg-animated {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: -1;
-    background: var(--bg-color);
-    overflow: hidden;
-}
-
-.bg-circle {
-    position: absolute;
-    border-radius: 50%;
-    filter: blur(60px);
-    opacity: 0.15;
-    animation: pulse 10s infinite alternate;
-}
-
-.circle-1 {
-    width: 400px;
-    height: 400px;
-    background: var(--primary-color);
-    top: -100px;
-    left: -100px;
-}
-
-.circle-2 {
-    width: 500px;
-    height: 500px;
-    background: #00813e;
-    bottom: -150px;
-    right: -100px;
-    animation-delay: -5s;
-}
-
-/* Layout Redesign */
-.page-content-collider.registration-redesign {
-    background: transparent;
-    margin: 0;
-    padding: 60px 0;
-    min-height: calc(100vh - 200px);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.page-content-collider-content.registration.registration-v2 {
-    width: 100%;
-    max-width: 550px;
-    background: var(--glass-bg);
-    backdrop-filter: blur(15px);
-    -webkit-backdrop-filter: blur(15px);
-    border: 1px solid var(--glass-border);
-    border-radius: 24px;
-    padding: 40px;
-    box-shadow: 0 20px 40px rgba(0,0,0,0.4);
-    animation: slideUp 0.8s cubic-bezier(0.16, 1, 0.3, 1);
-    flex-direction: column;
-}
-
-.page-content-collider-content.registration.registration-v2::before {
-    display: none;
-}
-
-.page-content-collider-content-registration-title {
-    font-size: 28px;
-    text-align: center;
-    margin-bottom: 30px;
+body.dark-mode .page-content-collider-content-registration-item-input,
+[data-theme="dark"] .page-content-collider-content-registration-item-input {
+    background: #2f3542;
+    border-color: var(--border-color);
     color: #fff;
-    letter-spacing: 1px;
 }
 
-.registration-form {
-    width: 100%;
+body.dark-mode .page-content-collider-content-registration-item-input:focus,
+[data-theme="dark"] .page-content-collider-content-registration-item-input:focus {
+    background: #333946;
 }
 
-.page-content-collider-content-registration-item {
-    margin: 0 0 20px 0;
-    background: transparent;
-    padding: 0;
-    animation: fadeIn 0.5s ease forwards;
-    opacity: 0;
+body.dark-mode .minimal-footer,
+[data-theme="dark"] .minimal-footer {
+    border-top-color: var(--border-color);
 }
 
-.registration-form .page-content-collider-content-registration-item:nth-child(1) { animation-delay: 0.1s; }
-.registration-form .page-content-collider-content-registration-item:nth-child(2) { animation-delay: 0.2s; }
-.registration-form .page-content-collider-content-registration-item:nth-child(3) { animation-delay: 0.3s; }
-.registration-form .page-content-collider-content-registration-item:nth-child(4) { animation-delay: 0.4s; }
-.registration-form .page-content-collider-content-registration-item:nth-child(5) { animation-delay: 0.5s; }
-
-.page-content-collider-content-registration-item-title {
-    font-size: 14px;
-    font-weight: 600;
-    text-transform: uppercase;
-    color: #bbb;
-    margin-bottom: 5px;
-    display: block;
+body.dark-mode .back-link,
+[data-theme="dark"] .back-link {
+    color: var(--text-muted);
 }
 
-.page-content-collider-content-registration-item-text {
-    font-size: 13px;
-    color: #888;
-    margin-bottom: 10px;
+body.dark-mode .registration-hero,
+[data-theme="dark"] .registration-hero {
+    background-image: url('../images/header/default-background.png');
 }
 
-.page-content-collider-content-registration-item-input {
-    background: var(--input-bg);
-    border: 2px solid var(--input-border);
-    border-radius: 12px;
-    padding: 12px 16px;
-    transition: all 0.3s ease;
-    margin-top: 5px;
-    width: 100%;
+body.dark-mode .hero-background-overlay,
+[data-theme="dark"] .hero-background-overlay {
+    background: linear-gradient(135deg, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.4) 100%);
+}
+
+body.dark-mode .hero-avatar-showcase,
+[data-theme="dark"] .hero-avatar-showcase {
+    filter: drop-shadow(0 10px 20px rgba(0,0,0,0.6));
+}
+
+body.dark-mode .form-title,
+[data-theme="dark"] .form-title {
     color: #fff;
-    box-sizing: border-box;
-}
-
-.page-content-collider-content-registration-item-input:focus {
-    background: rgba(255,255,255,0.08);
-    border-color: var(--primary-color);
-    box-shadow: 0 0 0 4px rgba(238, 180, 37, 0.15);
-    transform: translateY(-2px);
-    outline: none;
-}
-
-.page-content-collider-content-registration-button {
-    background: var(--primary-color);
-    border-radius: 12px;
-    padding: 16px;
-    width: 100%;
-    color: white;
-    border: none;
-    cursor: pointer;
-    font-weight: 700;
-    font-size: 16px;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    margin-top: 30px;
-    transition: all 0.3s ease;
-    box-shadow: 0 10px 20px rgba(238, 180, 37, 0.3);
-}
-
-.page-content-collider-content-registration-button:hover {
-    background: var(--primary-hover);
-    transform: translateY(-3px);
-    box-shadow: 0 15px 25px rgba(238, 180, 37, 0.4);
-}
-
-.page-content-collider-content-registration-item-checkbox {
-    width: 18px;
-    height: 18px;
-    accent-color: var(--primary-color);
-    cursor: pointer;
-}
-
-.page-content-collider-content-registration-item-column {
-    display: flex;
-    align-items: center;
-    margin-top: 10px;
-}
-
-.page-content-collider-content-registration-item-column p {
-    margin-left: 10px;
-    margin-bottom: 0;
-}
-
-.page-content-collider-content-registration-item-href {
-    color: var(--primary-color);
-}
-
-/* Error styling */
-.error#top {
-    position: fixed;
-    top: 20px;
-    right: 20px;
-    left: auto;
-    width: auto;
-    max-width: 300px;
-    border-radius: 12px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-    animation: slideInRight 0.5s ease forwards;
-    z-index: 1000;
-    display: none;
-    background: #f44336;
-    color: #fff;
-    padding: 10px 20px;
 }
