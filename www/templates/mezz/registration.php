@@ -18,6 +18,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="assets/styles/app.css">
+    <link rel="stylesheet" type="text/css" href="assets/styles/registration-redesign.css" media="(prefers-color-scheme: light)">
+    <link rel="stylesheet" type="text/css" href="assets/styles/registration-redesign-dark.css" media="(prefers-color-scheme: dark)">
     <script src='https://www.google.com/recaptcha/api.js'></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
     <script src="https://code.jquery.com/jquery-latest.js"></script>
@@ -26,6 +28,10 @@
 <span class="error" id="top"></span>
 
 <body class="container" style="width: 100%;">
+    <div class="registration-bg-animated">
+        <div class="bg-circle circle-1"></div>
+        <div class="bg-circle circle-2"></div>
+    </div>
     <script src="/assets/scripts/page-load.js"></script>
     <?php
     $security = rand(100000, 900000);
@@ -35,10 +41,10 @@
         <?php User::Login(); ?>
         <?php include_once("auth/login.php"); ?>
         <?php include_once("includes/menu.php"); ?>
-        <div class="page-content-collider">
-            <div class="page-content-max-width" style="flex-direction: column;align-items: flex-start;">
+        <div class="page-content-collider registration-redesign">
+            <div class="page-content-max-width" style="flex-direction: column;align-items: center;">
                 <div class="page-content-collider-item" style="align-items: center;">
-                    <div class="page-content-collider-content registration">
+                    <div class="page-content-collider-content registration registration-v2">
                         <div class="page-content-collider-content-registration">
                             <h2 class="page-content-collider-content-registration-title"><?= $lang["Rtitulos"]; ?></h2>
                             <?php include_once("auth/register.php"); ?>
