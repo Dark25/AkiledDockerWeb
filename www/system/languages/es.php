@@ -749,7 +749,7 @@ $lang["tutoapp1"] = "Tutorial App";
 
 	//Footer -- Mezz -----------------------------------------------------------------------------------
 
-	$lang["footer1"] = "Habbo es una comunidad virtual en línea de estilo pixel art antiguo en la que puedes crear tu propio avatar, hacer amigos, chatear, construir salas, diseñar, jugar y mucho más. Casi todo es posible en este extraño lugar lleno de gente increíble...";
+	$lang["footer1"] = $config['hotelName']." es una comunidad virtual en línea de estilo pixel art antiguo en la que puedes crear tu propio avatar, hacer amigos, chatear, construir salas, diseñar, jugar y mucho más. Casi todo es posible en este extraño lugar lleno de gente increíble...";
 	$lang["Fapoyo"] = "Apoyo";
 	$lang["Fayuda"] = "Centro de Ayuda";
 	$lang["Fpassword"] = "Recuperar Contraseña";
@@ -766,14 +766,14 @@ $lang["tutoapp1"] = "Tutorial App";
 	//Rooms -- Mezz -----------------------------------------------------------------------------------
 
 	$lang["RoomTitle"] = "Habitaciones";
-	$lang["RoomDesc"] = "¡Echa un vistazo a algunas de las salas más populares de Habbo ahora mismo!";
+	$lang["RoomDesc"] = "¡Echa un vistazo a algunas de las salas más populares de ".$config['hotelName']." ahora mismo!";
 
 	//FanSites -- Mezz -----------------------------------------------------------------------------------
 
 	$lang["FsTitle"] = "Fansites OFICIALES";
 	$lang["FsDesc"] = "Nuestros fansites oficiales en este momento son:";
 	$lang["FsDesc2"] = "De vez en cuando, buscamos nuevos sitios de fans oficiales y, cuando eso suceda, publicaremos una notificación dentro del juego. ¡Consulte nuestra política de sitios de fans si tiene alguna pregunta!";
-	$lang["FsDesc3"] = "¡Recuerde siempre mantener sus datos de inicio de sesión de Habbo separados y privados! No los utilice para registrarse en ningún otro sitio.";
+	$lang["FsDesc3"] = "¡Recuerde siempre mantener sus datos de inicio de sesión de ".$config['hotelName']." separados y privados! No los utilice para registrarse en ningún otro sitio.";
 
 	//Ranking -- Mezz -----------------------------------------------------------------------------------
 
@@ -787,16 +787,16 @@ $lang["tutoapp1"] = "Tutorial App";
 	//Shop -- Mezz ----------------------------------------------------------------------------------------
 	
 	$lang["LoteriaTitle"] = "COMPRAR LOTERIA";
-	$lang["LoteriaDesc"] = "¿Cómo funciona la lotería en Hionix
-	La lotería llega a Hionix, a partir de ahora, tendrá que seleccionar dos números, cada uno tendrá que estar entre 1 y 10. El premio del ganador se enviará directamente a la cuenta del usuario.";
+	$lang["LoteriaDesc"] = "¿Cómo funciona la lotería en ".$config['hotelName']."
+	La lotería llega a ".$config['hotelName'].", a partir de ahora, tendrá que seleccionar dos números, cada uno tendrá que estar entre 1 y 10. El premio del ganador se enviará directamente a la cuenta del usuario.";
 	$lang["PlacasTitle"] = "COMPRAR PLACAS";
 	$lang["MyPurse"] = "Mi Bolsa";
 	$lang["BuyVIP"] = "Comprar VIP";
 	$lang["HelpPay"] = "AYUDA PARA EL PAGO";
-	$lang["HelpPayDesc"] = "<p class='page-content-collider-content-shop-right-side-box-content-text'>Se pregunta <b class='page-content-collider-content-shop-right-side-box-content- text-bold'>¿Qué son todas esas cosas brillantes a la venta</b>? Ver <a href='#' target='_blank' class='page-content-collider-content-shop-right-side-box-content-text-url'>descripciones detalladas de nuestros productos</a> en Habbo ¡Servicio de asistencia!</p>
+	$lang["HelpPayDesc"] = "<p class='page-content-collider-content-shop-right-side-box-content-text'>Se pregunta <b class='page-content-collider-content-shop-right-side-box-content- text-bold'>¿Qué son todas esas cosas brillantes a la venta</b>? Ver <a href='#' target='_blank' class='page-content-collider-content-shop-right-side-box-content-text-url'>descripciones detalladas de nuestros productos</a> en ".$config['hotelName']." ¡Servicio de asistencia!</p>
 	<p class='page-content-collider-content-shop-right-side-box-content-text'><b class='page-content-collider-content-shop-right-side-box-content-text -bold'>Todas las formas legítimas de comprar créditos se muestran aquí o en la tienda del juego. Comprarlos en otro lugar puede hacer que te estafen y te prohíban.</b></p>
-	<p class='page-content-collider-content-shop-right-side-box-content-text'>Habbo tiene diferentes límites de gasto para diferentes opciones de pago. Todos se enumeran en nuestros <a href='#' target='_blank' class='page-content-collider-content-shop-right-side-box-content-text-url'>Límites de gasto</a> en Habbo Helpdesk.</p>
-	<p class='page-content-collider-content-shop-right-side-box-content-text'>Recibí una consulta sobre su <b class='page-content-collider-content-shop-right-side- box-content-text-bold'>¿Cuenta Habbo, una compra o una función?</b> Encuentra tu respuesta en la <a href='#' target='_blank' class='page-content-collider-content- shop-right-side-box-content-text-url'>Mesa de ayuda de Habbo.</a></p>";
+	<p class='page-content-collider-content-shop-right-side-box-content-text'>".$config['hotelName']." tiene diferentes límites de gasto para diferentes opciones de pago. Todos se enumeran en nuestros <a href='#' target='_blank' class='page-content-collider-content-shop-right-side-box-content-text-url'>Límites de gasto</a> en ".$config['hotelName']." Helpdesk.</p>
+	<p class='page-content-collider-content-shop-right-side-box-content-text'>Recibí una consulta sobre su <b class='page-content-collider-content-shop-right-side- box-content-text-bold'>¿Cuenta ".$config['hotelName'].", una compra o una función?</b> Encuentra tu respuesta en la <a href='#' target='_blank' class='page-content-collider-content- shop-right-side-box-content-text-url'>Mesa de ayuda de ".$config['hotelName'].".</a></p>";
 	$lang["NnotfoundheaderMezz"] = "No se han encontrado  paquetes.!";
 	$lang["Nnotfoundtxtmezz"] = "Desafortunadamente, esta noticia no se ha encontrado!";
 	$lang["Nnotfoundtxtmezz2"] = "Desafortunadamente, no tienes paquetes activos!";
@@ -886,13 +886,13 @@ $lang["tutoapp1"] = "Tutorial App";
 	//FAQ's -- Mezz ------------------------------------------------------------------------------------------
 
 	// Beginning FAQs 1 --------------------------------------------------------------------------------------
-	$lang["FAQtitle1"] = "¿Qué es Habbo?";
+	$lang["FAQtitle1"] = "¿Qué es ".$config['hotelName']."?";
 	$lang["FAQdesc1"] = "es una comunidad virtual en línea de estilo pixel-art vintage donde puedes";
 	$lang["FAQdesc1bold"] = "crea tu propio avatar, haz amigos, chatea, construye salas, diseña y juega";
 	$lang["FAQdesc1.2"] = "y mucho más! Casi todo es posible en este extraño lugar lleno de gente increíble...";
 
 	$lang["FAQtitle2"] = "Más que un Juego...";
-	$lang["FAQdesc2"] = "Diseñar tu avatar con los estilos más actuales no es la única forma de divertirte en Habbo. ¿Quieres ser el arquitecto del siglo y";
+	$lang["FAQdesc2"] = "Diseñar tu avatar con los estilos más actuales no es la única forma de divertirte en ".$config['hotelName'].". ¿Quieres ser el arquitecto del siglo y";
 	$lang["FAQdesc2bold"] = "construir estructuras deslumbrantes?";
 	$lang["FAQdesc2.1"] = "¡El club de constructores es para ti! ¿Quieres mostrar tu locura?";
 	$lang["FAQdesc2.1bold"] = "habilidades de construcción de juegos";
@@ -900,11 +900,11 @@ $lang["tutoapp1"] = "Tutorial App";
 
 	$lang["FAQtitle3"] = "Encuentra tu comunidad";
 	$lang["FAQdesc3"] = "¿Te gusta chatear y salir con amigos?";
-	$lang["FAQdesc3bold"] = "Habbo Grupos, foros y Comunidades de Rol";
-	$lang["FAQdesc3.1"] = "son un gran lugar para comenzar. Únete al ejército y prepárate para el servicio, ponte tu capa y salva el universo, usa Habbo Couture mientras te pavoneas por la pasarela, conviértete en enfermera y salva vidas de píxeles. ¡Únete y comienza a explorar las infinitas posibilidades de juego de roles!";
+	$lang["FAQdesc3bold"] = $config['hotelName']." Grupos, foros y Comunidades de Rol";
+	$lang["FAQdesc3.1"] = "son un gran lugar para comenzar. Únete al ejército y prepárate para el servicio, ponte tu capa y salva el universo, usa ".$config['hotelName']." Couture mientras te pavoneas por la pasarela, conviértete en enfermera y salva vidas de píxeles. ¡Únete y comienza a explorar las infinitas posibilidades de juego de roles!";
 
 	$lang["FAQtitle4"] = "Exprésate";
-	$lang["FAQdesc4"] = "¡La creatividad y la individualidad son bienvenidas en Habbo! Cada semana tenemos toneladas de concursos increíbles para que participes. De";
+	$lang["FAQdesc4"] = "¡La creatividad y la individualidad son bienvenidas en ".$config['hotelName']."! Cada semana tenemos toneladas de concursos increíbles para que participes. De";
 	$lang["FAQdesc4bold"] = "construcción de habitaciones para selfies, videos de pixel art y compilaciones de historias cortas";
 	$lang["FAQdesc4.1"] = "- ¡Hay un montón de cosas geniales para hacer fluir tus jugos artísticos y ganar increíbles logros y premios! ¿Te sientes creativo? ¡Echa un vistazo a nuestras noticias para enterarte de divertidas competiciones semanales!";
 
@@ -912,11 +912,11 @@ $lang["tutoapp1"] = "Tutorial App";
 	$lang["FAQdesc5"] = "es un";
 	$lang["FAQdesc5bold"] = "juego libre para jugar";
 	$lang["FAQdesc5.1"] = "para que pueda explorar un vasto mundo de salas, completar misiones, chatear y ganar premios sin tener que pagar nada.";
-	$lang["FAQdesc5.2"] = "Algunos 'extras' en el juego como mascotas, membresía Habbo Club, membresía Builders Club y muebles se pueden comprar con Habbo Credits. Para obtener más información sobre los extras del juego, dirígete a la";
+	$lang["FAQdesc5.2"] = "Algunos 'extras' en el juego como mascotas, membresía ".$config['hotelName']." Club, membresía Builders Club y muebles se pueden comprar con ".$config['hotelName']." Credits. Para obtener más información sobre los extras del juego, dirígete a la";
 	$lang["FAQdescshoplink"] = "<a href='/shop' class='page-content-collider-content-playing-habbo-item-url'>Tienda</a>.";
 
 	$lang["FAQtitle6"] = "Siempre aquí para ayudar...";
-	$lang["FAQdesc6"] = "El Hotel está atendido las 24 horas del día, los siete días de la semana. También puedes hacer mucho para asegurarte de estar seguro en Habbo y en Internet. Lea nuestro";
+	$lang["FAQdesc6"] = "El Hotel está atendido las 24 horas del día, los siete días de la semana. También puedes hacer mucho para asegurarte de estar seguro en ".$config['hotelName']." y en Internet. Lea nuestro";
 	$lang["FAQdescsafetylink"] = "<a href='/safety' class='page-content-collider-content-playing-habbo-item-url'>Seguridad</a> Consejos para saber cómo.";
 	$lang["FAQdesc6.1"] = "Como un mundo virtual en línea popular, estamos orgullosos de tener grandes";
 	$lang["FAQdesc6bold"] = "conocimiento profundo de la seguridad en línea";
@@ -931,7 +931,7 @@ $lang["tutoapp1"] = "Tutorial App";
 	$lang["FAQdesc8"] = "Haz clic en el Navegador y elige una de las salas públicas donde puedes chatear con otros jugadores.";
 
 	$lang["FAQtitle9"] = "Hacer amigos";
-	$lang["FAQdesc9"] = "¡Haz clic en un Habbo, pídele que sea tu amigo o dale respeto!";
+	$lang["FAQdesc9"] = "¡Haz clic en un ".$config['hotelName'].", pídele que sea tu amigo o dale respeto!";
 
 	$lang["FAQtitle10"] = "Visita salas de juego";
 	$lang["FAQdesc10"] = "Encuentra Game Hub en la lista de salas públicas en el navegador. Una vez allí, ¡usa cualquiera de las máquinas recreativas para ir a una sala de juegos!";
@@ -940,8 +940,8 @@ $lang["tutoapp1"] = "Tutorial App";
 	$lang["FAQdesc11"] = "¡Ve a la tienda de Duckets y mira lo que tus duckets gratis pueden conseguirte!";
 
 	$lang["FAQtitle12"] = "Consulta las últimas actividades";
-	$lang["FAQdesc12"] = "Visite la sección <a href='/' class='page-content-collider-content-playing-habbo-item-url'>Inicio</a> del sitio web para conocer las últimas noticias, concursos y acontecimientos generales. -en Hotel!";
-	$lang["FAQdesc12.1"] = "¡Una vez que hayas hecho algunos de estos, estarás bien encaminado para convertirte en un ciudadano Habbo de pleno derecho!";
+	$lang["FAQdesc12"] = "Visite la sección <a href='/' class='page-content-collider-content-playing-habbo-item-url'>Inicio</a> del sitio web para conocer las últimas noticias, concursos y acontecimientos generales. -en ".$config['hotelName']."!";
+	$lang["FAQdesc12.1"] = "¡Una vez que hayas hecho algunos de estos, estarás bien encaminado para convertirte en un ciudadano ".$config['hotelName']." de pleno derecho!";
 	// End FAQs 2 --------------------------------------------------------------------------------------------
 
 	// Beginning FAQs 3 --------------------------------------------------------------------------------------
@@ -949,7 +949,7 @@ $lang["tutoapp1"] = "Tutorial App";
 	$lang["FAQtitle14"] = "Jugar juegos";
 	$lang["FAQdesc14"] = "¡Juega con amigos, crea tus propios juegos, patea traseros y toma nombres!";
 	$lang["FAQtitle15"] = "Charlar";
-	$lang["FAQdesc15"] = "Habla con tus amigos, conoce a tus seguidores de Habbos y conoce a muchos nuevos amigos... ¡y más! ;)";
+	$lang["FAQdesc15"] = "Habla con tus amigos, conoce a tus seguidores de ".$config['hotelName']." y conoce a muchos nuevos amigos... ¡y más! ;)";
 	$lang["FAQtitle16"] = "Encuentra ese píxel especial de alguien";
 	$lang["FAQdesc16"] = "Coquetea, sal, enamórate y tal vez conozcas a esa persona especial... ¡¿o algo así?!";
 	$lang["FAQtitle17"] = "Ayuda";
@@ -959,9 +959,9 @@ $lang["tutoapp1"] = "Tutorial App";
 	$lang["FAQtitle19"] = "Comercio";
 	$lang["FAQdesc19"] = "¡Construye tu propio imperio de furnis abriéndote camino hasta la cima!";
 	$lang["FAQtitle20"] = "Comercio en el mercado";
-	$lang["FAQdesc20"] = "Si tiene olfato para los negocios, use Marketplace para vender artículos y acumular sus créditos. Cuanto más sepas sobre el mundo de las 'finanzas', más fácil te saldrá adelante en Habbo.";
+	$lang["FAQdesc20"] = "Si tiene olfato para los negocios, use Marketplace para vender artículos y acumular sus créditos. Cuanto más sepas sobre el mundo de las 'finanzas', más fácil te saldrá adelante en ".$config['hotelName'].".";
 	$lang["FAQtitle21"] = "ponte juegos";
-	$lang["FAQdesc21"] = "Ser el perfecto anfitrión creando juegos emocionantes para que otros Habbos jueguen significará que todos querrán venir a jugar un juego en tu habitación.";
+	$lang["FAQdesc21"] = "Ser el perfecto anfitrión creando juegos emocionantes para que otros ".$config['hotelName']."s jueguen significará que todos querrán venir a jugar un juego en tu habitación.";
 	$lang["FAQtitle22"] = "No";
 	$lang["FAQtitle23"] = "Hacer trampa";
 	$lang["FAQdesc23"] = "Los tramposos nunca prosperan, solo terminan estropeando la experiencia de todos los demás.";
@@ -970,7 +970,7 @@ $lang["tutoapp1"] = "Tutorial App";
 	$lang["FAQtitle25"] = "Cibernético";
 	$lang["FAQdesc25"] = "El ciberacoso está estrictamente prohibido y las solicitudes de cámara resultarán en un castigo. También recuerda nunca reunirte con personas que solo conoces de Internet, las personas no siempre son quienes dicen ser.";
 	$lang["FAQtitle26"] = "Truco";
-	$lang["FAQdesc26"] = "Aprovecharse de otros Habbos por lo general conduce a una mala mojo.";
+	$lang["FAQdesc26"] = "Aprovecharse de otros ".$config['hotelName']."s por lo general conduce a una mala mojo.";
 	$lang["FAQtitle27"] = "Script";
 	$lang["FAQdesc27"] = "¡Hazlo, no lo finjas! ¡A nadie le gusta un tramposo!";
 	$lang["FAQtitle28"] = "Scam";
@@ -991,12 +991,12 @@ $lang["tutoapp1"] = "Tutorial App";
 	$lang["FAQtitle34"] = "No te rindas a la presión de grupo";
 	$lang["FAQdesc34"] = "El hecho de que todos los demás parezcan estar haciéndolo, no significa que tú tengas que hacerlo. Si no te sientes cómodo con algo, ¡no lo hagas!";
 	$lang["FAQtitle35"] = "Mantén a tus amigos en píxeles";
-	$lang["FAQdesc35"] = "¡No te reúnas con alguien que solo conoces de Internet! Las personas no siempre son quienes dicen ser. Si un Habbo te pide que te reúnas con él en la vida real, di '¡No, gracias!' haz clic en 'Ignorar' en ellos y cuéntaselo a tus padres u otro adulto de confianza.";
+	$lang["FAQdesc35"] = "¡No te reúnas con alguien que solo conoces de Internet! Las personas no siempre son quienes dicen ser. Si un ".$config['hotelName']." te pide que te reúnas con él en la vida real, di '¡No, gracias!' haz clic en 'Ignorar' en ellos y cuéntaselo a tus padres u otro adulto de confianza.";
 	$lang["FAQtitle36"] = "No tengas miedo de hablar";
 	$lang["FAQdesc36"] = "Si alguien te hace sentir incómodo, te amenaza o te presiona para que hagas algo que no quieres, ignóralo y repórtalo de inmediato a nuestro equipo de moderación mediante el botón 'Pedir ayuda'.";
 	$lang["FAQtitle37"] = "Prohibir la cámara";
 	$lang["FAQdesc37"] = "No tiene control sobre sus fotos personales, videos e imágenes de cámaras web después de compartirlas en Internet. Una vez que se publica una imagen, nunca se puede eliminar, cualquiera podrá verla y podría usarse para intimidarlo o chantajearlo. Antes de compartir una foto o un video, pregúntese; ¿Te sientes cómodo con personas que no conoces viéndolo?";
-	$lang["FAQtitle38"] = "¡Quédate con el auténtico Habbo!";
+	$lang["FAQtitle38"] = "¡Quédate con el auténtico ".$config['hotelName']."!";
 	$lang["FAQdesc38"] = "Los sitios web que ofrecen premios gratuitos, créditos, muebles o 'derechos del personal' son TODOS estafas diseñadas para robar su contraseña. Nunca les proporcione sus datos de inicio de sesión ni descargue archivos de estos sitios web. ¡Podrían ser keyloggers o virus!";
 	// End FAQs 4 -----------------------------------------------------------------------------------------
 
