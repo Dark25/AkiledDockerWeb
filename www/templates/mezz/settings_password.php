@@ -9,6 +9,7 @@ $passwordS_active = 'active';
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="/assets/styles/app.css">
+    <link rel="stylesheet" type="text/css" href="/assets/styles/settings_redesign.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <title><?= $config['hotelName'] ?>: <?= $lang["TittleHader4"] ?></title>
 </head>
@@ -26,33 +27,28 @@ $passwordS_active = 'active';
         <?php include_once("includes/menu.php"); ?>
         <div class="page-content-collider" style="background-color: transparent;">
             <div class="page-content-max-width">
-                <div class="page-content-collider-item">
-                    <div class="page-content-collider-content">
-                        <div class="page-content-collider-content-settings">
-                            <?php include_once("includes/menu_settings.php"); ?>
-                            <link rel="stylesheet" href="/templates/brain/style/css/main2.css?v=22" type="text/css">
-                            <form action="" method="POST">
+                <div class="settings-main-container">
+                    <?php include_once("includes/menu_settings.php"); ?>
+                    <div class="settings-right-side">
+                        <div class="settings-card">
+                            <h2 class="settings-title"><?= $lang["TittleHader4"] ?></h2>
+                            <p class="settings-description"><?= $lang["Spassworddesc"] ?></p>
+
+                            <form action="" method="POST" class="settings-form">
                                 <?php User::editPassword(); ?>
-                                <div class="page-content-collider-content-settings-right-side">
+                                <div class="settings-form-group">
+                                    <label class="settings-label"><?= $lang["Scurrentpassword"] ?></label>
+                                    <input type="password" name="oldpassword" class="settings-input" placeholder="•••••••••••••••••">
+                                </div>
+                                <div class="settings-form-group">
+                                    <label class="settings-label"><?= $lang["Snewpassword"] ?></label>
+                                    <input type="password" name="newpassword" class="settings-input" placeholder="•••••••••••••••••">
+                                </div>
 
-                                    <div class="page-content-collider-content-settings-right-side-item">
-                                        <div class="page-content-collider-content-settings-right-side-item-column">
-                                            <h3 class="page-content-collider-content-settings-right-side-item-title"><?= $lang["Scurrentpassword"] ?></h3>
-                                            <input type="password" name="oldpassword" id="avatarmotto" class="page-content-collider-content-settings-right-side-item-input" placeholder="*****************">
-                                        </div>
-                                    </div>
-                                    <div class="page-content-collider-content-settings-right-side-item">
-                                        <div class="page-content-collider-content-settings-right-side-item-column">
-                                            <h3 class="page-content-collider-content-settings-right-side-item-title"><?= $lang["Snewpassword"] ?></h3>
-                                            <input type="password" type="password" name="newpassword" id="avatarmotto" class="page-content-collider-content-settings-right-side-item-input" placeholder="*****************">
-                                            <p class="page-content-collider-content-settings-right-side-item-description"><?= $lang["Spassworddesc"] ?></p>
-                                        </div>
-                                    </div>
-                                    <button type="submit" name="password" id="avatarmotto" autocomplete="off" class="page-content-collider-content-settings-right-side-default-button fill save" style="float:right;"><?= $lang["SettingsButton"] ?></button>
-
+                                <div class="settings-button-container">
+                                    <button type="submit" name="password" class="settings-button save-btn"><?= $lang["SettingsButton"] ?></button>
                                 </div>
                             </form>
-
                         </div>
                     </div>
                 </div>
