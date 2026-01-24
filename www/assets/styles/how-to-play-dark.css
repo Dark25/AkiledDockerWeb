@@ -11,7 +11,11 @@
 
 /* Hero Section */
 .htp-hero {
-    background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+    background-image: linear-gradient(1deg, rgb(24 72 157 / 72%) 0%, rgb(15 23 42 / 21%) 100%), url(/assets/images/playing-habbo/habboway_3a.png);
+    background-size: contain;
+    background-position: left;
+    background-repeat: no-repeat;
+    background-blend-mode: multiply;
     border-radius: 20px;
     padding: 60px 40px;
     margin-bottom: 50px;
@@ -26,7 +30,10 @@
 .htp-hero::before {
     content: "";
     position: absolute;
-    top: 0; left: 0; right: 0; bottom: 0;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
     background-image: url("/assets/images/header/pattern.png");
     opacity: 0.05;
 }
@@ -40,7 +47,7 @@
     font-size: 42px;
     font-weight: 800;
     margin-bottom: 20px;
-    text-shadow: 0 4px 15px rgba(0,0,0,0.5);
+    text-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
     animation: fadeInDown 0.8s ease-out;
 }
 
@@ -68,14 +75,14 @@
     display: flex;
     align-items: center;
     gap: 40px;
-    box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
     border: 1px solid rgba(255, 255, 255, 0.05);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .htp-step-card:hover {
     transform: translateY(-5px);
-    box-shadow: 0 15px 35px rgba(0,0,0,0.5);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
     border-color: #eeb425;
 }
 
@@ -99,7 +106,7 @@
     max-width: 100%;
     max-height: 100%;
     image-rendering: pixelated;
-    filter: drop-shadow(0 5px 15px rgba(0,0,0,0.3));
+    filter: drop-shadow(0 5px 15px rgba(0, 0, 0, 0.3));
 }
 
 .htp-step-content {
@@ -140,7 +147,7 @@
     border-radius: 20px;
     padding: 40px;
     text-align: center;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
     border: 1px solid rgba(255, 255, 255, 0.05);
 }
 
@@ -161,22 +168,39 @@
 
 /* Animations */
 @keyframes fadeInDown {
-    from { opacity: 0; transform: translateY(-30px); }
-    to { opacity: 1; transform: translateY(0); }
+    from {
+        opacity: 0;
+        transform: translateY(-30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 @keyframes fadeInUp {
-    from { opacity: 0; transform: translateY(30px); }
-    to { opacity: 1; transform: translateY(0); }
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 /* Responsive */
 @media (max-width: 768px) {
-    .htp-step-card, .htp-step-card:nth-child(even) {
+
+    .htp-step-card,
+    .htp-step-card:nth-child(even) {
         flex-direction: column;
         text-align: center;
         padding: 30px;
     }
+
     .htp-hero-title {
         font-size: 32px;
     }
