@@ -58,45 +58,49 @@ body {
 .mesh-ball {
     position: absolute;
     border-radius: 50%;
-    animation: move 20s infinite alternate;
+    will-change: transform;
 }
 
 .ball-1 {
-    width: 400px;
-    height: 400px;
+    width: 40vw;
+    height: 40vw;
     background: var(--primary-color);
-    top: -100px;
-    left: -100px;
-    animation-delay: 0s;
+    top: -10vw;
+    left: -10vw;
+    animation: move1 30s infinite alternate ease-in-out;
 }
 
 .ball-2 {
-    width: 500px;
-    height: 500px;
+    width: 50vw;
+    height: 50vw;
     background: var(--accent-color);
-    bottom: -150px;
-    right: -150px;
-    animation-delay: -5s;
+    bottom: -15vw;
+    right: -15vw;
+    animation: move2 40s infinite alternate ease-in-out;
 }
 
 .ball-3 {
-    width: 300px;
-    height: 300px;
+    width: 30vw;
+    height: 30vw;
     background: #f472b6;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    animation: move-center 25s infinite alternate;
+    top: 20%;
+    left: 30%;
+    animation: move3 35s infinite alternate ease-in-out;
 }
 
-@keyframes move {
-    from { transform: translate(0, 0); }
-    to { transform: translate(100px, 100px); }
+@keyframes move1 {
+    from { transform: translate3d(0, 0, 0); }
+    to { transform: translate3d(15vw, 10vh, 0); }
 }
 
-@keyframes move-center {
-    from { transform: translate(-50%, -50%) scale(1); }
-    to { transform: translate(-40%, -60%) scale(1.2); }
+@keyframes move2 {
+    from { transform: translate3d(0, 0, 0); }
+    to { transform: translate3d(-10vw, -15vh, 0); }
+}
+
+@keyframes move3 {
+    from { transform: translate3d(0, 0, 0) scale(1); }
+    to { transform: translate3d(5vw, 5vh, 0) scale(1.2); }
 }
 
 /* Background Images with Parallax-like floating */
@@ -105,30 +109,34 @@ body {
     z-index: -1;
     pointer-events: none;
     opacity: 0.7;
-    filter: drop-shadow(0 10px 10px rgba(0,0,0,0.2));
+    will-change: transform;
 }
 
 #back1 {
     bottom: 50px;
     left: 50px;
-    width: 413px;
-    height: 124px;
-    background: url("../img/reception_flathotel_hotel.png") no-repeat;
+    width: 150px;
+    height: 180px;
+    background: url("../../../assets/images/maintenance/frank.png") no-repeat center;
+    background-size: contain;
     animation: float 6s ease-in-out infinite;
 }
 
 #back2 {
-    top: 50px;
+    top: 100px;
     right: 50px;
-    width: 484px;
-    height: 463px;
-    background: url("../img/default_new_bg_right.png") no-repeat;
+    width: 120px;
+    height: 120px;
+    background: rgba(255,255,255,0.1);
+    border: 2px solid var(--primary-color);
+    border-radius: 20px;
+    backdrop-filter: blur(10px);
     animation: float 8s ease-in-out infinite reverse;
 }
 
 @keyframes float {
-    0%, 100% { transform: translateY(0) rotate(0); }
-    50% { transform: translateY(-20px) rotate(2deg); }
+    0%, 100% { transform: translate3d(0, 0, 0) rotate(0); }
+    50% { transform: translate3d(0, -20px, 0) rotate(5deg); }
 }
 
 /* Glass Card */
@@ -145,12 +153,13 @@ body {
     text-align: center;
     position: relative;
     z-index: 10;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.3s ease;
+    will-change: transform;
 }
 
 .container:hover {
-    transform: translateY(-5px) scale(1.01);
-    box-shadow: 0 35px 60px -15px rgba(0, 0, 0, 0.6);
+    transform: translate3d(0, -8px, 0) scale(1.02);
+    box-shadow: 0 40px 70px -15px rgba(0, 0, 0, 0.6);
 }
 
 h1 {
@@ -306,9 +315,10 @@ button.submit:hover {
     border-radius: 2px;
     opacity: 0.3;
     animation: rotate 10s infinite linear;
+    will-change: transform;
 }
 
 @keyframes rotate {
-    from { transform: rotate(0deg); }
-    to { transform: rotate(360deg); }
+    from { transform: translate3d(0, 0, 0) rotate(0deg); }
+    to { transform: translate3d(0, 0, 0) rotate(360deg); }
 }

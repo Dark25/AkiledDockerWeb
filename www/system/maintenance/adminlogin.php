@@ -7,9 +7,16 @@
     <link rel="stylesheet" href="<?= $config['hotelUrl'] ?>/system/maintenance/css/maintenance-v2.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://unpkg.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+    <script type="module" src="https://unpkg.com/dark-mode-toggle"></script>
 </head>
 <body>
+    <script>
+        if (localStorage.getItem('dark-mode-toggle') === 'light') {
+            document.body.classList.add('light-mode');
+        }
+    </script>
     <div class="mesh-bg">
         <div class="mesh-ball ball-1"></div>
         <div class="mesh-ball ball-2"></div>
@@ -59,7 +66,6 @@
         <div class="pixel-decor" style="bottom: 10%; right: 12%; animation-delay: -3s;"></div>
     </div>
 
-    <script type="module" src="https://unpkg.com/dark-mode-toggle"></script>
     <script>
         const toggle = document.querySelector('dark-mode-toggle');
         const body = document.body;

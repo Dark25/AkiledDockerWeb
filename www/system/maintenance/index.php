@@ -7,9 +7,16 @@
     <link rel="stylesheet" href="<?= $config['hotelUrl'] ?>/system/maintenance/css/maintenance-v2.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://unpkg.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+    <script type="module" src="https://unpkg.com/dark-mode-toggle"></script>
 </head>
 <body>
+    <script>
+        if (localStorage.getItem('dark-mode-toggle') === 'light') {
+            document.body.classList.add('light-mode');
+        }
+    </script>
     <div class="mesh-bg">
         <div class="mesh-ball ball-1"></div>
         <div class="mesh-ball ball-2"></div>
@@ -36,7 +43,13 @@
 
         <?php if($config['twitterEnable'] == true): ?>
         <div class="twitter-container">
-            <a class="twitter-timeline" data-width="100%" data-height="300" data-theme="dark" data-chrome="noheader nofooter noborders transparent" data-link-color="#38bdf8" href="<?= $config['twitter'] ?>">Tweets by <?= $config['hotelName'] ?></a>
+            <a id="twitter-widget" class="twitter-timeline" data-width="100%" data-height="300" data-theme="dark" data-chrome="noheader nofooter noborders transparent" data-link-color="#38bdf8" href="<?= $config['twitter'] ?>">Tweets by <?= $config['hotelName'] ?></a>
+            <script>
+                (function() {
+                    const theme = localStorage.getItem('dark-mode-toggle') || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+                    document.getElementById('twitter-widget').setAttribute('data-theme', theme);
+                })();
+            </script>
             <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
         </div>
         <?php endif; ?>
@@ -53,7 +66,6 @@
         <div class="pixel-decor" style="top: 40%; right: 5%; animation-delay: -5s;"></div>
     </div>
 
-    <script type="module" src="https://unpkg.com/dark-mode-toggle"></script>
     <script>
         const toggle = document.querySelector('dark-mode-toggle');
         const body = document.body;
