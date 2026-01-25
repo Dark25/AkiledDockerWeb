@@ -1,0 +1,218 @@
+:root {
+    --bg-color: #f0f2f5;
+    --card-bg: rgba(255, 255, 255, 0.8);
+    --text-color: #333;
+    --primary-color: #1385ea;
+    --secondary-text: #666;
+    --input-bg: #fff;
+    --input-border: #ddd;
+    --shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+}
+
+body.dark-mode {
+    --bg-color: #1a1a1a;
+    --card-bg: rgba(40, 40, 40, 0.8);
+    --text-color: #f0f0f0;
+    --primary-color: #3498db;
+    --secondary-text: #bbb;
+    --input-bg: #333;
+    --input-border: #444;
+    --shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.8);
+}
+
+@media (prefers-color-scheme: dark) {
+    body:not(.light-mode) {
+        --bg-color: #1a1a1a;
+        --card-bg: rgba(40, 40, 40, 0.8);
+        --text-color: #f0f0f0;
+        --primary-color: #3498db;
+        --secondary-text: #bbb;
+        --input-bg: #333;
+        --input-border: #444;
+        --shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.8);
+    }
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    overflow: hidden;
+    transition: background-color 0.5s ease, color 0.5s ease;
+}
+
+#background-images {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+}
+
+.bg-image {
+    position: absolute;
+    opacity: 0.6;
+    transition: filter 0.5s ease;
+}
+
+body.dark-mode .bg-image {
+    filter: brightness(0.5) contrast(1.2);
+}
+
+#back1 {
+    bottom: 0;
+    left: 0;
+    width: 413px;
+    height: 124px;
+    background: url("../img/reception_flathotel_hotel.png") no-repeat bottom left;
+    animation: slideInLeft 1s ease-out;
+}
+
+#back2 {
+    bottom: 0;
+    right: 0;
+    width: 484px;
+    height: 463px;
+    background: url("../img/default_new_bg_right.png") no-repeat bottom right;
+    animation: slideInRight 1s ease-out;
+}
+
+.container {
+    background: var(--card-bg);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    box-shadow: var(--shadow);
+    padding: 40px;
+    width: 90%;
+    max-width: 500px;
+    text-align: center;
+    animation: fadeIn 1.2s ease-out;
+    z-index: 10;
+}
+
+h1 {
+    margin-bottom: 20px;
+    font-size: 2.5rem;
+    color: var(--primary-color);
+}
+
+p {
+    margin-bottom: 30px;
+    color: var(--secondary-text);
+    font-size: 1.1rem;
+}
+
+.box {
+    margin-top: 20px;
+}
+
+.twitter-container {
+    margin: 20px 0;
+    max-height: 300px;
+    overflow-y: auto;
+    border-radius: 10px;
+}
+
+.staff-link {
+    display: inline-block;
+    margin-top: 20px;
+    color: var(--primary-color);
+    text-decoration: none;
+    font-style: italic;
+    transition: transform 0.3s ease;
+}
+
+.staff-link:hover {
+    transform: scale(1.05);
+}
+
+/* Form Styles */
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+input {
+    padding: 12px 15px;
+    border-radius: 8px;
+    border: 1px solid var(--input-border);
+    background-color: var(--input-bg);
+    color: var(--text-color);
+    font-size: 1rem;
+    transition: all 0.3s ease;
+}
+
+input:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 5px var(--primary-color);
+}
+
+button.submit {
+    padding: 12px;
+    border-radius: 8px;
+    border: none;
+    background: linear-gradient(135deg, #3498db, #2980b9);
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+button.submit:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+button.submit:active {
+    transform: translateY(0);
+}
+
+/* Dark Mode Toggle Position */
+.theme-toggle {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 100;
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideInLeft {
+    from { transform: translateX(-100%); }
+    to { transform: translateX(0); }
+}
+
+@keyframes slideInRight {
+    from { transform: translateX(100%); }
+    to { transform: translateX(0); }
+}
+
+/* Responsiveness */
+@media (max-width: 600px) {
+    .container {
+        padding: 20px;
+    }
+
+    #back1, #back2 {
+        display: none;
+    }
+}
