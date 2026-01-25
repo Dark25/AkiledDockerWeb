@@ -46,9 +46,9 @@
             <span>Comunidad Discord</span>
         </div>
         <p>¡Únete a nuestra comunidad para estar al tanto de todo!</p>
-        <a href="https://discord.gg/akiled" target="_blank" class="discord-btn">Unirse ahora</a>
+        <a href="<?= $config['discord'] ?>" target="_blank" class="discord-btn">Unirse ahora</a>
     </div>
-
+ 
     <!-- Widget: Highscores Cortos (Top 3 Creditos) -->
     <div class="sidebar-widget mini-ranking">
         <div class="widget-title">
