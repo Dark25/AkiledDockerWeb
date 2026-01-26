@@ -1,7 +1,7 @@
 $('body').append('<div class="page-load"><img src="/assets/images/loader/box.gif"></div>');
 
-$(window).on('load', function() {
-	setTimeout(removeLoader, 500);
+$(function() {
+	removeLoader();
 	console.log(
 	"Mezz CMS - by Hugoyin\n" +
 	"You can access front-end files for free on GitHub. https://github.com/yilmazev/Mezz-Layout\n" +

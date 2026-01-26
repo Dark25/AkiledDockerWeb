@@ -9,6 +9,6 @@ echo '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www
 
 echo '<link rel="shortcut icon" href="' . $config['favicon'] . '"/>
 <meta property="og:image" content="' . $config['hotelUrl'] . '/templates/promo.png">
-<script src="https://code.jquery.com/jquery-3.2.1.js"></script>';
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>';
 
 html::page();

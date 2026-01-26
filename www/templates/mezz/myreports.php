@@ -12,7 +12,6 @@ $report_active = 'active';
     <link rel="stylesheet" href="/assets/styles/help.css" media="(prefers-color-scheme: light)">
     <link rel="stylesheet" href="/assets/styles/help-dark.css" media="(prefers-color-scheme: dark)">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <title><?= $config['hotelName'] ?>: <?= $lang["ReportePage"] ?></title>
 </head>
 

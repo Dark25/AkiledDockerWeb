@@ -12,7 +12,6 @@ $whatishabbo_active = 'active';
     <link rel="stylesheet" type="text/css" href="/assets/styles/app.css">
     <link rel="stylesheet" type="text/css" href="/assets/styles/what-is-habbo.css" media="(prefers-color-scheme: light)">
     <link rel="stylesheet" type="text/css" href="/assets/styles/what-is-habbo-dark.css" media="(prefers-color-scheme: dark)">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <title><?= $lang['TittleHader2'] ?></title>
 </head>
 

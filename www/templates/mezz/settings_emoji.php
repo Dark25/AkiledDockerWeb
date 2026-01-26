@@ -10,7 +10,6 @@ $emoji_active = 'active';
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="/assets/styles/settings_redesign.css" media="(prefers-color-scheme: light)">
     <link rel="stylesheet" type="text/css" href="/assets/styles/settings_redesign-dark.css" media="(prefers-color-scheme: dark)">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <title><?= $config['hotelName'] ?>: <?= $lang["TittleHader6"] ?></title>
 </head>
 
