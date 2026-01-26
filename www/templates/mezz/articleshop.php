@@ -13,7 +13,6 @@ $shop_active = 'active';
     <link rel="stylesheet" type="text/css" href="/assets/styles/articleshop-dark.css"
         media="(prefers-color-scheme: dark)">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <title><?= $config['hotelName'] ?>: Tienda de Monedas</title>
 </head>
 

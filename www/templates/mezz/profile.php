@@ -21,7 +21,6 @@ if ($news->RowCount() == 0) {
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="/assets/styles/app.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <title>Perfil de: <?= userHome('username'); ?></title>
 </head>
 

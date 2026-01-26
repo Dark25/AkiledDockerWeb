@@ -4,17 +4,14 @@ Game::sso('client');
 Game::homeRoom();
 ?>
 <html>
-</body>
-
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<title><?= $config['hotelName'] ?> - Game</title>
-	<script src="/templates/brain/client/js/jquery-latest.js" type="text/javascript"></script>
-	<script src="/templates/brain/client/js/jquery-ui.js" type="text/javascript"></script>
-	<script src="/templates/brain/client/js/flashclient.js"></script>
-	<script src="/templates/brain/client/js/flash_detect_min.js"></script>
-	<script src="/templates/brain/client/js/client.js" type="text/javascript"></script>
-	<link rel="stylesheet" href="/templates/brain/client/css/client.css?v=5" type="text/css">
+	<script src="/templates/mezz/client/js/jquery-ui.js" type="text/javascript"></script>
+	<script src="/templates/mezz/client/js/flashclient.js"></script>
+	<script src="/templates/mezz/client/js/flash_detect_min.js"></script>
+	<script src="/templates/mezz/client/js/client.js" type="text/javascript"></script>
+	<link rel="stylesheet" href="/templates/mezz/client/css/client.css?v=5" type="text/css">
 </head>
 
 <body>
@@ -57,8 +54,4 @@ Game::homeRoom();
 		</script>
 	</center>
 </body>
-
 </html>
-</center>
-</div>
-</head>

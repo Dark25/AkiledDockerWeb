@@ -12,7 +12,6 @@ $safety_active = 'active';
     <link rel="stylesheet" type="text/css" href="/assets/styles/app.css">
     <link rel="stylesheet" type="text/css" href="/assets/styles/safety-pages.css" media="(prefers-color-scheme: light)">
     <link rel="stylesheet" type="text/css" href="/assets/styles/safety-pages-dark.css" media="(prefers-color-scheme: dark)">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <title><?= $config['hotelName'] ?>:  <?= $lang["TittleHader7"] ?></title>
 </head>
 
