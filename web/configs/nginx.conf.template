@@ -26,11 +26,11 @@ http {
 	## Timeouts ##
 	##############
 
-	client_body_timeout	5;
-	client_header_timeout	5;
-	keepalive_timeout	25 25;
-	send_timeout		15s;
-	resolver_timeout	3s;
+	client_body_timeout	10;
+	client_header_timeout	10;
+	keepalive_timeout	65;
+	send_timeout		30s;
+	resolver_timeout	5s;
 
 	# Timeout period for connection with FastCGI-server. It should be noted that this value can't exceed 75 seconds.
 	fastcgi_connect_timeout 5s;
@@ -38,7 +38,7 @@ http {
 	# Amount of time for upstream to wait for a fastcgi process to send data.
 	# Change this directive if you have long running fastcgi processes that do not produce output until they have finished processing.
 	# If you are seeing an upstream timed out error in the error log, then increase this parameter to something more appropriate.
-	fastcgi_read_timeout	40s;
+	fastcgi_read_timeout	60s;
 
 	# Request timeout to the server. The timeout is calculated between two write operations, not for the whole request.
 	# If no data have been written during this period then serve closes the connection.
@@ -48,12 +48,12 @@ http {
 	## Buffers ##
 	#############
 
-	fastcgi_buffers			8 32k;
+	fastcgi_buffers			16 16k;
 	fastcgi_buffer_size		32k;
-	#fastcgi_busy_buffers_size	256k;
-	#fastcgi_temp_file_write_size	256k;
+	fastcgi_busy_buffers_size	64k;
+	fastcgi_temp_file_write_size	64k;
 
-	open_file_cache max=1000 inactive=20s;
+	open_file_cache max=5000 inactive=20s;
 	open_file_cache_valid 30s;
 	open_file_cache_min_uses 2;
 	open_file_cache_errors on;
@@ -87,7 +87,7 @@ http {
 
 
 	gzip on;
-	gzip_comp_level 5;
+	gzip_comp_level 6;
 	gzip_min_length 256;
 	gzip_proxied any;
 	gzip_vary on;
@@ -157,14 +157,18 @@ http {
 
 		location = /favicon.ico {
 				log_not_found off;
+				access_log off;
 		}
 		location = /robots.txt {
 				log_not_found off;
+				access_log off;
 		}
 
-		location ~* \.(jpg|jpeg|png|gif|ico|css|js|woff|woff2|ttf|svg)$ {
-			expires 30d;
-			add_header Cache-Control "public, no-transform";
+		# Cache de estáticos optimizada
+		location ~* \.(jpg|jpeg|png|gif|ico|css|js|woff|woff2|ttf|svg|eot)$ {
+			expires 365d;
+			access_log off;
+			add_header Cache-Control "public, no-transform, max-age=31536000";
 		}
 
 

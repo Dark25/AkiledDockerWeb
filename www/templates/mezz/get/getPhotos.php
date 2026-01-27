@@ -18,7 +18,7 @@
           {
       ?>
         <div class="page-content-collider-content-photos">
-          <span class="page-content-collider-content-photos-promo pixelated" style="background-image: url(<?php echo $config['roomphotos'] ?><?php echo filter($news["photo"]) ?>.png)"></span>
+          <img class="page-content-collider-content-photos-promo pixelated" src="<?php echo $config['roomphotos'] ?><?php echo filter($news["photo"]) ?>.png" alt="Photo by <?php echo filter($news["username"]) ?>" loading="lazy" width="300" height="300" style="object-fit: cover; width: 100%; height: 100%;">
 
           <div class="page-content-collider-content-photos-bottom-side">
             <a href="/profile/<?php echo filter($news["username"]) ?>" class="page-content-collider-content-photos-bottom-side-avatar">
