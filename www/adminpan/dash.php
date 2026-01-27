@@ -13,7 +13,9 @@ admin::CheckRank(10);
   <?php
   include_once "includes/navi.php";
   include_once "includes/header.php";
-
+  include_once "includes/geoip_helper.php";
+  $countryData = GeoIPHelper::getCountryCounts();
+  $totalVisitors = User::count('usersregister');
   ?>
 
 
@@ -281,54 +283,24 @@ admin::CheckRank(10);
                   <div class="table-responsive">
                     <table class="table">
                       <tbody>
-                        <tr>
-                          <td>
-                            <i class="flag-icon flag-icon-us"></i>
-                          </td>
-                          <td>USA</td>
-                          <td class="text-right"> 1500 </td>
-                          <td class="text-right font-weight-medium"> 56.35% </td>
-                        </tr>
-                        <tr>
-                          <td>
-                            <i class="flag-icon flag-icon-de"></i>
-                          </td>
-                          <td>Germany</td>
-                          <td class="text-right"> 800 </td>
-                          <td class="text-right font-weight-medium"> 33.25% </td>
-                        </tr>
-                        <tr>
-                          <td>
-                            <i class="flag-icon flag-icon-au"></i>
-                          </td>
-                          <td>Australia</td>
-                          <td class="text-right"> 760 </td>
-                          <td class="text-right font-weight-medium"> 15.45% </td>
-                        </tr>
-                        <tr>
-                          <td>
-                            <i class="flag-icon flag-icon-gb"></i>
-                          </td>
-                          <td>United Kingdom</td>
-                          <td class="text-right"> 450 </td>
-                          <td class="text-right font-weight-medium"> 25.00% </td>
-                        </tr>
-                        <tr>
-                          <td>
-                            <i class="flag-icon flag-icon-ro"></i>
-                          </td>
-                          <td>Romania</td>
-                          <td class="text-right"> 620 </td>
-                          <td class="text-right font-weight-medium"> 10.25% </td>
-                        </tr>
-                        <tr>
-                          <td>
-                            <i class="flag-icon flag-icon-br"></i>
-                          </td>
-                          <td>Brasil</td>
-                          <td class="text-right"> 230 </td>
-                          <td class="text-right font-weight-medium"> 75.00% </td>
-                        </tr>
+                        <?php
+                        if (empty($countryData)) {
+                            echo '<tr><td colspan="4" class="text-center">No hay datos de ubicación disponibles.</td></tr>';
+                        } else {
+                            foreach (array_slice($countryData, 0, 6) as $cc => $data) {
+                                $percentage = ($totalVisitors > 0) ? round(($data['count'] / $totalVisitors) * 100, 2) : 0;
+                                echo '
+                                <tr>
+                                  <td>
+                                    <i class="flag-icon flag-icon-' . $data['code'] . '"></i>
+                                  </td>
+                                  <td>' . $data['name'] . '</td>
+                                  <td class="text-right"> ' . $data['count'] . ' </td>
+                                  <td class="text-right font-weight-medium"> ' . $percentage . '% </td>
+                                </tr>';
+                            }
+                        }
+                        ?>
                       </tbody>
                     </table>
                   </div>
@@ -344,6 +316,18 @@ admin::CheckRank(10);
     </div>
     <!-- content-wrapper ends -->
     <!-- partial:partials/_footer.html -->
+    <script>
+      // Global Map Data for dashboard.js
+      var mapValues = <?php 
+        $mapVal = [];
+        if (!empty($countryData)) {
+            foreach($countryData as $cc => $data) {
+                $mapVal[$cc] = $data['count'];
+            }
+        }
+        echo json_encode($mapVal); 
+      ?>;
+    </script>
     <?php
     include_once "includes/footer.php";
     ?>
