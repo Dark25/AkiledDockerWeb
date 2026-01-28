@@ -21,3 +21,5 @@ RewriteRule ^wordfilter/delete/([a-zA-Z0-9_-]+)(|/)$ index.php?url=wordfilter&de
 RewriteRule ^rooms/delete/([a-zA-Z0-9_-]+)(|/)$ index.php?url=rooms&delete=$1
 RewriteRule ^eventos/delete/([a-zA-Z0-9_-]+)(|/)$ index.php?url=eventos&delete=$1
 RewriteRule ^catalogme/delete/([a-zA-Z0-9_-]+)(|/)$ index.php?url=catalogme&delete=$1
+RewriteRule ^replyreport/([0-9]+)(|/)$ index.php?url=replyreport&id=$1
+RewriteRule ^viewreportclosed/([0-9]+)(|/)$ index.php?url=viewreportclosed&id=$1

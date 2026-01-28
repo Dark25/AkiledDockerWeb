@@ -23,12 +23,16 @@ admin::CheckRank(13);
             <h4 class="card-title">Reportes Abiertos y en Tratamiento</h4>
             <p class="card-description"> <code>(Responda las llamadas a continuación si no tiene staff respondiendo.)</code></p>
 
-            <?php admin::DeleteReport(); ?>
+            <?php 
+                if (isset($_GET['delete'])) {
+                    admin::DeleteReport(); 
+                }
+            ?>
 
 
 
-            <div class="table-responsive " style=" max-height: 600px; overflow-y: scroll">
-              <table class="table table-hover">
+            <div class="table-responsive">
+              <table class="table table-hover table-striped">
                 <thead>
                   <tr>
                     <th>ID</th>
@@ -36,57 +40,45 @@ admin::CheckRank(13);
                     <th>Categoría</th>
                     <th>Estado</th>
                     <th>Autor</th>
-                    <th>Editar</th>
-                    <th>Eliminar</th>
+                    <th>Acciones</th>
                   </tr>
                 </thead>
-
+                <tbody>
                 <?php
-                $getArticles = $dbh->prepare("SELECT * FROM cms_reports WHERE state = 'Abierto' OR state = 'Tratamiento' ORDER BY id DESC");
+                $getArticles = $dbh->prepare("SELECT * FROM cms_reports WHERE state != 'Cerrado' ORDER BY id DESC");
                 $getArticles->execute();
+                if ($getArticles->rowCount() == 0) {
+                    echo '<tr><td colspan="6" class="text-center">No hay reportes abiertos.</td></tr>';
+                }
                 while ($news = $getArticles->fetch()) {
+                    $stateBadge = ($news["state"] == 'Abierto') ? 'badge-outline-success' : 'badge-outline-warning';
                 ?>
-
-                  <tbody>
-
                     <tr>
-                      <td><?= filter($news["id"]) ?></td>
+                      <td>#<?= filter($news["id"]) ?></td>
                       <td><?= filter($news["title"]) ?></td>
-                      <td><?= filter($news["category"]) ?></td>
-                      <?php if ($news["state"] == 'Abierto') { ?>
-                        <td style="color: green;"><?= filter($news["state"]) ?></td>
-                      <?php } else { ?>
-                        <td style="color: orange;"><?= filter($news["state"]) ?></td>
-                      <?php } ?>
-                      <td><?= filter($news["author"]) ?></td>
-
-                      <?php if (User::userData('rank') > '10') { ?>
-
-                        <?php
-                        if ($news["state"] == "Abierto" || $news["state"] == "Tratamiento" || $news["state"] == "") {
-                        ?>
-
-                          <td>
-                            <a type="button" class="btn btn-primary" href="/adminpan/replyreport/<?= $news["id"] ?>">Editar</a>
-                          </td>
-
-                        <?php } else { ?>
-
-                          <td>
-                            <a type="button" class="btn btn-info" href="/adminpan/viewreportclosed/<?= $news["id"] ?>">Para ver</a>
-                          </td>
-
-                        <?php } ?>
-
-                        <td>
-                          <a type="button" class="btn btn-danger" href="/adminpan/report/delete/<?= $news["id"] ?>">Eliminar</a>
-                        </td>
+                      <td><span class="badge badge-outline-info"><?= filter($news["category"]) ?></span></td>
+                      <td><label class="badge <?= $stateBadge ?>"><?= filter($news["state"]) ?></label></td>
+                      <td>
+                        <div class="d-flex align-items-center">
+                          <div class="mr-2" style="width: 30px; height: 30px; border-radius: 50%; background: #2a3038; overflow: hidden; display: flex; align-items: center; justify-content: center;">
+                            <img src="<?= $config['lookUrl'] . User::GetLookByUsername($news['author']) ?>&direction=2&head_direction=2&gesture=sml&size=l" style="width: 89%; height: 89%; object-fit: cover; object-position: center 20%; transform: scale(2.5);">
+                          </div>
+                          <span><?= filter($news["author"]) ?></span>
+                        </div>
+                      </td>
+                      <td>
+                        <div class="btn-group" role="group">
+                          <a class="btn btn-primary btn-sm" href="/adminpan/replyreport/<?= $news["id"] ?>">
+                            <i class="mdi mdi-comment-text-outline"></i> Responder
+                          </a>
+                          <a class="btn btn-danger btn-sm" href="/adminpan/report/delete/<?= $news["id"] ?>" onclick="return confirm('¿Estás seguro de eliminar este reporte?')">
+                            <i class="mdi mdi-delete"></i>
+                          </a>
+                        </div>
+                      </td>
                     </tr>
-
-                <?php }
-                    } ?>
-
-                  </tbody>
+                <?php } ?>
+                </tbody>
               </table>
             </div>
           </div>
@@ -101,12 +93,12 @@ admin::CheckRank(13);
             <h4 class="card-title">Reportes Cerrados</h4>
             <p class="card-description"> <code>(Reportes que ya han sido cerradas)</code></p>
 
-            <?php admin::DeleteReport(); ?>
 
 
 
-            <div class="table-responsive " style=" max-height: 600px; overflow-y: scroll">
-              <table class="table table-hover">
+
+            <div class="table-responsive">
+              <table class="table table-hover table-striped">
                 <thead>
                   <tr>
                     <th>ID</th>
@@ -114,53 +106,44 @@ admin::CheckRank(13);
                     <th>Categoría</th>
                     <th>Estado</th>
                     <th>Autor</th>
-                    <th>Editar</th>
-                    <th>Eliminar</th>
+                    <th>Acciones</th>
                   </tr>
                 </thead>
-
+                <tbody>
                 <?php
                 $getArticles = $dbh->prepare("SELECT * FROM cms_reports WHERE state = 'Cerrado' ORDER BY id DESC");
                 $getArticles->execute();
+                if ($getArticles->rowCount() == 0) {
+                    echo '<tr><td colspan="6" class="text-center">No hay reportes cerrados.</td></tr>';
+                }
                 while ($news = $getArticles->fetch()) {
                 ?>
-
-                  <tbody>
-
                     <tr>
-                      <td><?= filter($news["id"]) ?></td>
+                      <td>#<?= filter($news["id"]) ?></td>
                       <td><?= filter($news["title"]) ?></td>
-                      <td><?= filter($news["category"]) ?></td>
-                      <td style="color: #e71c1c;"><?= filter($news["state"]) ?></td>
-                      <td><?= filter($news["author"]) ?></td>
-
-                      <?php if (User::userData('rank') > '10') { ?>
-
-                        <?php
-                        if ($news["state"] == "Abierto" || $news["state"] == "Tratamiento" || $news["state"] == "") {
-                        ?>
-
-                          <td>
-                            <a type="button" class="btn btn-primary" href="/adminpan/replyreport/<?= $news["id"] ?>">Editar</a>
-                          </td>
-
-                        <?php } else { ?>
-
-                          <td>
-                            <a type="button" class="btn btn-info" href="/adminpan/viewreportclosed/<?= $news["id"] ?>">Para ver</a>
-                          </td>
-
-                        <?php } ?>
-
-                        <td>
-                          <a type="button" class="btn btn-danger" href="/adminpan/report/delete/<?= $news["id"] ?>">Eliminar</a>
-                        </td>
+                      <td><span class="badge badge-outline-info"><?= filter($news["category"]) ?></span></td>
+                      <td><label class="badge badge-outline-danger"><?= filter($news["state"]) ?></label></td>
+                      <td>
+                        <div class="d-flex align-items-center">
+                          <div class="mr-2" style="width: 30px; height: 30px; border-radius: 50%; background: #2a3038; overflow: hidden; display: flex; align-items: center; justify-content: center;">
+                            <img src="<?= $config['lookUrl'] . User::GetLookByUsername($news['author']) ?>&direction=2&head_direction=2&gesture=sml&size=l" style="width: 100%; height: 100%; object-fit: cover; object-position: center 20%; transform: scale(2.5);">
+                          </div>
+                          <span><?= filter($news["author"]) ?></span>
+                        </div>
+                      </td>
+                      <td>
+                        <div class="btn-group" role="group">
+                          <a class="btn btn-info btn-sm" href="/adminpan/viewreportclosed/<?= $news["id"] ?>">
+                            <i class="mdi mdi-eye"></i> Ver
+                          </a>
+                          <a class="btn btn-danger btn-sm" href="/adminpan/report/delete/<?= $news["id"] ?>" onclick="return confirm('¿Estás seguro de eliminar este reporte?')">
+                            <i class="mdi mdi-delete"></i>
+                          </a>
+                        </div>
+                      </td>
                     </tr>
-
-                <?php }
-                    } ?>
-
-                  </tbody>
+                <?php } ?>
+                </tbody>
               </table>
             </div>
           </div>

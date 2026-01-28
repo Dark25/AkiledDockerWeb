@@ -53,6 +53,18 @@ class User
 		}
 		return false;
 	}
+	public static function GetLookByUsername($username)
+	{
+		global $dbh;
+		$stmt = $dbh->prepare("SELECT look FROM users WHERE username = :username LIMIT 1");
+		$stmt->bindParam(':username', $username);
+		$stmt->execute();
+		if ($stmt->rowCount() > 0) {
+			$row = $stmt->fetch();
+			return filter($row['look']);
+		}
+		return "";
+	}
 	public static function userData($key)
 	{
 		global $dbh, $config;
